@@ -19,14 +19,18 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^6.2.0
   flutter_screenutil: ^5.9.0
+  another_flushbar: ^1.12.30
 
   #for flutter_state_management:
   flutter_bloc: ^8.1.4
+  bloc: ^8.1.3
+  meta: ^1.10.0
 
   #for network_handler:
   connectivity_plus: any
   dartz: ^0.10.1
   dio: ^5.4.1
+  retrofit: ^4.1.0
 
   #for data model_generator:
   equatable: ^2.0.5
@@ -51,6 +55,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.4.8
   json_serializable: ^6.7.1
+  retrofit_generator: ^8.1.0
   bloc_test: ^9.1.6
   mockito: ^5.4.4
   mocktail: ^1.0.3

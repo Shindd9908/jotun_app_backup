@@ -5,7 +5,7 @@ import "package:dartz/dartz.dart";
 import "package:flutter/foundation.dart";
 
 class ApiServices {
-  static Future<Either<String, dynamic>> handleApiError(dynamic error) async {
+  static Future<Either<String, T>> handleApiError<T>(dynamic error) async {
     String errorMessage = await _getErrorMessage(error);
     if (kDebugMode) {
       print(errorMessage);

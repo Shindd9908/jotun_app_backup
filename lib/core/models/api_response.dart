@@ -36,7 +36,7 @@ class ApiResponse<T> extends Equatable {
   ) =>
       _$ApiResponseFromJson(json, fromJsonT);
 
-  bool get isSuccess => status == "success";
+  bool get isSuccess => status?.toLowerCase() == "success";
 
   Object? getValue() {
     if (isSuccess) {
