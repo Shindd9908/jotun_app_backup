@@ -1,0 +1,3 @@
+class AppPaths {
+  AppPaths._();
+}

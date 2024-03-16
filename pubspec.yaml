@@ -18,12 +18,13 @@ dependencies:
   #for theme_manager:
   cupertino_icons: ^1.0.2
   google_fonts: ^6.2.0
+  flutter_screenutil: ^5.9.0
 
   #for flutter_state_management:
   flutter_bloc: ^8.1.4
 
   #for network_handler:
-  connectivity_plus: ^5.0.2
+  connectivity_plus: any
   dartz: ^0.10.1
   dio: ^5.4.1
 
@@ -37,11 +38,23 @@ dependencies:
   #for preferences_local_storage_inspector:
   shared_preferences: ^2.2.2
 
+  #for firebase:
+  firebase_core: any
+
+  #for flutter_keyboard_visibility:
+  flutter_keyboard_visibility: ^6.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.8
+  json_serializable: ^6.7.1
+  bloc_test: ^9.1.6
+  mockito: ^5.4.4
+  mocktail: ^1.0.3
+  dartz_test: ^0.1.1
 
 flutter:
 
@@ -63,19 +76,25 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Caster
+      fonts:
+        - asset: assets/fonts/Caster.otf
+    - family: MyriadPro
+      fonts:
+        - asset: assets/fonts/MyriadPro-It.otf
+          style: italic
+        - asset: assets/fonts/MyriadPro-Bold.otf
+          weight: 700
+        - asset: assets/fonts/MyriadPro-Regular.otf
+          style: normal
+        - asset: assets/fonts/MyriadPro-Semibold.otf
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/NotoSans-VariableFont_wdth,wght.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Black.ttf
+
 flutter_intl:
   enabled: true
