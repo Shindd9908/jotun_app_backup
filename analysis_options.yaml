@@ -8,17 +8,19 @@ analyzer:
 
 linter:
   rules:
-    avoid_shadowing_type_parameters: true
-    no_duplicate_case_values: true
-    prefer_double_quotes:
-      enabled: true
-      except: [ 'import' ]
-    avoid_empty_else: true
-    sized_box_for_whitespace: true
-    provide_deprecation_message: true
-    prefer_mixin: true
-    avoid_relative_lib_imports: true
-    comment_references: true
+    - avoid_shadowing_type_parameters
+    - no_duplicate_case_values
+    - prefer_double_quotes:
+        enabled: true
+        except: [ 'import' ]
+    - avoid_empty_else
+    - sized_box_for_whitespace
+    - provide_deprecation_message
+    - prefer_mixin
+    - avoid_relative_lib_imports
+    - comment_references
+    - eol_at_end_of_file
+    - invalid_case_patterns
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
