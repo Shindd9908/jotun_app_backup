@@ -15,7 +15,6 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<Either<String, UserInfoEntity>> login({required String userCode, required String password}) async {
     try {
       final authentic = await authenticationApi.login(LoginRequest(userCode: userCode, password: password));
-      print(authentic.isSuccess);
       if (authentic.isSuccess) {
         final data = authentic.getValue() as LoginResponse;
         return Right(data.userInfoEntity);

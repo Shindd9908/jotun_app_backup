@@ -10,7 +10,9 @@ linter:
   rules:
     avoid_shadowing_type_parameters: true
     no_duplicate_case_values: true
-    prefer_double_quotes: true
+    prefer_double_quotes:
+      enabled: true
+      except: [ 'import' ]
     avoid_empty_else: true
     sized_box_for_whitespace: true
     provide_deprecation_message: true

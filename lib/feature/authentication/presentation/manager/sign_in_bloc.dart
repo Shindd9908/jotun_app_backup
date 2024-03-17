@@ -15,7 +15,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     on<SignInWithEmailEvent>(_signInWithEmailToState);
   }
 
-  Future<void> _signInWithEmailToState(SignInWithEmailEvent event, Emitter<SignInState> state) async {
+  Future<void> _signInWithEmailToState(SignInWithEmailEvent event, Emitter<SignInState> emit) async {
     try {
       emit(SignInLoading());
       final userData = await authenticationRepository.login(userCode: "BIEMPaQ15G", password: "0961783723");

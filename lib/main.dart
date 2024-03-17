@@ -100,6 +100,9 @@ class _MyHomePageState extends State<MyHomePage> {
             if (state is SignInSuccess) {
               CustomFlushBar.showFailed(context, state.userInfoEntity.name ?? "khang");
             }
+            else if (state is SignInFailed) {
+              CustomFlushBar.showFailed(context, state.errorMessage);
+            }
           },
           child: const Center(
             child: Text("Your Content"),
