@@ -209,11 +209,184 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Column(
-                      )
-                    ],
+                  SizedBox(
+                    height: 180.h,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(4.0),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff848689),
+                                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/icons/icon_map.png',
+                                    width: 40.w,
+                                    height: 40.w,
+                                  ),
+                                ),
+                                Text(
+                                  'Khám phá\nlịch trình',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10.sp,
+                                    letterSpacing: 0.05,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(4.0),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff848689),
+                                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/icons/icon_product.png',
+                                    width: 40.w,
+                                    height: 40.w,
+                                  ),
+                                ),
+                                Text(
+                                  'Thông tin sản\nphẩm mới',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10.sp,
+                                    letterSpacing: 0.05,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(4.0),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff848689),
+                                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/icons/icon_gift.png',
+                                    width: 40.w,
+                                    height: 40.w,
+                                  ),
+                                ),
+                                Text(
+                                  'Trải nghiệm &\nnhận quà',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10.sp,
+                                    letterSpacing: 0.05,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(4.0),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff848689),
+                                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/icons/icon_minigame.png',
+                                    width: 40.w,
+                                    height: 40.w,
+                                  ),
+                                ),
+                                Text(
+                                  'Mini game\n',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10.sp,
+                                    letterSpacing: 0.05,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(4.0),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff848689),
+                                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/icons/icon_order.png',
+                                    width: 40.w,
+                                    height: 40.w,
+                                  ),
+                                ),
+                                Text(
+                                  'Đặt hàng trước',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10.sp,
+                                    letterSpacing: 0.05,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(4.0),
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xff848689),
+                                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/icons/icon_coupon.png',
+                                    width: 40.w,
+                                    height: 40.w,
+                                  ),
+                                ),
+                                Text(
+                                  'Chương trình\nkhuyến mãi',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 10.sp,
+                                    letterSpacing: 0.05,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
