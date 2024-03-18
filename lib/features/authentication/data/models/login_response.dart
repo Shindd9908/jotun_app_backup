@@ -1,5 +1,5 @@
 import "package:equatable/equatable.dart";
-import "package:jotub_app/feature/authentication/data/models/user_login_response.dart";
+import "package:jotub_app/features/authentication/data/models/user_login_response.dart";
 import "package:json_annotation/json_annotation.dart";
 
 part "login_response.g.dart";

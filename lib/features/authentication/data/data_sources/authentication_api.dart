@@ -1,7 +1,7 @@
 import "package:dio/dio.dart";
 import "package:jotub_app/core/models/api_response.dart";
-import "package:jotub_app/feature/authentication/data/models/login_request.dart";
-import "package:jotub_app/feature/authentication/data/models/login_response.dart";
+import "package:jotub_app/features/authentication/data/models/login_request.dart";
+import "package:jotub_app/features/authentication/data/models/login_response.dart";
 import "package:retrofit/http.dart";
 
 part "authentication_api.g.dart";
