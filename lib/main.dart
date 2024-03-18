@@ -1,10 +1,7 @@
-import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
-import "package:flutter/services.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
-import "package:flutter_screenutil/flutter_screenutil.dart";
 import "package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart";
 import "package:jotub_app/features/authentication/presentation/ui/screens/login_screen.dart";
 import "package:jotub_app/utils/constants/constants.dart";
