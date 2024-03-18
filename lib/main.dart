@@ -1,3 +1,5 @@
+import "dart:io";
+
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
@@ -5,12 +7,12 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_screenutil/flutter_screenutil.dart";
-import "package:jotub_app/feature/authentication/presentation/manager/sign_in_bloc.dart";
+import "package:jotub_app/features/authentication/presentation/manager/sign_in_bloc.dart";
 import "package:jotub_app/utils/constants/constants.dart";
 import "package:jotub_app/utils/global_widgets/custom_flushbar/custom_flush_bar.dart";
 
 import "di/dependency_injection.dart";
-import "feature/networking/network_cubit.dart";
+import "features/networking/network_cubit.dart";
 import "generated/l10n.dart";
 
 Future<void> main() async {
@@ -94,13 +96,12 @@ class _MyHomePageState extends State<MyHomePage> {
             //CustomFlushBar.showFailed(context, "Mât mẹ nó mạng rồi!");
           }
         },
-        child: BlocListener<SignInBloc,SignInState>(
+        child: BlocListener<SignInBloc, SignInState>(
           listenWhen: (context, current) => current is SignInLoading || current is SignInSuccess || current is SignInFailed,
           listener: (context, state) {
             if (state is SignInSuccess) {
               CustomFlushBar.showFailed(context, state.userInfoEntity.name ?? "khang");
-            }
-            else if (state is SignInFailed) {
+            } else if (state is SignInFailed) {
               CustomFlushBar.showFailed(context, state.errorMessage);
             }
           },

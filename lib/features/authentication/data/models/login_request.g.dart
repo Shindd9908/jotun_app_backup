@@ -7,12 +7,14 @@ part of 'login_request.dart';
 // **************************************************************************
 
 LoginRequest _$LoginRequestFromJson(Map<String, dynamic> json) => LoginRequest(
-      userCode: json['code'] as String?,
+      username: json['username'] as String?,
       password: json['password'] as String?,
+      role: json['role'] as int?,
     );
 
 Map<String, dynamic> _$LoginRequestToJson(LoginRequest instance) =>
     <String, dynamic>{
-      'code': instance.userCode,
+      'username': instance.username,
       'password': instance.password,
+      'role': instance.role,
     };

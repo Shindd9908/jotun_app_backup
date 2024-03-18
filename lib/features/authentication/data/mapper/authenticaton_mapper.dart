@@ -1,5 +1,5 @@
-import "package:jotub_app/feature/authentication/data/models/login_response.dart";
-import "package:jotub_app/feature/authentication/domain/entities/user_authentication_entity.dart";
+import "package:jotub_app/features/authentication/data/models/login_response.dart";
+import "package:jotub_app/features/authentication/domain/entities/user_authentication_entity.dart";
 
 extension SignInCheckExt on LoginResponse {
   UserInfoEntity get userInfoEntity => UserInfoEntity(

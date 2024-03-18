@@ -1,7 +1,8 @@
 class AppConfigs {
   AppConfigs._();
 
-  static const String apiBaseUrl = "http://13.112.34.141/api/v1";
+  /// stg domain
+  static const String apiBaseUrl = "https://jotundev.stoo.vn/api/";
 
   static const int kConnectApiTimeout = 30000;
   static const int kReceiveApiTimeout = 30000;

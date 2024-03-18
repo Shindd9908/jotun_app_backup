@@ -5,13 +5,17 @@ part "login_request.g.dart";
 
 @JsonSerializable()
 class LoginRequest extends Equatable {
-  @JsonKey(name: "code")
-  final String? userCode;
+  @JsonKey(name: "username")
+  final String? username;
+  @JsonKey(name: "password")
   final String? password;
+  @JsonKey(name: "role")
+  final int? role;
 
   const LoginRequest({
-    this.userCode,
+    this.username,
     this.password,
+    this.role,
   });
 
   factory LoginRequest.fromJson(Map<String, dynamic> json) => _$LoginRequestFromJson(json);
@@ -20,7 +24,8 @@ class LoginRequest extends Equatable {
 
   @override
   List<Object?> get props => [
-        userCode,
+        username,
         password,
+        role,
       ];
 }

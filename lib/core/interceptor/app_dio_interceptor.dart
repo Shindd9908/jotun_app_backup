@@ -12,12 +12,8 @@ class AppDioInterceptor extends InterceptorsWrapper {
 
   @override
   Future onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    options.headers["Accept"] = "application/json";
-    if (options.headers["no-auth"] != null) {
-      options.headers.remove("no-auth");
-      handler.next(options);
-      return;
-    }
+    options.headers["Accept"] = "*/*";
+    options.headers["Content-Type"] = "application/json";
     final accessToken = _preferencesManager.getValue<String>("keyAccessToken");
     final localizationLanguage = _preferencesManager.getValue<String>("deviceLanguage");
     options.headers.addAll({"Authorization": "Bearer $accessToken"});

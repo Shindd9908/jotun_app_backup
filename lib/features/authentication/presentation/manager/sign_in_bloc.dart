@@ -1,8 +1,8 @@
 import "package:equatable/equatable.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:bloc/bloc.dart";
-import "package:jotub_app/feature/authentication/domain/entities/user_authentication_entity.dart";
-import "package:jotub_app/feature/authentication/domain/repositories/user_authentication_repository.dart";
+import "package:jotub_app/features/authentication/domain/entities/user_authentication_entity.dart";
+import "package:jotub_app/features/authentication/domain/repositories/user_authentication_repository.dart";
 
 part "sign_in_event.dart";
 
@@ -18,7 +18,11 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   Future<void> _signInWithEmailToState(SignInWithEmailEvent event, Emitter<SignInState> emit) async {
     try {
       emit(SignInLoading());
-      final userData = await authenticationRepository.login(userCode: "BIEMPaQ15G", password: "0961783723");
+      final userData = await authenticationRepository.login(
+        username: "BIEMPaQ15G",
+        password: "0961783723",
+        userRole: 0,
+      );
       userData.fold(
         (l) => emit(SignInFailed(errorMessage: l)),
         (r) => emit(SignInSuccess(userInfoEntity: r)),
