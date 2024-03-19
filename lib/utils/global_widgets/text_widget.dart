@@ -7,6 +7,7 @@ class TextWidget extends StatelessWidget {
   final TextStyle? textStyle;
   final Color? color;
   final double? fontSize;
+  final String? fontFamily;
   final FontWeight? fontWeight;
   final TextAlign? textAlign;
   final int? maxLine;
@@ -24,6 +25,7 @@ class TextWidget extends StatelessWidget {
     this.fontSize,
     this.fontWeight,
     this.textStyle,
+    this.fontFamily,
   });
 
   @override
@@ -35,6 +37,7 @@ class TextWidget extends StatelessWidget {
             color: color ?? AppColor.colorMainBlack,
             fontSize: fontSize ?? AppHelper.setWithHeightFontSizeDevicesTabletMobile(20, 16),
             fontWeight: fontWeight ?? FontWeight.w500,
+            fontFamily: fontFamily ?? 'Roboto',
             decoration: textDecoration ?? TextDecoration.none,
           ),
       maxLines: maxLine ?? 9999,
