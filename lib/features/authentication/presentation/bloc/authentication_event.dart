@@ -11,7 +11,6 @@ class LoginEvent extends AuthenticationEvent {
   const LoginEvent({this.name, this.password});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [name, password];
 }
 
@@ -21,9 +20,18 @@ class ChangePasswordEvent extends AuthenticationEvent {
   final String? newPassword;
   final String? confirmNewPassword;
 
-  const ChangePasswordEvent({this.name, this.currentPassword, this.newPassword, this.confirmNewPassword});
+  const ChangePasswordEvent({
+    this.name,
+    this.currentPassword,
+    this.newPassword,
+    this.confirmNewPassword,
+  });
 
   @override
-  // TODO: implement props
-  List<Object?> get props => [name, currentPassword, newPassword, confirmNewPassword];
+  List<Object?> get props => [
+        name,
+        currentPassword,
+        newPassword,
+        confirmNewPassword,
+      ];
 }
