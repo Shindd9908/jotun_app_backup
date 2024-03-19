@@ -49,6 +49,176 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `HÀNH TRÌNH KHÁM PHÁ`
+  String get journeyDiscovery {
+    return Intl.message(
+      'HÀNH TRÌNH KHÁM PHÁ',
+      name: 'journeyDiscovery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SỰ TOÀN DIỆN`
+  String get inclusiveness {
+    return Intl.message(
+      'SỰ TOÀN DIỆN',
+      name: 'inclusiveness',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đối tượng sử dụng`
+  String get objectUse {
+    return Intl.message(
+      'Đối tượng sử dụng',
+      name: 'objectUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đại lý`
+  String get agency {
+    return Intl.message(
+      'Đại lý',
+      name: 'agency',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nhân viên Jotun`
+  String get memberOfJotun {
+    return Intl.message(
+      'Nhân viên Jotun',
+      name: 'memberOfJotun',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đăng nhập`
+  String get login {
+    return Intl.message(
+      'Đăng nhập',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tên đăng nhập`
+  String get usernameLogin {
+    return Intl.message(
+      'Tên đăng nhập',
+      name: 'usernameLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mật khẩu`
+  String get password {
+    return Intl.message(
+      'Mật khẩu',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đổi mật khẩu`
+  String get changePassword {
+    return Intl.message(
+      'Đổi mật khẩu',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mật khẩu mới`
+  String get newPassword {
+    return Intl.message(
+      'Mật khẩu mới',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Xác nhận mật khẩu mới`
+  String get confirmNewPassword {
+    return Intl.message(
+      'Xác nhận mật khẩu mới',
+      name: 'confirmNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thông tin tài khoản`
+  String get accountInformation {
+    return Intl.message(
+      'Thông tin tài khoản',
+      name: 'accountInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cửa hàng`
+  String get store {
+    return Intl.message(
+      'Cửa hàng',
+      name: 'store',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `MC code`
+  String get mcCode {
+    return Intl.message(
+      'MC code',
+      name: 'mcCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nhân viên bán hàng phụ trách`
+  String get salesStaffCharge {
+    return Intl.message(
+      'Nhân viên bán hàng phụ trách',
+      name: 'salesStaffCharge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nhóm`
+  String get group {
+    return Intl.message(
+      'Nhóm',
+      name: 'group',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Xác nhận thông tin`
+  String get confirmInformation {
+    return Intl.message(
+      'Xác nhận thông tin',
+      name: 'confirmInformation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
