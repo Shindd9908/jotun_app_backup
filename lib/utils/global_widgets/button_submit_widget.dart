@@ -9,7 +9,13 @@ class ButtonSubmitWidget extends StatelessWidget {
   final double? heightButton;
   final TextStyle? textStyle;
 
-  const ButtonSubmitWidget({super.key, this.title, this.widthButton, this.heightButton, this.textStyle});
+  const ButtonSubmitWidget({
+    super.key,
+    this.title,
+    this.widthButton,
+    this.heightButton,
+    this.textStyle,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -1,20 +1,14 @@
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
-import "package:flutter/services.dart";
-import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
-import "package:flutter_screenutil/flutter_screenutil.dart";
-import "package:jotub_app/features/authentication/presentation/manager/sign_in_bloc.dart";
 import "package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart";
 import "package:jotub_app/utils/constants/constants.dart";
-import "package:jotub_app/utils/global_widgets/custom_flushbar/custom_flush_bar.dart";
 import "package:jotub_app/utils/routers/routers.dart";
 import "package:sizer/sizer.dart";
 
 import "di/dependency_injection.dart";
-import "features/networking/network_cubit.dart";
 import "generated/l10n.dart";
 
 Future<void> main() async {
