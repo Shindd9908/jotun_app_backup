@@ -2,10 +2,10 @@ import "package:dio/dio.dart";
 import "package:get_it/get_it.dart";
 import "package:jotub_app/core/app_configs.dart";
 import "package:jotub_app/core/preferences/shared_preferences_manager.dart";
-import "package:jotub_app/feature/authentication/data/data_sources/authentication_api.dart";
-import "package:jotub_app/feature/authentication/data/repositories/user_authentication_repository_impl.dart";
-import "package:jotub_app/feature/authentication/domain/repositories/user_authentication_repository.dart";
-import "package:jotub_app/feature/authentication/presentation/manager/sign_in_bloc.dart";
+import "package:jotub_app/features/authentication/data/data_sources/authentication_api.dart";
+import "package:jotub_app/features/authentication/data/repositories/user_authentication_repository_impl.dart";
+import "package:jotub_app/features/authentication/domain/repositories/user_authentication_repository.dart";
+import "package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart";
 
 GetIt getIt = GetIt.instance;
 
@@ -44,8 +44,8 @@ void _registerRepository() {
 }
 
 void _registerBlocs() {
-  getIt.registerLazySingleton<SignInBloc>(
-    () => SignInBloc(
+  getIt.registerLazySingleton<AuthenticationBloc>(
+    () => AuthenticationBloc(
       authenticationRepository: getIt<AuthenticationRepository>(),
     ),
   );
