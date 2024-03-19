@@ -17,11 +17,12 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
   Future<void> _signInWithEmailToState(SignInWithEmailEvent event, Emitter<SignInState> emit) async {
     try {
+      //role: 2 - guest, 3-sales
       emit(SignInLoading());
       final userData = await authenticationRepository.login(
-        username: "BIEMPaQ15G",
-        password: "0961783723",
-        userRole: 0,
+        username: event.username,
+        password: event.password,
+        userRole: event.roleUser,
       );
       userData.fold(
         (l) => emit(SignInFailed(errorMessage: l)),

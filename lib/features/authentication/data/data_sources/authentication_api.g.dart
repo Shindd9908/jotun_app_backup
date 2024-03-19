@@ -19,14 +19,15 @@ class _AuthenticationApi implements AuthenticationApi {
   String? baseUrl;
 
   @override
-  Future<ApiResponse<LoginResponse>> login(LoginRequest loginRequest) async {
+  Future<ApiResponse<UserLoginResponse>> login(
+      LoginRequest loginRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(loginRequest.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<LoginResponse>>(Options(
+        _setStreamType<ApiResponse<UserLoginResponse>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -42,9 +43,9 @@ class _AuthenticationApi implements AuthenticationApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<LoginResponse>.fromJson(
+    final value = ApiResponse<UserLoginResponse>.fromJson(
       _result.data!,
-      (json) => LoginResponse.fromJson(json as Map<String, dynamic>),
+      (json) => UserLoginResponse.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

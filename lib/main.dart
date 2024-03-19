@@ -1,5 +1,3 @@
-import "dart:io";
-
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
@@ -81,7 +79,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<SignInBloc>().add(const SignInWithEmailEvent(userCode: "BIEMPaQ15G", password: "0961783723"));
+    context.read<SignInBloc>().add(
+          const SignInWithEmailEvent(
+            username: "0961783723",
+            password: "Jotun123",
+            roleUser: 3,
+          ),
+        );
   }
 
   @override
