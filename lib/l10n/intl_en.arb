@@ -1,3 +1,23 @@
 {
-  "@@locale" : "en"
+  "@@locale" : "en",
+
+  "journeyDiscovery" : "HÀNH TRÌNH KHÁM PHÁ",
+  "inclusiveness" : "SỰ TOÀN DIỆN",
+  "objectUse" : "Đối tượng sử dụng",
+  "agency" : "Đại lý",
+  "memberOfJotun" : "Nhân viên Jotun",
+
+  "login" : "Đăng nhập",
+  "usernameLogin" : "Tên đăng nhập",
+  "password" : "Mật khẩu",
+  "changePassword" : "Đổi mật khẩu",
+  "newPassword" : "Mật khẩu mới",
+  "confirmNewPassword" : "Xác nhận mật khẩu mới",
+
+  "accountInformation" : "Thông tin tài khoản",
+  "store" : "Cửa hàng",
+  "mcCode" : "MC code",
+  "salesStaffCharge" : "Nhân viên bán hàng phụ trách",
+  "group" : "Nhóm",
+  "confirmInformation" : "Xác nhận thông tin"
 }
