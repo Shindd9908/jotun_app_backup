@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jotub_app/utils/routers/routers.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -217,31 +218,36 @@ class HomeScreen extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Column(
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.all(4.0),
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xff848689),
-                                    borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).pushNamed(AppRoutes.tripScreen);
+                              },
+                              child: Column(
+                                children: [
+                                  Container(
+                                    padding: const EdgeInsets.all(4.0),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xff848689),
+                                      borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                                    ),
+                                    child: Image.asset(
+                                      'assets/icons/icon_map.png',
+                                      width: 40.w,
+                                      height: 40.w,
+                                    ),
                                   ),
-                                  child: Image.asset(
-                                    'assets/icons/icon_map.png',
-                                    width: 40.w,
-                                    height: 40.w,
+                                  Text(
+                                    'Khám phá\nlịch trình',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10.sp,
+                                      letterSpacing: 0.05,
+                                    ),
+                                    textAlign: TextAlign.center,
                                   ),
-                                ),
-                                Text(
-                                  'Khám phá\nlịch trình',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 10.sp,
-                                    letterSpacing: 0.05,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                             Column(
                               children: [
