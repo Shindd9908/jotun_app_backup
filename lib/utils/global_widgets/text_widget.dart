@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
-import 'package:sizer/sizer.dart';
 
 class TextWidget extends StatelessWidget {
   final String? text;
