@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:jotub_app/features/journey/presentation/ui/widgets/journey_item.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:sizer/sizer.dart';
@@ -52,12 +54,45 @@ class JourneyScreen extends StatelessWidget {
               ),
             ),
           ),
-          Column(
+          const Wrap(
             children: [
-              Image.asset(
-                AppAssets.iconLock,
+              JourneyItem(),
+              JourneyItem(),
+              JourneyItem(),
+              JourneyItem(),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: TextWidget(
+              text: S.of(context).explainClaimReward1,
+              color: AppColor.colorMainWhite,
+              fontSize: 14.sp,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              TextWidget(
+                text: S.of(context).fourAreas,
+                color: AppColor.colorMainYellow,
+                fontSize: 16.sp,
+              ),
+              TextWidget(
+                text: ' ${S.of(context).explainClaimReward2}',
+                color: AppColor.colorMainWhite,
+                fontSize: 14.sp,
+                height: 1.55,
               ),
             ],
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: ButtonSubmitWidget(
+              title: S.of(context).claimRewardButton,
+              widthButton: 60.w,
+            ),
           ),
         ],
       ),
