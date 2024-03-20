@@ -66,13 +66,13 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     Image.asset(
-                      'assets/icons/icon_notification.png',
+                      AppAssets.iconNotification,
                       width: 10.w,
                     )
                   ],
                 ),
               ),
-              Image.asset('assets/images/image_banner.png'),
+              Image.asset(AppAssets.imgBanner),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.symmetric(

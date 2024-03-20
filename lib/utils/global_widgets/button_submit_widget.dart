@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
@@ -29,7 +30,7 @@ class ButtonSubmitWidget extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             image: const DecorationImage(
-              image: AssetImage('assets/images/image_bg_button.png'),
+              image: AssetImage(AppAssets.imgBackgroundButton),
               fit: BoxFit.fill,
             ),
           ),

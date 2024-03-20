@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jotub_app/features/schedule/presentation/ui/widgets/detail_schedule.dart';
+import 'package:jotub_app/theme/assets.dart';
+import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/global_widgets/text_widget.dart';
+import 'package:jotub_app/utils/helpers/helpers.dart';
+import 'package:sizer/sizer.dart';
 
 class ScheduleScreen extends StatelessWidget {
   const ScheduleScreen({super.key});
@@ -10,12 +15,12 @@ class ScheduleScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/image_main_background.png'),
+            image: AssetImage(AppAssets.imgBackgroundPage),
             fit: BoxFit.fill,
           ),
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: 32.w,
+          horizontal: 8.w,
         ),
         child: SafeArea(
           child: Column(
@@ -25,91 +30,61 @@ class ScheduleScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Image.asset(
-                    'assets/icons/icon_arrow_back.png',
-                    width: 36.w,
+                    AppAssets.iconArrowBack,
+                    width: 8.w,
                   ),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(
-                  top: 24.h,
-                  bottom: 8.h,
+                  top: 52,
+                  bottom: 12,
+                  left: 8.w,
+                  right: 8.w,
                 ),
-                child: Image.asset(
-                  'assets/images/image_title.png',
-                  width: 260.w,
-                ),
+                child: Image.asset(AppAssets.imgTitle),
               ),
               Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 24.w,
-                  vertical: 4.h,
-                ),
-                margin: EdgeInsets.only(
-                  bottom: 36.h,
+                margin: const EdgeInsets.only(bottom: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 28,
+                  vertical: 2,
                 ),
                 decoration: BoxDecoration(
                   image: const DecorationImage(
-                    image: AssetImage('assets/images/image_background_text.png'),
+                    image: AssetImage(AppAssets.imgBackgroundText),
                     fit: BoxFit.fill,
                   ),
-                  borderRadius: BorderRadius.circular(8.r),
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                child: Text(
-                  'NGÀY 1: 07/05/2024',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w800,
-                    color: const Color(0xff1A465C),
-                    fontSize: 20.sp,
-                    letterSpacing: -0.5,
-                  ),
+                child: TextWidget(
+                  text: 'NGÀY 1: 07/05/2024',
+                  color: AppColor.colorMainDarkBlue,
+                  fontSize: AppHelper.setWithHeightFontSizeDevicesTabletMobile(
+                      19.sp, 15.sp),
+                  fontWeight: FontWeight.w900,
                 ),
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '08:00',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 16.sp,
-                      letterSpacing: -0.5,
-                    ),
-                  ),
-                  SizedBox(width: 12.w),
-                  Column(
+              const Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
                     children: [
-                      SizedBox(height: 8.h),
-                      Container(
-                        width: 8,
-                        height: 8,
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                        ),
+                      DetailSchedule(
+                        time: '08:00',
+                        content: 'Đón tiếp tại sân bay và di chuyển về resort',
+                        duration: '1 tiếng 30 phút',
+                        address: 'Cảng hàng không quốc tế Đà Nẵng',
                       ),
-                      Container(
-                        width: 1,
-                        height: 44,
-                        color: Colors.white,
+                      DetailSchedule(
+                        time: '15:00',
+                        content:
+                            'Tham quan & trải nghiệm show diễn thực cảnh Ký ức Hội An',
+                        duration: '3 tiếng 30 phút',
+                        address: 'Tập trung tại sảnh khách sạn',
                       ),
                     ],
                   ),
-                  SizedBox(width: 12.w),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                          'Đón tiếp tại sân bay và di chuyển về resort',
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                ),
               ),
             ],
           ),
