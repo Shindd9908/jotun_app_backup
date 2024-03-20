@@ -30,17 +30,34 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác nhận thông tin"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
+        "experienceAndReceiveGift":
+            MessageLookupByLibrary.simpleMessage("Trải nghiệm &\nnhận quà"),
+        "explainJourney": MessageLookupByLibrary.simpleMessage(
+            "Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện"),
+        "exploreSchedule":
+            MessageLookupByLibrary.simpleMessage("Khám phá\nlịch trình"),
+        "feature": MessageLookupByLibrary.simpleMessage("Tính năng"),
+        "goToDetailTrip":
+            MessageLookupByLibrary.simpleMessage("Xem chi tiết hành trình"),
         "group": MessageLookupByLibrary.simpleMessage("Nhóm"),
         "inclusiveness": MessageLookupByLibrary.simpleMessage("SỰ TOÀN DIỆN"),
+        "incomingEvent":
+            MessageLookupByLibrary.simpleMessage("Sự kiện sắp diễn ra"),
         "journeyDiscovery":
             MessageLookupByLibrary.simpleMessage("HÀNH TRÌNH KHÁM PHÁ"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "mcCode": MessageLookupByLibrary.simpleMessage("MC code"),
         "memberOfJotun":
             MessageLookupByLibrary.simpleMessage("Nhân viên Jotun"),
+        "miniGame": MessageLookupByLibrary.simpleMessage("Mini game\n"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
+        "newProductInformation":
+            MessageLookupByLibrary.simpleMessage("Thông tin sản\nphẩm mới"),
         "objectUse": MessageLookupByLibrary.simpleMessage("Đối tượng sử dụng"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+        "preorder": MessageLookupByLibrary.simpleMessage("Đặt hàng trước"),
+        "promotions":
+            MessageLookupByLibrary.simpleMessage("Chương trình\nkhuyến mãi"),
         "salesStaffCharge": MessageLookupByLibrary.simpleMessage(
             "Nhân viên bán hàng phụ trách"),
         "store": MessageLookupByLibrary.simpleMessage("Cửa hàng"),

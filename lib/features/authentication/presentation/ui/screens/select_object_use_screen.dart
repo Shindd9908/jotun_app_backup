@@ -34,30 +34,30 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
           children: [
             Image.asset(
               AppAssets.imgLogoApp,
-              width: AppHelper.setWithHeightFontSizeDevicesTabletMobile(40.w, 40.w),
+              width: AppHelper.setMultiDeviceSize(40.w, 40.w),
               fit: BoxFit.fitWidth,
             ),
-            SizedBox(height: AppHelper.setWithHeightFontSizeDevicesTabletMobile(8.h, 4.h)),
+            SizedBox(height: AppHelper.setMultiDeviceSize(8.h, 4.h)),
             TextWidget(
               text: S.of(context).journeyDiscovery,
               color: AppColor.colorMainWhite,
-              fontSize: AppHelper.setWithHeightFontSizeDevicesTabletMobile(19.sp, 16.sp),
+              fontSize: AppHelper.setMultiDeviceSize(19.sp, 16.sp),
               fontWeight: FontWeight.w700,
             ),
             TextWidget(
               text: S.of(context).inclusiveness,
               color: AppColor.colorMainWhite,
-              fontSize: AppHelper.setWithHeightFontSizeDevicesTabletMobile(22.sp, 30.sp),
+              fontSize: AppHelper.setMultiDeviceSize(22.sp, 30.sp),
               fontWeight: FontWeight.w900,
             ),
-            SizedBox(height: AppHelper.setWithHeightFontSizeDevicesTabletMobile(12.h, 10.h)),
+            SizedBox(height: AppHelper.setMultiDeviceSize(12.h, 10.h)),
             TextWidget(
               text: S.of(context).objectUse,
               color: AppColor.colorMainWhite,
-              fontSize: AppHelper.setWithHeightFontSizeDevicesTabletMobile(20.sp, 18.sp),
+              fontSize: AppHelper.setMultiDeviceSize(20.sp, 18.sp),
               fontWeight: FontWeight.w600,
             ),
-            SizedBox(height: AppHelper.setWithHeightFontSizeDevicesTabletMobile(16, 16)),
+            SizedBox(height: AppHelper.setMultiDeviceSize(16, 16)),
             InkWell(
               onTap: () => Navigator.of(context).pushNamed(AppPaths.loginScreen),
               child: ButtonSubmitWidget(
@@ -65,7 +65,7 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
                 widthButton: 70.w,
               ),
             ),
-            SizedBox(height: AppHelper.setWithHeightFontSizeDevicesTabletMobile(16, 16)),
+            SizedBox(height: AppHelper.setMultiDeviceSize(16, 16)),
             InkWell(
               onTap: () => Navigator.of(context).pushNamed(AppPaths.loginScreen),
               child: ButtonSubmitWidget(

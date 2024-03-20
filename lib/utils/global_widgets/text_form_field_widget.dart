@@ -68,7 +68,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
                   obscureText: widget.isPassword ? !_isShowValueFieldPassword.value : false,
                   style: TextStyle(
                     color: AppColor.colorMainBlack,
-                    fontSize: AppHelper.setWithHeightFontSizeDevicesTabletMobile(14.sp, 14.sp),
+                    fontSize: AppHelper.setMultiDeviceSize(14.sp, 14.sp),
                     fontWeight: FontWeight.w500,
                   ),
                   inputFormatters: widget.isEmail
@@ -80,7 +80,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
                     labelText: widget.hintText,
                     labelStyle: TextStyle(
                       color: AppColor.colorMainGray,
-                      fontSize: AppHelper.setWithHeightFontSizeDevicesTabletMobile(12.sp, 12.sp),
+                      fontSize: AppHelper.setMultiDeviceSize(12.sp, 12.sp),
                       fontWeight: FontWeight.w500,
                     ),
                     filled: true,
@@ -101,7 +101,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
                             onTap: () => _isShowValueFieldPassword.value = !_isShowValueFieldPassword.value,
                             child: Icon(
                               !_isShowValueFieldPassword.value ? Icons.visibility_off : Icons.visibility,
-                              size: AppHelper.setWithHeightFontSizeDevicesTabletMobile(28, 26),
+                              size: AppHelper.setMultiDeviceSize(28, 26),
                               color: AppColor.colorMainBlack,
                             ),
                           )
@@ -128,7 +128,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
             child: TextWidget(
               text: widget.errorMessageValidate,
               color: AppColor.colorMainWhite,
-              fontSize: AppHelper.setWithHeightFontSizeDevicesTabletMobile(10.sp, 10.sp),
+              fontSize: AppHelper.setMultiDeviceSize(10.sp, 10.sp),
               fontWeight: FontWeight.w300,
               maxLine: 2,
               textAlign: TextAlign.start,

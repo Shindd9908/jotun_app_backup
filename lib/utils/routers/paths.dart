@@ -6,4 +6,7 @@ class AppPaths {
   static const String changePasswordScreen = "/change_password";
   static const String confirmAccountInformationScreen = "/confirm_account_information";
   static const String homeScreen = "/home";
+  static const String tripScreen = "/trip";
+  static const String scheduleScreen = "/schedule";
+  static const String journeyScreen = "/journey";
 }

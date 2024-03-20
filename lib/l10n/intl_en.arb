@@ -19,5 +19,17 @@
   "mcCode" : "MC code",
   "salesStaffCharge" : "Nhân viên bán hàng phụ trách",
   "group" : "Nhóm",
-  "confirmInformation" : "Xác nhận thông tin"
+  "confirmInformation" : "Xác nhận thông tin",
+
+  "incomingEvent": "Sự kiện sắp diễn ra",
+  "goToDetailTrip": "Xem chi tiết hành trình",
+  "feature": "Tính năng",
+
+  "exploreSchedule": "Khám phá\nlịch trình",
+  "newProductInformation": "Thông tin sản\nphẩm mới",
+  "experienceAndReceiveGift": "Trải nghiệm &\nnhận quà",
+  "miniGame": "Mini game\n",
+  "preorder": "Đặt hàng trước",
+  "promotions": "Chương trình\nkhuyến mãi",
+  "explainJourney": "Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện"
 }

@@ -219,6 +219,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Sự kiện sắp diễn ra`
+  String get incomingEvent {
+    return Intl.message(
+      'Sự kiện sắp diễn ra',
+      name: 'incomingEvent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Xem chi tiết hành trình`
+  String get goToDetailTrip {
+    return Intl.message(
+      'Xem chi tiết hành trình',
+      name: 'goToDetailTrip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tính năng`
+  String get feature {
+    return Intl.message(
+      'Tính năng',
+      name: 'feature',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Khám phá\nlịch trình`
+  String get exploreSchedule {
+    return Intl.message(
+      'Khám phá\nlịch trình',
+      name: 'exploreSchedule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thông tin sản\nphẩm mới`
+  String get newProductInformation {
+    return Intl.message(
+      'Thông tin sản\nphẩm mới',
+      name: 'newProductInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trải nghiệm &\nnhận quà`
+  String get experienceAndReceiveGift {
+    return Intl.message(
+      'Trải nghiệm &\nnhận quà',
+      name: 'experienceAndReceiveGift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mini game\n`
+  String get miniGame {
+    return Intl.message(
+      'Mini game\n',
+      name: 'miniGame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đặt hàng trước`
+  String get preorder {
+    return Intl.message(
+      'Đặt hàng trước',
+      name: 'preorder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chương trình\nkhuyến mãi`
+  String get promotions {
+    return Intl.message(
+      'Chương trình\nkhuyến mãi',
+      name: 'promotions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện`
+  String get explainJourney {
+    return Intl.message(
+      'Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện',
+      name: 'explainJourney',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

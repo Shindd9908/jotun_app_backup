@@ -8,7 +8,7 @@ class AppHelper {
     return Constants.phoneNumberRegex.hasMatch(phoneNumber);
   }
 
-  static double setWithHeightFontSizeDevicesTabletMobile(double tablet, double mobile) {
+  static double setMultiDeviceSize(double tablet, double mobile) {
     return SizerUtil.deviceType == DeviceType.tablet ? tablet : mobile;
   }
 }
