@@ -32,7 +32,7 @@ class FeatureItem extends StatelessWidget {
         TextWidget(
           text: title,
           color: AppColor.colorMainWhite,
-          fontSize: AppHelper.setWithHeightFontSizeDevicesTabletMobile(19.sp, 9.sp),
+          fontSize: AppHelper.setMultiDeviceSize(19.sp, 9.sp),
           fontWeight: FontWeight.bold,
           textAlign: TextAlign.center,
           height: 1.2,

@@ -309,6 +309,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện`
+  String get explainJourney {
+    return Intl.message(
+      'Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện',
+      name: 'explainJourney',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

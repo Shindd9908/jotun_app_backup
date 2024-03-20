@@ -41,7 +41,7 @@ class ButtonSubmitWidget extends StatelessWidget {
             textStyle: textStyle ??
                 TextStyle(
                   color: AppColor.colorMainWhite,
-                  fontSize: AppHelper.setWithHeightFontSizeDevicesTabletMobile(26, 22),
+                  fontSize: AppHelper.setMultiDeviceSize(26, 22),
                   fontWeight: FontWeight.w700,
                 ),
           ),

@@ -40,7 +40,7 @@ class TextWidget extends StatelessWidget {
       style: textStyle ??
           TextStyle(
             color: color ?? AppColor.colorMainBlack,
-            fontSize: fontSize ?? AppHelper.setWithHeightFontSizeDevicesTabletMobile(20, 16),
+            fontSize: fontSize ?? AppHelper.setMultiDeviceSize(20, 16),
             fontWeight: fontWeight ?? FontWeight.w500,
             fontFamily: fontFamily ?? 'Roboto',
             decoration: textDecoration ?? TextDecoration.none,

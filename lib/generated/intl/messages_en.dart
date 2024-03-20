@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "experienceAndReceiveGift":
             MessageLookupByLibrary.simpleMessage("Trải nghiệm &\nnhận quà"),
+        "explainJourney": MessageLookupByLibrary.simpleMessage(
+            "Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện"),
         "exploreSchedule":
             MessageLookupByLibrary.simpleMessage("Khám phá\nlịch trình"),
         "feature": MessageLookupByLibrary.simpleMessage("Tính năng"),

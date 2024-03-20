@@ -55,18 +55,14 @@ class DetailTrip extends StatelessWidget {
                       TextWidget(
                         text: textDay,
                         color: AppColor.colorMainWhite,
-                        fontSize:
-                            AppHelper.setWithHeightFontSizeDevicesTabletMobile(
-                                19.sp, 20.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(19.sp, 20.sp),
                         fontWeight: FontWeight.w900,
                         textAlign: TextAlign.center,
                       ),
                       TextWidget(
                         text: content,
                         color: AppColor.colorMainWhite,
-                        fontSize:
-                            AppHelper.setWithHeightFontSizeDevicesTabletMobile(
-                                19.sp, 14.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(19.sp, 14.sp),
                         fontWeight: FontWeight.w900,
                         textAlign: TextAlign.center,
                       ),
@@ -90,9 +86,7 @@ class DetailTrip extends StatelessWidget {
                       TextWidget(
                         text: S.of(context).goToDetailTrip,
                         color: AppColor.colorMainWhite,
-                        fontSize:
-                            AppHelper.setWithHeightFontSizeDevicesTabletMobile(
-                                19.sp, 8.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(19.sp, 8.sp),
                         fontWeight: FontWeight.w900,
                         fontStyle: FontStyle.italic,
                         textAlign: TextAlign.center,

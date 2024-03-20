@@ -8,4 +8,5 @@ class AppPaths {
   static const String homeScreen = "/home";
   static const String tripScreen = "/trip";
   static const String scheduleScreen = "/schedule";
+  static const String journeyScreen = "/journey";
 }

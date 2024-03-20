@@ -48,6 +48,7 @@ dependencies:
 
   #for flutter_keyboard_visibility:
   flutter_keyboard_visibility: ^6.0.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

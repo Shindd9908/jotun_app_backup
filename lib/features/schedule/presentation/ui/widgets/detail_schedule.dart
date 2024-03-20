@@ -33,8 +33,7 @@ class DetailSchedule extends StatelessWidget {
               child: TextWidget(
                 text: time,
                 color: AppColor.colorMainWhite,
-                fontSize: AppHelper.setWithHeightFontSizeDevicesTabletMobile(
-                    19.sp, 13.sp),
+                fontSize: AppHelper.setMultiDeviceSize(19.sp, 13.sp),
                 fontWeight: FontWeight.w900,
               ),
             ),
@@ -65,9 +64,7 @@ class DetailSchedule extends StatelessWidget {
                   TextWidget(
                     text: content,
                     color: AppColor.colorMainWhite,
-                    fontSize:
-                        AppHelper.setWithHeightFontSizeDevicesTabletMobile(
-                            19.sp, 10.sp),
+                    fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
                     fontWeight: FontWeight.w900,
                   ),
                   Padding(
@@ -88,9 +85,7 @@ class DetailSchedule extends StatelessWidget {
                         TextWidget(
                           text: duration,
                           color: AppColor.colorMainWhite,
-                          fontSize: AppHelper
-                              .setWithHeightFontSizeDevicesTabletMobile(
-                                  19.sp, 10.sp),
+                          fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
                           fontWeight: FontWeight.w900,
                         ),
                       ],
@@ -109,9 +104,7 @@ class DetailSchedule extends StatelessWidget {
                       TextWidget(
                         text: address,
                         color: AppColor.colorMainWhite,
-                        fontSize:
-                            AppHelper.setWithHeightFontSizeDevicesTabletMobile(
-                                19.sp, 10.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
                         fontWeight: FontWeight.w900,
                       ),
                     ],

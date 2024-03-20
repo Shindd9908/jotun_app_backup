@@ -5,6 +5,7 @@ class AppAssets {
   static const imgBackgroundPage = 'assets/images/image_main_background.png';
   static const imgBackgroundText = 'assets/images/image_background_text.png';
   static const imgBanner = 'assets/images/image_banner.png';
+  static const imgBanner2 = 'assets/images/image_banner_2.png';
   static const imgLogoApp = 'assets/images/image_logo_app.jpeg';
   static const imgTitle = 'assets/images/image_title.png';
 
