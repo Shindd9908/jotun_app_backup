@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:jotub_app/core/preferences/shared_preferences_manager.dart';
+import 'package:jotub_app/di/dependency_injection.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/constants/key_preference.dart';
 import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
@@ -16,6 +19,16 @@ class SelectObjectUseScreen extends StatefulWidget {
 }
 
 class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (getIt<SharedPreferencesManager>().getValue<bool>(KeyPreference.kStatusConfirmAccountDone) == true) {
+        Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.splashScreen, (route) => false);
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

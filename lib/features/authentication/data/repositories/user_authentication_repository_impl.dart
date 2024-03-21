@@ -57,6 +57,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     try {
       final authentic = await authenticationApi!.confirmAccount(ConfirmAccountRequest(identityCardNumber: identityCardNumber));
       if (authentic.isSuccess) {
+        sharedPreferencesManager!.putValue<bool>(KeyPreference.kStatusConfirmAccountDone, true);
         return Right(authentic.message!);
       } else {
         return Left(authentic.message!);
