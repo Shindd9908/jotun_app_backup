@@ -54,10 +54,8 @@ class JourneyScreen extends StatelessWidget {
           ),
           Column(
             children: [
-              Container(
-                child: Image.asset(
-                  AppAssets.iconLock,
-                ),
+              Image.asset(
+                AppAssets.iconLock,
               ),
             ],
           ),

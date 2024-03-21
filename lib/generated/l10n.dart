@@ -111,10 +111,10 @@ class S {
   }
 
   /// `Tên đăng nhập`
-  String get usernameLogin {
+  String get phoneNumber {
     return Intl.message(
       'Tên đăng nhập',
-      name: 'usernameLogin',
+      name: 'phoneNumber',
       desc: '',
       args: [],
     );
@@ -170,6 +170,16 @@ class S {
     );
   }
 
+  /// `Họ và tên`
+  String get fullName {
+    return Intl.message(
+      'Họ và tên',
+      name: 'fullName',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cửa hàng`
   String get store {
     return Intl.message(
@@ -180,11 +190,11 @@ class S {
     );
   }
 
-  /// `MC code`
-  String get mcCode {
+  /// `Căn cước công dân`
+  String get idCardNumber {
     return Intl.message(
-      'MC code',
-      name: 'mcCode',
+      'Căn cước công dân',
+      name: 'idCardNumber',
       desc: '',
       args: [],
     );
@@ -315,6 +325,56 @@ class S {
     return Intl.message(
       'Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện',
       name: 'explainJourney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thông tin không được để trống`
+  String get errorFieldRequired {
+    return Intl.message(
+      'Thông tin không được để trống',
+      name: 'errorFieldRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Số điện thoại không đúng định dạng`
+  String get errorPhoneNumberIncorrect {
+    return Intl.message(
+      'Số điện thoại không đúng định dạng',
+      name: 'errorPhoneNumberIncorrect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Số căn cước công dân không đúng định dạng`
+  String get errorIdCardNumberIncorrect {
+    return Intl.message(
+      'Số căn cước công dân không đúng định dạng',
+      name: 'errorIdCardNumberIncorrect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mật khẩu xác thực không trùng khớp`
+  String get errorPasswordConfirmNotMatch {
+    return Intl.message(
+      'Mật khẩu xác thực không trùng khớp',
+      name: 'errorPasswordConfirmNotMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mật khẩu phải tối thiểu 8 kí tự`
+  String get errorPasswordMinLength {
+    return Intl.message(
+      'Mật khẩu phải tối thiểu 8 kí tự',
+      name: 'errorPasswordMinLength',
       desc: '',
       args: [],
     );

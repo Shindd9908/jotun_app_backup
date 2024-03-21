@@ -1,6 +1,7 @@
 import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:jotub_app/core/preferences/shared_preferences_manager.dart";
+import "package:jotub_app/utils/constants/key_preference.dart";
 
 class AppDioInterceptor extends InterceptorsWrapper {
   static const String accessToken = "user_token";
@@ -14,7 +15,7 @@ class AppDioInterceptor extends InterceptorsWrapper {
   Future onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     options.headers["Accept"] = "*/*";
     options.headers["Content-Type"] = "application/json";
-    final accessToken = _preferencesManager.getValue<String>("keyAccessToken");
+    final accessToken = _preferencesManager.getValue<String>(KeyPreference.kAccessToken);
     final localizationLanguage = _preferencesManager.getValue<String>("deviceLanguage");
     options.headers.addAll({"Authorization": "Bearer $accessToken"});
     options.headers.addAll({"Charset": "utf-8"});

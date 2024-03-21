@@ -7,31 +7,32 @@ sealed class AuthenticationEvent extends Equatable {
 class LoginEvent extends AuthenticationEvent {
   final String? name;
   final String? password;
+  final int? roleUser;
 
-  const LoginEvent({this.name, this.password});
+  const LoginEvent({required this.name, required this.password, required this.roleUser});
 
   @override
-  List<Object?> get props => [name, password];
+  List<Object?> get props => [name, password, roleUser];
 }
 
 class ChangePasswordEvent extends AuthenticationEvent {
-  final String? name;
-  final String? currentPassword;
-  final String? newPassword;
-  final String? confirmNewPassword;
+  final String? username;
+  final int? role;
+  final String? oldPassword;
+  final String? password;
+  final String? passwordConfirmation;
 
-  const ChangePasswordEvent({
-    this.name,
-    this.currentPassword,
-    this.newPassword,
-    this.confirmNewPassword,
-  });
+  const ChangePasswordEvent({required this.username, required this.role, required this.oldPassword, required this.password, required this.passwordConfirmation});
 
   @override
-  List<Object?> get props => [
-        name,
-        currentPassword,
-        newPassword,
-        confirmNewPassword,
-      ];
+  List<Object?> get props => [username, role, oldPassword, password, passwordConfirmation];
+}
+
+class ConfirmAccountEvent extends AuthenticationEvent {
+  final String? identityCardNumber;
+
+  const ConfirmAccountEvent({required this.identityCardNumber});
+
+  @override
+  List<Object?> get props => [identityCardNumber];
 }

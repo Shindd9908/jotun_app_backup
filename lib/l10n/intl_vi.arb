@@ -1,25 +1,26 @@
 {
   "@@locale" : "en",
 
-  "journeyDiscovery" : "HÀNH TRÌNH KHÁM PHÁ",
-  "inclusiveness" : "SỰ TOÀN DIỆN",
-  "objectUse" : "Đối tượng sử dụng",
-  "agency" : "Đại lý",
-  "memberOfJotun" : "Nhân viên Jotun",
+  "journeyDiscovery": "HÀNH TRÌNH KHÁM PHÁ",
+  "inclusiveness": "SỰ TOÀN DIỆN",
+  "objectUse": "Đối tượng sử dụng",
+  "agency": "Đại lý",
+  "memberOfJotun": "Nhân viên Jotun",
 
-  "login" : "Đăng nhập",
-  "usernameLogin" : "Tên đăng nhập",
-  "password" : "Mật khẩu",
-  "changePassword" : "Đổi mật khẩu",
-  "newPassword" : "Mật khẩu mới",
-  "confirmNewPassword" : "Xác nhận mật khẩu mới",
+  "login": "Đăng nhập",
+  "phoneNumber": "Tên đăng nhập",
+  "password": "Mật khẩu",
+  "changePassword": "Đổi mật khẩu",
+  "newPassword": "Mật khẩu mới",
+  "confirmNewPassword": "Xác nhận mật khẩu mới",
 
-  "accountInformation" : "Thông tin tài khoản",
-  "store" : "Cửa hàng",
-  "mcCode" : "MC code",
-  "salesStaffCharge" : "Nhân viên bán hàng phụ trách",
-  "group" : "Nhóm",
-  "confirmInformation" : "Xác nhận thông tin",
+  "accountInformation": "Thông tin tài khoản",
+  "fullName": "Họ và tên",
+  "store": "Cửa hàng",
+  "idCardNumber": "Căn cước công dân",
+  "salesStaffCharge": "Nhân viên bán hàng phụ trách",
+  "group": "Nhóm",
+  "confirmInformation": "Xác nhận thông tin",
 
   "incomingEvent": "Sự kiện sắp diễn ra",
   "goToDetailTrip": "Xem chi tiết hành trình",
@@ -31,5 +32,11 @@
   "miniGame": "Mini game\n",
   "preorder": "Đặt hàng trước",
   "promotions": "Chương trình\nkhuyến mãi",
-  "explainJourney": "Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện"
+  "explainJourney": "Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện",
+
+  "errorFieldRequired": "Thông tin không được để trống",
+  "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",
+  "errorIdCardNumberIncorrect": "Số căn cước công dân không đúng định dạng",
+  "errorPasswordConfirmNotMatch": "Mật khẩu xác thực không trùng khớp",
+  "errorPasswordMinLength": "Mật khẩu phải tối thiểu 8 kí tự"
 }

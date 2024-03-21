@@ -1,10 +1,9 @@
 import "package:dartz/dartz.dart";
-import "package:jotub_app/features/authentication/domain/entities/user_authentication_entity.dart";
 
 abstract class AuthenticationRepository {
-  Future<Either<String, UserInfoEntity>> login({
-    required String username,
-    required String password,
-    required int userRole,
-  });
+  Future<Either<String, Map<String, dynamic>>> login(String username, String password, int userRole);
+
+  Future<Either<String, String>> changePassword(String username, int role, String oldPassword, String password, String passwordConfirmation);
+
+  Future<Either<String, String>> confirmAccount(String identityCardNumber);
 }

@@ -21,6 +21,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   sizer: ^2.0.15
   another_flushbar: ^1.12.30
+  flutter_spinkit: ^5.1.0
 
   #for flutter_state_management:
   flutter_bloc: ^8.1.4

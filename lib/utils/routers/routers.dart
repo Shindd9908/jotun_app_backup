@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:jotub_app/features/authentication/presentation/ui/screens/change_password_screen.dart";
+import "package:jotub_app/features/authentication/presentation/ui/screens/confirm_account_information_screen.dart";
 import "package:jotub_app/features/authentication/presentation/ui/screens/login_screen.dart";
 import "package:jotub_app/features/authentication/presentation/ui/screens/select_object_use_screen.dart";
 import "package:jotub_app/features/home/presentation/ui/screens/home_screen.dart";
@@ -10,11 +12,18 @@ import "package:jotub_app/utils/routers/paths.dart";
 
 class AppRoutes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
+    final arguments = settings.arguments as Map<String, dynamic>?;
     switch (settings.name) {
       case AppPaths.selectObjectUseScreen:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+        return MaterialPageRoute(builder: (_) => const SelectObjectUseScreen());
       case AppPaths.loginScreen:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen(userRole: arguments?['userRole']));
+      case AppPaths.changePasswordScreen:
+        return MaterialPageRoute(builder: (_) => ChangePasswordScreen(userRole: arguments?['userRole']));
+      case AppPaths.confirmAccountInformationScreen:
+        return MaterialPageRoute(builder: (_) => ConfirmAccountInformationScreen(userInfo: arguments?['userInfo']));
+      case AppPaths.splashScreen:
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case AppPaths.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case AppPaths.tripScreen:

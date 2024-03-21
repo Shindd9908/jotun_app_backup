@@ -5,5 +5,6 @@ class Constants {
   static const String kDefaultLanguage = "vi";
 
   /// - Regex
-  static final RegExp phoneNumberRegex = RegExp(r"^\d{10,12}$");
+  static const phoneNumberRegex = r"^(0|\+84)9[0-9]{8}$";
+  static const idCardNumberRegex = r"\b\d{9,12}\b";
 }

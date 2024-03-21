@@ -6,6 +6,7 @@ class AppColor {
   static const colorMainGray = Color(0xff999A9C);
   static const colorMainYellow = Color(0xffE5A93F);
   static const colorMainDarkBlue = Color(0xff1D4B62);
+  static const colorMainRed = Color(0xffDA3831);
 
   static const colorBackgroundHeaderTopPage = LinearGradient(
     colors: <Color>[

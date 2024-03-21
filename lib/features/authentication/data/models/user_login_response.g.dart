@@ -11,12 +11,13 @@ UserLoginResponse _$UserLoginResponseFromJson(Map<String, dynamic> json) =>
       userId: json['user_id'] as int?,
       username: json['username'] as String?,
       userCompany: json['company'] as String?,
-      userMCCode: json['mc_code'] as String?,
+      identityCardNumber: json['identity_card_number'] as String?,
       saleId: json['sales_id'] as int?,
       saleName: json['sales'] as String?,
       groupId: json['group_id'] as int?,
       accessToken: json['access_token'] as String?,
       name: json['name'] as String?,
+      gender: json['gender'] as int?,
     );
 
 Map<String, dynamic> _$UserLoginResponseToJson(UserLoginResponse instance) =>
@@ -24,10 +25,11 @@ Map<String, dynamic> _$UserLoginResponseToJson(UserLoginResponse instance) =>
       'user_id': instance.userId,
       'username': instance.username,
       'company': instance.userCompany,
-      'mc_code': instance.userMCCode,
+      'identity_card_number': instance.identityCardNumber,
       'sales_id': instance.saleId,
       'sales': instance.saleName,
       'group_id': instance.groupId,
       'access_token': instance.accessToken,
       'name': instance.name,
+      'gender': instance.gender,
     };

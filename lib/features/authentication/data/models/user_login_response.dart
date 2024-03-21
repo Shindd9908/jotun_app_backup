@@ -11,8 +11,8 @@ class UserLoginResponse extends Equatable {
   final String? username;
   @JsonKey(name: "company")
   final String? userCompany;
-  @JsonKey(name: "mc_code")
-  final String? userMCCode;
+  @JsonKey(name: "identity_card_number")
+  final String? identityCardNumber;
   @JsonKey(name: "sales_id")
   final int? saleId;
   @JsonKey(name: "sales")
@@ -23,17 +23,20 @@ class UserLoginResponse extends Equatable {
   final String? accessToken;
   @JsonKey(name: "name")
   final String? name;
+  @JsonKey(name: "gender")
+  final int? gender;
 
   const UserLoginResponse({
     required this.userId,
     required this.username,
     required this.userCompany,
-    required this.userMCCode,
+    required this.identityCardNumber,
     required this.saleId,
     required this.saleName,
     required this.groupId,
     required this.accessToken,
     required this.name,
+    this.gender,
   });
 
   factory UserLoginResponse.fromJson(Map<String, dynamic> json) => _$UserLoginResponseFromJson(json);
@@ -45,11 +48,12 @@ class UserLoginResponse extends Equatable {
         userId,
         username,
         userCompany,
-        userMCCode,
+        identityCardNumber,
         saleId,
         saleName,
         groupId,
         accessToken,
         name,
+        gender,
       ];
 }

@@ -17,21 +17,22 @@ class LoginLoadingState extends AuthenticationState {
 }
 
 class LoginSuccessState extends AuthenticationState {
-  final String? message;
+  final UserInfoEntity userInfo;
+  final String message;
 
-  const LoginSuccessState({this.message});
+  const LoginSuccessState({required this.userInfo, required this.message});
 
   @override
-  List<Object> get props => [message!];
+  List<Object> get props => [userInfo, message];
 }
 
 class LoginFailState extends AuthenticationState {
-  final String? message;
+  final String message;
 
-  const LoginFailState({this.message});
+  const LoginFailState({required this.message});
 
   @override
-  List<Object> get props => [message!];
+  List<Object> get props => [message];
 }
 
 // --------------- Change password ---------------
@@ -42,19 +43,44 @@ class ChangePasswordLoadingState extends AuthenticationState {
 }
 
 class ChangePasswordSuccessState extends AuthenticationState {
-  final String? message;
+  final String message;
 
-  const ChangePasswordSuccessState({this.message});
+  const ChangePasswordSuccessState({required this.message});
 
   @override
-  List<Object> get props => [message!];
+  List<Object> get props => [message];
 }
 
 class ChangePasswordFailState extends AuthenticationState {
-  final String? message;
+  final String message;
 
-  const ChangePasswordFailState({this.message});
+  const ChangePasswordFailState({required this.message});
 
   @override
-  List<Object> get props => [message!];
+  List<Object> get props => [message];
+}
+
+// --------------- Confirm account information ---------------
+
+class ConfirmAccountLoadingState extends AuthenticationState {
+  @override
+  List<Object> get props => [];
+}
+
+class ConfirmAccountSuccessState extends AuthenticationState {
+  final String message;
+
+  const ConfirmAccountSuccessState({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+class ConfirmAccountFailState extends AuthenticationState {
+  final String message;
+
+  const ConfirmAccountFailState({required this.message});
+
+  @override
+  List<Object> get props => [message];
 }

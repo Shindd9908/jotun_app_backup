@@ -11,10 +11,10 @@ class TextFormFieldWidget extends StatefulWidget {
   final String? errorMessageValidate;
   final bool isPassword;
   final bool isEmail;
+  final bool isReadOnly;
   final bool isNumberNoOption;
   final bool isNumberWithOptions;
   final Function? callBackOnChange;
-  final Function? callBackComplete;
 
   const TextFormFieldWidget({
     super.key,
@@ -23,10 +23,10 @@ class TextFormFieldWidget extends StatefulWidget {
     this.errorMessageValidate,
     this.isPassword = false,
     this.isEmail = false,
+    this.isReadOnly = false,
     this.isNumberNoOption = false,
     this.isNumberWithOptions = false,
     this.callBackOnChange,
-    this.callBackComplete,
   });
 
   @override
@@ -57,9 +57,8 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
                   _isFocusField.value = hasFocus;
                 },
                 child: TextFormField(
-                  cursorHeight: 24,
-                  cursorColor: AppColor.colorMainBlack,
                   controller: widget.controller,
+                  readOnly: widget.isReadOnly,
                   keyboardType: widget.isNumberWithOptions
                       ? const TextInputType.numberWithOptions(decimal: true, signed: true)
                       : widget.isNumberNoOption
@@ -76,6 +75,8 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
                       : widget.isNumberNoOption
                           ? [FilteringTextInputFormatter.allow(RegExp("[0-9]"))]
                           : null,
+                  cursorHeight: 24,
+                  cursorColor: AppColor.colorMainBlack,
                   decoration: InputDecoration(
                     labelText: widget.hintText,
                     labelStyle: TextStyle(
@@ -112,11 +113,6 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
                       widget.callBackOnChange!(value);
                     }
                   },
-                  onFieldSubmitted: (value) {
-                    if (widget.callBackComplete != null) {
-                      widget.callBackComplete!(value);
-                    }
-                  },
                 ),
               );
             },
@@ -127,7 +123,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
             margin: const EdgeInsets.only(top: 4),
             child: TextWidget(
               text: widget.errorMessageValidate,
-              color: AppColor.colorMainWhite,
+              color: AppColor.colorMainRed,
               fontSize: AppHelper.setMultiDeviceSize(10.sp, 10.sp),
               fontWeight: FontWeight.w300,
               maxLine: 2,

@@ -59,7 +59,7 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
             ),
             SizedBox(height: AppHelper.setMultiDeviceSize(16, 16)),
             InkWell(
-              onTap: () => Navigator.of(context).pushNamed(AppPaths.loginScreen),
+              onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.loginScreen, arguments: {'userRole': 3}, (route) => false),
               child: ButtonSubmitWidget(
                 title: S.of(context).agency,
                 widthButton: 70.w,
@@ -67,7 +67,7 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
             ),
             SizedBox(height: AppHelper.setMultiDeviceSize(16, 16)),
             InkWell(
-              onTap: () => Navigator.of(context).pushNamed(AppPaths.loginScreen),
+              onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.loginScreen, arguments: {'userRole': 2}, (route) => false),
               child: ButtonSubmitWidget(
                 title: S.of(context).memberOfJotun,
                 widthButton: 70.w,

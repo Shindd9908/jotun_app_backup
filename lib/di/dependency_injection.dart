@@ -1,11 +1,12 @@
 import "package:dio/dio.dart";
 import "package:get_it/get_it.dart";
 import "package:jotub_app/core/app_configs.dart";
+import "package:jotub_app/core/interceptor/app_dio_interceptor.dart";
 import "package:jotub_app/core/preferences/shared_preferences_manager.dart";
 import "package:jotub_app/features/authentication/data/data_sources/authentication_api.dart";
 import "package:jotub_app/features/authentication/data/repositories/user_authentication_repository_impl.dart";
 import "package:jotub_app/features/authentication/domain/repositories/user_authentication_repository.dart";
-import "package:jotub_app/features/authentication/presentation/manager/sign_in_bloc.dart";
+import "package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart";
 
 GetIt getIt = GetIt.instance;
 
@@ -31,6 +32,11 @@ void _registerAppNetworkComponents() {
       receiveDataWhenStatusError: true,
     ),
   );
+  dio.interceptors.addAll([
+    AppDioInterceptor(
+      preferencesManager: getIt.get<SharedPreferencesManager>(),
+    ),
+  ]);
 
   getIt.registerSingleton(AuthenticationApi(dio, baseUrl: dio.options.baseUrl));
 }
@@ -39,13 +45,14 @@ void _registerRepository() {
   getIt.registerFactory<AuthenticationRepository>(
     () => AuthenticationRepositoryImpl(
       authenticationApi: getIt<AuthenticationApi>(),
+      sharedPreferencesManager: getIt<SharedPreferencesManager>(),
     ),
   );
 }
 
 void _registerBlocs() {
-  getIt.registerLazySingleton<SignInBloc>(
-    () => SignInBloc(
+  getIt.registerLazySingleton<AuthenticationBloc>(
+    () => AuthenticationBloc(
       authenticationRepository: getIt<AuthenticationRepository>(),
     ),
   );

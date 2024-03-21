@@ -6,11 +6,12 @@ extension SignInCheckExt on UserLoginResponse {
         userId: userId,
         username: username,
         userCompany: userCompany,
-        userMCCode: userMCCode,
+        identityCardNumber: identityCardNumber,
         saleId: saleId,
         saleName: saleName,
         groupId: groupId,
         accessToken: accessToken,
         name: name,
+        gender: gender,
       );
 }
