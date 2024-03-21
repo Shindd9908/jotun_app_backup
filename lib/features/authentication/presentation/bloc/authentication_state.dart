@@ -84,3 +84,28 @@ class ConfirmAccountFailState extends AuthenticationState {
   @override
   List<Object> get props => [message];
 }
+
+// --------------- Confirm account information ---------------
+
+class ConfirmAccountLoadingState extends AuthenticationState {
+  @override
+  List<Object> get props => [];
+}
+
+class ConfirmAccountSuccessState extends AuthenticationState {
+  final String? message;
+
+  const ConfirmAccountSuccessState({this.message});
+
+  @override
+  List<Object> get props => [message!];
+}
+
+class ConfirmAccountFailState extends AuthenticationState {
+  final String? message;
+
+  const ConfirmAccountFailState({this.message});
+
+  @override
+  List<Object> get props => [message!];
+}
