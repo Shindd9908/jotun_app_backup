@@ -13,7 +13,7 @@ class AppAssets {
 
   // icons
   static const iconArrowBack = 'assets/icons/icon_arrow_back.png';
-
+  static const iconArrowDown = 'assets/icons/icon_arrow_down.png';
   static const iconAvatar = 'assets/icons/icon_avatar.png';
   static const iconCalendar = 'assets/icons/icon_calendar.png';
   static const iconClock = 'assets/icons/icon_clock.png';

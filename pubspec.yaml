@@ -17,7 +17,7 @@ dependencies:
 
   #for theme_manager:
   cupertino_icons: ^1.0.2
-  google_fonts: ^6.2.0
+  google_fonts: 6.1.0
   flutter_screenutil: ^5.9.0
   sizer: ^2.0.15
   another_flushbar: ^1.12.30
@@ -108,9 +108,6 @@ flutter:
     - family: NotoSans
       fonts:
         - asset: assets/fonts/NotoSans-VariableFont_wdth,wght.ttf
-    - family: Roboto
-      fonts:
-        - asset: assets/fonts/Roboto-Black.ttf
 
 flutter_intl:
   enabled: true

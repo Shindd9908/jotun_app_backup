@@ -450,6 +450,36 @@ class S {
     );
   }
 
+  /// `Luật chơi`
+  String get gameRule {
+    return Intl.message(
+      'Luật chơi',
+      name: 'gameRule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trong vòng 60 giây, lật tìm các\nmảnh ghép giống nhau`
+  String get explainRule {
+    return Intl.message(
+      'Trong vòng 60 giây, lật tìm các\nmảnh ghép giống nhau',
+      name: 'explainRule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bắt đầu chơi`
+  String get startGame {
+    return Intl.message(
+      'Bắt đầu chơi',
+      name: 'startGame',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Thông tin không được để trống`
   String get errorFieldRequired {
     return Intl.message(
