@@ -1,4 +1,4 @@
-package com.example.jotub_app
+package com.stoo.jotunApp
 
 import io.flutter.embedding.android.FlutterActivity
 

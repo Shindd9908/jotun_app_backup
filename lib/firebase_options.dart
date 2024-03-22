@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCRhYLD3EmE5OXY0njNWJ6f52nSEANb3Ec',
-    appId: '1:833098319872:android:80a89d8dabe882d126b0e5',
+    appId: '1:833098319872:android:50988200195638a326b0e5',
     messagingSenderId: '833098319872',
     projectId: 'jotun-flutter',
     storageBucket: 'jotun-flutter.appspot.com',
@@ -59,10 +59,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAk7wvXtFYpvva0sUf6T_2mABhhkPT_erw',
-    appId: '1:833098319872:ios:314a13f2f054f9d426b0e5',
+    appId: '1:833098319872:ios:954138fe7141511a26b0e5',
     messagingSenderId: '833098319872',
     projectId: 'jotun-flutter',
     storageBucket: 'jotun-flutter.appspot.com',
-    iosBundleId: 'com.example.jotubApp',
+    iosBundleId: 'com.stoo.jotunApp',
   );
 }
