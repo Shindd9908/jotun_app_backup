@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:sizer/sizer.dart';
 
 class JourneyItem extends StatelessWidget {
-  const JourneyItem({Key? key}) : super(key: key);
+  const JourneyItem({
+    Key? key,
+    this.unlock = true,
+  }) : super(key: key);
+
+  final bool unlock;
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +59,14 @@ class JourneyItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
                   AppAssets.imgJourneyItem1,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                   height: 12.h,
                 ),
               ),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Colors.black.withOpacity(0.95),
+                  color: Colors.black.withOpacity(unlock ? 0.4 : 0.95),
                 ),
               ),
               Positioned(
@@ -68,15 +74,15 @@ class JourneyItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      AppAssets.iconLockJourneyItem,
+                      unlock ? AppAssets.iconMarked : AppAssets.iconLockJourneyItem,
                       width: 8.w,
                       height: 8.w,
                     ),
                     const SizedBox(height: 4),
                     TextWidget(
-                      text: 'QUÉT MÃ MỞ KHÓA\nKHU VỰC CHỤP ẢNH',
+                      text: unlock ? S.of(context).completed.toUpperCase() : 'QUÉT MÃ MỞ KHÓA\nKHU VỰC CHỤP ẢNH',
                       color: AppColor.colorMainWhite,
-                      fontSize: 8.sp,
+                      fontSize: unlock ? 10.sp : 8.sp,
                       textAlign: TextAlign.center,
                     ),
                   ],

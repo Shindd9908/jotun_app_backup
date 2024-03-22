@@ -57,9 +57,9 @@ class JourneyScreen extends StatelessWidget {
           const Wrap(
             children: [
               JourneyItem(),
-              JourneyItem(),
-              JourneyItem(),
-              JourneyItem(),
+              JourneyItem(unlock: false),
+              JourneyItem(unlock: false),
+              JourneyItem(unlock: false),
             ],
           ),
           Padding(
@@ -92,6 +92,7 @@ class JourneyScreen extends StatelessWidget {
             child: ButtonSubmitWidget(
               title: S.of(context).claimRewardButton,
               widthButton: 60.w,
+              textColor: AppColor.colorMainGray,
             ),
           ),
         ],

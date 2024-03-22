@@ -320,11 +320,61 @@ class S {
     );
   }
 
-  /// `Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện`
+  /// `Hãy nhập vai vào từng khu vực phòng thí\nnghiệm để kiểm chứng siêu phẩm\nJotashield Bền màu toàn diện`
   String get explainJourney {
     return Intl.message(
-      'Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện',
+      'Hãy nhập vai vào từng khu vực phòng thí\nnghiệm để kiểm chứng siêu phẩm\nJotashield Bền màu toàn diện',
       name: 'explainJourney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quý khách vui lòng trải nghiệm đủ`
+  String get explainClaimReward1 {
+    return Intl.message(
+      'Quý khách vui lòng trải nghiệm đủ',
+      name: 'explainClaimReward1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `4 khu vực`
+  String get fourAreas {
+    return Intl.message(
+      '4 khu vực',
+      name: 'fourAreas',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `để nhận quà tặng từ Jotun!`
+  String get explainClaimReward2 {
+    return Intl.message(
+      'để nhận quà tặng từ Jotun!',
+      name: 'explainClaimReward2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nhận quà`
+  String get claimRewardButton {
+    return Intl.message(
+      'Nhận quà',
+      name: 'claimRewardButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đã hoàn thành`
+  String get completed {
+    return Intl.message(
+      'Đã hoàn thành',
+      name: 'completed',
       desc: '',
       args: [],
     );

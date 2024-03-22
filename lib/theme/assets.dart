@@ -20,6 +20,7 @@ class AppAssets {
   static const iconLocation = 'assets/icons/icon_location.png';
   static const iconLock = 'assets/icons/icon_lock.png';
   static const iconLockJourneyItem = 'assets/icons/icon_lock_journey_item.png';
+  static const iconMarked = 'assets/icons/icon_marked.png';
   static const iconNotification = 'assets/icons/icon_notification.png';
 
   static const iconMap = 'assets/icons/icon_map.png';
