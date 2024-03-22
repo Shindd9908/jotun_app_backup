@@ -116,10 +116,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 listener: (context, state) {
                   if (state is ChangePasswordSuccessState) {
                     Navigator.of(context).pop();
-                    CustomFlushBar.showAlertFlushBar(context, state.message!, isSuccess: true);
+                    CustomFlushBar.showAlertFlushBar(context, state.message, isSuccess: true);
                   }
                   if (state is ChangePasswordFailState) {
-                    CustomFlushBar.showAlertFlushBar(context, state.message!);
+                    CustomFlushBar.showAlertFlushBar(context, state.message);
                   }
                 },
                 buildWhen: (previous, current) => current is ChangePasswordSuccessState || current is ChangePasswordFailState || current is ChangePasswordLoadingState,

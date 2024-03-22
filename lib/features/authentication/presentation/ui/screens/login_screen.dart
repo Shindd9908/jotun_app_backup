@@ -109,10 +109,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 listener: (context, state) {
                   if (state is LoginSuccessState) {
                     Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.confirmAccountInformationScreen, arguments: {'userInfo': state.userInfo}, (route) => false);
-                    CustomFlushBar.showAlertFlushBar(context, state.message!, isSuccess: true);
+                    CustomFlushBar.showAlertFlushBar(context, state.message, isSuccess: true);
                   }
                   if (state is LoginFailState) {
-                    CustomFlushBar.showAlertFlushBar(context, state.message!);
+                    CustomFlushBar.showAlertFlushBar(context, state.message);
                   }
                 },
                 buildWhen: (previous, current) => current is LoginSuccessState || current is LoginFailState || current is LoginLoadingState,

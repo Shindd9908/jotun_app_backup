@@ -113,10 +113,10 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
                 listener: (context, state) {
                   if (state is ConfirmAccountSuccessState) {
                     Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.splashScreen, (route) => false);
-                    CustomFlushBar.showAlertFlushBar(context, state.message!, isSuccess: true);
+                    CustomFlushBar.showAlertFlushBar(context, state.message, isSuccess: true);
                   }
                   if (state is ConfirmAccountFailState) {
-                    CustomFlushBar.showAlertFlushBar(context, state.message!);
+                    CustomFlushBar.showAlertFlushBar(context, state.message);
                   }
                 },
                 buildWhen: (previous, current) => current is ConfirmAccountSuccessState || current is ConfirmAccountFailState || current is ConfirmAccountLoadingState,
