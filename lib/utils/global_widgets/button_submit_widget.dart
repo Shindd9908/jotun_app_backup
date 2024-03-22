@@ -13,6 +13,7 @@ class ButtonSubmitWidget extends StatelessWidget {
   final bool? isShowLoading;
   final Color? colorLoading;
   final double? sizeLoading;
+  final Color? textColor;
 
   const ButtonSubmitWidget({
     super.key,
@@ -23,6 +24,7 @@ class ButtonSubmitWidget extends StatelessWidget {
     this.isShowLoading,
     this.colorLoading,
     this.sizeLoading,
+    this.textColor,
   });
 
   @override
@@ -49,7 +51,7 @@ class ButtonSubmitWidget extends StatelessWidget {
                   text: title ?? '',
                   textStyle: textStyle ??
                       TextStyle(
-                        color: AppColor.colorMainWhite,
+                        color: textColor ?? AppColor.colorMainWhite,
                         fontSize: AppHelper.setMultiDeviceSize(26, 22),
                         fontWeight: FontWeight.w700,
                       ),

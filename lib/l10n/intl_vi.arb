@@ -32,7 +32,12 @@
   "miniGame": "Mini game\n",
   "preorder": "Đặt hàng trước",
   "promotions": "Chương trình\nkhuyến mãi",
-  "explainJourney": "Hãy nhập vai để bảo chứng chất lượng\nJotashield Bền màu toàn diện",
+  "explainJourney": "Hãy nhập vai vào từng khu vực phòng thí\nnghiệm để kiểm chứng siêu phẩm\nJotashield Bền màu toàn diện",
+  "explainClaimReward1": "Quý khách vui lòng trải nghiệm đủ",
+  "fourAreas": "4 khu vực",
+  "explainClaimReward2": "để nhận quà tặng từ Jotun!",
+  "claimRewardButton": "Nhận quà",
+  "completed": "Đã hoàn thành",
 
   "errorFieldRequired": "Thông tin không được để trống",
   "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",

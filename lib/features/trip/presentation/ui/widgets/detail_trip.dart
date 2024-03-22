@@ -41,7 +41,7 @@ class DetailTrip extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             )
           : BoxDecoration(
-              color: AppColor.colorMainDarkBlue,
+              color: AppColor.colorMainBlack,
               borderRadius: BorderRadius.circular(16),
             ),
       child: unlock
@@ -104,8 +104,8 @@ class DetailTrip extends StatelessWidget {
           : Center(
               child: Image.asset(
                 AppAssets.iconLock,
-                width: 12.w,
-                height: 12.w,
+                width: 16.w,
+                height: 16.w,
               ),
             ),
     );
