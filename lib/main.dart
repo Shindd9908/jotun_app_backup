@@ -4,6 +4,7 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart";
+import "package:jotub_app/features/home/presentation/bloc/home_bloc.dart";
 import "package:jotub_app/utils/constants/constants.dart";
 import "package:jotub_app/utils/routers/routers.dart";
 import "package:sizer/sizer.dart";
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => getIt<AuthenticationBloc>()),
+        BlocProvider(create: (_) => getIt<HomeBloc>()),
       ],
       child: KeyboardDismissOnTap(
         child: Sizer(

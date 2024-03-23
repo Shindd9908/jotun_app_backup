@@ -7,6 +7,10 @@ import "package:jotub_app/features/authentication/data/data_sources/authenticati
 import "package:jotub_app/features/authentication/data/repositories/user_authentication_repository_impl.dart";
 import "package:jotub_app/features/authentication/domain/repositories/user_authentication_repository.dart";
 import "package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart";
+import "package:jotub_app/features/home/data/data_sources/home_api.dart";
+import "package:jotub_app/features/home/data/repositories/home_repository_impl.dart";
+import "package:jotub_app/features/home/domain/repositories/home_repository.dart";
+import "package:jotub_app/features/home/presentation/bloc/home_bloc.dart";
 
 GetIt getIt = GetIt.instance;
 
@@ -39,6 +43,7 @@ void _registerAppNetworkComponents() {
   ]);
 
   getIt.registerSingleton(AuthenticationApi(dio, baseUrl: dio.options.baseUrl));
+  getIt.registerSingleton(HomeApi(dio, baseUrl: dio.options.baseUrl));
 }
 
 void _registerRepository() {
@@ -48,12 +53,24 @@ void _registerRepository() {
       sharedPreferencesManager: getIt<SharedPreferencesManager>(),
     ),
   );
+
+  getIt.registerFactory<HomeRepository>(
+    () => HomeRepositoryImpl(
+      homeApi: getIt<HomeApi>(),
+    ),
+  );
 }
 
 void _registerBlocs() {
   getIt.registerLazySingleton<AuthenticationBloc>(
     () => AuthenticationBloc(
       authenticationRepository: getIt<AuthenticationRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<HomeBloc>(
+    () => HomeBloc(
+      homeRepository: getIt<HomeRepository>(),
     ),
   );
 }
