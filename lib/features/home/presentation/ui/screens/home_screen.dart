@@ -222,7 +222,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: FeatureItem(
                                 title: el['featureName'],
                                 iconAsset: el['pathIcon'],
-                                pathScreenNavigateOnTap: el['pathScreenNavigateOnTap'],
                               ),
                             ),
                           ),
