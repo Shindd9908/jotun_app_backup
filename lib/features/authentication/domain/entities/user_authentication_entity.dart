@@ -5,24 +5,32 @@ class UserInfoEntity extends Equatable {
   final String? username;
   final String? userCompany;
   final String? identityCardNumber;
-  final int? saleId;
-  final String? saleName;
+  final int? salesId;
+  final String? salesName;
+  final String? salesPhoneNumber;
   final int? groupId;
   final String? accessToken;
   final String? name;
+  final String? avatar;
   final int? gender;
+  final String? busNo;
+  final String? hotel;
 
   const UserInfoEntity({
-    required this.userId,
-    required this.username,
-    required this.userCompany,
-    required this.identityCardNumber,
-    required this.saleId,
-    required this.saleName,
-    required this.groupId,
-    required this.accessToken,
-    required this.name,
-    required this.gender,
+    this.userId,
+    this.username,
+    this.userCompany,
+    this.identityCardNumber,
+    this.salesId,
+    this.salesName,
+    this.salesPhoneNumber,
+    this.groupId,
+    this.accessToken,
+    this.name,
+    this.avatar,
+    this.gender,
+    this.busNo,
+    this.hotel,
   });
 
   @override
@@ -31,11 +39,15 @@ class UserInfoEntity extends Equatable {
         username,
         userCompany,
         identityCardNumber,
-        saleId,
-        saleName,
+        salesId,
+        salesName,
+        salesPhoneNumber,
         groupId,
         accessToken,
         name,
+        avatar,
         gender,
+        busNo,
+        hotel,
       ];
 }

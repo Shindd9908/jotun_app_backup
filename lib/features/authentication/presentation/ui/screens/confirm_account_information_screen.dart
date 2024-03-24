@@ -38,7 +38,7 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
       _nameController.text = widget.userInfo?.name ?? '';
       _storeController.text = widget.userInfo?.userCompany ?? '';
       _identityCardNumberController.text = widget.userInfo?.identityCardNumber ?? '';
-      _salesStaffChargeController.text = widget.userInfo?.saleName ?? '';
+      _salesStaffChargeController.text = widget.userInfo?.salesName ?? '';
       _groupController.text = widget.userInfo?.groupId != null ? widget.userInfo!.groupId!.toString() : '';
     }
     super.initState();
@@ -95,7 +95,7 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
                 SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
                 TextFormFieldWidget(
                   controller: _salesStaffChargeController,
-                  hintText: S.of(context).salesStaffCharge,
+                  hintText: S.of(context).salesNameStaffCharge,
                   isReadOnly: true,
                 ),
                 SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),

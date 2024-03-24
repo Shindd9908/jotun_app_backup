@@ -37,7 +37,7 @@ class CacheImageWidget extends StatelessWidget {
               placeholder: (context, url) => const SpinKitLoadingWidget(color: Colors.grey, size: 18),
               errorWidget: (context, url, error) => const Icon(
                 Icons.image_outlined,
-                size: 32,
+                size: 24,
               ),
             ),
           )
@@ -45,7 +45,7 @@ class CacheImageWidget extends StatelessWidget {
             alignment: Alignment.center,
             child: const Icon(
               Icons.image_outlined,
-              size: 32,
+              size: 24,
             ),
           );
   }

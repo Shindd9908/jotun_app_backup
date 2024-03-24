@@ -12,12 +12,15 @@ UserLoginResponse _$UserLoginResponseFromJson(Map<String, dynamic> json) =>
       username: json['username'] as String?,
       userCompany: json['company'] as String?,
       identityCardNumber: json['identity_card_number'] as String?,
-      saleId: json['sales_id'] as int?,
-      saleName: json['sales'] as String?,
+      salesId: json['sales_id'] as int?,
+      salesName: json['sales'] as String?,
+      salesPhoneNumber: json['sales_phone'] as String?,
       groupId: json['group_id'] as int?,
       accessToken: json['access_token'] as String?,
       name: json['name'] as String?,
       gender: json['gender'] as int?,
+      busNo: json['bus_no'] as String?,
+      hotel: json['hotel'] as String?,
     );
 
 Map<String, dynamic> _$UserLoginResponseToJson(UserLoginResponse instance) =>
@@ -26,10 +29,13 @@ Map<String, dynamic> _$UserLoginResponseToJson(UserLoginResponse instance) =>
       'username': instance.username,
       'company': instance.userCompany,
       'identity_card_number': instance.identityCardNumber,
-      'sales_id': instance.saleId,
-      'sales': instance.saleName,
+      'sales_id': instance.salesId,
+      'sales': instance.salesName,
+      'sales_phone': instance.salesPhoneNumber,
       'group_id': instance.groupId,
       'access_token': instance.accessToken,
       'name': instance.name,
       'gender': instance.gender,
+      'bus_no': instance.busNo,
+      'hotel': instance.hotel,
     };

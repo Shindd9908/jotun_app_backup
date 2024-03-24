@@ -12,6 +12,7 @@ import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
+import 'package:jotub_app/utils/routers/paths.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -47,16 +48,34 @@ class _HomeScreenState extends State<HomeScreen> {
                     builder: (context, state) {
                       return Row(
                         children: [
-                          Image.asset(AppAssets.iconAvatar, width: AppHelper.setMultiDeviceSize(32, 32)),
+                          GestureDetector(
+                            onTap: () => Navigator.of(context).pushNamed(
+                              AppPaths.profileScreen,
+                              arguments: {'userInfo': state is FetchUserProfileSuccessState ? state.userInfo : null},
+                            ),
+                            child: state is FetchUserProfileSuccessState && state.userInfo.avatar != null && state.userInfo.avatar!.isNotEmpty
+                                ? CacheImageWidget(
+                                    imageUrl: state.userInfo.avatar,
+                                    widthImage: AppHelper.setMultiDeviceSize(32, 32),
+                                    heightImage: AppHelper.setMultiDeviceSize(32, 32),
+                                  )
+                                : Image.asset(AppAssets.iconAvatar, width: AppHelper.setMultiDeviceSize(32, 32)),
+                          ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              TextWidget(
-                                text: state is FetchUserProfileSuccessState ? state.userInfo.name : '',
-                                color: AppColor.colorMainWhite,
-                                fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
-                                fontWeight: FontWeight.w700,
-                                height: 1,
+                              GestureDetector(
+                                onTap: () => Navigator.of(context).pushNamed(
+                                  AppPaths.profileScreen,
+                                  arguments: {'userInfo': state is FetchUserProfileSuccessState ? state.userInfo : null},
+                                ),
+                                child: TextWidget(
+                                  text: state is FetchUserProfileSuccessState ? state.userInfo.name : '',
+                                  color: AppColor.colorMainWhite,
+                                  fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                                  fontWeight: FontWeight.w700,
+                                  height: 1,
+                                ),
                               ),
                               const SizedBox(height: 4),
                               TextWidget(
