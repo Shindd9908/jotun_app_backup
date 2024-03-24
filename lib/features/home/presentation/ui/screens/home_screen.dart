@@ -6,12 +6,12 @@ import 'package:jotub_app/features/home/presentation/ui/widgets/feature_item.dar
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/constants/constants.dart';
 import 'package:jotub_app/utils/global_widgets/cache_image_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
-import 'package:jotub_app/utils/routers/paths.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<HomeBloc>().add(const FetchListBannerEvent());
+      context.read<HomeBloc>().add(const FetchUserProfileEvent());
     });
     super.initState();
   }
@@ -37,41 +38,41 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: AppHelper.setMultiDeviceSize(2.h, 4.h), horizontal: 8.w),
+              padding: EdgeInsets.symmetric(vertical: AppHelper.setMultiDeviceSize(24, 24), horizontal: AppHelper.setMultiDeviceSize(32, 32)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      Image.asset(
-                        AppAssets.iconAvatar,
-                        width: 10.w,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  BlocBuilder<HomeBloc, HomeState>(
+                    buildWhen: (previous, current) => current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
+                    builder: (context, state) {
+                      return Row(
                         children: [
-                          TextWidget(
-                            text: 'HOÀNG VĂN A',
-                            color: AppColor.colorMainWhite,
-                            fontSize: AppHelper.setMultiDeviceSize(19.sp, 14.sp),
-                            fontWeight: FontWeight.w700,
-                            height: 1,
-                          ),
-                          TextWidget(
-                            text: 'Nhóm 10',
-                            color: AppColor.colorMainYellow,
-                            fontSize: AppHelper.setMultiDeviceSize(19.sp, 11.sp),
-                            fontWeight: FontWeight.w700,
-                            height: 1,
+                          Image.asset(AppAssets.iconAvatar, width: AppHelper.setMultiDeviceSize(32, 32)),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextWidget(
+                                text: state is FetchUserProfileSuccessState ? state.userInfo.name : '',
+                                color: AppColor.colorMainWhite,
+                                fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                                fontWeight: FontWeight.w700,
+                                height: 1,
+                              ),
+                              const SizedBox(height: 4),
+                              TextWidget(
+                                text: '${S.of(context).group} ${state is FetchUserProfileSuccessState ? state.userInfo.groupId.toString() : ''}',
+                                color: AppColor.colorMainYellow,
+                                fontSize: AppHelper.setMultiDeviceSize(14.sp, 11.sp),
+                                fontWeight: FontWeight.w700,
+                                height: 1,
+                              ),
+                            ],
                           ),
                         ],
-                      ),
-                    ],
+                      );
+                    },
                   ),
-                  Image.asset(
-                    AppAssets.iconNotification,
-                    width: 10.w,
-                  )
+                  Image.asset(AppAssets.iconNotification, width: AppHelper.setMultiDeviceSize(32, 32))
                 ],
               ),
             ),
@@ -86,211 +87,149 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     : state is FetchListBannerSuccessState && state.listBanner.isNotEmpty
                         ? CarouselSlider(
-                            options: CarouselOptions(height: 20.h, viewportFraction: 1),
+                            options: CarouselOptions(height: AppHelper.setMultiDeviceSize(12.h, 20.h), viewportFraction: 1),
                             items: state.listBanner
                                 .map(
-                                  (el) => CacheImageWidget(
-                                    imageUrl: el.bannerURL,
-                                    widthImage: 100.w,
-                                    heightImage: 20.h,
-                                    fit: BoxFit.cover,
-                                  ),
+                                  (el) => CacheImageWidget(imageUrl: el.bannerURL, widthImage: 100.w, heightImage: AppHelper.setMultiDeviceSize(12.h, 20.h), fit: BoxFit.cover),
                                 )
                                 .toList(),
                           )
-                        : Image.asset(AppAssets.imgBanner, width: 100.w, height: 20.h);
+                        : Image.asset(
+                            AppAssets.imgBanner,
+                            width: 100.w,
+                            height: AppHelper.setMultiDeviceSize(12.h, 20.h),
+                          );
               },
             ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 8.w,
-                ),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 16,
-                        bottom: 12,
-                      ),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextWidget(
-                          text: S.of(context).incomingEvent,
-                          color: AppColor.colorMainWhite,
-                          fontSize: AppHelper.setMultiDeviceSize(19.sp, 11.sp),
-                          fontWeight: FontWeight.w900,
-                        ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16, bottom: 12),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextWidget(
+                        text: S.of(context).incomingEvent,
+                        color: AppColor.colorMainWhite,
+                        fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(
-                          width: 2,
-                          color: Colors.white,
-                        ),
-                      ),
-                      padding: const EdgeInsets.only(
-                        top: 18,
-                        left: 4,
-                        right: 4,
-                        bottom: 4,
-                      ),
-                      child: Column(
-                        children: [
-                          TextWidget(
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: AppColor.colorMainBlack,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(width: 2, color: AppColor.colorMainWhite),
+                    ),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 32, right: 32, top: 20),
+                          child: TextWidget(
                             text: 'LỄ KỶ NIỆM 20 NĂM\nNGÀNH SƠN TRANG TRÍ JOTUN VIỆT NAM',
                             color: AppColor.colorMainYellow,
-                            fontSize: AppHelper.setMultiDeviceSize(19.sp, 12.sp),
+                            fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
                             fontWeight: FontWeight.w900,
                             textAlign: TextAlign.center,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 18,
-                              bottom: 18,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      AppAssets.iconCalendar,
-                                      width: 24,
-                                    ),
-                                    TextWidget(
-                                      text: '20:00',
-                                      color: AppColor.colorMainWhite,
-                                      fontSize: AppHelper.setMultiDeviceSize(19.sp, 14.sp),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Image.asset(
-                                      AppAssets.iconGlobal,
-                                      width: 24,
-                                    ),
-                                    TextWidget(
-                                      text: 'Hội trường Ariyana',
-                                      color: AppColor.colorMainWhite,
-                                      fontSize: AppHelper.setMultiDeviceSize(19.sp, 14.sp),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          TextWidget(
-                            text: 'Yêu cầu sự kiện: Lễ phục, trang phục dự tiệc',
-                            color: AppColor.colorMainWhite,
-                            fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 28),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                TextWidget(
-                                  text: S.of(context).goToDetailTrip,
-                                  color: AppColor.colorMainYellow,
-                                  fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
-                                ),
-                                Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: const Color(0xffF19F3B),
-                                  size: 10.sp,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 12,
-                        bottom: 16,
-                      ),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: TextWidget(
-                          text: S.of(context).feature,
-                          color: AppColor.colorMainWhite,
-                          fontSize: AppHelper.setMultiDeviceSize(19.sp, 11.sp),
-                          fontWeight: FontWeight.w900,
                         ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Image.asset(AppAssets.iconCalendar, width: 20, height: 20),
+                                  TextWidget(
+                                    text: '20:00',
+                                    color: AppColor.colorMainWhite,
+                                    fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Image.asset(AppAssets.iconGlobal, width: 20, height: 20),
+                                  TextWidget(
+                                    text: 'Hội trường Ariyana',
+                                    color: AppColor.colorMainWhite,
+                                    fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        TextWidget(
+                          text: 'Yêu cầu sự kiện: Lễ phục, trang phục dự tiệc',
+                          color: AppColor.colorMainWhite,
+                          fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
+                          textAlign: TextAlign.center,
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 20, right: 4, bottom: 2),
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  TextWidget(
+                                    text: S.of(context).goToDetailTrip,
+                                    color: AppColor.colorMainYellow,
+                                    fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
+                                  ),
+                                  const Icon(
+                                    Icons.arrow_forward_ios,
+                                    color: Color(0xffF19F3B),
+                                    size: 12,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12, bottom: 16),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: TextWidget(
+                        text: S.of(context).feature,
+                        color: AppColor.colorMainWhite,
+                        fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                onTap: () => Navigator.of(context).pushNamed(AppPaths.tripScreen),
-                                child: FeatureItem(
-                                  iconAsset: AppAssets.iconMap,
-                                  title: S.of(context).exploreSchedule,
-                                ),
+                  ),
+                  Wrap(
+                    alignment: WrapAlignment.spaceBetween,
+                    runAlignment: WrapAlignment.spaceBetween,
+                    runSpacing: 24,
+                    children: Constants.getListFeatureHomePage(context)
+                        .map(
+                          (el) => SizedBox(
+                            width: (100.w - 64) / 3,
+                            child: GestureDetector(
+                              onTap: () => Navigator.of(context).pushNamed(el['pathScreenNavigateOnTap']),
+                              child: FeatureItem(
+                                title: el['featureName'],
+                                iconAsset: el['pathIcon'],
+                                pathScreenNavigateOnTap: el['pathScreenNavigateOnTap'],
                               ),
-                              GestureDetector(
-                                onTap: () => Navigator.of(context).pushNamed(AppPaths.tripScreen),
-                                child: FeatureItem(
-                                  iconAsset: AppAssets.iconProduct,
-                                  title: S.of(context).newProductInformation,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                onTap: () => Navigator.of(context).pushNamed(AppPaths.journeyScreen),
-                                child: FeatureItem(
-                                  iconAsset: AppAssets.iconGift,
-                                  title: S.of(context).experienceAndReceiveGift,
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () => Navigator.of(context).pushNamed(AppPaths.tripScreen),
-                                child: FeatureItem(
-                                  iconAsset: AppAssets.iconMiniGame,
-                                  title: S.of(context).miniGame,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              GestureDetector(
-                                onTap: () => Navigator.of(context).pushNamed(AppPaths.tripScreen),
-                                child: FeatureItem(
-                                  iconAsset: AppAssets.iconOrder,
-                                  title: S.of(context).preorder,
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () => Navigator.of(context).pushNamed(AppPaths.tripScreen),
-                                child: FeatureItem(
-                                  iconAsset: AppAssets.iconCoupon,
-                                  title: S.of(context).promotions,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                        )
+                        .toList(),
+                  ),
+                ],
               ),
             ),
           ],

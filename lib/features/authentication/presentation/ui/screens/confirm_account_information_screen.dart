@@ -52,7 +52,7 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
         mainUIContent: Container(
           width: 100.w,
           height: 100.h - MediaQuery.of(context).viewInsets.bottom,
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 10.h, left: 32, right: 32),
+          padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(6.h, 10.h), left: 32, right: 32),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -127,7 +127,7 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
                       },
                       child: ButtonSubmitWidget(
                         title: S.of(context).confirmInformation,
-                        widthButton: 78.w,
+                        widthButton: AppHelper.setMultiDeviceSize(46.w, 78.w),
                         isShowLoading: state is ConfirmAccountLoadingState,
                       ),
                     );

@@ -22,7 +22,7 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
       body: Container(
         width: 100.w,
         height: 100.h,
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 10.h, left: 32, right: 32),
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + AppHelper.setMultiDeviceSize(6.h, 10.h), left: 32, right: 32),
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(AppAssets.imgBackgroundPage),
@@ -62,7 +62,7 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
               onTap: () => Navigator.of(context).pushNamed(AppPaths.loginScreen, arguments: {'userRole': 3}),
               child: ButtonSubmitWidget(
                 title: S.of(context).agency,
-                widthButton: 70.w,
+                widthButton: AppHelper.setMultiDeviceSize(40.w, 70.w),
               ),
             ),
             SizedBox(height: AppHelper.setMultiDeviceSize(16, 16)),
@@ -70,7 +70,7 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
               onTap: () => Navigator.of(context).pushNamed(AppPaths.loginScreen, arguments: {'userRole': 2}),
               child: ButtonSubmitWidget(
                 title: S.of(context).memberOfJotun,
-                widthButton: 70.w,
+                widthButton: AppHelper.setMultiDeviceSize(40.w, 70.w),
               ),
             ),
           ],

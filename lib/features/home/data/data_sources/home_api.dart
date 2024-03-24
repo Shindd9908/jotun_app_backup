@@ -1,5 +1,6 @@
 import "package:dio/dio.dart";
 import "package:jotub_app/core/models/api_response.dart";
+import "package:jotub_app/features/authentication/data/models/user_login_response.dart";
 import "package:jotub_app/features/home/data/models/banner_response.dart";
 import "package:retrofit/http.dart";
 
@@ -11,4 +12,7 @@ abstract class HomeApi {
 
   @GET("/banners")
   Future<ApiResponse<List<BannerResponse>>> fetchListBanner();
+
+  @GET("/profile")
+  Future<ApiResponse<UserLoginResponse>> fetchUserProfile();
 }

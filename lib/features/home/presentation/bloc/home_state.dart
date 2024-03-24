@@ -9,6 +9,8 @@ final class HomeInitial extends HomeState {
   List<Object> get props => [];
 }
 
+// ---------------- Fetch list banner ----------------------
+
 class FetchListBannerLoadingState extends HomeState {
   @override
   List<Object> get props => [];
@@ -27,6 +29,31 @@ class FetchListBannerFailState extends HomeState {
   final String message;
 
   const FetchListBannerFailState({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+// ---------------- Fetch list banner ----------------------
+
+class FetchUserProfileLoadingState extends HomeState {
+  @override
+  List<Object> get props => [];
+}
+
+class FetchUserProfileSuccessState extends HomeState {
+  final UserInfoEntity userInfo;
+
+  const FetchUserProfileSuccessState({required this.userInfo});
+
+  @override
+  List<Object> get props => [userInfo];
+}
+
+class FetchUserProfileFailState extends HomeState {
+  final String message;
+
+  const FetchUserProfileFailState({required this.message});
 
   @override
   List<Object> get props => [message];

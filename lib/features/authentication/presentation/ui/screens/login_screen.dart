@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: ButtonSubmitWidget(
                         title: S.of(context).login,
-                        widthButton: 70.w,
+                        widthButton: AppHelper.setMultiDeviceSize(40.w, 70.w),
                         isShowLoading: state is LoginLoadingState,
                       ),
                     );

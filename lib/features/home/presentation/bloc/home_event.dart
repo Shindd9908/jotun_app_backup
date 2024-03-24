@@ -9,5 +9,13 @@ class FetchListBannerEvent extends HomeEvent {
 
   @override
   // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
+}
+
+class FetchUserProfileEvent extends HomeEvent {
+  const FetchUserProfileEvent();
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [];
 }
