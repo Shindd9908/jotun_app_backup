@@ -1,5 +1,7 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
@@ -13,6 +15,12 @@ class MiniGameBoard extends StatefulWidget {
 }
 
 class _MiniGameBoardState extends State<MiniGameBoard> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MiniGameBloc>().add(InitBoardEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -77,27 +85,37 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
               ],
             ),
           ),
-          GridView.builder(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 6,
-              vertical: 6,
-            ),
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-            ),
-            itemBuilder: (context, index) {
-              return Container(
-                margin: const EdgeInsets.all(10),
-                child: FlipCard(
-                  front: Image.asset(AppAssets.itemQuestionMark),
-                  back: Image.asset(AppAssets.itemMiniGame1),
-                ),
-              );
+          BlocBuilder<MiniGameBloc, MiniGameState>(
+            buildWhen: (_, current) => current is InitBoardSuccessState || current is InitBoardFailState,
+            builder: (context, state) {
+              if (state is InitBoardSuccessState) {
+                List<String> board = state.board ?? [];
+                return GridView.builder(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 6,
+                  ),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: const EdgeInsets.all(10),
+                      child: FlipCard(
+                        back: Image.asset(AppAssets.itemQuestionMark),
+                        front: Image.asset(board[index]),
+                      ),
+                    );
+                  },
+                  itemCount: board.length,
+                );
+              }
+              return Container();
             },
-            itemCount: 16,
           ),
+
         ],
       ),
     );

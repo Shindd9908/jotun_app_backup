@@ -11,6 +11,9 @@ import "package:jotub_app/features/home/data/data_sources/home_api.dart";
 import "package:jotub_app/features/home/data/repositories/home_repository_impl.dart";
 import "package:jotub_app/features/home/domain/repositories/home_repository.dart";
 import "package:jotub_app/features/home/presentation/bloc/home_bloc.dart";
+import "package:jotub_app/features/mini_game/data/repositories/mini_game_repository_impl.dart";
+import "package:jotub_app/features/mini_game/domain/repositories/mini_game_repository.dart";
+import "package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart";
 
 GetIt getIt = GetIt.instance;
 
@@ -30,8 +33,10 @@ void _registerAppNetworkComponents() {
   final dio = Dio(
     BaseOptions(
       baseUrl: AppConfigs.apiBaseUrl,
-      connectTimeout: const Duration(milliseconds: AppConfigs.kConnectApiTimeout),
-      receiveTimeout: const Duration(milliseconds: AppConfigs.kReceiveApiTimeout),
+      connectTimeout:
+          const Duration(milliseconds: AppConfigs.kConnectApiTimeout),
+      receiveTimeout:
+          const Duration(milliseconds: AppConfigs.kReceiveApiTimeout),
       sendTimeout: const Duration(milliseconds: AppConfigs.kSendApiTimeout),
       receiveDataWhenStatusError: true,
     ),
@@ -59,6 +64,8 @@ void _registerRepository() {
       homeApi: getIt<HomeApi>(),
     ),
   );
+
+  getIt.registerFactory<MiniGameRepository>(() => MiniGameRepositoryImpl());
 }
 
 void _registerBlocs() {
@@ -71,6 +78,12 @@ void _registerBlocs() {
   getIt.registerLazySingleton<HomeBloc>(
     () => HomeBloc(
       homeRepository: getIt<HomeRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<MiniGameBloc>(
+    () => MiniGameBloc(
+      miniGameRepository: getIt<MiniGameRepository>(),
     ),
   );
 }

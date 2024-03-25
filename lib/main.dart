@@ -5,6 +5,7 @@ import "package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart";
 import "package:jotub_app/features/home/presentation/bloc/home_bloc.dart";
+import "package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart";
 import "package:jotub_app/utils/constants/constants.dart";
 import "package:jotub_app/utils/routers/routers.dart";
 import "package:sizer/sizer.dart";
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => getIt<AuthenticationBloc>()),
         BlocProvider(create: (_) => getIt<HomeBloc>()),
+        BlocProvider(create: (_) => getIt<MiniGameBloc>()),
       ],
       child: KeyboardDismissOnTap(
         child: Sizer(
