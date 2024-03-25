@@ -7,11 +7,15 @@ extension SignInCheckExt on UserLoginResponse {
         username: username,
         userCompany: userCompany,
         identityCardNumber: identityCardNumber,
-        saleId: saleId,
-        saleName: saleName,
+        salesId: salesId,
+        salesName: salesName,
+        salesPhoneNumber: salesPhoneNumber,
         groupId: groupId,
         accessToken: accessToken,
         name: name,
+        avatar: avatar,
         gender: gender,
+        busNo: busNo,
+        hotel: hotel,
       );
 }

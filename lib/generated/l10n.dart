@@ -201,10 +201,20 @@ class S {
   }
 
   /// `Nhân viên bán hàng phụ trách`
-  String get salesStaffCharge {
+  String get salesNameStaffCharge {
     return Intl.message(
       'Nhân viên bán hàng phụ trách',
-      name: 'salesStaffCharge',
+      name: 'salesNameStaffCharge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `SĐT nhân viên bán hàng`
+  String get salesPhoneNumberStaffCharge {
+    return Intl.message(
+      'SĐT nhân viên bán hàng',
+      name: 'salesPhoneNumberStaffCharge',
       desc: '',
       args: [],
     );
@@ -220,11 +230,71 @@ class S {
     );
   }
 
+  /// `Số xe bus`
+  String get busNo {
+    return Intl.message(
+      'Số xe bus',
+      name: 'busNo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Khách sạn`
+  String get hotel {
+    return Intl.message(
+      'Khách sạn',
+      name: 'hotel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Xác nhận thông tin`
   String get confirmInformation {
     return Intl.message(
       'Xác nhận thông tin',
       name: 'confirmInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Xem ảnh đại điện`
+  String get showFullAvatar {
+    return Intl.message(
+      'Xem ảnh đại điện',
+      name: 'showFullAvatar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thay đổi ảnh đại diện`
+  String get changeAvatar {
+    return Intl.message(
+      'Thay đổi ảnh đại diện',
+      name: 'changeAvatar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chọn ảnh từ camera`
+  String get selectAvatarFromCamera {
+    return Intl.message(
+      'Chọn ảnh từ camera',
+      name: 'selectAvatarFromCamera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chọn ảnh từ bộ sưu tập`
+  String get selectAvatarFromGallery {
+    return Intl.message(
+      'Chọn ảnh từ bộ sưu tập',
+      name: 'selectAvatarFromGallery',
       desc: '',
       args: [],
     );

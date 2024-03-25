@@ -21,7 +21,7 @@ class BackgroundScreenFormFieldWidget extends StatelessWidget {
             ),
           ),
         ),
-        mainUIContent
+        SafeArea(child: mainUIContent)
       ],
     );
   }

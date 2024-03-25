@@ -20,10 +20,8 @@ class ScreenFrame extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        padding: padding,
-        child: SafeArea(
-          child: child,
-        ),
+        padding: padding != null ? padding!.copyWith(top: MediaQuery.of(context).padding.top) : EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: child,
       ),
     );
   }

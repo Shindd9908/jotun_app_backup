@@ -13,26 +13,21 @@ class FeatureItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           padding: const EdgeInsets.all(4.0),
           margin: const EdgeInsets.only(bottom: 4),
           decoration: const BoxDecoration(
             color: Color(0xff848689),
-            borderRadius: BorderRadius.all(
-              Radius.circular(8),
-            ),
+            borderRadius: BorderRadius.all(Radius.circular(8)),
           ),
-          child: Image.asset(
-            iconAsset,
-            width: 40,
-            height: 40,
-          ),
+          child: Image.asset(iconAsset, width: AppHelper.setMultiDeviceSize(40, 40), height: AppHelper.setMultiDeviceSize(40, 40)),
         ),
         TextWidget(
           text: title,
           color: AppColor.colorMainWhite,
-          fontSize: AppHelper.setMultiDeviceSize(19.sp, 9.sp),
+          fontSize: AppHelper.setMultiDeviceSize(12.sp, 8.sp),
           fontWeight: FontWeight.bold,
           textAlign: TextAlign.center,
           height: 1.2,

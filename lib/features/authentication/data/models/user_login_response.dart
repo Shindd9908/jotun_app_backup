@@ -14,29 +14,41 @@ class UserLoginResponse extends Equatable {
   @JsonKey(name: "identity_card_number")
   final String? identityCardNumber;
   @JsonKey(name: "sales_id")
-  final int? saleId;
+  final int? salesId;
   @JsonKey(name: "sales")
-  final String? saleName;
+  final String? salesName;
+  @JsonKey(name: "sales_phone")
+  final String? salesPhoneNumber;
   @JsonKey(name: "group_id")
   final int? groupId;
   @JsonKey(name: "access_token")
   final String? accessToken;
   @JsonKey(name: "name")
   final String? name;
+  @JsonKey(name: "avatar")
+  final String? avatar;
   @JsonKey(name: "gender")
   final int? gender;
+  @JsonKey(name: "bus_no")
+  final String? busNo;
+  @JsonKey(name: "hotel")
+  final String? hotel;
 
   const UserLoginResponse({
-    required this.userId,
-    required this.username,
-    required this.userCompany,
-    required this.identityCardNumber,
-    required this.saleId,
-    required this.saleName,
-    required this.groupId,
-    required this.accessToken,
-    required this.name,
+    this.userId,
+    this.username,
+    this.userCompany,
+    this.identityCardNumber,
+    this.salesId,
+    this.salesName,
+    this.salesPhoneNumber,
+    this.groupId,
+    this.accessToken,
+    this.name,
+    this.avatar,
     this.gender,
+    this.busNo,
+    this.hotel,
   });
 
   factory UserLoginResponse.fromJson(Map<String, dynamic> json) => _$UserLoginResponseFromJson(json);
@@ -49,11 +61,15 @@ class UserLoginResponse extends Equatable {
         username,
         userCompany,
         identityCardNumber,
-        saleId,
-        saleName,
+        salesId,
+        salesName,
+        salesPhoneNumber,
         groupId,
         accessToken,
         name,
+        avatar,
         gender,
+        busNo,
+        hotel,
       ];
 }

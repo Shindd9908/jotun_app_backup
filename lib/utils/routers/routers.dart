@@ -6,6 +6,7 @@ import "package:jotub_app/features/authentication/presentation/ui/screens/confir
 import "package:jotub_app/features/authentication/presentation/ui/screens/login_screen.dart";
 import "package:jotub_app/features/authentication/presentation/ui/screens/select_object_use_screen.dart";
 import "package:jotub_app/features/home/presentation/ui/screens/home_screen.dart";
+import "package:jotub_app/features/home/presentation/ui/screens/profile_screen.dart";
 import "package:jotub_app/features/home/presentation/ui/screens/splash_screen.dart";
 import "package:jotub_app/features/journey/presentation/ui/screens/journey_screen.dart";
 import "package:jotub_app/features/schedule/presentation/ui/screens/schedule_screen.dart";
@@ -27,6 +28,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case AppPaths.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case AppPaths.profileScreen:
+        return MaterialPageRoute(builder: (_) => ProfileScreen(userInfo: arguments?['userInfo']));
       case AppPaths.tripScreen:
         return MaterialPageRoute(builder: (_) => const TripScreen());
       case AppPaths.scheduleScreen:

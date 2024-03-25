@@ -11,18 +11,18 @@ import "package:jotub_app/features/authentication/domain/repositories/user_authe
 import "package:jotub_app/utils/constants/key_preference.dart";
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
-  final AuthenticationApi? authenticationApi;
-  final SharedPreferencesManager? sharedPreferencesManager;
+  final AuthenticationApi authenticationApi;
+  final SharedPreferencesManager sharedPreferencesManager;
 
   AuthenticationRepositoryImpl({required this.authenticationApi, required this.sharedPreferencesManager});
 
   @override
   Future<Either<String, Map<String, dynamic>>> login(String username, String password, int userRole) async {
     try {
-      final authentic = await authenticationApi!.login(LoginRequest(username: username, password: password, role: userRole));
+      final authentic = await authenticationApi.login(LoginRequest(username: username, password: password, role: userRole));
       if (authentic.isSuccess) {
         final data = authentic.getValue() as UserLoginResponse;
-        sharedPreferencesManager!.putValue(KeyPreference.kAccessToken, data.accessToken);
+        sharedPreferencesManager.putValue(KeyPreference.kAccessToken, data.accessToken);
         return Right({'data': data.userInfoEntity, 'message': authentic.message});
       } else {
         return Left(authentic.message!);
@@ -35,7 +35,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Future<Either<String, String>> changePassword(String username, int role, String oldPassword, String password, String passwordConfirmation) async {
     try {
-      final authentic = await authenticationApi!.changePassword(ChangePasswordRequest(
+      final authentic = await authenticationApi.changePassword(ChangePasswordRequest(
         username: username,
         role: role,
         oldPassword: oldPassword,
@@ -55,9 +55,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Future<Either<String, String>> confirmAccount(String identityCardNumber) async {
     try {
-      final authentic = await authenticationApi!.confirmAccount(ConfirmAccountRequest(identityCardNumber: identityCardNumber));
+      final authentic = await authenticationApi.confirmAccount(ConfirmAccountRequest(identityCardNumber: identityCardNumber));
       if (authentic.isSuccess) {
-        sharedPreferencesManager!.putValue<bool>(KeyPreference.kStatusConfirmAccountDone, true);
+        sharedPreferencesManager.putValue<bool>(KeyPreference.kStatusConfirmAccountDone, true);
         return Right(authentic.message!);
       } else {
         return Left(authentic.message!);

@@ -9,6 +9,7 @@ class AppAssets {
   static const imgJourneyItem1 = 'assets/images/image_journey_item_1.png';
   static const imgLogoApp = 'assets/images/image_logo_app.jpeg';
   static const imgTitle = 'assets/images/image_title.png';
+  static const imgBannerAndLogo = 'assets/images/image_banner_logo.jpg';
 
   // icons
   static const iconArrowBack = 'assets/icons/icon_arrow_back.png';
@@ -29,4 +30,6 @@ class AppAssets {
   static const iconProduct = 'assets/icons/icon_product.png';
   static const iconMiniGame = 'assets/icons/icon_mini_game.png';
   static const iconCoupon = 'assets/icons/icon_coupon.png';
+  static const iconAccount = 'assets/icons/icon_account.png';
+  static const iconImage = 'assets/icons/icon_image.png';
 }

@@ -25,6 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountInformation":
             MessageLookupByLibrary.simpleMessage("Thông tin tài khoản"),
         "agency": MessageLookupByLibrary.simpleMessage("Đại lý"),
+        "busNo": MessageLookupByLibrary.simpleMessage("Số xe bus"),
+        "changeAvatar":
+            MessageLookupByLibrary.simpleMessage("Thay đổi ảnh đại diện"),
         "changePassword": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "claimRewardButton": MessageLookupByLibrary.simpleMessage("Nhận quà"),
         "completed": MessageLookupByLibrary.simpleMessage("Đã hoàn thành"),
@@ -58,6 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "goToDetailTrip":
             MessageLookupByLibrary.simpleMessage("Xem chi tiết hành trình"),
         "group": MessageLookupByLibrary.simpleMessage("Nhóm"),
+        "hotel": MessageLookupByLibrary.simpleMessage("Khách sạn"),
         "idCardNumber":
             MessageLookupByLibrary.simpleMessage("Căn cước công dân"),
         "inclusiveness": MessageLookupByLibrary.simpleMessage("SỰ TOÀN DIỆN"),
@@ -78,8 +82,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "preorder": MessageLookupByLibrary.simpleMessage("Đặt hàng trước"),
         "promotions":
             MessageLookupByLibrary.simpleMessage("Chương trình\nkhuyến mãi"),
-        "salesStaffCharge": MessageLookupByLibrary.simpleMessage(
+        "salesNameStaffCharge": MessageLookupByLibrary.simpleMessage(
             "Nhân viên bán hàng phụ trách"),
+        "salesPhoneNumberStaffCharge":
+            MessageLookupByLibrary.simpleMessage("SĐT nhân viên bán hàng"),
+        "selectAvatarFromCamera":
+            MessageLookupByLibrary.simpleMessage("Chọn ảnh từ camera"),
+        "selectAvatarFromGallery":
+            MessageLookupByLibrary.simpleMessage("Chọn ảnh từ bộ sưu tập"),
+        "showFullAvatar":
+            MessageLookupByLibrary.simpleMessage("Xem ảnh đại điện"),
         "store": MessageLookupByLibrary.simpleMessage("Cửa hàng")
       };
 }
