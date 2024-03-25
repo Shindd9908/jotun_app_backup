@@ -45,7 +45,6 @@
   "@tripScreen" : {
     "description" : "Trip screen"
   },
-  "explainJourney": "Hãy nhập vai vào từng khu vực phòng thí\nnghiệm để kiểm chứng siêu phẩm\nJotashield Bền màu toàn diện",
   "explainClaimReward1": "Quý khách vui lòng trải nghiệm đủ",
   "fourAreas": "4 khu vực",
   "explainClaimReward2": "để nhận quà tặng từ Jotun!",
@@ -58,6 +57,8 @@
   "gameRule": "Luật chơi",
   "explainRule": "Trong vòng 60 giây, lật tìm các\nmảnh ghép giống nhau",
   "startGame": "Bắt đầu chơi",
+  "exploreTheProductLine": "Khám phá dòng sản phẩm",
+  "productName": "Jotun Jotashield bền màu\ntoàn diện",
 
   "errorFieldRequired": "Thông tin không được để trống",
   "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",

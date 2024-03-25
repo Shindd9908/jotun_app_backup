@@ -66,7 +66,7 @@ class JourneyItem extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Colors.black.withOpacity(unlock ? 0.4 : 0.95),
+                  color: Colors.black.withOpacity(unlock ? 0.6 : 0.95),
                 ),
               ),
               Positioned(
@@ -75,15 +75,16 @@ class JourneyItem extends StatelessWidget {
                   children: [
                     Image.asset(
                       unlock ? AppAssets.iconMarked : AppAssets.iconLockJourneyItem,
-                      width: 8.w,
-                      height: 8.w,
+                      width: 9.w,
+                      height: 9.w,
                     ),
                     const SizedBox(height: 4),
                     TextWidget(
                       text: unlock ? S.of(context).completed.toUpperCase() : 'QUÉT MÃ MỞ KHÓA\nKHU VỰC CHỤP ẢNH',
                       color: AppColor.colorMainWhite,
-                      fontSize: unlock ? 10.sp : 8.sp,
+                      fontSize: unlock ? 12.sp : 8.sp,
                       textAlign: TextAlign.center,
+                      fontWeight: FontWeight.w900,
                     ),
                   ],
                 ),

@@ -32,4 +32,10 @@ class AppAssets {
   static const iconCoupon = 'assets/icons/icon_coupon.png';
   static const iconAccount = 'assets/icons/icon_account.png';
   static const iconImage = 'assets/icons/icon_image.png';
+
+  //Mini game
+  static const iconStar = 'assets/icons/mini_game/icon_star.png';
+  static const iconTimer = 'assets/icons/mini_game/icon_timer.png';
+  static const itemQuestionMark = 'assets/icons/mini_game/item_question_mark.png';
+  static const itemMiniGame1 = 'assets/icons/mini_game/item_mini_game_1.png';
 }

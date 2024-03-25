@@ -4,6 +4,7 @@ import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
+import 'package:jotub_app/utils/global_widgets/custom_back_button.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:sizer/sizer.dart';
@@ -20,16 +21,7 @@ class JourneyScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: 8.w,
             ),
-            child: GestureDetector(
-              onTap: () => Navigator.of(context).pop(),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Image.asset(
-                  AppAssets.iconArrowBack,
-                  width: 8.w,
-                ),
-              ),
-            ),
+            child: const CustomBackButton(),
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -44,48 +36,19 @@ class JourneyScreen extends StatelessWidget {
           Image.asset(
             AppAssets.imgBanner2,
           ),
-          Expanded(
-            child: Center(
-              child: TextWidget(
-                text: S.of(context).explainJourney,
-                color: AppColor.colorMainYellow,
-                fontSize: 11.sp,
-                textAlign: TextAlign.center,
-              ),
+          const Padding(
+            padding: EdgeInsets.only(
+              top: 60,
+              bottom: 32,
             ),
-          ),
-          const Wrap(
-            children: [
-              JourneyItem(),
-              JourneyItem(unlock: false),
-              JourneyItem(unlock: false),
-              JourneyItem(unlock: false),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: TextWidget(
-              text: S.of(context).explainClaimReward1,
-              color: AppColor.colorMainWhite,
-              fontSize: 14.sp,
+            child: Wrap(
+              children: [
+                JourneyItem(),
+                JourneyItem(unlock: false),
+                JourneyItem(unlock: false),
+                JourneyItem(unlock: false),
+              ],
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              TextWidget(
-                text: S.of(context).fourAreas,
-                color: AppColor.colorMainYellow,
-                fontSize: 16.sp,
-              ),
-              TextWidget(
-                text: ' ${S.of(context).explainClaimReward2}',
-                color: AppColor.colorMainWhite,
-                fontSize: 14.sp,
-                height: 1.55,
-              ),
-            ],
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 12),
@@ -93,6 +56,35 @@ class JourneyScreen extends StatelessWidget {
               title: S.of(context).claimRewardButton,
               widthButton: 60.w,
               textColor: AppColor.colorMainGray,
+            ),
+          ),
+          Expanded(
+            child: Column(
+              children: [
+                TextWidget(
+                  text: S.of(context).explainClaimReward1,
+                  color: AppColor.colorMainWhite,
+                  fontSize: 14.sp,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    TextWidget(
+                      text: S.of(context).fourAreas,
+                      color: AppColor.colorMainYellow,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w900,
+                    ),
+                    TextWidget(
+                      text: ' ${S.of(context).explainClaimReward2}',
+                      color: AppColor.colorMainWhite,
+                      fontSize: 14.sp,
+                      height: 1.55,
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],

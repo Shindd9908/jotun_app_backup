@@ -13,7 +13,6 @@ import "package:jotub_app/features/mini_game/presentation/ui/screens/introduce_m
 import "package:jotub_app/features/mini_game/presentation/ui/screens/mini_game_screen.dart";
 import "package:jotub_app/features/schedule/presentation/ui/screens/schedule_screen.dart";
 import "package:jotub_app/features/trip/presentation/ui/screens/trip_screen.dart";
-import "package:jotub_app/utils/constants/key_preference.dart";
 import "package:jotub_app/utils/routers/paths.dart";
 
 class AppRoutes {

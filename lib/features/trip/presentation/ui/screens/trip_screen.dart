@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jotub_app/features/trip/presentation/ui/widgets/detail_trip.dart';
 import 'package:jotub_app/theme/assets.dart';
+import 'package:jotub_app/utils/global_widgets/custom_back_button.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:sizer/sizer.dart';
 
@@ -30,16 +31,7 @@ class _TripScreenState extends State<TripScreen> {
       ),
       child: Column(
         children: [
-          GestureDetector(
-            onTap: () => Navigator.of(context).pop(),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Image.asset(
-                AppAssets.iconArrowBack,
-                width: 8.w,
-              ),
-            ),
-          ),
+          const CustomBackButton(),
           Padding(
             padding: EdgeInsets.only(
               top: 42,
