@@ -13,6 +13,7 @@ import "package:jotub_app/features/mini_game/presentation/ui/screens/introduce_m
 import "package:jotub_app/features/mini_game/presentation/ui/screens/mini_game_screen.dart";
 import "package:jotub_app/features/schedule/presentation/ui/screens/schedule_screen.dart";
 import "package:jotub_app/features/trip/presentation/ui/screens/trip_screen.dart";
+import "package:jotub_app/utils/constants/key_preferences.dart";
 import "package:jotub_app/utils/routers/paths.dart";
 
 class AppRoutes {
@@ -42,7 +43,7 @@ class AppRoutes {
       case AppPaths.miniGameScreen:
         return MaterialPageRoute(builder: (_) => const MiniGameScreen());
       default:
-        Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreference.kStatusConfirmAccountDone) == true
+        Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true
             ? const SplashScreen()
             : const SelectObjectUseScreen();
         return MaterialPageRoute(builder: (_) => widget);

@@ -3,8 +3,8 @@ import 'package:jotub_app/features/mini_game/presentation/ui/widgets/sample_boar
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/global_widgets/arrow_back_widget.dart';
 import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
-import 'package:jotub_app/utils/global_widgets/custom_back_button.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
@@ -19,7 +19,7 @@ class IntroduceMiniGame extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 4.w),
       child: Column(
         children: [
-          const CustomBackButton(),
+          const ArrowBackWidget(),
           Padding(
             padding: const EdgeInsets.only(top: 28),
             child: Image.asset(

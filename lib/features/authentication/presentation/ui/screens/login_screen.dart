@@ -4,6 +4,7 @@ import 'package:jotub_app/features/authentication/presentation/bloc/authenticati
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/global_widgets/arrow_back_widget.dart';
 import 'package:jotub_app/utils/global_widgets/background_screen_form_field_widget.dart';
 import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
 import 'package:jotub_app/utils/global_widgets/custom_flush_bar.dart';
@@ -50,16 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () => Navigator.of(context).pop(),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Image.asset(
-                      AppAssets.iconArrowBack,
-                      width: 8.w,
-                    ),
-                  ),
-                ),
+                const ArrowBackWidget(),
                 SizedBox(height: 8.h),
                 Image.asset(
                   AppAssets.imgLogoApp,

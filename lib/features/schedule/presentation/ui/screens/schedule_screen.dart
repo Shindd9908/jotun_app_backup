@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jotub_app/features/schedule/presentation/ui/widgets/detail_schedule.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
-import 'package:jotub_app/utils/global_widgets/custom_back_button.dart';
+import 'package:jotub_app/utils/global_widgets/arrow_back_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
@@ -19,7 +19,7 @@ class ScheduleScreen extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const CustomBackButton(),
+          const ArrowBackWidget(),
           Padding(
             padding: EdgeInsets.only(
               top: 52,

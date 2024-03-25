@@ -3,7 +3,7 @@ import 'package:jotub_app/features/mini_game/presentation/ui/widgets/mini_game_b
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
-import 'package:jotub_app/utils/global_widgets/custom_back_button.dart';
+import 'package:jotub_app/utils/global_widgets/arrow_back_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:sizer/sizer.dart';
@@ -18,7 +18,7 @@ class MiniGameScreen extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.w),
-            child: const CustomBackButton(),
+            child: const ArrowBackWidget(),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 28),
@@ -44,7 +44,7 @@ class MiniGameScreen extends StatelessWidget {
             textAlign: TextAlign.center,
             height: 1.2,
           ),
-          MiniGameBoard(),
+          const MiniGameBoard(),
         ],
       ),
     );
