@@ -23,7 +23,7 @@ class HomeRepositoryImpl implements HomeRepository {
         List<BannerEntity> listBannerMapper = data.map((e) => e.bannerEntity).toList();
         return Right(listBannerMapper);
       } else {
-        return Left(result.message!);
+        return Left(result.message ?? "");
       }
     } catch (error) {
       return ApiServices.handleApiError(error);
@@ -38,7 +38,21 @@ class HomeRepositoryImpl implements HomeRepository {
         final data = result.getValue() as UserLoginResponse;
         return Right(data.userInfoEntity);
       } else {
-        return Left(result.message!);
+        return Left(result.message ?? "");
+      }
+    } catch (error) {
+      return ApiServices.handleApiError(error);
+    }
+  }
+
+  @override
+  Future<Either<String, String>> updateUserAvatar(String binaryImageAvatar) async {
+    try {
+      final result = await homeApi.updateUserAvatar(binaryImageAvatar);
+      if (result.isSuccess) {
+        return Right(result.message ?? "");
+      } else {
+        return Left(result.message ?? "");
       }
     } catch (error) {
       return ApiServices.handleApiError(error);

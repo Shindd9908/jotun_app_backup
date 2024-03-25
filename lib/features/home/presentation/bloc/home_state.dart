@@ -34,7 +34,7 @@ class FetchListBannerFailState extends HomeState {
   List<Object> get props => [message];
 }
 
-// ---------------- Fetch list banner ----------------------
+// ---------------- Fetch user profile ----------------------
 
 class FetchUserProfileLoadingState extends HomeState {
   @override
@@ -54,6 +54,31 @@ class FetchUserProfileFailState extends HomeState {
   final String message;
 
   const FetchUserProfileFailState({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+// ---------------- Fetch user profile ----------------------
+
+class UpdateUserAvatarLoadingState extends HomeState {
+  @override
+  List<Object> get props => [];
+}
+
+class UpdateUserAvatarSuccessState extends HomeState {
+  final String message;
+
+  const UpdateUserAvatarSuccessState({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+class UpdateUserAvatarFailState extends HomeState {
+  final String message;
+
+  const UpdateUserAvatarFailState({required this.message});
 
   @override
   List<Object> get props => [message];

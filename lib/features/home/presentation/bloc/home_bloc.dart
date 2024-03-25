@@ -12,6 +12,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({required this.homeRepository}) : super(HomeInitial()) {
     on<FetchListBannerEvent>(_fetchListBanner);
     on<FetchUserProfileEvent>(_fetchUserProfile);
+    on<UpdateUserAvatarEvent>(_updateUserAvatar);
   }
 
   final HomeRepository homeRepository;
@@ -31,6 +32,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     result.fold(
       (l) => emit(FetchUserProfileFailState(message: l)),
       (r) => emit(FetchUserProfileSuccessState(userInfo: r)),
+    );
+  }
+
+  Future<void> _updateUserAvatar(UpdateUserAvatarEvent event, Emitter<HomeState> emit) async {
+    emit(UpdateUserAvatarLoadingState());
+    final result = await homeRepository.updateUserAvatar(event.binaryImageAvatar);
+    result.fold(
+      (l) => emit(UpdateUserAvatarFailState(message: l)),
+      (r) => emit(UpdateUserAvatarSuccessState(message: r)),
     );
   }
 }

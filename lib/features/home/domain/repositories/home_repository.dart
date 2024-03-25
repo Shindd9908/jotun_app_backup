@@ -6,4 +6,6 @@ abstract class HomeRepository {
   Future<Either<String, List<BannerEntity>>> fetchListBanner();
 
   Future<Either<String, UserInfoEntity>> fetchUserProfile();
+
+  Future<Either<String, String>> updateUserAvatar(String binaryImageAvatar);
 }

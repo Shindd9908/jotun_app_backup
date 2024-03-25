@@ -15,4 +15,7 @@ abstract class HomeApi {
 
   @GET("/profile")
   Future<ApiResponse<UserLoginResponse>> fetchUserProfile();
+
+  @GET("/update-user-avatar")
+  Future<ApiResponse<String>> updateUserAvatar(String binaryImageAvatar);
 }
