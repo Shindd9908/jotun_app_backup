@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jotub_app/core/preferences/shared_preferences_manager.dart';
-import 'package:jotub_app/di/dependency_injection.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
-import 'package:jotub_app/utils/constants/key_preference.dart';
 import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
@@ -19,16 +16,6 @@ class SelectObjectUseScreen extends StatefulWidget {
 }
 
 class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (getIt<SharedPreferencesManager>().getValue<bool>(KeyPreference.kStatusConfirmAccountDone) == true) {
-        Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.splashScreen, (route) => false);
-      }
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +59,7 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
             ),
             SizedBox(height: AppHelper.setMultiDeviceSize(16, 16)),
             InkWell(
-              onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.loginScreen, arguments: {'userRole': 3}, (route) => false),
+              onTap: () => Navigator.of(context).pushNamed(AppPaths.loginScreen, arguments: {'userRole': 3}),
               child: ButtonSubmitWidget(
                 title: S.of(context).agency,
                 widthButton: 70.w,
@@ -80,7 +67,7 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
             ),
             SizedBox(height: AppHelper.setMultiDeviceSize(16, 16)),
             InkWell(
-              onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.loginScreen, arguments: {'userRole': 2}, (route) => false),
+              onTap: () => Navigator.of(context).pushNamed(AppPaths.loginScreen, arguments: {'userRole': 2}),
               child: ButtonSubmitWidget(
                 title: S.of(context).memberOfJotun,
                 widthButton: 70.w,
