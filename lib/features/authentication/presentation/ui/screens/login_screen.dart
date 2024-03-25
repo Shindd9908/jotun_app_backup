@@ -45,11 +45,22 @@ class _LoginScreenState extends State<LoginScreen> {
         mainUIContent: Container(
           width: 100.w,
           height: 100.h - MediaQuery.of(context).viewInsets.bottom,
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 10.h, left: 32, right: 32),
+          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 2.h, left: 32, right: 32),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                GestureDetector(
+                  onTap: () => Navigator.of(context).pop(),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Image.asset(
+                      AppAssets.iconArrowBack,
+                      width: 8.w,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 8.h),
                 Image.asset(
                   AppAssets.imgLogoApp,
                   width: AppHelper.setMultiDeviceSize(40.w, 40.w),
