@@ -34,7 +34,7 @@ class Constants {
       {
         "featureName": S.of(context).miniGame,
         "pathIcon": AppAssets.iconMiniGame,
-        "pathScreenNavigateOnTap": AppPaths.tripScreen,
+        "pathScreenNavigateOnTap": AppPaths.introduceMiniGameScreen,
       },
       {
         "featureName": S.of(context).promotions,

@@ -63,10 +63,11 @@ class DetailTrip extends StatelessWidget {
                         text: content,
                         color: AppColor.colorMainWhite,
                         fontSize: AppHelper.setMultiDeviceSize(19.sp, 14.sp),
-                        fontWeight: FontWeight.w900,
+                        fontWeight: FontWeight.w500,
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(
+                      Container(
+                        margin: const EdgeInsets.only(top: 4),
                         width: 28.w,
                         child: const Divider(
                           color: Colors.white,

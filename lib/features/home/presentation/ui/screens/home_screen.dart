@@ -61,31 +61,34 @@ class _HomeScreenState extends State<HomeScreen> {
                                   )
                                 : Image.asset(AppAssets.iconAvatar, width: AppHelper.setMultiDeviceSize(32, 32)),
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              GestureDetector(
-                                onTap: () => Navigator.of(context).pushNamed(
-                                  AppPaths.profileScreen,
-                                  arguments: {'userInfo': state is FetchUserProfileSuccessState ? state.userInfo : null},
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                GestureDetector(
+                                  onTap: () => Navigator.of(context).pushNamed(
+                                    AppPaths.profileScreen,
+                                    arguments: {'userInfo': state is FetchUserProfileSuccessState ? state.userInfo : null},
+                                  ),
+                                  child: TextWidget(
+                                    text: state is FetchUserProfileSuccessState ? state.userInfo.name : '',
+                                    color: AppColor.colorMainWhite,
+                                    fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                                    fontWeight: FontWeight.w700,
+                                    height: 1,
+                                  ),
                                 ),
-                                child: TextWidget(
-                                  text: state is FetchUserProfileSuccessState ? state.userInfo.name : '',
-                                  color: AppColor.colorMainWhite,
-                                  fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                                const SizedBox(height: 4),
+                                TextWidget(
+                                  text: '${S.of(context).group} ${state is FetchUserProfileSuccessState ? state.userInfo.groupId.toString() : ''}',
+                                  color: AppColor.colorMainYellow,
+                                  fontSize: AppHelper.setMultiDeviceSize(14.sp, 11.sp),
                                   fontWeight: FontWeight.w700,
                                   height: 1,
                                 ),
-                              ),
-                              const SizedBox(height: 4),
-                              TextWidget(
-                                text: '${S.of(context).group} ${state is FetchUserProfileSuccessState ? state.userInfo.groupId.toString() : ''}',
-                                color: AppColor.colorMainYellow,
-                                fontSize: AppHelper.setMultiDeviceSize(14.sp, 11.sp),
-                                fontWeight: FontWeight.w700,
-                                height: 1,
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       );

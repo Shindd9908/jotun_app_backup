@@ -1,5 +1,5 @@
 {
-  "@@locale" : "en",
+  "@@locale": "en",
 
   "journeyDiscovery": "HÀNH TRÌNH KHÁM PHÁ",
   "inclusiveness": "SỰ TOÀN DIỆN",
@@ -29,22 +29,36 @@
   "selectAvatarFromCamera": "Chọn ảnh từ camera",
   "selectAvatarFromGallery": "Chọn ảnh từ bộ sưu tập",
 
+  "@homeScreen" : {
+    "description" : "Home screen"
+  },
   "incomingEvent": "Sự kiện sắp diễn ra",
   "goToDetailTrip": "Xem chi tiết hành trình",
   "feature": "Tính năng",
-
   "exploreSchedule": "Khám phá\nlịch trình",
   "newProductInformation": "Thông tin sản\nphẩm mới",
   "experienceAndReceiveGift": "Trải nghiệm &\nnhận quà",
   "miniGame": "Mini game\n",
   "preorder": "Đặt hàng trước",
   "promotions": "Chương trình\nkhuyến mãi",
-  "explainJourney": "Hãy nhập vai vào từng khu vực phòng thí\nnghiệm để kiểm chứng siêu phẩm\nJotashield Bền màu toàn diện",
+
+  "@tripScreen" : {
+    "description" : "Trip screen"
+  },
   "explainClaimReward1": "Quý khách vui lòng trải nghiệm đủ",
   "fourAreas": "4 khu vực",
   "explainClaimReward2": "để nhận quà tặng từ Jotun!",
   "claimRewardButton": "Nhận quà",
   "completed": "Đã hoàn thành",
+
+  "@miniGameScreen" : {
+    "description" : "Mini game screen"
+  },
+  "gameRule": "Luật chơi",
+  "explainRule": "Trong vòng 60 giây, lật tìm các\nmảnh ghép giống nhau",
+  "startGame": "Bắt đầu chơi",
+  "exploreTheProductLine": "Khám phá dòng sản phẩm",
+  "productName": "Jotun Jotashield bền màu\ntoàn diện",
 
   "errorFieldRequired": "Thông tin không được để trống",
   "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",

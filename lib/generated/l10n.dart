@@ -390,16 +390,6 @@ class S {
     );
   }
 
-  /// `Hãy nhập vai vào từng khu vực phòng thí\nnghiệm để kiểm chứng siêu phẩm\nJotashield Bền màu toàn diện`
-  String get explainJourney {
-    return Intl.message(
-      'Hãy nhập vai vào từng khu vực phòng thí\nnghiệm để kiểm chứng siêu phẩm\nJotashield Bền màu toàn diện',
-      name: 'explainJourney',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Quý khách vui lòng trải nghiệm đủ`
   String get explainClaimReward1 {
     return Intl.message(
@@ -445,6 +435,56 @@ class S {
     return Intl.message(
       'Đã hoàn thành',
       name: 'completed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Luật chơi`
+  String get gameRule {
+    return Intl.message(
+      'Luật chơi',
+      name: 'gameRule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Trong vòng 60 giây, lật tìm các\nmảnh ghép giống nhau`
+  String get explainRule {
+    return Intl.message(
+      'Trong vòng 60 giây, lật tìm các\nmảnh ghép giống nhau',
+      name: 'explainRule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bắt đầu chơi`
+  String get startGame {
+    return Intl.message(
+      'Bắt đầu chơi',
+      name: 'startGame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Khám phá dòng sản phẩm`
+  String get exploreTheProductLine {
+    return Intl.message(
+      'Khám phá dòng sản phẩm',
+      name: 'exploreTheProductLine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Jotun Jotashield bền màu\ntoàn diện`
+  String get productName {
+    return Intl.message(
+      'Jotun Jotashield bền màu\ntoàn diện',
+      name: 'productName',
       desc: '',
       args: [],
     );

@@ -8,7 +8,7 @@ import "package:jotub_app/features/authentication/data/models/confirm_account_re
 import "package:jotub_app/features/authentication/data/models/login_request.dart";
 import "package:jotub_app/features/authentication/data/models/user_login_response.dart";
 import "package:jotub_app/features/authentication/domain/repositories/user_authentication_repository.dart";
-import "package:jotub_app/utils/constants/key_preference.dart";
+import "package:jotub_app/utils/constants/key_preferences.dart";
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final AuthenticationApi authenticationApi;
@@ -22,7 +22,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       final authentic = await authenticationApi.login(LoginRequest(username: username, password: password, role: userRole));
       if (authentic.isSuccess) {
         final data = authentic.getValue() as UserLoginResponse;
-        sharedPreferencesManager.putValue(KeyPreference.kAccessToken, data.accessToken);
+        sharedPreferencesManager.putValue(KeyPreferences.kAccessToken, data.accessToken);
         return Right({'data': data.userInfoEntity, 'message': authentic.message});
       } else {
         return Left(authentic.message!);
@@ -57,7 +57,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     try {
       final authentic = await authenticationApi.confirmAccount(ConfirmAccountRequest(identityCardNumber: identityCardNumber));
       if (authentic.isSuccess) {
-        sharedPreferencesManager.putValue<bool>(KeyPreference.kStatusConfirmAccountDone, true);
+        sharedPreferencesManager.putValue<bool>(KeyPreferences.kStatusConfirmAccountDone, true);
         return Right(authentic.message!);
       } else {
         return Left(authentic.message!);

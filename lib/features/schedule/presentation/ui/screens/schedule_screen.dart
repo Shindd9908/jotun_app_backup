@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:jotub_app/features/schedule/presentation/ui/widgets/detail_schedule.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/global_widgets/arrow_back_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
@@ -18,16 +19,7 @@ class ScheduleScreen extends StatelessWidget {
       ),
       child: Column(
         children: [
-          GestureDetector(
-            onTap: () => Navigator.of(context).pop(),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Image.asset(
-                AppAssets.iconArrowBack,
-                width: 8.w,
-              ),
-            ),
-          ),
+          const ArrowBackWidget(),
           Padding(
             padding: EdgeInsets.only(
               top: 52,

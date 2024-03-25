@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:jotub_app/features/trip/presentation/ui/widgets/detail_trip.dart';
 import 'package:jotub_app/theme/assets.dart';
+import 'package:jotub_app/utils/global_widgets/arrow_back_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:sizer/sizer.dart';
 
-class TripScreen extends StatelessWidget {
+class TripScreen extends StatefulWidget {
   const TripScreen({super.key});
+
+  @override
+  State<TripScreen> createState() => _TripScreenState();
+}
+
+class _TripScreenState extends State<TripScreen> {
+  final ScrollController _controller = ScrollController();
+
+  void _scrollDown() {
+    _controller.animateTo(
+      _controller.position.maxScrollExtent,
+      duration: const Duration(seconds: 1),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,28 +31,20 @@ class TripScreen extends StatelessWidget {
       ),
       child: Column(
         children: [
-          GestureDetector(
-            onTap: () => Navigator.of(context).pop(),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Image.asset(
-                AppAssets.iconArrowBack,
-                width: 8.w,
-              ),
-            ),
-          ),
+          const ArrowBackWidget(),
           Padding(
             padding: EdgeInsets.only(
-              top: 52,
+              top: 42,
               bottom: 12,
               left: 8.w,
               right: 8.w,
             ),
             child: Image.asset(AppAssets.imgTitle),
           ),
-          const Expanded(
+          Expanded(
             child: SingleChildScrollView(
-              child: Column(
+              controller: _controller,
+              child: const Column(
                 children: [
                   DetailTrip(
                     textDay: 'NGÀY 1:',
@@ -52,6 +60,16 @@ class TripScreen extends StatelessWidget {
                   DetailTrip(unlock: false),
                   DetailTrip(unlock: false),
                 ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: GestureDetector(
+              onTap: _scrollDown,
+              child: SizedBox(
+                height: 24,
+                child: Image.asset(AppAssets.iconArrowDown),
               ),
             ),
           ),
