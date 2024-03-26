@@ -59,6 +59,29 @@ dependencies:
   # get image camera or gallery
   image_picker: ^1.0.4
 
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.2.8
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/images/image_splash_screen.png
+  android: true
+  ios: true
+  android_gravity: fill
+  ios_content_mode: scaleToFill
+
+  android_12:
+    image: assets/images/image_splash_screen.png
+    icon_background_color: "#FFFFFF"
+    android_gravity: fill
+    ios_content_mode: scaleToFill
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/icon_app.jpg"
+  min_sdk_android: 29
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -71,14 +94,6 @@ dev_dependencies:
   mockito: ^5.4.4
   mocktail: ^1.0.3
   dartz_test: ^0.1.1
-  #icon:
-  flutter_launcher_icons: ^0.13.1
-
-flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/icons/icon_app.jpg"
-  min_sdk_android: 29
 
 flutter:
 

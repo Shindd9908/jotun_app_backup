@@ -44,7 +44,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const MiniGameScreen());
       default:
         Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true
-            ? const SplashScreen()
+            ? const HomeScreen()
             : const SelectObjectUseScreen();
         return MaterialPageRoute(builder: (_) => widget);
     }
