@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:jotub_app/core/services/api_service.dart';
 import 'package:jotub_app/features/authentication/data/mapper/authenticaton_mapper.dart';
@@ -46,9 +48,9 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Either<String, String>> updateUserAvatar(String binaryImageAvatar) async {
+  Future<Either<String, String>> updateUserAvatar(File fileImageAvatar) async {
     try {
-      final result = await homeApi.updateUserAvatar(binaryImageAvatar);
+      final result = await homeApi.updateUserAvatar(fileImageAvatar);
       if (result.isSuccess) {
         return Right(result.message ?? "");
       } else {

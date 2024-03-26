@@ -84,3 +84,28 @@ class ConfirmAccountFailState extends AuthenticationState {
   @override
   List<Object> get props => [message];
 }
+
+// --------------- Logout ---------------
+
+class LogoutLoadingState extends AuthenticationState {
+  @override
+  List<Object> get props => [];
+}
+
+class LogoutSuccessState extends AuthenticationState {
+  final String message;
+
+  const LogoutSuccessState({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+class LogoutFailState extends AuthenticationState {
+  final String message;
+
+  const LogoutFailState({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}

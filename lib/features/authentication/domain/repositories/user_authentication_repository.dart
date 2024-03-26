@@ -6,4 +6,6 @@ abstract class AuthenticationRepository {
   Future<Either<String, String>> changePassword(String username, int role, String oldPassword, String password, String passwordConfirmation);
 
   Future<Either<String, String>> confirmAccount(String identityCardNumber);
+
+  Future<Either<String, String>> logout();
 }

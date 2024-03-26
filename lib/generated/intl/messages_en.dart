@@ -51,13 +51,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Quý khách vui lòng trải nghiệm đủ"),
         "explainClaimReward2":
             MessageLookupByLibrary.simpleMessage("để nhận quà tặng từ Jotun!"),
-        "explainJourney": MessageLookupByLibrary.simpleMessage(
-            "Hãy nhập vai vào từng khu vực phòng thí\nnghiệm để kiểm chứng siêu phẩm\nJotashield Bền màu toàn diện"),
+        "explainRule": MessageLookupByLibrary.simpleMessage(
+            "Trong vòng 60 giây, lật tìm các\nmảnh ghép giống nhau"),
         "exploreSchedule":
             MessageLookupByLibrary.simpleMessage("Khám phá\nlịch trình"),
+        "exploreTheProductLine":
+            MessageLookupByLibrary.simpleMessage("Khám phá dòng sản phẩm"),
         "feature": MessageLookupByLibrary.simpleMessage("Tính năng"),
         "fourAreas": MessageLookupByLibrary.simpleMessage("4 khu vực"),
         "fullName": MessageLookupByLibrary.simpleMessage("Họ và tên"),
+        "gameRule": MessageLookupByLibrary.simpleMessage("Luật chơi"),
         "goToDetailTrip":
             MessageLookupByLibrary.simpleMessage("Xem chi tiết hành trình"),
         "group": MessageLookupByLibrary.simpleMessage("Nhóm"),
@@ -70,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "journeyDiscovery":
             MessageLookupByLibrary.simpleMessage("HÀNH TRÌNH KHÁM PHÁ"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+        "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "memberOfJotun":
             MessageLookupByLibrary.simpleMessage("Nhân viên Jotun"),
         "miniGame": MessageLookupByLibrary.simpleMessage("Mini game\n"),
@@ -80,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Tên đăng nhập"),
         "preorder": MessageLookupByLibrary.simpleMessage("Đặt hàng trước"),
+        "productName": MessageLookupByLibrary.simpleMessage(
+            "Jotun Jotashield bền màu\ntoàn diện"),
         "promotions":
             MessageLookupByLibrary.simpleMessage("Chương trình\nkhuyến mãi"),
         "salesNameStaffCharge": MessageLookupByLibrary.simpleMessage(
@@ -92,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Chọn ảnh từ bộ sưu tập"),
         "showFullAvatar":
             MessageLookupByLibrary.simpleMessage("Xem ảnh đại điện"),
+        "startGame": MessageLookupByLibrary.simpleMessage("Bắt đầu chơi"),
         "store": MessageLookupByLibrary.simpleMessage("Cửa hàng")
       };
 }

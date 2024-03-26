@@ -19,10 +19,10 @@ class FetchUserProfileEvent extends HomeEvent {
 }
 
 class UpdateUserAvatarEvent extends HomeEvent {
-  final String binaryImageAvatar;
+  final File fileImageAvatar;
 
-  const UpdateUserAvatarEvent({required this.binaryImageAvatar});
+  const UpdateUserAvatarEvent({required this.fileImageAvatar});
 
   @override
-  List<Object?> get props => [binaryImageAvatar];
+  List<Object?> get props => [fileImageAvatar];
 }

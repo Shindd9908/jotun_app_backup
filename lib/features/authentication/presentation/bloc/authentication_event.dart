@@ -36,3 +36,8 @@ class ConfirmAccountEvent extends AuthenticationEvent {
   @override
   List<Object?> get props => [identityCardNumber];
 }
+
+class LogoutEvent extends AuthenticationEvent {
+  @override
+  List<Object?> get props => [];
+}

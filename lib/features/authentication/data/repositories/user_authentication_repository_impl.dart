@@ -66,4 +66,20 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       return ApiServices.handleApiError(error);
     }
   }
+
+  @override
+  Future<Either<String, String>> logout() async {
+    try {
+      final authentic = await authenticationApi.logOut();
+      if (authentic.isSuccess) {
+        sharedPreferencesManager.putValue<String>(KeyPreferences.kAccessToken, '');
+        sharedPreferencesManager.putValue<bool>(KeyPreferences.kStatusConfirmAccountDone, false);
+        return Right(authentic.message!);
+      } else {
+        return Left(authentic.message!);
+      }
+    } catch (error) {
+      return ApiServices.handleApiError(error);
+    }
+  }
 }

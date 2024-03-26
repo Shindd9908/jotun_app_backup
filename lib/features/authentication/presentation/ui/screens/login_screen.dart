@@ -45,14 +45,14 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BackgroundScreenFormFieldWidget(
         mainUIContent: Container(
           width: 100.w,
-          height: 100.h - MediaQuery.of(context).viewInsets.bottom,
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 2.h, left: 32, right: 32),
+          height: 100.h - MediaQuery.of(context).viewInsets.bottom - MediaQuery.of(context).padding.top,
+          padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(2.h, 2.h), left: 32, right: 32),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const ArrowBackWidget(),
-                SizedBox(height: 8.h),
+                SizedBox(height: AppHelper.setMultiDeviceSize(6.h, 8.h)),
                 Image.asset(
                   AppAssets.imgLogoApp,
                   width: AppHelper.setMultiDeviceSize(40.w, 40.w),

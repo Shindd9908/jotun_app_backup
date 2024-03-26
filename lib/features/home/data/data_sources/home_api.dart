@@ -1,3 +1,5 @@
+import "dart:io";
+
 import "package:dio/dio.dart";
 import "package:jotub_app/core/models/api_response.dart";
 import "package:jotub_app/features/authentication/data/models/user_login_response.dart";
@@ -16,6 +18,7 @@ abstract class HomeApi {
   @GET("/profile")
   Future<ApiResponse<UserLoginResponse>> fetchUserProfile();
 
-  @GET("/update-user-avatar")
-  Future<ApiResponse<String>> updateUserAvatar(String binaryImageAvatar);
+  @POST("/update-user-avatar")
+  @MultiPart()
+  Future<ApiResponse<ApiResponse>> updateUserAvatar(@Part(name: "avatar") File fileImageAvatar);
 }

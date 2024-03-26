@@ -13,6 +13,7 @@
   "changePassword": "Đổi mật khẩu",
   "newPassword": "Mật khẩu mới",
   "confirmNewPassword": "Xác nhận mật khẩu mới",
+  "logout": "Đăng xuất",
 
   "accountInformation": "Thông tin tài khoản",
   "fullName": "Họ và tên",

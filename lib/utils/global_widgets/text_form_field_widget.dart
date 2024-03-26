@@ -128,7 +128,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
                   text: widget.errorMessageValidate,
                   color: AppColor.colorMainRed,
                   fontSize: AppHelper.setMultiDeviceSize(10.sp, 10.sp),
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.w700,
                   maxLine: 2,
                   textAlign: TextAlign.start,
                 ),

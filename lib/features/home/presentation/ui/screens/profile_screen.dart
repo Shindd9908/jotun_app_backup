@@ -1,18 +1,24 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jotub_app/features/authentication/domain/entities/user_authentication_entity.dart';
+import 'package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart';
+import 'package:jotub_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:jotub_app/features/home/presentation/ui/widgets/button_select_image_gallery_camera_widget.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/arrow_back_widget.dart';
 import 'package:jotub_app/utils/global_widgets/cache_image_widget.dart';
+import 'package:jotub_app/utils/global_widgets/custom_flush_bar.dart';
 import 'package:jotub_app/utils/global_widgets/popup_dialog_alert.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
+import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_form_field_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
+import 'package:jotub_app/utils/routers/paths.dart';
 import 'package:sizer/sizer.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -43,6 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       _salesPhoneNumberController.text = widget.userInfo?.salesPhoneNumber ?? '';
       _busNumberController.text = widget.userInfo?.busNo ?? '';
       _hotelNameController.text = widget.userInfo?.hotel ?? '';
+      _pathImageSelected.value = widget.userInfo?.avatar ?? '';
     }
     super.initState();
   }
@@ -102,6 +109,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   context,
                   ButtonSelectImageGalleryCameraWidget(callBackReturnImageSelected: (pathImage) {
                     _pathImageSelected.value = pathImage;
+                    context.read<HomeBloc>().add(const FetchUserProfileEvent());
                     Navigator.of(context).pop();
                   }),
                 ),
@@ -166,18 +174,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           borderRadius: BorderRadius.circular(100),
                           child: ValueListenableBuilder(
                             valueListenable: _pathImageSelected,
-                            builder: (_, value, __) => _pathImageSelected.value != '' || (widget.userInfo?.avatar != null && widget.userInfo!.avatar!.isNotEmpty)
-                                ? _pathImageSelected.value != ''
-                                    ? Image.file(
-                                        File(_pathImageSelected.value),
-                                        width: AppHelper.setMultiDeviceSize(120, 120),
-                                        height: AppHelper.setMultiDeviceSize(120, 120),
-                                        fit: BoxFit.cover,
-                                      )
-                                    : CacheImageWidget(
+                            builder: (_, value, __) => _pathImageSelected.value != ''
+                                ? _pathImageSelected.value.toString().contains('https://')
+                                    ? CacheImageWidget(
                                         imageUrl: widget.userInfo!.avatar,
                                         widthImage: AppHelper.setMultiDeviceSize(120, 120),
                                         heightImage: AppHelper.setMultiDeviceSize(120, 120),
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Image.file(
+                                        File(_pathImageSelected.value),
+                                        width: AppHelper.setMultiDeviceSize(120, 120),
+                                        height: AppHelper.setMultiDeviceSize(120, 120),
                                         fit: BoxFit.cover,
                                       )
                                 : Image.asset(
@@ -264,6 +272,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           hintText: S.of(context).hotel,
                           isReadOnly: true,
                         ),
+                        BlocConsumer<AuthenticationBloc, AuthenticationState>(
+                          listenWhen: (previous, current) => current is LogoutSuccessState || current is LogoutFailState,
+                          listener: (context, state) {
+                            if (state is LogoutSuccessState) {
+                              Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.selectObjectUseScreen, (route) => false);
+                              CustomFlushBar.showAlertFlushBar(context, state.message, isSuccess: true);
+                            }
+                            if (state is LogoutFailState) {
+                              CustomFlushBar.showAlertFlushBar(context, state.message);
+                            }
+                          },
+                          buildWhen: (previous, current) => current is LogoutSuccessState || current is LogoutFailState || current is LogoutLoadingState,
+                          builder: (context, state) {
+                            return GestureDetector(
+                              onTap: () => state is! LogoutLoadingState ? context.read<AuthenticationBloc>().add(LogoutEvent()) : null,
+                              child: Container(
+                                alignment: Alignment.center,
+                                width: double.infinity,
+                                margin: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(24, 24)),
+                                padding: const EdgeInsets.symmetric(vertical: 12),
+                                decoration: BoxDecoration(
+                                  color: AppColor.colorMainRed,
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: Border.all(width: 1, color: AppColor.colorMainRed),
+                                ),
+                                child: state is LogoutLoadingState
+                                    ? SpinKitLoadingWidget(
+                                        size: AppHelper.setMultiDeviceSize(20.sp, 16.sp),
+                                        color: AppColor.colorMainWhite,
+                                      )
+                                    : TextWidget(
+                                        text: S.of(context).logout,
+                                        color: AppColor.colorMainWhite,
+                                        fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                              ),
+                            );
+                          },
+                        ),
                       ],
                     ),
                   )
@@ -304,7 +352,14 @@ class AvatarFullScreenWidget extends StatelessWidget {
               child: const Icon(Icons.clear, size: 18, color: AppColor.colorMainWhite),
             ),
           ),
-          Expanded(child: Image.file(File(imagePath), width: 100.w, fit: BoxFit.fitWidth)),
+          Expanded(
+              child: imagePath.contains('https://')
+                  ? CacheImageWidget(
+                      imageUrl: imagePath,
+                      widthImage: 100.w,
+                      fit: BoxFit.fitWidth,
+                    )
+                  : Image.file(File(imagePath), width: 100.w, fit: BoxFit.fitWidth)),
         ],
       ),
     );

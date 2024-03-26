@@ -58,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     imageUrl: state.userInfo.avatar,
                                     widthImage: AppHelper.setMultiDeviceSize(32, 32),
                                     heightImage: AppHelper.setMultiDeviceSize(32, 32),
+                                    radius: 100,
                                   )
                                 : Image.asset(AppAssets.iconAvatar, width: AppHelper.setMultiDeviceSize(32, 32)),
                           ),

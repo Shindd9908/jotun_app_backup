@@ -4,6 +4,7 @@ import 'package:jotub_app/features/authentication/presentation/bloc/authenticati
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/global_widgets/arrow_back_widget.dart';
 import 'package:jotub_app/utils/global_widgets/background_screen_form_field_widget.dart';
 import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
 import 'package:jotub_app/utils/global_widgets/custom_flush_bar.dart';
@@ -39,12 +40,14 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       body: BackgroundScreenFormFieldWidget(
         mainUIContent: Container(
           width: 100.w,
-          height: 100.h - MediaQuery.of(context).viewInsets.bottom,
-          padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(6.h, 10.h), left: 32, right: 32),
+          height: 100.h - MediaQuery.of(context).viewInsets.bottom - MediaQuery.of(context).padding.top,
+          padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(2.h, 2.h), left: 32, right: 32),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const ArrowBackWidget(),
+                SizedBox(height: AppHelper.setMultiDeviceSize(6.h, 8.h)),
                 Image.asset(
                   AppAssets.imgLogoApp,
                   width: AppHelper.setMultiDeviceSize(40.w, 40.w),

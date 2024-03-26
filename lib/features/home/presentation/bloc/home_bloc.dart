@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:jotub_app/features/authentication/domain/entities/user_authentication_entity.dart';
@@ -37,7 +39,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _updateUserAvatar(UpdateUserAvatarEvent event, Emitter<HomeState> emit) async {
     emit(UpdateUserAvatarLoadingState());
-    final result = await homeRepository.updateUserAvatar(event.binaryImageAvatar);
+    final result = await homeRepository.updateUserAvatar(event.fileImageAvatar);
     result.fold(
       (l) => emit(UpdateUserAvatarFailState(message: l)),
       (r) => emit(UpdateUserAvatarSuccessState(message: r)),

@@ -160,6 +160,16 @@ class S {
     );
   }
 
+  /// `Đăng xuất`
+  String get logout {
+    return Intl.message(
+      'Đăng xuất',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Thông tin tài khoản`
   String get accountInformation {
     return Intl.message(

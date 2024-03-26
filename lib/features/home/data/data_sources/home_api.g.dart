@@ -84,16 +84,25 @@ class _HomeApi implements HomeApi {
   }
 
   @override
-  Future<ApiResponse<String>> updateUserAvatar(String binaryImageAvatar) async {
+  Future<ApiResponse<ApiResponse<dynamic>>> updateUserAvatar(
+      File fileImageAvatar) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final _data = FormData();
+    _data.files.add(MapEntry(
+      'avatar',
+      MultipartFile.fromFileSync(
+        fileImageAvatar.path,
+        filename: fileImageAvatar.path.split(Platform.pathSeparator).last,
+      ),
+    ));
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<String>>(Options(
-      method: 'GET',
+        _setStreamType<ApiResponse<ApiResponse<dynamic>>>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: 'multipart/form-data',
     )
             .compose(
               _dio.options,
@@ -106,9 +115,12 @@ class _HomeApi implements HomeApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<String>.fromJson(
+    final value = ApiResponse<ApiResponse<dynamic>>.fromJson(
       _result.data!,
-      (json) => json as String,
+      (json) => ApiResponse<dynamic>.fromJson(
+        json as Map<String, dynamic>,
+        (json) => json as dynamic,
+      ),
     );
     return value;
   }
