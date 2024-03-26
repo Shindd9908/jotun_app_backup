@@ -11,11 +11,14 @@ import "package:jotub_app/utils/routers/routers.dart";
 import "package:sizer/sizer.dart";
 
 import "di/dependency_injection.dart";
+import "firebase_options.dart";
 import "generated/l10n.dart";
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform
+  );
   await initDependencies();
   runApp(const MyApp());
 }
