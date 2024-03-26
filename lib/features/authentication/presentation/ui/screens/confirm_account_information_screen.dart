@@ -51,7 +51,7 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
       body: BackgroundScreenFormFieldWidget(
         mainUIContent: Container(
           width: 100.w,
-          height: 100.h - MediaQuery.of(context).viewInsets.bottom,
+          height: 100.h - MediaQuery.of(context).viewInsets.bottom - MediaQuery.of(context).padding.top,
           padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(6.h, 10.h), left: 32, right: 32),
           child: SingleChildScrollView(
             child: Column(

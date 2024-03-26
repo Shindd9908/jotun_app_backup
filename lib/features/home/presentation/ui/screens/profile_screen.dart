@@ -9,7 +9,6 @@ import 'package:jotub_app/features/home/presentation/ui/widgets/button_select_im
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
-import 'package:jotub_app/utils/global_widgets/arrow_back_widget.dart';
 import 'package:jotub_app/utils/global_widgets/cache_image_widget.dart';
 import 'package:jotub_app/utils/global_widgets/custom_flush_bar.dart';
 import 'package:jotub_app/utils/global_widgets/popup_dialog_alert.dart';
@@ -144,12 +143,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return ScreenFrame(
+      isHasButtonBack: true,
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(left: AppHelper.setMultiDeviceSize(32, 32)),
-            child: const ArrowBackWidget(),
-          ),
           Expanded(
             child: SingleChildScrollView(
               child: Column(

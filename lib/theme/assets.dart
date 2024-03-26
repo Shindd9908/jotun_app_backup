@@ -10,6 +10,7 @@ class AppAssets {
   static const imgLogoApp = 'assets/images/image_logo_app.jpeg';
   static const imgTitle = 'assets/images/image_title.png';
   static const imgBannerAndLogo = 'assets/images/image_banner_logo.jpg';
+  static const imgSplashScreen = 'assets/images/image_splash_screen.png';
 
   // icons
   static const iconArrowBack = 'assets/icons/icon_arrow_back.png';

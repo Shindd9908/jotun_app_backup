@@ -6,6 +6,9 @@ import "package:flutter_localizations/flutter_localizations.dart";
 import "package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart";
 import "package:jotub_app/features/home/presentation/bloc/home_bloc.dart";
 import "package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart";
+import "package:jotub_app/features/mini_game/presentation/ui/screens/introduce_mini_game.dart";
+import "package:jotub_app/features/schedule/presentation/ui/screens/schedule_screen.dart";
+import "package:jotub_app/features/trip/presentation/ui/screens/trip_screen.dart";
 import "package:jotub_app/utils/constants/constants.dart";
 import "package:jotub_app/utils/routers/routers.dart";
 import "package:sizer/sizer.dart";
@@ -51,7 +54,8 @@ class MyApp extends StatelessWidget {
             ],
             locale: const Locale(Constants.kDefaultLanguage),
             supportedLocales: S.delegate.supportedLocales,
-            onGenerateRoute: (route) => AppRoutes.generateRoute(route),
+            home: IntroduceMiniGame(),
+            // onGenerateRoute: (route) => AppRoutes.generateRoute(route),
           ),
         ),
       ),
