@@ -22,7 +22,7 @@ class ScreenFrame extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + AppHelper.setMultiDeviceSize(8, 8)),
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + AppHelper.setMultiDeviceSize(16, 16)),
         child: Column(
           children: [
             if (isHasButtonBack == true)

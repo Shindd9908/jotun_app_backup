@@ -41,7 +41,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           width: 100.w,
           height: 100.h - MediaQuery.of(context).viewInsets.bottom - MediaQuery.of(context).padding.top,
           padding: EdgeInsets.only(
-            top: AppHelper.setMultiDeviceSize(8, 8),
+            top: AppHelper.setMultiDeviceSize(16, 16),
             left: AppHelper.setMultiDeviceSize(32, 32),
             right: AppHelper.setMultiDeviceSize(32, 32),
           ),
