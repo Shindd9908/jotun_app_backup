@@ -63,7 +63,9 @@ class JourneyItem extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   TextWidget(
-                    text: area?.unlock == true ? S.of(context).completed.toUpperCase() : S.of(context).alert_block_item_area,
+                    text: area?.unlock == true
+                        ? S.of(context).completed.toUpperCase()
+                        : '${S.of(context).alert_block_item_area}\n${area?.areaName ?? ''}',
                     color: AppColor.colorMainWhite,
                     fontSize: area?.unlock == true ? 12.sp : 8.sp,
                     textAlign: TextAlign.center,

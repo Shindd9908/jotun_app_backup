@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class AreaEntity extends Equatable {
   final int? areaId;
+  final String? areaName;
   final String? areaTitle;
   final String? areaImage;
   final String? areaCode;
@@ -9,10 +10,10 @@ class AreaEntity extends Equatable {
   final List<TripEntity>? trips;
   final bool? unlock;
 
-  const AreaEntity({this.areaId, this.areaTitle, this.areaImage, this.areaCode, this.questions, this.trips, this.unlock});
+  const AreaEntity({this.areaId, this.areaName, this.areaTitle, this.areaImage, this.areaCode, this.questions, this.trips, this.unlock});
 
   @override
-  List<Object?> get props => [areaId, areaTitle, areaImage, areaCode, questions, trips, unlock];
+  List<Object?> get props => [areaId, areaName, areaTitle, areaImage, areaCode, questions, trips, unlock];
 }
 
 class QuestionEntity extends Equatable {

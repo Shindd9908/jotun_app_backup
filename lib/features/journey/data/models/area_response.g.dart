@@ -8,6 +8,7 @@ part of 'area_response.dart';
 
 AreaResponse _$AreaResponseFromJson(Map<String, dynamic> json) => AreaResponse(
       areaId: json['id'] as int?,
+      areaName: json['name'] as String?,
       areaTitle: json['title'] as String?,
       areaImage: json['image'] as String?,
       areaCode: json['area_code'] as String?,
@@ -22,6 +23,7 @@ AreaResponse _$AreaResponseFromJson(Map<String, dynamic> json) => AreaResponse(
 Map<String, dynamic> _$AreaResponseToJson(AreaResponse instance) =>
     <String, dynamic>{
       'id': instance.areaId,
+      'name': instance.areaName,
       'title': instance.areaTitle,
       'image': instance.areaImage,
       'area_code': instance.areaCode,

@@ -25,8 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountInformation":
             MessageLookupByLibrary.simpleMessage("Thông tin tài khoản"),
         "agency": MessageLookupByLibrary.simpleMessage("Đại lý"),
-        "alert_block_item_area": MessageLookupByLibrary.simpleMessage(
-            "QUÉT MÃ MỞ KHÓA\nKHU VỰC CHỤP ẢNH"),
+        "alert_block_item_area":
+            MessageLookupByLibrary.simpleMessage("QUÉT QR MỞ KHÓA"),
         "busNo": MessageLookupByLibrary.simpleMessage("Số xe bus"),
         "changeAvatar":
             MessageLookupByLibrary.simpleMessage("Thay đổi ảnh đại diện"),

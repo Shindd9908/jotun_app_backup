@@ -112,7 +112,7 @@ class _JourneyScreenState extends State<JourneyScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 32),
             ],
           ),
         ),

@@ -500,10 +500,10 @@ class S {
     );
   }
 
-  /// `QUÉT MÃ MỞ KHÓA\nKHU VỰC CHỤP ẢNH`
+  /// `QUÉT QR MỞ KHÓA`
   String get alert_block_item_area {
     return Intl.message(
-      'QUÉT MÃ MỞ KHÓA\nKHU VỰC CHỤP ẢNH',
+      'QUÉT QR MỞ KHÓA',
       name: 'alert_block_item_area',
       desc: '',
       args: [],

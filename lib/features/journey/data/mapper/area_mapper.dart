@@ -4,6 +4,7 @@ import "package:jotub_app/features/journey/domain/entities/area_entity.dart";
 extension AreaMapExt on AreaResponse {
   AreaEntity get areaEntity => AreaEntity(
         areaId: areaId,
+        areaName: areaName,
         areaTitle: areaTitle,
         areaImage: areaImage,
         areaCode: areaCode,

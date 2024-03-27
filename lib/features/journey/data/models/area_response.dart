@@ -7,6 +7,8 @@ part "area_response.g.dart";
 class AreaResponse extends Equatable {
   @JsonKey(name: "id")
   final int? areaId;
+  @JsonKey(name: "name")
+  final String? areaName;
   @JsonKey(name: "title")
   final String? areaTitle;
   @JsonKey(name: "image")
@@ -18,14 +20,14 @@ class AreaResponse extends Equatable {
   @JsonKey(name: "trips")
   final List<TripResponse>? trips;
 
-  const AreaResponse({this.areaId, this.areaTitle, this.areaImage, this.areaCode, this.questions, this.trips});
+  const AreaResponse({this.areaId, this.areaName, this.areaTitle, this.areaImage, this.areaCode, this.questions, this.trips});
 
   factory AreaResponse.fromJson(Map<String, dynamic> json) => _$AreaResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$AreaResponseToJson(this);
 
   @override
-  List<Object?> get props => [areaId, areaTitle, areaImage, areaCode, questions, trips];
+  List<Object?> get props => [areaId, areaName, areaTitle, areaImage, areaCode, questions, trips];
 }
 
 @JsonSerializable()

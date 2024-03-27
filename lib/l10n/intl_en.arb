@@ -64,7 +64,7 @@
   "@journeyScreen" : {
     "description" : "Journey screen"
   },
-  "alert_block_item_area": "QUÉT MÃ MỞ KHÓA\nKHU VỰC CHỤP ẢNH",
+  "alert_block_item_area": "QUÉT QR MỞ KHÓA",
 
   "errorFieldRequired": "Thông tin không được để trống",
   "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",
