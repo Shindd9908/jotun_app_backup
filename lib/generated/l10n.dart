@@ -500,6 +500,16 @@ class S {
     );
   }
 
+  /// `QUÉT QR MỞ KHÓA`
+  String get alert_block_item_area {
+    return Intl.message(
+      'QUÉT QR MỞ KHÓA',
+      name: 'alert_block_item_area',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Thông tin không được để trống`
   String get errorFieldRequired {
     return Intl.message(
@@ -545,6 +555,16 @@ class S {
     return Intl.message(
       'Mật khẩu phải tối thiểu 8 kí tự',
       name: 'errorPasswordMinLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Không có dữ liệu`
+  String get noData {
+    return Intl.message(
+      'Không có dữ liệu',
+      name: 'noData',
       desc: '',
       args: [],
     );

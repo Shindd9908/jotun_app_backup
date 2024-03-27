@@ -11,6 +11,10 @@ import "package:jotub_app/features/home/data/data_sources/home_api.dart";
 import "package:jotub_app/features/home/data/repositories/home_repository_impl.dart";
 import "package:jotub_app/features/home/domain/repositories/home_repository.dart";
 import "package:jotub_app/features/home/presentation/bloc/home_bloc.dart";
+import "package:jotub_app/features/journey/data/data_source/journey_api.dart";
+import "package:jotub_app/features/journey/data/repositories/journey_repository_impl.dart";
+import "package:jotub_app/features/journey/domain/repositories/journey_repository.dart";
+import "package:jotub_app/features/journey/presentation/bloc/journey_bloc.dart";
 import "package:jotub_app/features/mini_game/data/repositories/mini_game_repository_impl.dart";
 import "package:jotub_app/features/mini_game/domain/repositories/mini_game_repository.dart";
 import "package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart";
@@ -33,10 +37,8 @@ void _registerAppNetworkComponents() {
   final dio = Dio(
     BaseOptions(
       baseUrl: AppConfigs.apiBaseUrl,
-      connectTimeout:
-          const Duration(milliseconds: AppConfigs.kConnectApiTimeout),
-      receiveTimeout:
-          const Duration(milliseconds: AppConfigs.kReceiveApiTimeout),
+      connectTimeout: const Duration(milliseconds: AppConfigs.kConnectApiTimeout),
+      receiveTimeout: const Duration(milliseconds: AppConfigs.kReceiveApiTimeout),
       sendTimeout: const Duration(milliseconds: AppConfigs.kSendApiTimeout),
       receiveDataWhenStatusError: true,
     ),
@@ -49,6 +51,7 @@ void _registerAppNetworkComponents() {
 
   getIt.registerSingleton(AuthenticationApi(dio, baseUrl: dio.options.baseUrl));
   getIt.registerSingleton(HomeApi(dio, baseUrl: dio.options.baseUrl));
+  getIt.registerSingleton(JourneyApi(dio, baseUrl: dio.options.baseUrl));
 }
 
 void _registerRepository() {
@@ -66,6 +69,11 @@ void _registerRepository() {
   );
 
   getIt.registerFactory<MiniGameRepository>(() => MiniGameRepositoryImpl());
+  getIt.registerFactory<JourneyRepository>(
+    () => JourneyRepositoryImpl(
+      journeyApi: getIt<JourneyApi>(),
+    ),
+  );
 }
 
 void _registerBlocs() {
@@ -84,6 +92,12 @@ void _registerBlocs() {
   getIt.registerLazySingleton<MiniGameBloc>(
     () => MiniGameBloc(
       miniGameRepository: getIt<MiniGameRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<JourneyBloc>(
+    () => JourneyBloc(
+      journeyRepository: getIt<JourneyRepository>(),
     ),
   );
 }

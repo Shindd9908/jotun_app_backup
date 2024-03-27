@@ -144,178 +144,174 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return ScreenFrame(
       isHasButtonBack: true,
-      child: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Image.asset(
-                    AppAssets.imgBannerAndLogo,
-                    width: 100.w,
-                    fit: BoxFit.fitWidth,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    width: AppHelper.setMultiDeviceSize(120, 120),
-                    height: AppHelper.setMultiDeviceSize(120, 120),
-                    transform: Matrix4.translationValues(0, -34, 0),
-                    decoration: BoxDecoration(
+      child: Expanded(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Image.asset(
+                AppAssets.imgBannerAndLogo,
+                width: 100.w,
+                fit: BoxFit.fitWidth,
+              ),
+              Container(
+                alignment: Alignment.center,
+                width: AppHelper.setMultiDeviceSize(120, 120),
+                height: AppHelper.setMultiDeviceSize(120, 120),
+                transform: Matrix4.translationValues(0, -34, 0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  border: Border.all(width: 1, color: AppColor.colorMainWhite),
+                ),
+                child: Stack(
+                  children: [
+                    ClipRRect(
                       borderRadius: BorderRadius.circular(100),
-                      border: Border.all(width: 1, color: AppColor.colorMainWhite),
-                    ),
-                    child: Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: ValueListenableBuilder(
-                            valueListenable: _pathImageSelected,
-                            builder: (_, value, __) => _pathImageSelected.value != ''
-                                ? _pathImageSelected.value.toString().contains('https://')
-                                    ? CacheImageWidget(
-                                        imageUrl: widget.userInfo!.avatar,
-                                        widthImage: AppHelper.setMultiDeviceSize(120, 120),
-                                        heightImage: AppHelper.setMultiDeviceSize(120, 120),
-                                        fit: BoxFit.cover,
-                                      )
-                                    : Image.file(
-                                        File(_pathImageSelected.value),
-                                        width: AppHelper.setMultiDeviceSize(120, 120),
-                                        height: AppHelper.setMultiDeviceSize(120, 120),
-                                        fit: BoxFit.cover,
-                                      )
-                                : Image.asset(
-                                    AppAssets.iconAvatar,
+                      child: ValueListenableBuilder(
+                        valueListenable: _pathImageSelected,
+                        builder: (_, value, __) => _pathImageSelected.value != ''
+                            ? _pathImageSelected.value.toString().contains('https://')
+                                ? CacheImageWidget(
+                                    imageUrl: widget.userInfo!.avatar,
+                                    widthImage: AppHelper.setMultiDeviceSize(120, 120),
+                                    heightImage: AppHelper.setMultiDeviceSize(120, 120),
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.file(
+                                    File(_pathImageSelected.value),
                                     width: AppHelper.setMultiDeviceSize(120, 120),
                                     height: AppHelper.setMultiDeviceSize(120, 120),
                                     fit: BoxFit.cover,
+                                  )
+                            : Image.asset(
+                                AppAssets.iconAvatar,
+                                width: AppHelper.setMultiDeviceSize(120, 120),
+                                height: AppHelper.setMultiDeviceSize(120, 120),
+                                fit: BoxFit.cover,
+                              ),
+                      ),
+                    ),
+                    Positioned(
+                      right: 10,
+                      bottom: 0,
+                      child: GestureDetector(
+                        onTap: () async => await _showModalBottomSheetMenuSelectImage(),
+                        child: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: AppColor.colorMainDarkBlue,
+                            borderRadius: BorderRadius.circular(100),
+                            border: Border.all(width: 0.4, color: AppColor.colorMainWhite),
+                          ),
+                          child: Icon(
+                            Icons.camera_alt,
+                            size: AppHelper.setMultiDeviceSize(18, 18),
+                            color: AppColor.colorMainWhite,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                transform: Matrix4.translationValues(0, -30, 0),
+                child: Column(
+                  children: [
+                    TextWidget(
+                      text: widget.userInfo?.name ?? '',
+                      color: AppColor.colorMainWhite,
+                      fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                      fontWeight: FontWeight.w500,
+                    ),
+                    TextWidget(
+                      text: '${S.of(context).group} ${widget.userInfo?.groupId}',
+                      color: AppColor.colorMainYellow,
+                      fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
+                      fontWeight: FontWeight.w500,
+                    ),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(16, 16)),
+                    TextFormFieldWidget(
+                      controller: _agencyController,
+                      hintText: S.of(context).agency,
+                      isReadOnly: true,
+                    ),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                    TextFormFieldWidget(
+                      controller: _identityNumberController,
+                      hintText: S.of(context).idCardNumber,
+                      isReadOnly: true,
+                    ),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                    TextFormFieldWidget(
+                      controller: _salesNameController,
+                      hintText: S.of(context).salesNameStaffCharge,
+                      isReadOnly: true,
+                    ),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                    TextFormFieldWidget(
+                      controller: _salesPhoneNumberController,
+                      hintText: S.of(context).salesPhoneNumberStaffCharge,
+                      isReadOnly: true,
+                    ),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                    TextFormFieldWidget(
+                      controller: _busNumberController,
+                      hintText: S.of(context).busNo,
+                      isReadOnly: true,
+                    ),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                    TextFormFieldWidget(
+                      controller: _hotelNameController,
+                      hintText: S.of(context).hotel,
+                      isReadOnly: true,
+                    ),
+                    BlocConsumer<AuthenticationBloc, AuthenticationState>(
+                      listenWhen: (previous, current) => current is LogoutSuccessState || current is LogoutFailState,
+                      listener: (context, state) {
+                        if (state is LogoutSuccessState) {
+                          Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.selectObjectUseScreen, (route) => false);
+                          CustomFlushBar.showAlertFlushBar(context, state.message, isSuccess: true);
+                        }
+                        if (state is LogoutFailState) {
+                          CustomFlushBar.showAlertFlushBar(context, state.message);
+                        }
+                      },
+                      buildWhen: (previous, current) => current is LogoutSuccessState || current is LogoutFailState || current is LogoutLoadingState,
+                      builder: (context, state) {
+                        return GestureDetector(
+                          onTap: () => state is! LogoutLoadingState ? context.read<AuthenticationBloc>().add(LogoutEvent()) : null,
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: double.infinity,
+                            margin: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(24, 24)),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            decoration: BoxDecoration(
+                              color: AppColor.colorMainRed,
+                              borderRadius: BorderRadius.circular(16),
+                              border: Border.all(width: 1, color: AppColor.colorMainRed),
+                            ),
+                            child: state is LogoutLoadingState
+                                ? SpinKitLoadingWidget(
+                                    size: AppHelper.setMultiDeviceSize(20.sp, 16.sp),
+                                    color: AppColor.colorMainWhite,
+                                  )
+                                : TextWidget(
+                                    text: S.of(context).logout,
+                                    color: AppColor.colorMainWhite,
+                                    fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                                    fontWeight: FontWeight.w500,
                                   ),
                           ),
-                        ),
-                        Positioned(
-                          right: 10,
-                          bottom: 0,
-                          child: GestureDetector(
-                            onTap: () async => await _showModalBottomSheetMenuSelectImage(),
-                            child: Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                color: AppColor.colorMainDarkBlue,
-                                borderRadius: BorderRadius.circular(100),
-                                border: Border.all(width: 0.4, color: AppColor.colorMainWhite),
-                              ),
-                              child: Icon(
-                                Icons.camera_alt,
-                                size: AppHelper.setMultiDeviceSize(18, 18),
-                                color: AppColor.colorMainWhite,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                        );
+                      },
                     ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 32),
-                    transform: Matrix4.translationValues(0, -30, 0),
-                    child: Column(
-                      children: [
-                        TextWidget(
-                          text: widget.userInfo?.name ?? '',
-                          color: AppColor.colorMainWhite,
-                          fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
-                          fontWeight: FontWeight.w500,
-                        ),
-                        TextWidget(
-                          text: '${S.of(context).group} ${widget.userInfo?.groupId}',
-                          color: AppColor.colorMainYellow,
-                          fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
-                          fontWeight: FontWeight.w500,
-                        ),
-                        SizedBox(height: AppHelper.setMultiDeviceSize(16, 16)),
-                        TextFormFieldWidget(
-                          controller: _agencyController,
-                          hintText: S.of(context).agency,
-                          isReadOnly: true,
-                        ),
-                        SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
-                        TextFormFieldWidget(
-                          controller: _identityNumberController,
-                          hintText: S.of(context).idCardNumber,
-                          isReadOnly: true,
-                        ),
-                        SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
-                        TextFormFieldWidget(
-                          controller: _salesNameController,
-                          hintText: S.of(context).salesNameStaffCharge,
-                          isReadOnly: true,
-                        ),
-                        SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
-                        TextFormFieldWidget(
-                          controller: _salesPhoneNumberController,
-                          hintText: S.of(context).salesPhoneNumberStaffCharge,
-                          isReadOnly: true,
-                        ),
-                        SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
-                        TextFormFieldWidget(
-                          controller: _busNumberController,
-                          hintText: S.of(context).busNo,
-                          isReadOnly: true,
-                        ),
-                        SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
-                        TextFormFieldWidget(
-                          controller: _hotelNameController,
-                          hintText: S.of(context).hotel,
-                          isReadOnly: true,
-                        ),
-                        BlocConsumer<AuthenticationBloc, AuthenticationState>(
-                          listenWhen: (previous, current) => current is LogoutSuccessState || current is LogoutFailState,
-                          listener: (context, state) {
-                            if (state is LogoutSuccessState) {
-                              Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.selectObjectUseScreen, (route) => false);
-                              CustomFlushBar.showAlertFlushBar(context, state.message, isSuccess: true);
-                            }
-                            if (state is LogoutFailState) {
-                              CustomFlushBar.showAlertFlushBar(context, state.message);
-                            }
-                          },
-                          buildWhen: (previous, current) => current is LogoutSuccessState || current is LogoutFailState || current is LogoutLoadingState,
-                          builder: (context, state) {
-                            return GestureDetector(
-                              onTap: () => state is! LogoutLoadingState ? context.read<AuthenticationBloc>().add(LogoutEvent()) : null,
-                              child: Container(
-                                alignment: Alignment.center,
-                                width: double.infinity,
-                                margin: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(24, 24)),
-                                padding: const EdgeInsets.symmetric(vertical: 12),
-                                decoration: BoxDecoration(
-                                  color: AppColor.colorMainRed,
-                                  borderRadius: BorderRadius.circular(16),
-                                  border: Border.all(width: 1, color: AppColor.colorMainRed),
-                                ),
-                                child: state is LogoutLoadingState
-                                    ? SpinKitLoadingWidget(
-                                        size: AppHelper.setMultiDeviceSize(20.sp, 16.sp),
-                                        color: AppColor.colorMainWhite,
-                                      )
-                                    : TextWidget(
-                                        text: S.of(context).logout,
-                                        color: AppColor.colorMainWhite,
-                                        fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
+                  ],
+                ),
+              )
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

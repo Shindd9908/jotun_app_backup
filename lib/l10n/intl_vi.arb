@@ -61,9 +61,16 @@
   "exploreTheProductLine": "Khám phá dòng sản phẩm",
   "productName": "Jotun Jotashield bền màu\ntoàn diện",
 
+  "@journeyScreen" : {
+    "description" : "Journey screen"
+  },
+  "alert_block_item_area": "QUÉT QR MỞ KHÓA",
+
   "errorFieldRequired": "Thông tin không được để trống",
   "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",
   "errorIdCardNumberIncorrect": "Số căn cước công dân không đúng định dạng",
   "errorPasswordConfirmNotMatch": "Mật khẩu xác thực không trùng khớp",
-  "errorPasswordMinLength": "Mật khẩu phải tối thiểu 8 kí tự"
+  "errorPasswordMinLength": "Mật khẩu phải tối thiểu 8 kí tự",
+
+  "noData": "Không có dữ liệu"
 }
