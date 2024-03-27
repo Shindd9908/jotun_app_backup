@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jotub_app/features/trip/presentation/ui/widgets/detail_trip.dart';
 import 'package:jotub_app/theme/assets.dart';
-import 'package:jotub_app/utils/global_widgets/arrow_back_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:sizer/sizer.dart';
 
@@ -26,54 +25,55 @@ class _TripScreenState extends State<TripScreen> {
   @override
   Widget build(BuildContext context) {
     return ScreenFrame(
-      padding: EdgeInsets.symmetric(
-        horizontal: 8.w,
-      ),
-      child: Column(
-        children: [
-          const ArrowBackWidget(),
-          Padding(
-            padding: EdgeInsets.only(
-              top: 42,
-              bottom: 12,
-              left: 8.w,
-              right: 8.w,
-            ),
-            child: Image.asset(AppAssets.imgTitle),
-          ),
-          Expanded(
-            child: SingleChildScrollView(
-              controller: _controller,
-              child: const Column(
-                children: [
-                  DetailTrip(
-                    textDay: 'NGÀY 1:',
-                    content: 'Trải nghiệm show diễn thực cảnh\nKý ức Hội An',
-                    backgroundImage: 'assets/images/image_schedule_2.jpg',
-                  ),
-                  DetailTrip(
-                    textDay: 'NGÀY 2:',
-                    content:
-                        'Lễ ra mắt sản phẩm\nJotun Jotashield Bền Màu Toàn Diện',
-                    backgroundImage: 'assets/images/image_schedule_2.jpg',
-                  ),
-                  DetailTrip(unlock: false),
-                  DetailTrip(unlock: false),
-                ],
+      isHasButtonBack: true,
+      child: Expanded(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 42,
+                  bottom: 12,
+                  left: 8.w,
+                  right: 8.w,
+                ),
+                child: Image.asset(AppAssets.imgTitle),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: GestureDetector(
-              onTap: _scrollDown,
-              child: SizedBox(
-                height: 24,
-                child: Image.asset(AppAssets.iconArrowDown),
+              Expanded(
+                child: SingleChildScrollView(
+                  controller: _controller,
+                  child: const Column(
+                    children: [
+                      DetailTrip(
+                        textDay: 'NGÀY 1:',
+                        content: 'Trải nghiệm show diễn thực cảnh\nKý ức Hội An',
+                        backgroundImage: 'assets/images/image_schedule_2.jpg',
+                      ),
+                      DetailTrip(
+                        textDay: 'NGÀY 2:',
+                        content: 'Lễ ra mắt sản phẩm\nJotun Jotashield Bền Màu Toàn Diện',
+                        backgroundImage: 'assets/images/image_schedule_2.jpg',
+                      ),
+                      DetailTrip(unlock: false),
+                      DetailTrip(unlock: false),
+                    ],
+                  ),
+                ),
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: GestureDetector(
+                  onTap: _scrollDown,
+                  child: SizedBox(
+                    height: 24,
+                    child: Image.asset(AppAssets.iconArrowDown),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
