@@ -44,7 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   BlocBuilder<HomeBloc, HomeState>(
-                    buildWhen: (previous, current) => current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
+                    buildWhen: (previous, current) =>
+                        current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
                     builder: (context, state) {
                       return Row(
                         children: [
@@ -100,11 +101,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             BlocBuilder<HomeBloc, HomeState>(
-              buildWhen: (previous, current) => current is FetchListBannerSuccessState || current is FetchListBannerFailState || current is FetchListBannerLoadingState,
+              buildWhen: (previous, current) =>
+                  current is FetchListBannerSuccessState || current is FetchListBannerFailState || current is FetchListBannerLoadingState,
               builder: (context, state) {
                 return state is FetchListBannerLoadingState
                     ? SizedBox(
-                        width: double.infinity,
+                        width: 100.w - 32,
                         height: AppHelper.setMultiDeviceSize(14.h, 20.h),
                         child: const SpinKitLoadingWidget(color: AppColor.colorMainWhite, size: 36),
                       )
@@ -113,13 +115,18 @@ class _HomeScreenState extends State<HomeScreen> {
                             options: CarouselOptions(height: AppHelper.setMultiDeviceSize(12.h, 20.h), viewportFraction: 1),
                             items: state.listBanner
                                 .map(
-                                  (el) => CacheImageWidget(imageUrl: el.bannerURL, widthImage: 100.w, heightImage: AppHelper.setMultiDeviceSize(12.h, 20.h), fit: BoxFit.cover),
+                                  (el) => CacheImageWidget(
+                                    imageUrl: el.bannerURL,
+                                    widthImage: 100.w - 32,
+                                    heightImage: AppHelper.setMultiDeviceSize(12.h, 20.h),
+                                    fit: BoxFit.cover,
+                                  ),
                                 )
                                 .toList(),
                           )
                         : Image.asset(
                             AppAssets.imgBanner,
-                            width: 100.w,
+                            width: 100.w - 32,
                             height: AppHelper.setMultiDeviceSize(12.h, 20.h),
                           );
               },

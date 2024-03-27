@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountInformation":
             MessageLookupByLibrary.simpleMessage("Thông tin tài khoản"),
         "agency": MessageLookupByLibrary.simpleMessage("Đại lý"),
+        "alert_block_item_area": MessageLookupByLibrary.simpleMessage(
+            "QUÉT MÃ MỞ KHÓA\nKHU VỰC CHỤP ẢNH"),
         "busNo": MessageLookupByLibrary.simpleMessage("Số xe bus"),
         "changeAvatar":
             MessageLookupByLibrary.simpleMessage("Thay đổi ảnh đại diện"),
@@ -80,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newPassword": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "newProductInformation":
             MessageLookupByLibrary.simpleMessage("Thông tin sản\nphẩm mới"),
+        "noData": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
         "objectUse": MessageLookupByLibrary.simpleMessage("Đối tượng sử dụng"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Tên đăng nhập"),
