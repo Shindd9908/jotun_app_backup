@@ -19,7 +19,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
   Future<void> _login(LoginEvent event, Emitter<AuthenticationState> emit) async {
     emit(LoginLoadingState());
-    final userData = await authenticationRepository.login(event.name!, event.password!, event.roleUser!);
+    final userData = await authenticationRepository.login(event.name, event.password, event.deviceToken, event.roleUser);
     userData.fold(
       (l) => emit(LoginFailState(message: l)),
       (r) => emit(LoginSuccessState(userInfo: r['data'], message: r['message'])),
@@ -28,7 +28,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
   Future<void> _changePassword(ChangePasswordEvent event, Emitter<AuthenticationState> emit) async {
     emit(ChangePasswordLoadingState());
-    final userData = await authenticationRepository.changePassword(event.username!, event.role!, event.oldPassword!, event.password!, event.passwordConfirmation!);
+    final userData = await authenticationRepository.changePassword(event.username, event.role, event.oldPassword, event.password, event.passwordConfirmation);
     userData.fold(
       (l) => emit(ChangePasswordFailState(message: l)),
       (r) => emit(ChangePasswordSuccessState(message: r)),
@@ -37,7 +37,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
   Future<void> _confirmAccount(ConfirmAccountEvent event, Emitter<AuthenticationState> emit) async {
     emit(ConfirmAccountLoadingState());
-    final userData = await authenticationRepository.confirmAccount(event.identityCardNumber!);
+    final userData = await authenticationRepository.confirmAccount(event.identityCardNumber);
     userData.fold(
       (l) => emit(ConfirmAccountFailState(message: l)),
       (r) => emit(ConfirmAccountSuccessState(message: r)),

@@ -6,6 +6,20 @@ part of 'area_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+AreaCompletedResponse _$AreaCompletedResponseFromJson(
+        Map<String, dynamic> json) =>
+    AreaCompletedResponse(
+      areaId: json['area_id'] as int?,
+      completedAt: json['completed_at'] as String?,
+    );
+
+Map<String, dynamic> _$AreaCompletedResponseToJson(
+        AreaCompletedResponse instance) =>
+    <String, dynamic>{
+      'area_id': instance.areaId,
+      'completed_at': instance.completedAt,
+    };
+
 AreaResponse _$AreaResponseFromJson(Map<String, dynamic> json) => AreaResponse(
       areaId: json['id'] as int?,
       areaName: json['name'] as String?,

@@ -65,6 +65,8 @@
     "description" : "Journey screen"
   },
   "alert_block_item_area": "QUÉT QR MỞ KHÓA",
+  "please_scan_qrcode_each_area": "HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH",
+  "title_button_next_question": "Tiếp theo",
 
   "errorFieldRequired": "Thông tin không được để trống",
   "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",

@@ -59,6 +59,9 @@ dependencies:
   # get image camera or gallery
   image_picker: ^1.0.4
 
+  # scan qr code
+  qr_code_scanner: ^1.0.1
+
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.2.8
 

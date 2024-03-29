@@ -86,6 +86,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "objectUse": MessageLookupByLibrary.simpleMessage("Đối tượng sử dụng"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Tên đăng nhập"),
+        "please_scan_qrcode_each_area": MessageLookupByLibrary.simpleMessage(
+            "HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH"),
         "preorder": MessageLookupByLibrary.simpleMessage("Đặt hàng trước"),
         "productName": MessageLookupByLibrary.simpleMessage(
             "Jotun Jotashield bền màu\ntoàn diện"),
@@ -102,6 +104,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "showFullAvatar":
             MessageLookupByLibrary.simpleMessage("Xem ảnh đại điện"),
         "startGame": MessageLookupByLibrary.simpleMessage("Bắt đầu chơi"),
-        "store": MessageLookupByLibrary.simpleMessage("Cửa hàng")
+        "store": MessageLookupByLibrary.simpleMessage("Cửa hàng"),
+        "title_button_next_question":
+            MessageLookupByLibrary.simpleMessage("Tiếp theo")
       };
 }

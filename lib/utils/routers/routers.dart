@@ -38,14 +38,14 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const ScheduleScreen());
       case AppPaths.journeyScreen:
         return MaterialPageRoute(builder: (_) => const JourneyScreen());
+      case AppPaths.scanQRCodeScreen:
+        return MaterialPageRoute(builder: (_) => Container());
       case AppPaths.introduceMiniGameScreen:
         return MaterialPageRoute(builder: (_) => const IntroduceMiniGame());
       case AppPaths.miniGameScreen:
         return MaterialPageRoute(builder: (_) => const MiniGameScreen());
       default:
-        Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true
-            ? const HomeScreen()
-            : const SelectObjectUseScreen();
+        Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true ? const HomeScreen() : const SelectObjectUseScreen();
         return MaterialPageRoute(builder: (_) => widget);
     }
   }

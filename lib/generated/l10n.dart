@@ -510,6 +510,26 @@ class S {
     );
   }
 
+  /// `HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH`
+  String get please_scan_qrcode_each_area {
+    return Intl.message(
+      'HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH',
+      name: 'please_scan_qrcode_each_area',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tiếp theo`
+  String get title_button_next_question {
+    return Intl.message(
+      'Tiếp theo',
+      name: 'title_button_next_question',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Thông tin không được để trống`
   String get errorFieldRequired {
     return Intl.message(

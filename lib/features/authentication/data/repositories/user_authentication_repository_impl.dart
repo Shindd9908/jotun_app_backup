@@ -17,9 +17,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   AuthenticationRepositoryImpl({required this.authenticationApi, required this.sharedPreferencesManager});
 
   @override
-  Future<Either<String, Map<String, dynamic>>> login(String username, String password, int userRole) async {
+  Future<Either<String, Map<String, dynamic>>> login(String username, String password, String deviceToken, int userRole) async {
     try {
-      final authentic = await authenticationApi.login(LoginRequest(username: username, password: password, role: userRole));
+      final authentic = await authenticationApi.login(LoginRequest(username: username, password: password, deviceToken: deviceToken, role: userRole));
       if (authentic.isSuccess) {
         final data = authentic.getValue() as UserLoginResponse;
         sharedPreferencesManager.putValue(KeyPreferences.kAccessToken, data.accessToken);

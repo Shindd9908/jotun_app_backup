@@ -9,12 +9,15 @@ class LoginRequest extends Equatable {
   final String? username;
   @JsonKey(name: "password")
   final String? password;
+  @JsonKey(name: "device_token")
+  final String? deviceToken;
   @JsonKey(name: "role")
   final int? role;
 
   const LoginRequest({
     this.username,
     this.password,
+    this.deviceToken,
     this.role,
   });
 
@@ -26,6 +29,7 @@ class LoginRequest extends Equatable {
   List<Object?> get props => [
         username,
         password,
+        deviceToken,
         role,
       ];
 }

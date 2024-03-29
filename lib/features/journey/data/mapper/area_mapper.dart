@@ -1,6 +1,13 @@
 import "package:jotub_app/features/journey/data/models/area_response.dart";
 import "package:jotub_app/features/journey/domain/entities/area_entity.dart";
 
+extension AreaCompletedMapExt on AreaCompletedResponse {
+  AreaCompletedEntity get areaCompletedEntity => AreaCompletedEntity(
+        areaId: areaId,
+        completedAt: completedAt,
+      );
+}
+
 extension AreaMapExt on AreaResponse {
   AreaEntity get areaEntity => AreaEntity(
         areaId: areaId,

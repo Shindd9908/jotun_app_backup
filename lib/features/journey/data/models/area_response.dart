@@ -4,6 +4,23 @@ import "package:json_annotation/json_annotation.dart";
 part "area_response.g.dart";
 
 @JsonSerializable()
+class AreaCompletedResponse extends Equatable {
+  @JsonKey(name: "area_id")
+  final int? areaId;
+  @JsonKey(name: "completed_at")
+  final String? completedAt;
+
+  const AreaCompletedResponse({this.areaId, this.completedAt});
+
+  factory AreaCompletedResponse.fromJson(Map<String, dynamic> json) => _$AreaCompletedResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AreaCompletedResponseToJson(this);
+
+  @override
+  List<Object?> get props => [areaId, completedAt];
+}
+
+@JsonSerializable()
 class AreaResponse extends Equatable {
   @JsonKey(name: "id")
   final int? areaId;

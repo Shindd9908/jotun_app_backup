@@ -139,9 +139,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               _errorValidateFieldPhoneNumber.value = AppHelper.validateFieldPhoneNumber(context, _phoneNumberController.text.trim());
                               _errorValidateFieldPassword.value = AppHelper.validateFieldPassword(context, _passwordController.text.trim());
                               if (_errorValidateFieldPhoneNumber.value == '' && _errorValidateFieldPhoneNumber.value == '' && state is! LoginLoadingState) {
-                                context
-                                    .read<AuthenticationBloc>()
-                                    .add(LoginEvent(name: _phoneNumberController.text.trim(), password: _passwordController.text.trim(), roleUser: widget.userRole));
+                                context.read<AuthenticationBloc>().add(LoginEvent(
+                                    name: _phoneNumberController.text.trim(), password: _passwordController.text.trim(), deviceToken: 'test', roleUser: widget.userRole!));
                               }
                             },
                             child: ButtonSubmitWidget(
