@@ -12,6 +12,8 @@ class AppColor {
 
   static const colorDarkBlue01 = Color(0xff38536D);
 
+  static const colorTransparent = Colors.transparent;
+
   static const colorBackgroundHeaderTopPage = LinearGradient(
     colors: <Color>[
       Color(0xFF8EB9CC),

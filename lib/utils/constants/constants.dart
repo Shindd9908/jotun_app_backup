@@ -9,6 +9,8 @@ class Constants {
   static const String kDefaultAppName = "Jotun";
   static const String kDefaultLanguage = "vi";
 
+  static const int typeGiftMiniGame = 2;
+
   static List<Map<String, dynamic>> getListFeatureHomePage(BuildContext context) {
     return [
       {

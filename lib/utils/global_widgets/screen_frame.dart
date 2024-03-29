@@ -40,6 +40,7 @@ class ScreenFrame extends StatelessWidget {
                     child: Image.asset(
                       AppAssets.iconArrowBack,
                       width: AppHelper.setMultiDeviceSize(32, 32),
+                      height: AppHelper.setMultiDeviceSize(32, 32),
                     ),
                   ),
                 ),

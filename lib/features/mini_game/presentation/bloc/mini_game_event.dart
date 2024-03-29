@@ -1,16 +1,19 @@
 part of 'mini_game_bloc.dart';
 
-@immutable
-abstract class MiniGameEvent extends Equatable {
+sealed class MiniGameEvent extends Equatable {
   const MiniGameEvent();
 }
 
 class InitBoardEvent extends MiniGameEvent {
+  const InitBoardEvent();
+
   @override
   List<Object?> get props => [];
 }
 
-class FlipCardEvent extends MiniGameEvent {
+class FetchGiftEvent extends MiniGameEvent {
+  const FetchGiftEvent();
+
   @override
   List<Object?> get props => [];
 }

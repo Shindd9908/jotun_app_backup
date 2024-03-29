@@ -500,6 +500,76 @@ class S {
     );
   }
 
+  /// `Phần thưởng của bạn là`
+  String get yourReward {
+    return Intl.message(
+      'Phần thưởng của bạn là',
+      name: 'yourReward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chúc mừng bạn đã\nhoàn thành thử thách`
+  String get completedMiniGame {
+    return Intl.message(
+      'Chúc mừng bạn đã\nhoàn thành thử thách',
+      name: 'completedMiniGame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rất tiếc bạn chưa\nhoàn thành thử thách`
+  String get uncompletedMiniGame {
+    return Intl.message(
+      'Rất tiếc bạn chưa\nhoàn thành thử thách',
+      name: 'uncompletedMiniGame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chơi lại`
+  String get playAgain {
+    return Intl.message(
+      'Chơi lại',
+      name: 'playAgain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quay về trang chủ`
+  String get backToHome {
+    return Intl.message(
+      'Quay về trang chủ',
+      name: 'backToHome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bạn đã nhận quà tặng`
+  String get youHaveReceivedTheGift {
+    return Intl.message(
+      'Bạn đã nhận quà tặng',
+      name: 'youHaveReceivedTheGift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mỗi khách hàng chỉ nhận được một phần quà\nThời gian chơi có trúng thưởng: 8/5/2024 - 31/5/2024`
+  String get timeToReceiveGift {
+    return Intl.message(
+      'Mỗi khách hàng chỉ nhận được một phần quà\nThời gian chơi có trúng thưởng: 8/5/2024 - 31/5/2024',
+      name: 'timeToReceiveGift',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `QUÉT QR MỞ KHÓA`
   String get alert_block_item_area {
     return Intl.message(

@@ -15,6 +15,7 @@ import "package:jotub_app/features/journey/data/data_source/journey_api.dart";
 import "package:jotub_app/features/journey/data/repositories/journey_repository_impl.dart";
 import "package:jotub_app/features/journey/domain/repositories/journey_repository.dart";
 import "package:jotub_app/features/journey/presentation/bloc/journey_bloc.dart";
+import "package:jotub_app/features/mini_game/data/data_sources/mini_game_api.dart";
 import "package:jotub_app/features/mini_game/data/repositories/mini_game_repository_impl.dart";
 import "package:jotub_app/features/mini_game/domain/repositories/mini_game_repository.dart";
 import "package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart";
@@ -52,6 +53,7 @@ void _registerAppNetworkComponents() {
   getIt.registerSingleton(AuthenticationApi(dio, baseUrl: dio.options.baseUrl));
   getIt.registerSingleton(HomeApi(dio, baseUrl: dio.options.baseUrl));
   getIt.registerSingleton(JourneyApi(dio, baseUrl: dio.options.baseUrl));
+  getIt.registerSingleton(MiniGameApi(dio, baseUrl: dio.options.baseUrl));
 }
 
 void _registerRepository() {
@@ -68,7 +70,11 @@ void _registerRepository() {
     ),
   );
 
-  getIt.registerFactory<MiniGameRepository>(() => MiniGameRepositoryImpl());
+  getIt.registerFactory<MiniGameRepository>(
+    () => MiniGameRepositoryImpl(
+      miniGameApi: getIt<MiniGameApi>(),
+    ),
+  );
   getIt.registerFactory<JourneyRepository>(
     () => JourneyRepositoryImpl(
       journeyApi: getIt<JourneyApi>(),

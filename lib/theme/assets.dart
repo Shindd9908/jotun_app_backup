@@ -6,6 +6,7 @@ class AppAssets {
   static const imgBackgroundText = 'assets/images/image_background_text.png';
   static const imgBanner = 'assets/images/image_banner.png';
   static const imgBanner2 = 'assets/images/image_banner_2.png';
+  static const imgGift = 'assets/images/image_gift.png';
   static const imgJourneyItem1 = 'assets/images/image_journey_item_1.png';
   static const imgLogoApp = 'assets/images/image_logo_app.jpeg';
   static const imgTitle = 'assets/images/image_title.png';
@@ -39,4 +40,11 @@ class AppAssets {
   static const iconTimer = 'assets/icons/mini_game/icon_timer.png';
   static const itemQuestionMark = 'assets/icons/mini_game/item_question_mark.png';
   static const itemMiniGame1 = 'assets/icons/mini_game/item_mini_game_1.png';
+  static const itemMiniGame2 = 'assets/icons/mini_game/item_mini_game_2.png';
+  static const itemMiniGame3 = 'assets/icons/mini_game/item_mini_game_3.png';
+  static const itemMiniGame4 = 'assets/icons/mini_game/item_mini_game_4.png';
+  static const itemMiniGame5 = 'assets/icons/mini_game/item_mini_game_5.png';
+  static const itemMiniGame6 = 'assets/icons/mini_game/item_mini_game_6.png';
+  static const itemMiniGame7 = 'assets/icons/mini_game/item_mini_game_7.png';
+  static const itemMiniGame8 = 'assets/icons/mini_game/item_mini_game_8.png';
 }

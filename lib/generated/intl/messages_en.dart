@@ -27,12 +27,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "agency": MessageLookupByLibrary.simpleMessage("Đại lý"),
         "alert_block_item_area":
             MessageLookupByLibrary.simpleMessage("QUÉT QR MỞ KHÓA"),
+        "backToHome": MessageLookupByLibrary.simpleMessage("Quay về trang chủ"),
         "busNo": MessageLookupByLibrary.simpleMessage("Số xe bus"),
         "changeAvatar":
             MessageLookupByLibrary.simpleMessage("Thay đổi ảnh đại diện"),
         "changePassword": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "claimRewardButton": MessageLookupByLibrary.simpleMessage("Nhận quà"),
         "completed": MessageLookupByLibrary.simpleMessage("Đã hoàn thành"),
+        "completedMiniGame": MessageLookupByLibrary.simpleMessage(
+            "Chúc mừng bạn đã\nhoàn thành thử thách"),
         "confirmInformation":
             MessageLookupByLibrary.simpleMessage("Xác nhận thông tin"),
         "confirmNewPassword":
@@ -86,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "objectUse": MessageLookupByLibrary.simpleMessage("Đối tượng sử dụng"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Tên đăng nhập"),
+        "playAgain": MessageLookupByLibrary.simpleMessage("Chơi lại"),
         "please_scan_qrcode_each_area": MessageLookupByLibrary.simpleMessage(
             "HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH"),
         "preorder": MessageLookupByLibrary.simpleMessage("Đặt hàng trước"),
@@ -104,6 +108,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "showFullAvatar":
             MessageLookupByLibrary.simpleMessage("Xem ảnh đại điện"),
         "startGame": MessageLookupByLibrary.simpleMessage("Bắt đầu chơi"),
+        "store": MessageLookupByLibrary.simpleMessage("Cửa hàng"),
+        "timeToReceiveGift": MessageLookupByLibrary.simpleMessage(
+            "Mỗi khách hàng chỉ nhận được một phần quà\nThời gian chơi có trúng thưởng: 8/5/2024 - 31/5/2024"),
+        "uncompletedMiniGame": MessageLookupByLibrary.simpleMessage(
+            "Rất tiếc bạn chưa\nhoàn thành thử thách"),
+        "youHaveReceivedTheGift":
+            MessageLookupByLibrary.simpleMessage("Bạn đã nhận quà tặng"),
+        "yourReward":
+            MessageLookupByLibrary.simpleMessage("Phần thưởng của bạn là")
         "store": MessageLookupByLibrary.simpleMessage("Cửa hàng"),
         "title_button_next_question":
             MessageLookupByLibrary.simpleMessage("Tiếp theo")

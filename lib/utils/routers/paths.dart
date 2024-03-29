@@ -14,4 +14,6 @@ class AppPaths {
   static const String scanQRCodeScreen = "/scan_qr_code";
   static const String introduceMiniGameScreen = "/introduce_mini_game";
   static const String miniGameScreen = "/mini_game";
+  static const String giftScreen = "/gift";
+  static const String resultScreen = "/result";
 }
