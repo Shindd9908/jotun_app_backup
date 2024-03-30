@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jotub_app/core/preferences/shared_preferences_manager.dart';
+import 'package:jotub_app/di/dependency_injection.dart';
 import 'package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart';
+import 'package:jotub_app/features/authentication/presentation/cubit/firebase_token_cubit.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/constants/key_preferences.dart';
 import 'package:jotub_app/utils/global_widgets/background_screen_form_field_widget.dart';
 import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
 import 'package:jotub_app/utils/global_widgets/custom_flush_bar.dart';
@@ -29,6 +33,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final ValueNotifier _errorValidateFieldPhoneNumber = ValueNotifier<String>('');
   final ValueNotifier _errorValidateFieldPassword = ValueNotifier<String>('');
 
+  @override
+  void initState() {
+    super.initState();
+    context.read<FirebaseTokenCubit>().checkAndGenerateDeviceToken();
+  }
+
   void _resetDataErrorValidateTextField() {
     _phoneNumberController.text = '';
     _passwordController.text = 'benmautoandien';
@@ -39,6 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final sharedPreference = getIt<SharedPreferencesManager>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: BackgroundScreenFormFieldWidget(
@@ -124,7 +135,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         listenWhen: (previous, current) => current is LoginSuccessState || current is LoginFailState,
                         listener: (context, state) {
                           if (state is LoginSuccessState) {
-                            Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.confirmAccountInformationScreen, arguments: {'userInfo': state.userInfo}, (route) => false);
+                            Navigator.of(context)
+                                .pushNamedAndRemoveUntil(AppPaths.confirmAccountInformationScreen, arguments: {'userInfo': state.userInfo}, (route) => false);
                             CustomFlushBar.showAlertFlushBar(context, state.message, isSuccess: true);
                           }
                           if (state is LoginFailState) {
@@ -139,8 +151,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               _errorValidateFieldPhoneNumber.value = AppHelper.validateFieldPhoneNumber(context, _phoneNumberController.text.trim());
                               _errorValidateFieldPassword.value = AppHelper.validateFieldPassword(context, _passwordController.text.trim());
                               if (_errorValidateFieldPhoneNumber.value == '' && _errorValidateFieldPhoneNumber.value == '' && state is! LoginLoadingState) {
-                                context.read<AuthenticationBloc>().add(LoginEvent(
-                                    name: _phoneNumberController.text.trim(), password: _passwordController.text.trim(), deviceToken: 'test', roleUser: widget.userRole!));
+                                context.read<AuthenticationBloc>().add(
+                                      LoginEvent(
+                                        name: _phoneNumberController.text.trim(),
+                                        password: _passwordController.text.trim(),
+                                        deviceToken: sharedPreference.getValue(KeyPreferences.kDeviceToken) ?? 'test',
+                                        roleUser: widget.userRole!,
+                                      ),
+                                    );
                               }
                             },
                             child: ButtonSubmitWidget(

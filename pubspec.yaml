@@ -46,6 +46,9 @@ dependencies:
 
   #for firebase:
   firebase_core: any
+  firebase_messaging: any
+  fcm_config: any
+  flutter_local_notifications: ^16.1.0
 
   #for flutter_keyboard_visibility:
   flutter_keyboard_visibility: ^6.0.0

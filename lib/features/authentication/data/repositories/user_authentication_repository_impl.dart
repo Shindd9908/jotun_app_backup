@@ -72,7 +72,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     try {
       final authentic = await authenticationApi.logOut();
       if (authentic.isSuccess) {
-        sharedPreferencesManager.putValue<String>(KeyPreferences.kAccessToken, '');
+        sharedPreferencesManager.clear();
         sharedPreferencesManager.putValue<bool>(KeyPreferences.kStatusConfirmAccountDone, false);
         return Right(authentic.message!);
       } else {

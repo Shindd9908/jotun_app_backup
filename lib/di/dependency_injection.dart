@@ -7,6 +7,7 @@ import "package:jotub_app/features/authentication/data/data_sources/authenticati
 import "package:jotub_app/features/authentication/data/repositories/user_authentication_repository_impl.dart";
 import "package:jotub_app/features/authentication/domain/repositories/user_authentication_repository.dart";
 import "package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart";
+import "package:jotub_app/features/authentication/presentation/cubit/firebase_token_cubit.dart";
 import "package:jotub_app/features/home/data/data_sources/home_api.dart";
 import "package:jotub_app/features/home/data/repositories/home_repository_impl.dart";
 import "package:jotub_app/features/home/domain/repositories/home_repository.dart";
@@ -27,6 +28,7 @@ Future<void> initDependencies() async {
   _registerAppNetworkComponents();
   _registerRepository();
   _registerBlocs();
+  _registerCubit();
 }
 
 Future<void> _registerAppPreference() async {
@@ -106,4 +108,8 @@ void _registerBlocs() {
       journeyRepository: getIt<JourneyRepository>(),
     ),
   );
+}
+
+void _registerCubit() {
+  getIt.registerLazySingleton<FirebaseTokenCubit>(() => FirebaseTokenCubit());
 }

@@ -2,9 +2,10 @@ import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:jotub_app/core/preferences/shared_preferences_manager.dart";
 import "package:jotub_app/utils/constants/key_preferences.dart";
+import "package:jotub_app/utils/routers/navigation_util.dart";
+import "package:jotub_app/utils/routers/paths.dart";
 
 class AppDioInterceptor extends InterceptorsWrapper {
-  static const String accessToken = "user_token";
   final SharedPreferencesManager _preferencesManager;
 
   AppDioInterceptor({
@@ -16,10 +17,10 @@ class AppDioInterceptor extends InterceptorsWrapper {
     options.headers["Accept"] = "*/*";
     options.headers["Content-Type"] = "application/json";
     final accessToken = _preferencesManager.getValue<String>(KeyPreferences.kAccessToken);
-    final localizationLanguage = _preferencesManager.getValue<String>("deviceLanguage");
-    options.headers.addAll({"Authorization": "Bearer $accessToken"});
+    if (accessToken != null) {
+      options.headers.addAll({"Authorization": "Bearer $accessToken"});
+    }
     options.headers.addAll({"Charset": "utf-8"});
-    options.headers.addAll({"localization": localizationLanguage});
     handler.next(options);
   }
 
@@ -32,6 +33,10 @@ class AppDioInterceptor extends InterceptorsWrapper {
 
     if (err.response != null) {
       debugPrint("\tStatus code: ${err.response!.statusCode}");
+      if (err.response!.statusCode == 401 || err.response!.statusCode == 403) {
+        _preferencesManager.clear();
+        NavigationUtil.root!.pushNamedAndRemoveUntil(AppPaths.selectObjectUseScreen, (route) => false);
+      }
       if (err.response!.data["error"] != null && err.response!.data["error"].isNotEmpty) {
         debugPrint("\tMessages code: ${err.response!.statusMessage}");
       }

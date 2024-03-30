@@ -111,14 +111,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "store": MessageLookupByLibrary.simpleMessage("Cửa hàng"),
         "timeToReceiveGift": MessageLookupByLibrary.simpleMessage(
             "Mỗi khách hàng chỉ nhận được một phần quà\nThời gian chơi có trúng thưởng: 8/5/2024 - 31/5/2024"),
+        "title_button_next_question":
+            MessageLookupByLibrary.simpleMessage("Tiếp theo"),
         "uncompletedMiniGame": MessageLookupByLibrary.simpleMessage(
             "Rất tiếc bạn chưa\nhoàn thành thử thách"),
         "youHaveReceivedTheGift":
             MessageLookupByLibrary.simpleMessage("Bạn đã nhận quà tặng"),
         "yourReward":
             MessageLookupByLibrary.simpleMessage("Phần thưởng của bạn là")
-        "store": MessageLookupByLibrary.simpleMessage("Cửa hàng"),
-        "title_button_next_question":
-            MessageLookupByLibrary.simpleMessage("Tiếp theo")
       };
 }
