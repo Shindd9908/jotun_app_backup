@@ -50,7 +50,7 @@ class JourneyBloc extends Bloc<JourneyEvent, JourneyState> {
     emit(FetchListGiftLoadingState());
     final result = await journeyRepository.fetchListGift(event.type);
     result.fold(
-      (l) => emit(FetchListGiftFailState()),
+      (l) => emit(FetchListGiftFailState(message: l)),
       (r) => emit(FetchListGiftSuccessState(listGift: r)),
     );
   }

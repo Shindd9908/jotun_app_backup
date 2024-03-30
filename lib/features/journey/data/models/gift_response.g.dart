@@ -10,7 +10,7 @@ GiftResponse _$GiftResponseFromJson(Map<String, dynamic> json) => GiftResponse(
       giftId: json['id'] as int?,
       giftURL: json['url'] as String?,
       content: json['content'] as String?,
-      type: json['type'] as String?,
+      type: json['type'] as int?,
       createdAt: json['created_at'] as String?,
       updatedAt: json['updated_at'] as String?,
     );

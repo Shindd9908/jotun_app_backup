@@ -54,7 +54,7 @@ class _JourneyApi implements JourneyApi {
   }
 
   @override
-  Future<ApiResponse<String>> completeArea(
+  Future<ApiResponse<dynamic>> completeArea(
       CompleteAreaRequest completeAreaRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -62,14 +62,14 @@ class _JourneyApi implements JourneyApi {
     final _data = <String, dynamic>{};
     _data.addAll(completeAreaRequest.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<String>>(Options(
+        _setStreamType<ApiResponse<dynamic>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/completed-area',
+              '/complete-area',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -78,9 +78,9 @@ class _JourneyApi implements JourneyApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<String>.fromJson(
+    final value = ApiResponse<dynamic>.fromJson(
       _result.data!,
-      (json) => json as String,
+      (json) => json as dynamic,
     );
     return value;
   }
@@ -161,15 +161,15 @@ class _JourneyApi implements JourneyApi {
   }
 
   @override
-  Future<ApiResponse<String>> receivedGift(
+  Future<ApiResponse<bool>> receivedGift(
       ReceiveGiftRequest receiveGiftRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(receiveGiftRequest.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<String>>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse<bool>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -185,9 +185,9 @@ class _JourneyApi implements JourneyApi {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<String>.fromJson(
+    final value = ApiResponse<bool>.fromJson(
       _result.data!,
-      (json) => json as String,
+      (json) => json as bool,
     );
     return value;
   }

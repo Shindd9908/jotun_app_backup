@@ -15,8 +15,8 @@ abstract class JourneyApi {
   @GET("/areas")
   Future<ApiResponse<List<AreaResponse>>> fetchListArea();
 
-  @POST("/completed-area")
-  Future<ApiResponse<String>> completeArea(@Body() CompleteAreaRequest completeAreaRequest);
+  @POST("/complete-area")
+  Future<ApiResponse> completeArea(@Body() CompleteAreaRequest completeAreaRequest);
 
   @GET("/completed-area/list")
   Future<ApiResponse<List<AreaCompletedResponse>>> fetchListAreaCompleted();
@@ -25,5 +25,5 @@ abstract class JourneyApi {
   Future<ApiResponse<List<GiftResponse>>> fetchListGift(@Part(name: 'type') int typeGift);
 
   @POST("/received-gift")
-  Future<ApiResponse<String>> receivedGift(@Body() ReceiveGiftRequest receiveGiftRequest);
+  Future<ApiResponse<bool>> receivedGift(@Body() ReceiveGiftRequest receiveGiftRequest);
 }

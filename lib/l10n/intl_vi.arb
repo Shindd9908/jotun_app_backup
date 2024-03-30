@@ -51,6 +51,8 @@
   "explainClaimReward2": "để nhận quà tặng từ Jotun!",
   "claimRewardButton": "Nhận quà",
   "completed": "Đã hoàn thành",
+  "completedReceiveGift": "Hoàn thành",
+  "congratulationsReceivingGiftJotun": "Chúc mừng bạn đã nhận\nđược quà từ Jotun",
 
   "@miniGameScreen" : {
     "description" : "Mini game screen"
@@ -71,9 +73,10 @@
   "@journeyScreen" : {
     "description" : "Journey screen"
   },
-  "alert_block_item_area": "QUÉT QR MỞ KHÓA",
-  "please_scan_qrcode_each_area": "HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH",
-  "title_button_next_question": "Tiếp theo",
+  "alertBlockItemArea": "QUÉT QR MỞ KHÓA",
+  "pleaseScanQRCodeEachArea": "HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH",
+  "titleButtonNextQuestion": "Tiếp theo",
+  "alertAnswerWrong": "Bạn đã trả lời sai 1 số câu hỏi. Vui lòng thử lại!",
 
   "errorFieldRequired": "Thông tin không được để trống",
   "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",

@@ -25,7 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "accountInformation":
             MessageLookupByLibrary.simpleMessage("Thông tin tài khoản"),
         "agency": MessageLookupByLibrary.simpleMessage("Đại lý"),
-        "alert_block_item_area":
+        "alertAnswerWrong": MessageLookupByLibrary.simpleMessage(
+            "Bạn đã trả lời sai 1 số câu hỏi. Vui lòng thử lại!"),
+        "alertBlockItemArea":
             MessageLookupByLibrary.simpleMessage("QUÉT QR MỞ KHÓA"),
         "backToHome": MessageLookupByLibrary.simpleMessage("Quay về trang chủ"),
         "busNo": MessageLookupByLibrary.simpleMessage("Số xe bus"),
@@ -36,10 +38,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "completed": MessageLookupByLibrary.simpleMessage("Đã hoàn thành"),
         "completedMiniGame": MessageLookupByLibrary.simpleMessage(
             "Chúc mừng bạn đã\nhoàn thành thử thách"),
+        "completedReceiveGift":
+            MessageLookupByLibrary.simpleMessage("Hoàn thành"),
         "confirmInformation":
             MessageLookupByLibrary.simpleMessage("Xác nhận thông tin"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
+        "congratulationsReceivingGiftJotun":
+            MessageLookupByLibrary.simpleMessage(
+                "Chúc mừng bạn đã nhận\nđược quà từ Jotun"),
         "errorFieldRequired": MessageLookupByLibrary.simpleMessage(
             "Thông tin không được để trống"),
         "errorIdCardNumberIncorrect": MessageLookupByLibrary.simpleMessage(
@@ -90,7 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Tên đăng nhập"),
         "playAgain": MessageLookupByLibrary.simpleMessage("Chơi lại"),
-        "please_scan_qrcode_each_area": MessageLookupByLibrary.simpleMessage(
+        "pleaseScanQRCodeEachArea": MessageLookupByLibrary.simpleMessage(
             "HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH"),
         "preorder": MessageLookupByLibrary.simpleMessage("Đặt hàng trước"),
         "productName": MessageLookupByLibrary.simpleMessage(
@@ -111,7 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "store": MessageLookupByLibrary.simpleMessage("Cửa hàng"),
         "timeToReceiveGift": MessageLookupByLibrary.simpleMessage(
             "Mỗi khách hàng chỉ nhận được một phần quà\nThời gian chơi có trúng thưởng: 8/5/2024 - 31/5/2024"),
-        "title_button_next_question":
+        "titleButtonNextQuestion":
             MessageLookupByLibrary.simpleMessage("Tiếp theo"),
         "uncompletedMiniGame": MessageLookupByLibrary.simpleMessage(
             "Rất tiếc bạn chưa\nhoàn thành thử thách"),

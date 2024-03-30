@@ -450,6 +450,26 @@ class S {
     );
   }
 
+  /// `Hoàn thành`
+  String get completedReceiveGift {
+    return Intl.message(
+      'Hoàn thành',
+      name: 'completedReceiveGift',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chúc mừng bạn đã nhận\nđược quà từ Jotun`
+  String get congratulationsReceivingGiftJotun {
+    return Intl.message(
+      'Chúc mừng bạn đã nhận\nđược quà từ Jotun',
+      name: 'congratulationsReceivingGiftJotun',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Luật chơi`
   String get gameRule {
     return Intl.message(
@@ -571,30 +591,40 @@ class S {
   }
 
   /// `QUÉT QR MỞ KHÓA`
-  String get alert_block_item_area {
+  String get alertBlockItemArea {
     return Intl.message(
       'QUÉT QR MỞ KHÓA',
-      name: 'alert_block_item_area',
+      name: 'alertBlockItemArea',
       desc: '',
       args: [],
     );
   }
 
   /// `HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH`
-  String get please_scan_qrcode_each_area {
+  String get pleaseScanQRCodeEachArea {
     return Intl.message(
       'HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH',
-      name: 'please_scan_qrcode_each_area',
+      name: 'pleaseScanQRCodeEachArea',
       desc: '',
       args: [],
     );
   }
 
   /// `Tiếp theo`
-  String get title_button_next_question {
+  String get titleButtonNextQuestion {
     return Intl.message(
       'Tiếp theo',
-      name: 'title_button_next_question',
+      name: 'titleButtonNextQuestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bạn đã trả lời sai 1 số câu hỏi. Vui lòng thử lại!`
+  String get alertAnswerWrong {
+    return Intl.message(
+      'Bạn đã trả lời sai 1 số câu hỏi. Vui lòng thử lại!',
+      name: 'alertAnswerWrong',
       desc: '',
       args: [],
     );

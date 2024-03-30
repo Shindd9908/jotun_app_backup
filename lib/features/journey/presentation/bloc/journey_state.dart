@@ -118,6 +118,10 @@ class FetchListGiftSuccessState extends JourneyState {
 }
 
 class FetchListGiftFailState extends JourneyState {
+  final String message;
+
+  const FetchListGiftFailState({required this.message});
+
   @override
-  List<Object> get props => [];
+  List<Object> get props => [message];
 }

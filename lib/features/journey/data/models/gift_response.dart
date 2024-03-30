@@ -12,7 +12,7 @@ class GiftResponse extends Equatable {
   @JsonKey(name: "content")
   final String? content;
   @JsonKey(name: "type")
-  final String? type;
+  final int? type;
   @JsonKey(name: "created_at")
   final String? createdAt;
   @JsonKey(name: "updated_at")

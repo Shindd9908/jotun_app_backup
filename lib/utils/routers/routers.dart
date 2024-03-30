@@ -8,7 +8,10 @@ import "package:jotub_app/features/authentication/presentation/ui/screens/select
 import "package:jotub_app/features/home/presentation/ui/screens/home_screen.dart";
 import "package:jotub_app/features/home/presentation/ui/screens/profile_screen.dart";
 import "package:jotub_app/features/home/presentation/ui/screens/splash_screen.dart";
+import "package:jotub_app/features/journey/presentation/ui/screens/answer_question_screen.dart";
 import "package:jotub_app/features/journey/presentation/ui/screens/journey_screen.dart";
+import "package:jotub_app/features/journey/presentation/ui/screens/receive_gift_journey_screen.dart";
+import "package:jotub_app/features/journey/presentation/ui/screens/scan_qr_code_screen.dart";
 import "package:jotub_app/features/mini_game/presentation/ui/screens/gift_screen.dart";
 import "package:jotub_app/features/mini_game/presentation/ui/screens/introduce_mini_game_screen.dart";
 import "package:jotub_app/features/mini_game/presentation/ui/screens/mini_game_screen.dart";
@@ -41,7 +44,11 @@ class AppRoutes {
       case AppPaths.journeyScreen:
         return MaterialPageRoute(builder: (_) => const JourneyScreen());
       case AppPaths.scanQRCodeScreen:
-        return MaterialPageRoute(builder: (_) => Container());
+        return MaterialPageRoute(builder: (_) => ScanQRCodeScreen(area: arguments?['area']));
+      case AppPaths.answerQuestionScreen:
+        return MaterialPageRoute(builder: (_) => AnswerQuestionScreen(area: arguments?['area']));
+      case AppPaths.receiveGiftJourneyScreen:
+        return MaterialPageRoute(builder: (_) => ReceiveGiftJourneyScreen(giftReceivedURL: arguments?['giftReceivedURL']));
       case AppPaths.introduceMiniGameScreen:
         return MaterialPageRoute(builder: (_) => const IntroduceMiniGameScreen());
       case AppPaths.miniGameScreen:

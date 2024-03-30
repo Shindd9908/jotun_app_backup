@@ -6,48 +6,63 @@ import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:sizer/sizer.dart';
 
 class AnswerWidget extends StatelessWidget {
-  final AnswerEntity answer;
+  final List<AnswerEntity> listAnswer;
   final Function callbackSelectAnswer;
 
-  AnswerWidget({super.key, required this.answer, required this.callbackSelectAnswer});
+  AnswerWidget({super.key, required this.listAnswer, required this.callbackSelectAnswer});
 
-  final ValueNotifier _isSelectAnswer = ValueNotifier<bool>(false);
+  final ValueNotifier _isAllowSelectAnswer = ValueNotifier<bool>(true);
+  final ValueNotifier _indexAnswerSelected = ValueNotifier<int>(-1);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => callbackSelectAnswer(answer.correct),
-      child: Container(
-        margin: const EdgeInsets.only(bottom: 16),
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 14),
-        decoration: BoxDecoration(
-          color: AppColor.colorMainWhite,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: TextWidget(
-                text: answer.answer ?? '',
-                color: AppColor.colorMainBlack,
-                fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
-                fontWeight: FontWeight.w500,
-                textAlign: TextAlign.start,
-              ),
+    return Column(
+      children: List.generate(
+        listAnswer.length,
+        (index) => GestureDetector(
+          onTap: () {
+            if (_isAllowSelectAnswer.value) {
+              _isAllowSelectAnswer.value = false;
+              _indexAnswerSelected.value = index;
+              callbackSelectAnswer(listAnswer[index].correct);
+            }
+          },
+          child: Container(
+            margin: const EdgeInsets.only(bottom: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            decoration: BoxDecoration(
+              color: AppColor.colorMainWhite,
+              borderRadius: BorderRadius.circular(8),
             ),
-            const SizedBox(width: 16),
-            ValueListenableBuilder(
-              valueListenable: _isSelectAnswer,
-              builder: (_, value, __) => _isSelectAnswer.value
-                  ? Icon(
-                      answer.correct == true ? Icons.check : Icons.clear,
-                      color: answer.correct == true ? AppColor.colorMainGreen : AppColor.colorMainRed,
-                      size: AppHelper.setMultiDeviceSize(32, 32),
-                    )
-                  : const SizedBox(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    child: TextWidget(
+                      text: listAnswer[index].answer ?? '',
+                      color: AppColor.colorMainBlack,
+                      fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
+                      fontWeight: FontWeight.w500,
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                ValueListenableBuilder(
+                  valueListenable: _indexAnswerSelected,
+                  builder: (_, value, __) => _indexAnswerSelected.value != -1 && _indexAnswerSelected.value == index
+                      ? Icon(
+                          listAnswer[index].correct == true ? Icons.check : Icons.clear,
+                          color: listAnswer[index].correct == true ? AppColor.colorMainGreen : AppColor.colorMainRed,
+                          size: AppHelper.setMultiDeviceSize(32, 32),
+                        )
+                      : const SizedBox(),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

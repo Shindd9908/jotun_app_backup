@@ -4,7 +4,7 @@ class GiftEntity extends Equatable {
   final int? giftId;
   final String? giftURL;
   final String? content;
-  final String? type;
+  final int? type;
   final String? createdAt;
   final String? updatedAt;
 
