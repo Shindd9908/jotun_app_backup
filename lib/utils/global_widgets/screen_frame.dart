@@ -4,11 +4,12 @@ import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:sizer/sizer.dart';
 
 class ScreenFrame extends StatelessWidget {
-  const ScreenFrame({super.key, required this.child, this.callBackPopScreen, this.isHasButtonBack});
+  const ScreenFrame({super.key, required this.child, this.callBackPopScreen, this.isHasButtonBack, this.isCenter});
 
   final Widget child;
   final Function? callBackPopScreen;
   final bool? isHasButtonBack;
+  final bool? isCenter;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +23,9 @@ class ScreenFrame extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + AppHelper.setMultiDeviceSize(16, 16)),
+        padding: EdgeInsets.only(top: isCenter == true ? 0 : MediaQuery.of(context).padding.top + AppHelper.setMultiDeviceSize(16, 16)),
         child: Column(
+          mainAxisAlignment: isCenter == true ? MainAxisAlignment.center : MainAxisAlignment.start,
           children: [
             if (isHasButtonBack == true)
               Padding(

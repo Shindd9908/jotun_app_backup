@@ -7,4 +7,6 @@ abstract class MiniGameRepository {
   List<String> getDataMiniGame();
   List<GlobalKey<FlipCardState>> getCardStateKeys();
   Future<Either<String, GiftEntity>> fetchGift();
+  Future<Either<String, List<GiftEntity>>> fetchReceivedGift();
+  Future<Either<String, String>> receivedGift(int giftId, int type);
 }

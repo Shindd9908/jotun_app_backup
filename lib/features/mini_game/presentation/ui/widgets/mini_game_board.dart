@@ -20,8 +20,8 @@ class MiniGameBoard extends StatefulWidget {
 }
 
 class _MiniGameBoardState extends State<MiniGameBoard> {
-  final _start = ValueNotifier<bool>(false);
-  final _wait = ValueNotifier<bool>(false);
+  final _startMiniGame = ValueNotifier<bool>(false);
+  final _delayFlipCard = ValueNotifier<bool>(false);
   final _ignoringPointer = ValueNotifier<bool>(false);
   final _secondLeft = ValueNotifier<int>(60);
 
@@ -46,7 +46,7 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(seconds: 2), () {
-        _start.value = true;
+        _startMiniGame.value = true;
 
         Future.delayed(const Duration(milliseconds: 400), () {
           _startCountdownTimer();
@@ -155,14 +155,14 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
                     return Container(
                       margin: const EdgeInsets.all(10),
                       child: ValueListenableBuilder(
-                        valueListenable: _start,
+                        valueListenable: _startMiniGame,
                         builder: (_, value, __) {
                           return value
                               ? ValueListenableBuilder(
                                   valueListenable: _ignoringPointer,
                                   builder: (_, ignoringPointerValue, __) {
                                     return ValueListenableBuilder(
-                                        valueListenable: _wait,
+                                        valueListenable: _delayFlipCard,
                                         builder: (_, waitValue, __) {
                                           return IgnorePointer(
                                             ignoring: ignoringPointerValue,
@@ -176,7 +176,7 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
                                                     _previousIndex = index;
                                                   } else {
                                                     _flip = false;
-                                                    _wait.value = true;
+                                                    _delayFlipCard.value = true;
                                                     if (_previousIndex != index) {
                                                       if (board[_previousIndex] != board[index]) {
                                                         _ignoringPointer.value = true;
@@ -186,7 +186,7 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
                                                           cardStateKeys[index].currentState?.toggleCard();
                                                           Future.delayed(const Duration(milliseconds: 400), () {
                                                             _ignoringPointer.value = false;
-                                                            _wait.value = false;
+                                                            _delayFlipCard.value = false;
                                                           });
                                                         });
                                                       } else {
@@ -203,12 +203,12 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
                                                           });
                                                         } else {
                                                           Future.delayed(const Duration(seconds: 1), () {
-                                                            _wait.value = false;
+                                                            _delayFlipCard.value = false;
                                                           });
                                                         }
                                                       }
                                                     } else {
-                                                      _wait.value = false;
+                                                      _delayFlipCard.value = false;
                                                     }
                                                   }
                                                 } else {

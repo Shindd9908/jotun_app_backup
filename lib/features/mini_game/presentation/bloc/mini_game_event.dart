@@ -11,8 +11,8 @@ class InitBoardEvent extends MiniGameEvent {
   List<Object?> get props => [];
 }
 
-class FetchGiftEvent extends MiniGameEvent {
-  const FetchGiftEvent();
+class CheckIsReceivedGiftEvent extends MiniGameEvent {
+  const CheckIsReceivedGiftEvent();
 
   @override
   List<Object?> get props => [];
