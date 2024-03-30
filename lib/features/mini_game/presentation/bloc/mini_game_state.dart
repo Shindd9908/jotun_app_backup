@@ -29,35 +29,26 @@ class InitBoardFailState extends MiniGameState {
   List<Object?> get props => [];
 }
 
-// Play mini game
-class ReadyPlayGameState extends MiniGameState {
+// Check if received gift
+class CheckIfReceivedGiftLoadingState extends MiniGameState {
   @override
-  List<Object?> get props => [];
+  List<Object> get props => [];
 }
 
-class CompleteMiniGameState extends MiniGameState {
-  @override
-  List<Object?> get props => [];
-}
+class CheckIfReceivedGiftSuccessState extends MiniGameState {
+  final bool isReceivedGift;
+  final GiftEntity? gift;
 
-class FetchGiftLoadingState extends MiniGameState {
-  @override
-  List<Object?> get props => [];
-}
-
-class FetchGiftSuccessState extends MiniGameState {
-  final GiftEntity gift;
-
-  const FetchGiftSuccessState({required this.gift});
+  const CheckIfReceivedGiftSuccessState({required this.isReceivedGift, this.gift});
 
   @override
-  List<Object?> get props => [gift];
+  List<Object?> get props => [isReceivedGift, gift];
 }
 
-class FetchGiftFailState extends MiniGameState {
+class CheckIfReceivedGiftFailState extends MiniGameState {
   final String message;
 
-  const FetchGiftFailState({required this.message});
+  const CheckIfReceivedGiftFailState({required this.message});
 
   @override
   List<Object> get props => [message];

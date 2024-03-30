@@ -1,83 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:jotub_app/generated/l10n.dart';
-import 'package:jotub_app/theme/assets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart';
+import 'package:jotub_app/features/mini_game/presentation/ui/screens/gift_screen.dart';
+import 'package:jotub_app/features/mini_game/presentation/ui/widgets/result_widget.dart';
 import 'package:jotub_app/theme/colors.dart';
-import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
-import 'package:jotub_app/utils/global_widgets/text_widget.dart';
-import 'package:jotub_app/utils/routers/paths.dart';
-import 'package:sizer/sizer.dart';
+import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 
-class ResultScreen extends StatelessWidget {
+class ResultScreen extends StatefulWidget {
   const ResultScreen({Key? key, this.isCompleted}) : super(key: key);
 
   final bool? isCompleted;
 
   @override
+  State<ResultScreen> createState() => _ResultScreenState();
+}
+
+class _ResultScreenState extends State<ResultScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MiniGameBloc>().add(const CheckIsReceivedGiftEvent());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final bool isCompletedMiniGame = isCompleted != null ? isCompleted! : false;
-    return ScreenFrame(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 70, bottom: 48),
-            child: Image.asset(
-              AppAssets.imgLogoApp,
-              width: 36.w,
-            ),
-          ),
-          TextWidget(
-            text: isCompletedMiniGame == true ? S.of(context).completedMiniGame.toUpperCase() : S.of(context).uncompletedMiniGame.toUpperCase(),
-            color: AppColor.colorMainYellow,
-            textAlign: TextAlign.center,
-            fontWeight: FontWeight.bold,
-            fontSize: 18.sp,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 24),
-            child: TextWidget(
-              text: S.of(context).youHaveReceivedTheGift,
-              color: isCompletedMiniGame == true ? AppColor.colorMainWhite : AppColor.colorTransparent,
-              textAlign: TextAlign.center,
-              fontWeight: FontWeight.bold,
-              fontSize: 18.sp,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16, bottom: 32),
-            child: GestureDetector(
-              onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
-                AppPaths.introduceMiniGameScreen,
-                (route) => false,
-              ),
-              child: ButtonSubmitWidget(
-                title: S.of(context).playAgain,
-                widthButton: 72.w,
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
-              AppPaths.homeScreen,
-              (route) => false,
-            ),
-            child: ButtonSubmitWidget(
-              title: S.of(context).backToHome,
-              widthButton: 72.w,
-            ),
-          ),
-          if (isCompletedMiniGame == true)
-            Padding(
-              padding: const EdgeInsets.only(top: 24),
-              child: TextWidget(
-                text: S.of(context).timeToReceiveGift,
-                color: AppColor.colorMainWhite,
-                fontSize: 10.sp,
-                textAlign: TextAlign.center,
-              ),
-            ),
-        ],
-      ),
+    final bool isCompletedMiniGame = widget.isCompleted != null ? widget.isCompleted! : false;
+    return BlocBuilder<MiniGameBloc, MiniGameState>(
+      buildWhen: (_, current) =>
+        current is CheckIfReceivedGiftLoadingState ||
+        current is CheckIfReceivedGiftSuccessState ||
+        current is CheckIfReceivedGiftFailState,
+      builder: (context, state) {
+        if (isCompletedMiniGame == false) {
+          return ResultWidget(isCompletedMiniGame: isCompletedMiniGame);
+        } else if (state is CheckIfReceivedGiftSuccessState) {
+          if (state.isReceivedGift == true) {
+            return ResultWidget(isCompletedMiniGame: isCompletedMiniGame);
+          } else {
+            return GiftScreen(gift: state.gift);
+          }
+        }
+        return const ScreenFrame(
+          isCenter: true,
+          child: SpinKitLoadingWidget(color: AppColor.colorMainWhite, size: 36),
+        );
+      },
     );
   }
 }
