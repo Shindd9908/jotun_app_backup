@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart';
 import 'package:jotub_app/features/mini_game/presentation/ui/widgets/sample_board.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
@@ -12,21 +10,8 @@ import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
 import 'package:sizer/sizer.dart';
 
-class IntroduceMiniGameScreen extends StatefulWidget {
+class IntroduceMiniGameScreen extends StatelessWidget {
   const IntroduceMiniGameScreen({super.key});
-
-  @override
-  State<IntroduceMiniGameScreen> createState() => _IntroduceMiniGameScreenState();
-}
-
-class _IntroduceMiniGameScreenState extends State<IntroduceMiniGameScreen> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<MiniGameBloc>().add(const InitBoardEvent());
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

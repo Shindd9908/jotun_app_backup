@@ -45,6 +45,7 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      context.read<MiniGameBloc>().add(const InitBoardEvent());
       await Future.delayed(const Duration(seconds: 2), () {
         _startMiniGame.value = true;
 
