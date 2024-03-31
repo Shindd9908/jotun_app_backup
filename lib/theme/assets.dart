@@ -34,6 +34,7 @@ class AppAssets {
   static const iconCoupon = 'assets/icons/icon_coupon.png';
   static const iconAccount = 'assets/icons/icon_account.png';
   static const iconImage = 'assets/icons/icon_image.png';
+  static const iconBellNotification = 'assets/icons/icon_bell_notification.jpeg';
 
   //Mini game
   static const iconStar = 'assets/icons/mini_game/icon_star.png';

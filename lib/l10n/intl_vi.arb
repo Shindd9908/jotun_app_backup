@@ -52,6 +52,9 @@
   "claimRewardButton": "Nhận quà",
   "completed": "Đã hoàn thành",
   "completedReceiveGift": "Hoàn thành",
+  "scanQRCodeAreaWrong": "Mã sai khu vực",
+  "pleaseMoveOtherArea": "Mời bạn di chuyển qua",
+  "toReScan": "để quét mã",
   "congratulationsReceivingGiftJotun": "Chúc mừng bạn đã nhận\nđược quà từ Jotun",
 
   "@miniGameScreen" : {

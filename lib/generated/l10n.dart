@@ -460,6 +460,36 @@ class S {
     );
   }
 
+  /// `Mã sai khu vực`
+  String get scanQRCodeAreaWrong {
+    return Intl.message(
+      'Mã sai khu vực',
+      name: 'scanQRCodeAreaWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mời bạn di chuyển qua`
+  String get pleaseMoveOtherArea {
+    return Intl.message(
+      'Mời bạn di chuyển qua',
+      name: 'pleaseMoveOtherArea',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `để quét mã`
+  String get toReScan {
+    return Intl.message(
+      'để quét mã',
+      name: 'toReScan',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Chúc mừng bạn đã nhận\nđược quà từ Jotun`
   String get congratulationsReceivingGiftJotun {
     return Intl.message(

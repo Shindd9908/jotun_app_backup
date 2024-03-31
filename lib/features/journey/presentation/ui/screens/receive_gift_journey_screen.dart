@@ -16,37 +16,41 @@ class ReceiveGiftJourneyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenFrame(
-      child: Expanded(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(32, 32), bottom: AppHelper.setMultiDeviceSize(24, 24)),
-              child: Image.asset(AppAssets.imgLogoApp, width: AppHelper.setMultiDeviceSize(32.w, 32.w)),
-            ),
-            TextWidget(
-              text: S.of(context).congratulationsReceivingGiftJotun,
-              color: AppColor.colorMainWhite,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w900,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 48),
-            Expanded(
-              child: CacheImageWidget(
-                imageUrl: giftReceivedURL,
-                widthImage: 100.w - 64,
-                fit: BoxFit.fitHeight,
-                radius: 8,
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (value) => false,
+      child: ScreenFrame(
+        child: Expanded(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(32, 32), bottom: AppHelper.setMultiDeviceSize(24, 24)),
+                child: Image.asset(AppAssets.imgLogoApp, width: AppHelper.setMultiDeviceSize(32.w, 32.w)),
               ),
-            ),
-            const SizedBox(height: 48),
-            InkWell(
-              onTap: () => Navigator.of(context).pop(),
-              child: ButtonSubmitWidget(title: S.of(context).completedReceiveGift, widthButton: 60.w, textColor: AppColor.colorMainWhite),
-            ),
-            SizedBox(height: AppHelper.setMultiDeviceSize(100, 100))
-          ],
+              TextWidget(
+                text: S.of(context).congratulationsReceivingGiftJotun,
+                color: AppColor.colorMainWhite,
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w900,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 48),
+              Expanded(
+                child: CacheImageWidget(
+                  imageUrl: giftReceivedURL,
+                  widthImage: 100.w - 64,
+                  fit: BoxFit.fitHeight,
+                  radius: 8,
+                ),
+              ),
+              const SizedBox(height: 48),
+              InkWell(
+                onTap: () => Navigator.of(context).pop(),
+                child: ButtonSubmitWidget(title: S.of(context).completedReceiveGift, widthButton: 60.w, textColor: AppColor.colorMainWhite),
+              ),
+              SizedBox(height: AppHelper.setMultiDeviceSize(100, 100))
+            ],
+          ),
         ),
       ),
     );

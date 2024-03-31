@@ -5,6 +5,7 @@ import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/global_widgets/popup_dialog_alert.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
@@ -78,10 +79,39 @@ class _ScanQRCodeScreenState extends State<ScanQRCodeScreen> {
                   key: _qrKey,
                   onQRViewCreated: (qrViewController) {
                     _qrViewController.value = qrViewController;
-                    qrViewController.scannedDataStream.listen((scanData) {
+                    qrViewController.scannedDataStream.listen((scanData) async {
                       if (scanData.code != null && scanData.code!.isNotEmpty && widget.area.areaCode != null && scanData.code!.contains(widget.area.areaCode!)) {
                         _qrViewController.value.stopCamera();
                         Navigator.of(context).pushNamed(AppPaths.answerQuestionScreen, arguments: {'area': widget.area});
+                      } else {
+                        await PopupDialogAlert.showPopupWithUIParamHasBell(
+                          context,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 32, right: 32),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                TextWidget(
+                                  text: S.of(context).scanQRCodeAreaWrong,
+                                  color: AppColor.colorMainYellow,
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 6, horizontal: 60),
+                                  child: Divider(height: 1, color: AppColor.colorMainBlack),
+                                ),
+                                TextWidget(
+                                  text: '${S.of(context).pleaseMoveOtherArea} ${widget.area.areaName ?? ''} ${S.of(context).toReScan}',
+                                  color: AppColor.colorMainBlack,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
+                            ),
+                          ),
+                        );
                       }
                     });
                   },

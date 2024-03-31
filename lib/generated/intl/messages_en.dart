@@ -97,6 +97,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Tên đăng nhập"),
         "playAgain": MessageLookupByLibrary.simpleMessage("Chơi lại"),
+        "pleaseMoveOtherArea":
+            MessageLookupByLibrary.simpleMessage("Mời bạn di chuyển qua"),
         "pleaseScanQRCodeEachArea": MessageLookupByLibrary.simpleMessage(
             "HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH"),
         "preorder": MessageLookupByLibrary.simpleMessage("Đặt hàng trước"),
@@ -108,6 +110,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Nhân viên bán hàng phụ trách"),
         "salesPhoneNumberStaffCharge":
             MessageLookupByLibrary.simpleMessage("SĐT nhân viên bán hàng"),
+        "scanQRCodeAreaWrong":
+            MessageLookupByLibrary.simpleMessage("Mã sai khu vực"),
         "selectAvatarFromCamera":
             MessageLookupByLibrary.simpleMessage("Chọn ảnh từ camera"),
         "selectAvatarFromGallery":
@@ -120,6 +124,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Mỗi khách hàng chỉ nhận được một phần quà\nThời gian chơi có trúng thưởng: 8/5/2024 - 31/5/2024"),
         "titleButtonNextQuestion":
             MessageLookupByLibrary.simpleMessage("Tiếp theo"),
+        "toReScan": MessageLookupByLibrary.simpleMessage("để quét mã"),
         "uncompletedMiniGame": MessageLookupByLibrary.simpleMessage(
             "Rất tiếc bạn chưa\nhoàn thành thử thách"),
         "youHaveReceivedTheGift":
