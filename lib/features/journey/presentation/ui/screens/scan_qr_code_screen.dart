@@ -24,21 +24,21 @@ class ScanQRCodeScreen extends StatefulWidget {
 
 class _ScanQRCodeScreenState extends State<ScanQRCodeScreen> {
   final GlobalKey _qrKey = GlobalKey(debugLabel: 'QR');
-  final ValueNotifier _qrViewController = ValueNotifier<QRViewController?>(null);
+  QRViewController? _qrViewController;
 
   @override
   void reassemble() {
     super.reassemble();
     if (Platform.isAndroid) {
-      _qrViewController.value.pauseCamera();
+      _qrViewController!.pauseCamera();
     } else if (Platform.isIOS) {
-      _qrViewController.value.resumeCamera();
+      _qrViewController!.resumeCamera();
     }
   }
 
   @override
   void dispose() {
-    _qrViewController.value.dispose();
+    _qrViewController!.dispose();
     super.dispose();
   }
 
@@ -73,17 +73,29 @@ class _ScanQRCodeScreenState extends State<ScanQRCodeScreen> {
                 borderRadius: BorderRadius.circular(16),
                 color: AppColor.colorMainWhite,
               ),
-              child: ValueListenableBuilder(
-                valueListenable: _qrViewController,
-                builder: (_, __, ___) => QRView(
-                  key: _qrKey,
-                  onQRViewCreated: (qrViewController) {
-                    _qrViewController.value = qrViewController;
-                    qrViewController.scannedDataStream.listen((scanData) async {
-                      if (scanData.code != null && scanData.code!.isNotEmpty && widget.area.areaCode != null && scanData.code!.contains(widget.area.areaCode!)) {
-                        _qrViewController.value.stopCamera();
+              child: QRView(
+                key: _qrKey,
+                overlay: QrScannerOverlayShape(
+                  borderColor: AppColor.colorMainWhite,
+                  borderRadius: 0,
+                  borderLength: 5,
+                  borderWidth: 5,
+                  cutOutSize: AppHelper.setMultiDeviceSize(30.w, 100.w - 64) - 80,
+                ),
+                onQRViewCreated: (qrViewController) {
+                  _qrViewController = qrViewController;
+                  qrViewController.scannedDataStream.listen((scanData) async {
+                    if (scanData.code != null &&
+                        scanData.code!.isNotEmpty &&
+                        widget.area.areaCode != null &&
+                        scanData.code!.contains(widget.area.areaCode!)) {
+                      await _qrViewController!.stopCamera();
+                      if (mounted) {
                         Navigator.of(context).pushNamed(AppPaths.answerQuestionScreen, arguments: {'area': widget.area});
-                      } else {
+                      }
+                    } else {
+                      await _qrViewController!.pauseCamera();
+                      if (mounted) {
                         await PopupDialogAlert.showPopupWithUIParamHasBell(
                           context,
                           Padding(
@@ -111,11 +123,13 @@ class _ScanQRCodeScreenState extends State<ScanQRCodeScreen> {
                               ],
                             ),
                           ),
-                        );
+                        ).whenComplete(() async {
+                          await _qrViewController!.resumeCamera();
+                        });
                       }
-                    });
-                  },
-                ),
+                    }
+                  });
+                },
               ),
             ),
           ],
