@@ -9,4 +9,5 @@ abstract class MiniGameRepository {
   Future<Either<String, GiftEntity>> fetchGift();
   Future<Either<String, List<GiftEntity>>> fetchReceivedGift();
   Future<Either<String, String>> receivedGift(int giftId, int type);
+  Future<Either<String, String>> completeMiniGame(int achievements);
 }

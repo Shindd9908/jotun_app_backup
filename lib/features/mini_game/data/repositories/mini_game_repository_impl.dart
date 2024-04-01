@@ -5,6 +5,7 @@ import 'package:jotub_app/core/services/api_service.dart';
 import 'package:jotub_app/features/journey/data/models/receive_gift_request.dart';
 import 'package:jotub_app/features/mini_game/data/data_sources/mini_game_api.dart';
 import 'package:jotub_app/features/mini_game/data/mapper/gift_mapper.dart';
+import 'package:jotub_app/features/mini_game/data/models/complete_mini_game_request.dart';
 import 'package:jotub_app/features/mini_game/data/models/gift_response.dart';
 import 'package:jotub_app/features/mini_game/domain/entities/gift_entity.dart';
 import 'package:jotub_app/features/mini_game/domain/repositories/mini_game_repository.dart';
@@ -76,6 +77,20 @@ class MiniGameRepositoryImpl implements MiniGameRepository {
   Future<Either<String, String>> receivedGift(int giftId, int type) async {
     try {
       final result = await miniGameApi.receivedGift(ReceiveGiftRequest(giftId: giftId, type: type));
+      if (result.isSuccess) {
+        return Right(result.message ?? '');
+      } else {
+        return Left(result.message ?? '');
+      }
+    } catch (error) {
+      return ApiServices.handleApiError(error);
+    }
+  }
+
+  @override
+  Future<Either<String, String>> completeMiniGame(int achievements) async {
+    try {
+      final result = await miniGameApi.completeMiniGame(CompleteMiniGameRequest(achievements: achievements));
       if (result.isSuccess) {
         return Right(result.message ?? '');
       } else {
