@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield"),
         "dateNewProductLaunched":
             MessageLookupByLibrary.simpleMessage("Vào ngày 08/05/2024"),
+        "daySchedule": MessageLookupByLibrary.simpleMessage("Ngày"),
         "errorFieldRequired": MessageLookupByLibrary.simpleMessage(
             "Thông tin không được để trống"),
         "errorIdCardNumberIncorrect": MessageLookupByLibrary.simpleMessage(
@@ -81,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xem chi tiết hành trình"),
         "group": MessageLookupByLibrary.simpleMessage("Nhóm"),
         "hotel": MessageLookupByLibrary.simpleMessage("Khách sạn"),
+        "hourSchedule": MessageLookupByLibrary.simpleMessage("tiếng"),
         "idCardNumber":
             MessageLookupByLibrary.simpleMessage("Căn cước công dân"),
         "inclusiveness": MessageLookupByLibrary.simpleMessage("SỰ TOÀN DIỆN"),
@@ -93,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "memberOfJotun":
             MessageLookupByLibrary.simpleMessage("Nhân viên Jotun"),
         "miniGame": MessageLookupByLibrary.simpleMessage("Mini game\n"),
+        "minuteSchedule": MessageLookupByLibrary.simpleMessage("phút"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "newProductInformation":
             MessageLookupByLibrary.simpleMessage("Thông tin sản\nphẩm mới"),

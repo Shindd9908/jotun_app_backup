@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
@@ -7,25 +8,18 @@ import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
 import 'package:sizer/sizer.dart';
 
-class DetailTrip extends StatelessWidget {
-  const DetailTrip({
-    Key? key,
-    this.textDay,
-    this.content,
-    this.backgroundImage,
-    this.unlock = true,
-  }) : super(key: key);
-
-  final String? textDay;
-  final String? content;
-  final String? backgroundImage;
+class TripDetailWidget extends StatelessWidget {
+  final TripEntity trip;
   final bool unlock;
+  final int tripIndex;
+
+  const TripDetailWidget({Key? key, required this.unlock, required this.trip, required this.tripIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 23.h,
-      width: double.infinity,
+      height: (100.w - AppHelper.setMultiDeviceSize(64, 64)) * 2 / 3.2,
+      width: 100.w - AppHelper.setMultiDeviceSize(64, 64),
       padding: const EdgeInsets.symmetric(
         horizontal: 8,
         vertical: 8,
@@ -33,11 +27,17 @@ class DetailTrip extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       decoration: unlock
           ? BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(backgroundImage ?? ''),
-                fit: BoxFit.fill,
-                opacity: 0.3,
-              ),
+              image: trip.image != null && trip.name!.isNotEmpty
+                  ? DecorationImage(
+                      image: NetworkImage(trip.name!),
+                      fit: BoxFit.cover,
+                      opacity: 0.3,
+                    )
+                  : const DecorationImage(
+                      image: AssetImage('assets/images/image_schedule_2.jpg'),
+                      fit: BoxFit.cover,
+                      opacity: 0.3,
+                    ),
               borderRadius: BorderRadius.circular(16),
             )
           : BoxDecoration(
@@ -53,41 +53,36 @@ class DetailTrip extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TextWidget(
-                        text: textDay,
+                        text: '${S.of(context).daySchedule} $tripIndex:',
                         color: AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(19.sp, 20.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(22.sp, 20.sp),
                         fontWeight: FontWeight.w900,
                         textAlign: TextAlign.center,
                       ),
                       TextWidget(
-                        text: content,
+                        text: trip.title ?? 'Trải nghiệm show diễn thực cảnh\nKý ức Hội An',
                         color: AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(19.sp, 14.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
                         fontWeight: FontWeight.w500,
                         textAlign: TextAlign.center,
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 4),
-                        width: 28.w,
-                        child: const Divider(
-                          color: Colors.white,
-                          height: 4,
-                          thickness: 2,
-                        ),
+                        width: AppHelper.setMultiDeviceSize(28.w, 28.w),
+                        child: const Divider(color: Colors.white, height: 4, thickness: 2),
                       ),
                     ],
                   ),
                 ),
                 GestureDetector(
-                  onTap: () =>
-                      Navigator.of(context).pushNamed(AppPaths.scheduleScreen),
+                  onTap: () => Navigator.of(context).pushNamed(AppPaths.scheduleScreen , arguments: {'trip': trip , 'tripIndex': tripIndex}),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TextWidget(
                         text: S.of(context).goToDetailTrip,
                         color: AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(19.sp, 8.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(12.sp, 8.sp),
                         fontWeight: FontWeight.w900,
                         fontStyle: FontStyle.italic,
                         textAlign: TextAlign.center,
@@ -95,7 +90,7 @@ class DetailTrip extends StatelessWidget {
                       Icon(
                         Icons.arrow_forward_ios,
                         color: Colors.white,
-                        size: 8.sp,
+                        size: AppHelper.setMultiDeviceSize(8, 8),
                       ),
                     ],
                   ),
@@ -105,8 +100,8 @@ class DetailTrip extends StatelessWidget {
           : Center(
               child: Image.asset(
                 AppAssets.iconLock,
-                width: 16.w,
-                height: 16.w,
+                width: AppHelper.setMultiDeviceSize(48, 48),
+                height: AppHelper.setMultiDeviceSize(48, 48),
               ),
             ),
     );

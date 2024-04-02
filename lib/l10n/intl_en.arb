@@ -59,6 +59,13 @@
   "toReScan": "để quét mã",
   "congratulationsReceivingGiftJotun": "Chúc mừng bạn đã nhận\nđược quà từ Jotun",
 
+  "@scheduleScreen" : {
+    "description" : "Schedule screen"
+  },
+  "daySchedule": "Ngày",
+  "hourSchedule": "tiếng",
+  "minuteSchedule": "phút",
+
   "@miniGameScreen" : {
     "description" : "Mini game screen"
   },

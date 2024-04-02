@@ -20,6 +20,7 @@ import "package:jotub_app/features/mini_game/presentation/ui/screens/result_scre
 import "package:jotub_app/features/new_products/presentation/ui/new_products_screen.dart";
 import "package:jotub_app/features/notification/presentation/screen/list_notification_screen.dart";
 import "package:jotub_app/features/schedule/presentation/ui/screens/schedule_screen.dart";
+import "package:jotub_app/features/trip/presentation/ui/screens/schedule_screen.dart";
 import "package:jotub_app/features/trip/presentation/ui/screens/trip_screen.dart";
 import "package:jotub_app/utils/constants/key_preferences.dart";
 import "package:jotub_app/utils/routers/paths.dart";
@@ -43,7 +44,7 @@ class AppRoutes {
       case AppPaths.tripScreen:
         return MaterialPageRoute(builder: (_) => const TripScreen());
       case AppPaths.scheduleScreen:
-        return MaterialPageRoute(builder: (_) => const ScheduleScreen());
+        return MaterialPageRoute(builder: (_) => ScheduleScreen(trip: arguments?['trip'], tripIndex: arguments?['tripIndex']));
       case AppPaths.journeyScreen:
         return MaterialPageRoute(builder: (_) => const JourneyScreen());
       case AppPaths.scanQRCodeScreen:

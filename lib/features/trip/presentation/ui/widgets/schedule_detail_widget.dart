@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:sizer/sizer.dart';
 
-class DetailSchedule extends StatelessWidget {
-  const DetailSchedule({
-    super.key,
-    required this.time,
-    required this.content,
-    required this.duration,
-    required this.address,
-  });
+class ScheduleDetailWidget extends StatelessWidget {
+  final ScheduleEntity schedule;
 
-  final String time;
-  final String content;
-  final String duration;
-  final String address;
+  const ScheduleDetailWidget({super.key, required this.schedule});
 
   @override
   Widget build(BuildContext context) {
@@ -31,30 +23,21 @@ class DetailSchedule extends StatelessWidget {
               transform: Matrix4.translationValues(0, -4, 0),
               margin: const EdgeInsets.only(right: 4),
               child: TextWidget(
-                text: time,
+                text: schedule.timeStart ?? '08:00',
                 color: AppColor.colorMainWhite,
-                fontSize: AppHelper.setMultiDeviceSize(19.sp, 13.sp),
-                fontWeight: FontWeight.w900,
+                fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
+                fontWeight: FontWeight.w700,
               ),
             ),
             Container(
               transform: Matrix4.translationValues(4, 4, 0),
               width: 8,
               height: 8,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-              ),
+              decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
             ),
             const Padding(
-              padding: EdgeInsets.only(
-                top: 8,
-                right: 10,
-              ),
-              child: VerticalDivider(
-                width: 1,
-                color: Colors.white,
-              ),
+              padding: EdgeInsets.only(top: 8, right: 10),
+              child: VerticalDivider(width: 1, color: Colors.white),
             ),
             Flexible(
               flex: 4,
@@ -62,30 +45,23 @@ class DetailSchedule extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextWidget(
-                    text: content,
+                    text: schedule.content ?? 'Đón tiếp tại sân bay và di chuyển về resort',
                     color: AppColor.colorMainWhite,
-                    fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
-                    fontWeight: FontWeight.w900,
+                    fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                    fontWeight: FontWeight.w700,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                      top: 4,
-                      bottom: 8,
-                    ),
+                    padding: const EdgeInsets.only(top: 4, bottom: 8),
                     child: Row(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 4),
-                          child: Image.asset(
-                            AppAssets.iconClock,
-                            width: 14,
-                            height: 14,
-                          ),
+                          child: Image.asset(AppAssets.iconClock, width: 14, height: 14),
                         ),
                         TextWidget(
-                          text: duration,
+                          text: schedule.time != null ? AppHelper.convertTimeToDuration(context, schedule.time!) : '1 tiếng 30 phút',
                           color: AppColor.colorMainWhite,
-                          fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
+                          fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
                           fontWeight: FontWeight.w500,
                         ),
                       ],
@@ -102,9 +78,9 @@ class DetailSchedule extends StatelessWidget {
                         ),
                       ),
                       TextWidget(
-                        text: address,
+                        text: schedule.address ?? 'Cảng hàng không quốc tế Đà Nẵng',
                         color: AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
                         fontWeight: FontWeight.w500,
                       ),
                     ],

@@ -520,6 +520,36 @@ class S {
     );
   }
 
+  /// `Ngày`
+  String get daySchedule {
+    return Intl.message(
+      'Ngày',
+      name: 'daySchedule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `tiếng`
+  String get hourSchedule {
+    return Intl.message(
+      'tiếng',
+      name: 'hourSchedule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `phút`
+  String get minuteSchedule {
+    return Intl.message(
+      'phút',
+      name: 'minuteSchedule',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Luật chơi`
   String get gameRule {
     return Intl.message(
