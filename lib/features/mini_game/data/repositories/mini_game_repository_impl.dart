@@ -91,25 +91,10 @@ class MiniGameRepositoryImpl implements MiniGameRepository {
   }
 
   @override
-  Future<Either<String, AchievementsEntity>> completeMiniGame(int achievements) async {
+  Future<Either<String, AchievementsEntity>> actionMiniGame(int? achievements) async {
     try {
-      final result = await miniGameApi.completeMiniGame(MiniGameRequest(achievements: achievements));
-      if (result.isSuccess) {
-        final data = result.getValue() as AchievementsResponse;
-        AchievementsEntity achievementsMapper = data.achievementsEntity;
-        return Right(achievementsMapper);
-      } else {
-        return Left(result.message ?? '');
-      }
-    } catch (error) {
-      return ApiServices.handleApiError(error);
-    }
-  }
-
-  @override
-  Future<Either<String, AchievementsEntity>> startMiniGame() async {
-    try {
-      final result = await miniGameApi.startMiniGame();
+      final request = achievements != null ? MiniGameRequest(achievements: achievements) : null;
+      final result = await miniGameApi.miniGame(request);
       if (result.isSuccess) {
         final data = result.getValue() as AchievementsResponse;
         AchievementsEntity achievementsMapper = data.achievementsEntity;

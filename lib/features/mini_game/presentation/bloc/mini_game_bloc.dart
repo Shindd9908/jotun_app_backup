@@ -25,7 +25,7 @@ class MiniGameBloc extends Bloc<MiniGameEvent, MiniGameState> {
     List<GlobalKey<FlipCardState>> cardStateKeys = miniGameRepository.getCardStateKeys();
 
     AchievementsEntity? achievementsEntity;
-    final achievementsRes = await miniGameRepository.startMiniGame();
+    final achievementsRes = await miniGameRepository.actionMiniGame(null);
     achievementsRes.fold(
       (l) => null,
       (r) => achievementsEntity = r,
@@ -48,7 +48,7 @@ class MiniGameBloc extends Bloc<MiniGameEvent, MiniGameState> {
     final result = await miniGameRepository.fetchReceivedGift();
 
     if (event.achievements != null) {
-      await miniGameRepository.completeMiniGame(event.achievements!);
+      await miniGameRepository.actionMiniGame(event.achievements!);
     }
 
     result.fold(

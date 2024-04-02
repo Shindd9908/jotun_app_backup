@@ -22,8 +22,5 @@ abstract class MiniGameApi {
   Future<ApiResponse<String>> receivedGift(@Body() ReceiveGiftRequest receiveGiftRequest);
 
   @POST("/mini-game")
-  Future<ApiResponse<AchievementsResponse>> startMiniGame();
-
-  @POST("/mini-game")
-  Future<ApiResponse<AchievementsResponse>> completeMiniGame(@Body() MiniGameRequest miniGameRequest);
+  Future<ApiResponse<AchievementsResponse>> miniGame(@Body() MiniGameRequest? miniGameRequest);
 }

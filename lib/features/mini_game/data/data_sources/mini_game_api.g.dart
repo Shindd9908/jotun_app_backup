@@ -122,43 +122,14 @@ class _MiniGameApi implements MiniGameApi {
   }
 
   @override
-  Future<ApiResponse<AchievementsResponse>> startMiniGame() async {
+  Future<ApiResponse<AchievementsResponse>> miniGame(
+      MiniGameRequest? miniGameRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<AchievementsResponse>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/mini-game',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = ApiResponse<AchievementsResponse>.fromJson(
-      _result.data!,
-      (json) => AchievementsResponse.fromJson(json as Map<String, dynamic>),
-    );
-    return value;
-  }
-
-  @override
-  Future<ApiResponse<AchievementsResponse>> completeMiniGame(
-      MiniGameRequest miniGameRequest) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(miniGameRequest.toJson());
+    _data.addAll(miniGameRequest?.toJson() ?? <String, dynamic>{});
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<ApiResponse<AchievementsResponse>>(Options(
       method: 'POST',
