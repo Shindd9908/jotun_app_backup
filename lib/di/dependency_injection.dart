@@ -20,6 +20,10 @@ import "package:jotub_app/features/mini_game/data/data_sources/mini_game_api.dar
 import "package:jotub_app/features/mini_game/data/repositories/mini_game_repository_impl.dart";
 import "package:jotub_app/features/mini_game/domain/repositories/mini_game_repository.dart";
 import "package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart";
+import "package:jotub_app/features/new_products/data/data_source/new_products_api.dart";
+import "package:jotub_app/features/new_products/data/repositories/new_product_repository_impl.dart";
+import "package:jotub_app/features/new_products/domain/repositories/new_products_repository.dart";
+import "package:jotub_app/features/new_products/presentation/bloc/new_products_bloc.dart";
 
 GetIt getIt = GetIt.instance;
 
@@ -56,6 +60,7 @@ void _registerAppNetworkComponents() {
   getIt.registerSingleton(HomeApi(dio, baseUrl: dio.options.baseUrl));
   getIt.registerSingleton(JourneyApi(dio, baseUrl: dio.options.baseUrl));
   getIt.registerSingleton(MiniGameApi(dio, baseUrl: dio.options.baseUrl));
+  getIt.registerSingleton(NewProductsApi(dio, baseUrl: dio.options.baseUrl));
 }
 
 void _registerRepository() {
@@ -77,9 +82,16 @@ void _registerRepository() {
       miniGameApi: getIt<MiniGameApi>(),
     ),
   );
+
   getIt.registerFactory<JourneyRepository>(
     () => JourneyRepositoryImpl(
       journeyApi: getIt<JourneyApi>(),
+    ),
+  );
+
+  getIt.registerFactory<NewProductsRepository>(
+    () => NewProductsRepositoryImpl(
+      newProductsApi: getIt<NewProductsApi>(),
     ),
   );
 }
@@ -106,6 +118,12 @@ void _registerBlocs() {
   getIt.registerLazySingleton<JourneyBloc>(
     () => JourneyBloc(
       journeyRepository: getIt<JourneyRepository>(),
+    ),
+  );
+
+  getIt.registerLazySingleton<NewProductsBloc>(
+    () => NewProductsBloc(
+      newProductsRepository: getIt<NewProductsRepository>(),
     ),
   );
 }

@@ -10,6 +10,7 @@ import "package:jotub_app/features/authentication/presentation/cubit/firebase_to
 import "package:jotub_app/features/home/presentation/bloc/home_bloc.dart";
 import "package:jotub_app/features/journey/presentation/bloc/journey_bloc.dart";
 import "package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart";
+import "package:jotub_app/features/new_products/presentation/bloc/new_products_bloc.dart";
 import "package:jotub_app/utils/constants/constants.dart";
 import "package:jotub_app/utils/routers/navigation_util.dart";
 import "package:jotub_app/utils/routers/routers.dart";
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<HomeBloc>()),
         BlocProvider(create: (_) => getIt<MiniGameBloc>()),
         BlocProvider(create: (_) => getIt<JourneyBloc>()),
+        BlocProvider(create: (_) => getIt<NewProductsBloc>()),
       ],
       child: KeyboardDismissOnTap(
         child: Sizer(

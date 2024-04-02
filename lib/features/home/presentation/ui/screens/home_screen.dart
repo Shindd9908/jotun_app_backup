@@ -2,12 +2,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jotub_app/features/home/presentation/bloc/home_bloc.dart';
+import 'package:jotub_app/features/home/presentation/ui/widgets/content_popup_yet_event_time_widget.dart';
 import 'package:jotub_app/features/home/presentation/ui/widgets/feature_item.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/constants/constants.dart';
 import 'package:jotub_app/utils/global_widgets/cache_image_widget.dart';
+import 'package:jotub_app/utils/global_widgets/popup_dialog_alert.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
@@ -44,7 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   BlocBuilder<HomeBloc, HomeState>(
-                    buildWhen: (previous, current) => current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
+                    buildWhen: (previous, current) =>
+                        current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
                     builder: (context, state) {
                       return Row(
                         children: [
@@ -100,7 +103,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             BlocBuilder<HomeBloc, HomeState>(
-              buildWhen: (previous, current) => current is FetchListBannerSuccessState || current is FetchListBannerFailState || current is FetchListBannerLoadingState,
+              buildWhen: (previous, current) =>
+                  current is FetchListBannerSuccessState || current is FetchListBannerFailState || current is FetchListBannerLoadingState,
               builder: (context, state) {
                 return state is FetchListBannerLoadingState
                     ? SizedBox(
@@ -247,7 +251,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           (el) => SizedBox(
                             width: (100.w - 64) / 3,
                             child: GestureDetector(
-                              onTap: () => Navigator.of(context).pushNamed(el['pathScreenNavigateOnTap']),
+                              onTap: () => el['featureName'] == S.of(context).newProductInformation &&
+                                      DateTime.now().isBefore(DateTime.parse('2024-05-08 18:00:00'))
+                                  ? PopupDialogAlert.showPopupWithUIParamHasBell(context, const ContentPopupYetEventTimeWidget())
+                                  : Navigator.of(context).pushNamed(el['pathScreenNavigateOnTap']),
                               child: FeatureItem(
                                 title: el['featureName'],
                                 iconAsset: el['pathIcon'],

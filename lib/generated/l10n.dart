@@ -400,6 +400,26 @@ class S {
     );
   }
 
+  /// `Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield`
+  String get contentPopupWelcomeNewProducts {
+    return Intl.message(
+      'Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield',
+      name: 'contentPopupWelcomeNewProducts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vào ngày 08/05/2024`
+  String get dateNewProductLaunched {
+    return Intl.message(
+      'Vào ngày 08/05/2024',
+      name: 'dateNewProductLaunched',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Quý khách vui lòng trải nghiệm đủ`
   String get explainClaimReward1 {
     return Intl.message(

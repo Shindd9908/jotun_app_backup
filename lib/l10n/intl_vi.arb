@@ -42,6 +42,8 @@
   "miniGame": "Mini game\n",
   "preorder": "Đặt hàng trước",
   "promotions": "Chương trình\nkhuyến mãi",
+  "contentPopupWelcomeNewProducts": "Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield",
+  "dateNewProductLaunched": "Vào ngày 08/05/2024",
 
   "@tripScreen" : {
     "description" : "Trip screen"

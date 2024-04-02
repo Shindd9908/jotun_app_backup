@@ -18,4 +18,5 @@ class AppPaths {
   static const String miniGameScreen = "/mini_game";
   static const String giftScreen = "/gift";
   static const String resultScreen = "/result";
+  static const String newProductsScreen = "/new_products";
 }

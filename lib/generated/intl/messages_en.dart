@@ -47,6 +47,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "congratulationsReceivingGiftJotun":
             MessageLookupByLibrary.simpleMessage(
                 "Chúc mừng bạn đã nhận\nđược quà từ Jotun"),
+        "contentPopupWelcomeNewProducts": MessageLookupByLibrary.simpleMessage(
+            "Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield"),
+        "dateNewProductLaunched":
+            MessageLookupByLibrary.simpleMessage("Vào ngày 08/05/2024"),
         "errorFieldRequired": MessageLookupByLibrary.simpleMessage(
             "Thông tin không được để trống"),
         "errorIdCardNumberIncorrect": MessageLookupByLibrary.simpleMessage(

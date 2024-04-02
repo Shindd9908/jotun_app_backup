@@ -16,6 +16,7 @@ import "package:jotub_app/features/mini_game/presentation/ui/screens/gift_screen
 import "package:jotub_app/features/mini_game/presentation/ui/screens/introduce_mini_game_screen.dart";
 import "package:jotub_app/features/mini_game/presentation/ui/screens/mini_game_screen.dart";
 import "package:jotub_app/features/mini_game/presentation/ui/screens/result_screen.dart";
+import "package:jotub_app/features/new_products/presentation/ui/new_products_screen.dart";
 import "package:jotub_app/features/schedule/presentation/ui/screens/schedule_screen.dart";
 import "package:jotub_app/features/trip/presentation/ui/screens/trip_screen.dart";
 import "package:jotub_app/utils/constants/key_preferences.dart";
@@ -57,8 +58,12 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const GiftScreen());
       case AppPaths.resultScreen:
         return MaterialPageRoute(builder: (_) => ResultScreen(isCompleted: arguments?['isCompleted']));
+      case AppPaths.newProductsScreen:
+        return MaterialPageRoute(builder: (_) => const NewProductsScreen());
       default:
-        Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true ? const HomeScreen() : const SelectObjectUseScreen();
+        Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true
+            ? const HomeScreen()
+            : const SelectObjectUseScreen();
         return MaterialPageRoute(builder: (_) => widget);
     }
   }
