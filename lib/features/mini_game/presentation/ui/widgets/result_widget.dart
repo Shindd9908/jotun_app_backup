@@ -45,10 +45,15 @@ class ResultWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 16, bottom: 32),
             child: GestureDetector(
-              onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
-                AppPaths.introduceMiniGameScreen,
-                    (route) => false,
-              ),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  AppPaths.homeScreen,
+                      (route) => false,
+                );
+                Navigator.of(context).pushNamed(
+                  AppPaths.introduceMiniGameScreen
+                );
+              },
               child: ButtonSubmitWidget(
                 title: S.of(context).playAgain,
                 widthButton: 72.w,

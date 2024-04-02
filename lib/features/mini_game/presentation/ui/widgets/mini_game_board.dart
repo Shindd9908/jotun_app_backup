@@ -67,82 +67,83 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        children: [
-          Container(
-            margin: const EdgeInsets.only(
-              top: 16,
-              bottom: 32,
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: BlocBuilder<MiniGameBloc, MiniGameState>(
+        buildWhen: (_, current) => current is InitBoardLoadingState || current is InitBoardSuccessState || current is InitBoardFailState,
+        builder: (context, state) {
+          if (state is InitBoardLoadingState) {
+            return SpinKitLoadingWidget(
+              size: AppHelper.setMultiDeviceSize(20.sp, 16.sp),
+              color: AppColor.colorMainWhite,
+            );
+          }
+          if (state is InitBoardSuccessState) {
+            List<String> board = state.board ?? [];
+            List<GlobalKey<FlipCardState>> cardStateKeys = state.cardStateKeys ?? [];
+            int achievement = state.achievements ?? 0;
+            return Column(
               children: [
-                Row(
-                  children: [
-                    Image.asset(
-                      AppAssets.iconTimer,
-                      width: 24,
-                    ),
-                    Container(
-                      width: 58,
-                      margin: const EdgeInsets.only(left: 4),
-                      padding: const EdgeInsets.symmetric(vertical: 2),
-                      decoration: BoxDecoration(
-                        color: AppColor.colorDarkBlue01,
-                        borderRadius: BorderRadius.circular(12),
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 16,
+                    bottom: 32,
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Image.asset(
+                            AppAssets.iconTimer,
+                            width: 24,
+                          ),
+                          Container(
+                            width: 58,
+                            margin: const EdgeInsets.only(left: 4),
+                            padding: const EdgeInsets.symmetric(vertical: 2),
+                            decoration: BoxDecoration(
+                              color: AppColor.colorDarkBlue01,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: ValueListenableBuilder(
+                              valueListenable: _secondLeft,
+                              builder: (_, value, __) => TextWidget(
+                                text: value == 60 ? '1:00' : '00:${value > 9 ? value.toString() : '0$value'}',
+                                color: AppColor.colorMainWhite,
+                                fontSize: 12.sp,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      child: ValueListenableBuilder(
-                        valueListenable: _secondLeft,
-                        builder: (_, value, __) => TextWidget(
-                          text: value == 60 ? '1:00' : '00:${value > 9 ? value.toString() : '0$value'}',
-                          color: AppColor.colorMainWhite,
-                          fontSize: 12.sp,
-                          textAlign: TextAlign.center,
-                        ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            AppAssets.iconStar,
+                            width: 28,
+                          ),
+                          Container(
+                            width: 58,
+                            margin: const EdgeInsets.only(left: 4),
+                            padding: const EdgeInsets.symmetric(vertical: 2),
+                            decoration: BoxDecoration(
+                              color: AppColor.colorDarkBlue01,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: TextWidget(
+                              text: achievement == 60 ? '1:00' : '00:${achievement > 9 ? achievement.toString() : '0$achievement'}',
+                              color: AppColor.colorMainWhite,
+                              fontSize: 12.sp,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                Row(
-                  children: [
-                    Image.asset(
-                      AppAssets.iconStar,
-                      width: 28,
-                    ),
-                    Container(
-                      width: 58,
-                      margin: const EdgeInsets.only(left: 4),
-                      padding: const EdgeInsets.symmetric(vertical: 2),
-                      decoration: BoxDecoration(
-                        color: AppColor.colorDarkBlue01,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: TextWidget(
-                        text: '00:59',
-                        color: AppColor.colorMainWhite,
-                        fontSize: 12.sp,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          BlocBuilder<MiniGameBloc, MiniGameState>(
-            buildWhen: (_, current) => current is InitBoardLoadingState || current is InitBoardSuccessState || current is InitBoardFailState,
-            builder: (context, state) {
-              if (state is InitBoardLoadingState) {
-                return SpinKitLoadingWidget(
-                  size: AppHelper.setMultiDeviceSize(20.sp, 16.sp),
-                  color: AppColor.colorMainWhite,
-                );
-              }
-              if (state is InitBoardSuccessState) {
-                List<String> board = state.board ?? [];
-                List<GlobalKey<FlipCardState>> cardStateKeys = state.cardStateKeys ?? [];
-                return GridView.builder(
+                GridView.builder(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 6,
                     vertical: 6,
@@ -198,7 +199,10 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
                                                             Navigator.pushNamedAndRemoveUntil(
                                                               context,
                                                               AppPaths.resultScreen,
-                                                              arguments: {'isCompleted': true},
+                                                              arguments: {
+                                                                'isCompleted': true,
+                                                                'achievements': 60 - _secondLeft.value,
+                                                              },
                                                               (route) => false,
                                                             );
                                                           });
@@ -229,12 +233,12 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
                     );
                   },
                   itemCount: board.length,
-                );
-              }
-              return Container();
-            },
-          ),
-        ],
+                ),
+              ],
+            );
+          }
+          return Container();
+        },
       ),
     );
   }

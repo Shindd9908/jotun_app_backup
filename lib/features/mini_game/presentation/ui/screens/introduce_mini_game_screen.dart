@@ -6,7 +6,6 @@ import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
-import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
 import 'package:sizer/sizer.dart';
 
@@ -16,34 +15,15 @@ class IntroduceMiniGameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenFrame(
+      isHasButtonBack: true,
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(
-              left: AppHelper.setMultiDeviceSize(32, 32),
-              bottom: AppHelper.setMultiDeviceSize(36, 36),
+            padding: const EdgeInsets.only(top: 28),
+            child: Image.asset(
+              AppAssets.imgLogoApp,
+              width: 36.w,
             ),
-            child: GestureDetector(
-              onTap: () {
-                if (Navigator.of(context).canPop()) {
-                  Navigator.of(context).pop();
-                } else {
-                  Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.homeScreen, (route) => false);
-                }
-              },
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Image.asset(
-                  AppAssets.iconArrowBack,
-                  width: AppHelper.setMultiDeviceSize(32, 32),
-                  height: AppHelper.setMultiDeviceSize(32, 32),
-                ),
-              ),
-            ),
-          ),
-          Image.asset(
-            AppAssets.imgLogoApp,
-            width: 36.w,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24),

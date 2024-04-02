@@ -12,8 +12,10 @@ class InitBoardEvent extends MiniGameEvent {
 }
 
 class CheckIsReceivedGiftEvent extends MiniGameEvent {
-  const CheckIsReceivedGiftEvent();
+  final int? achievements;
+
+  const CheckIsReceivedGiftEvent({this.achievements});
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [achievements];
 }

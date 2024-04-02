@@ -17,11 +17,12 @@ class InitBoardLoadingState extends MiniGameState {
 class InitBoardSuccessState extends MiniGameState {
   final List<String>? board;
   final List<GlobalKey<FlipCardState>>? cardStateKeys;
+  final int? achievements;
 
-  const InitBoardSuccessState({required this.board, required this.cardStateKeys});
+  const InitBoardSuccessState({required this.board, required this.cardStateKeys, required this.achievements});
 
   @override
-  List<Object?> get props => [board, cardStateKeys];
+  List<Object?> get props => [board, cardStateKeys, achievements];
 }
 
 class InitBoardFailState extends MiniGameState {

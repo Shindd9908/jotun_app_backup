@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:jotub_app/core/models/api_response.dart';
 import 'package:jotub_app/features/journey/data/models/receive_gift_request.dart';
-import 'package:jotub_app/features/mini_game/data/models/complete_mini_game_request.dart';
+import 'package:jotub_app/features/mini_game/data/models/achievements_response.dart';
 import 'package:jotub_app/features/mini_game/data/models/gift_response.dart';
+import 'package:jotub_app/features/mini_game/data/models/mini_game_request.dart';
 import 'package:retrofit/http.dart';
 
 part 'mini_game_api.g.dart';
@@ -21,5 +22,8 @@ abstract class MiniGameApi {
   Future<ApiResponse<String>> receivedGift(@Body() ReceiveGiftRequest receiveGiftRequest);
 
   @POST("/mini-game")
-  Future<ApiResponse<String>> completeMiniGame(@Body() CompleteMiniGameRequest completeMiniGameRequest);
+  Future<ApiResponse<AchievementsResponse>> startMiniGame();
+
+  @POST("/mini-game")
+  Future<ApiResponse<AchievementsResponse>> completeMiniGame(@Body() MiniGameRequest miniGameRequest);
 }

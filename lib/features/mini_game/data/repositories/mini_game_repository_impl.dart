@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:jotub_app/core/services/api_service.dart';
 import 'package:jotub_app/features/journey/data/models/receive_gift_request.dart';
 import 'package:jotub_app/features/mini_game/data/data_sources/mini_game_api.dart';
+import 'package:jotub_app/features/mini_game/data/mapper/achievements_mapper.dart';
 import 'package:jotub_app/features/mini_game/data/mapper/gift_mapper.dart';
-import 'package:jotub_app/features/mini_game/data/models/complete_mini_game_request.dart';
+import 'package:jotub_app/features/mini_game/data/models/achievements_response.dart';
+import 'package:jotub_app/features/mini_game/data/models/mini_game_request.dart';
 import 'package:jotub_app/features/mini_game/data/models/gift_response.dart';
+import 'package:jotub_app/features/mini_game/domain/entities/achievements_entity.dart';
 import 'package:jotub_app/features/mini_game/domain/entities/gift_entity.dart';
 import 'package:jotub_app/features/mini_game/domain/repositories/mini_game_repository.dart';
 import 'package:jotub_app/theme/assets.dart';
@@ -88,11 +91,29 @@ class MiniGameRepositoryImpl implements MiniGameRepository {
   }
 
   @override
-  Future<Either<String, String>> completeMiniGame(int achievements) async {
+  Future<Either<String, AchievementsEntity>> completeMiniGame(int achievements) async {
     try {
-      final result = await miniGameApi.completeMiniGame(CompleteMiniGameRequest(achievements: achievements));
+      final result = await miniGameApi.completeMiniGame(MiniGameRequest(achievements: achievements));
       if (result.isSuccess) {
-        return Right(result.message ?? '');
+        final data = result.getValue() as AchievementsResponse;
+        AchievementsEntity achievementsMapper = data.achievementsEntity;
+        return Right(achievementsMapper);
+      } else {
+        return Left(result.message ?? '');
+      }
+    } catch (error) {
+      return ApiServices.handleApiError(error);
+    }
+  }
+
+  @override
+  Future<Either<String, AchievementsEntity>> startMiniGame() async {
+    try {
+      final result = await miniGameApi.startMiniGame();
+      if (result.isSuccess) {
+        final data = result.getValue() as AchievementsResponse;
+        AchievementsEntity achievementsMapper = data.achievementsEntity;
+        return Right(achievementsMapper);
       } else {
         return Left(result.message ?? '');
       }

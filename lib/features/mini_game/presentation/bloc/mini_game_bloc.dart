@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'package:jotub_app/features/mini_game/domain/entities/achievements_entity.dart';
 import 'package:jotub_app/features/mini_game/domain/entities/gift_entity.dart';
 import 'package:jotub_app/features/mini_game/domain/repositories/mini_game_repository.dart';
 import 'package:jotub_app/utils/constants/constants.dart';
@@ -22,8 +23,15 @@ class MiniGameBloc extends Bloc<MiniGameEvent, MiniGameState> {
 
     List<String> board = miniGameRepository.getDataMiniGame();
     List<GlobalKey<FlipCardState>> cardStateKeys = miniGameRepository.getCardStateKeys();
-    if (board.isNotEmpty && cardStateKeys.isNotEmpty) {
-      emit(InitBoardSuccessState(board: board, cardStateKeys: cardStateKeys));
+
+    AchievementsEntity? achievementsEntity;
+    final achievementsRes = await miniGameRepository.startMiniGame();
+    achievementsRes.fold(
+      (l) => null,
+      (r) => achievementsEntity = r,
+    );
+    if (board.isNotEmpty && cardStateKeys.isNotEmpty && achievementsEntity != null) {
+      emit(InitBoardSuccessState(board: board, cardStateKeys: cardStateKeys, achievements: achievementsEntity?.achievements ?? 0));
     } else {
       emit(InitBoardFailState());
     }
@@ -38,6 +46,10 @@ class MiniGameBloc extends Bloc<MiniGameEvent, MiniGameState> {
       (r) => giftEntity = r,
     );
     final result = await miniGameRepository.fetchReceivedGift();
+
+    if (event.achievements != null) {
+      await miniGameRepository.completeMiniGame(event.achievements!);
+    }
 
     result.fold(
       (l) => emit(CheckIfReceivedGiftFailState(message: l)),
