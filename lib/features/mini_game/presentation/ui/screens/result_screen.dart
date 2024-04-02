@@ -8,9 +8,10 @@ import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 
 class ResultScreen extends StatefulWidget {
-  const ResultScreen({Key? key, this.isCompleted}) : super(key: key);
+  const ResultScreen({Key? key, this.isCompleted, this.achievements}) : super(key: key);
 
   final bool? isCompleted;
+  final int? achievements;
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -20,7 +21,7 @@ class _ResultScreenState extends State<ResultScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<MiniGameBloc>().add(const CheckIsReceivedGiftEvent());
+    context.read<MiniGameBloc>().add(CheckIsReceivedGiftEvent(achievements: widget.achievements));
   }
 
   @override

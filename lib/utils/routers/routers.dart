@@ -57,7 +57,12 @@ class AppRoutes {
       case AppPaths.giftScreen:
         return MaterialPageRoute(builder: (_) => const GiftScreen());
       case AppPaths.resultScreen:
-        return MaterialPageRoute(builder: (_) => ResultScreen(isCompleted: arguments?['isCompleted']));
+        return MaterialPageRoute(
+          builder: (_) => ResultScreen(
+            isCompleted: arguments?['isCompleted'],
+            achievements: arguments?['achievements'],
+          ),
+        );
       case AppPaths.newProductsScreen:
         return MaterialPageRoute(builder: (_) => const NewProductsScreen());
       default:

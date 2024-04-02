@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:jotub_app/core/services/api_service.dart';
 import 'package:jotub_app/features/journey/data/models/receive_gift_request.dart';
 import 'package:jotub_app/features/mini_game/data/data_sources/mini_game_api.dart';
+import 'package:jotub_app/features/mini_game/data/mapper/achievements_mapper.dart';
 import 'package:jotub_app/features/mini_game/data/mapper/gift_mapper.dart';
+import 'package:jotub_app/features/mini_game/data/models/achievements_response.dart';
+import 'package:jotub_app/features/mini_game/data/models/mini_game_request.dart';
 import 'package:jotub_app/features/mini_game/data/models/gift_response.dart';
+import 'package:jotub_app/features/mini_game/domain/entities/achievements_entity.dart';
 import 'package:jotub_app/features/mini_game/domain/entities/gift_entity.dart';
 import 'package:jotub_app/features/mini_game/domain/repositories/mini_game_repository.dart';
 import 'package:jotub_app/theme/assets.dart';
@@ -78,6 +82,23 @@ class MiniGameRepositoryImpl implements MiniGameRepository {
       final result = await miniGameApi.receivedGift(ReceiveGiftRequest(giftId: giftId, type: type));
       if (result.isSuccess) {
         return Right(result.message ?? '');
+      } else {
+        return Left(result.message ?? '');
+      }
+    } catch (error) {
+      return ApiServices.handleApiError(error);
+    }
+  }
+
+  @override
+  Future<Either<String, AchievementsEntity>> actionMiniGame(int? achievements) async {
+    try {
+      final request = achievements != null ? MiniGameRequest(achievements: achievements) : null;
+      final result = await miniGameApi.miniGame(request);
+      if (result.isSuccess) {
+        final data = result.getValue() as AchievementsResponse;
+        AchievementsEntity achievementsMapper = data.achievementsEntity;
+        return Right(achievementsMapper);
       } else {
         return Left(result.message ?? '');
       }

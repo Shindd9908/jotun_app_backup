@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart';
 import 'package:jotub_app/features/mini_game/presentation/ui/widgets/sample_board.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
@@ -8,57 +6,24 @@ import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
-import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
 import 'package:sizer/sizer.dart';
 
-class IntroduceMiniGameScreen extends StatefulWidget {
+class IntroduceMiniGameScreen extends StatelessWidget {
   const IntroduceMiniGameScreen({super.key});
-
-  @override
-  State<IntroduceMiniGameScreen> createState() => _IntroduceMiniGameScreenState();
-}
-
-class _IntroduceMiniGameScreenState extends State<IntroduceMiniGameScreen> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<MiniGameBloc>().add(const InitBoardEvent());
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return ScreenFrame(
+      isHasButtonBack: true,
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.only(
-              left: AppHelper.setMultiDeviceSize(32, 32),
-              bottom: AppHelper.setMultiDeviceSize(36, 36),
+            padding: const EdgeInsets.only(top: 28),
+            child: Image.asset(
+              AppAssets.imgLogoApp,
+              width: 36.w,
             ),
-            child: GestureDetector(
-              onTap: () {
-                if (Navigator.of(context).canPop()) {
-                  Navigator.of(context).pop();
-                } else {
-                  Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.homeScreen, (route) => false);
-                }
-              },
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Image.asset(
-                  AppAssets.iconArrowBack,
-                  width: AppHelper.setMultiDeviceSize(32, 32),
-                  height: AppHelper.setMultiDeviceSize(32, 32),
-                ),
-              ),
-            ),
-          ),
-          Image.asset(
-            AppAssets.imgLogoApp,
-            width: 36.w,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 24),
