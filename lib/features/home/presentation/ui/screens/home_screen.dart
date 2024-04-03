@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jotub_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:jotub_app/features/home/presentation/ui/widgets/content_popup_yet_event_time_widget.dart';
 import 'package:jotub_app/features/home/presentation/ui/widgets/feature_item.dart';
+import 'package:jotub_app/features/journey/presentation/bloc/journey_bloc.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
@@ -30,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<HomeBloc>().add(const FetchListBannerEvent());
       context.read<HomeBloc>().add(const FetchUserProfileEvent());
+      context.read<JourneyBloc>().add(FetchListAreaEvent());
     });
     super.initState();
   }
@@ -154,85 +156,132 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColor.colorMainBlack,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(width: 2, color: AppColor.colorMainWhite),
-                    ),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 32, right: 32, top: 20),
-                          child: TextWidget(
-                            text: 'LỄ KỶ NIỆM 20 NĂM\nNGÀNH SƠN TRANG TRÍ JOTUN VIỆT NAM',
-                            color: AppColor.colorMainYellow,
-                            fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
-                            fontWeight: FontWeight.w900,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Image.asset(AppAssets.iconCalendar, width: 20, height: 20),
-                                  TextWidget(
-                                    text: '20:00',
+                  BlocConsumer<JourneyBloc, JourneyState>(
+                    listenWhen: (previous, current) => current is FetchListAreaSuccessState,
+                    listener: (context, state) {
+                      if (state is FetchListAreaSuccessState && state.listArea.isNotEmpty) {
+                        context.read<JourneyBloc>().add(FetchAreaHasTripSameTimeWithNowEvent(listAllArea: state.listArea));
+                      }
+                    },
+                    buildWhen: (previous, current) => current is FetchListAreaFailState || current is FetchAreaHasTripSameTimeWithNowState,
+                    builder: (context, state) {
+                      return state is FetchAreaHasTripSameTimeWithNowState
+                          ? Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(image: NetworkImage(state.area!.trip!.image!), fit: BoxFit.cover, opacity: 0.1),
+                                borderRadius: BorderRadius.circular(16),
+                                border: Border.all(width: 2, color: AppColor.colorMainWhite),
+                              ),
+                              child: state.area != null
+                                  ? Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 32, right: 32, top: 20),
+                                          child: TextWidget(
+                                            text: state.area?.trip?.title ?? '',
+                                            color: AppColor.colorMainYellow,
+                                            fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
+                                            fontWeight: FontWeight.w900,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        if (state.area?.trip?.schedules != null && state.area!.trip!.schedules!.isNotEmpty)
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Image.asset(AppAssets.iconCalendar, width: 20, height: 20),
+                                                    TextWidget(
+                                                      text: state.area!.trip!.schedules!.first.timeStart ?? '',
+                                                      color: AppColor.colorMainWhite,
+                                                      fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Image.asset(AppAssets.iconGlobal, width: 20, height: 20),
+                                                    TextWidget(
+                                                      text: state.area!.trip!.schedules!.first.address ?? '',
+                                                      color: AppColor.colorMainWhite,
+                                                      fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        Padding(
+                                          padding: EdgeInsets.only(top: state.area?.trip?.schedules != null && state.area!.trip!.schedules!.isNotEmpty ? 0 : 20),
+                                          child: TextWidget(
+                                            text: 'Yêu cầu sự kiện: Lễ phục, trang phục dự tiệc',
+                                            color: AppColor.colorMainWhite,
+                                            fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(top: 20, right: 4, bottom: 2),
+                                            child: GestureDetector(
+                                              onTap: () => Navigator.of(context).pushNamed(
+                                                AppPaths.scheduleScreen,
+                                                arguments: {'trip': state.area!.trip, 'tripIndex': state.tripIndex},
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  TextWidget(
+                                                    text: S.of(context).goToDetailTrip,
+                                                    color: AppColor.colorMainYellow,
+                                                    fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
+                                                  ),
+                                                  const Icon(
+                                                    Icons.arrow_forward_ios,
+                                                    color: Color(0xffF19F3B),
+                                                    size: 12,
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : Container(
+                                      alignment: Alignment.center,
+                                      height: AppHelper.setMultiDeviceSize(150, 150),
+                                      child: TextWidget(
+                                        text: S.of(context).noData,
+                                        color: AppColor.colorMainWhite,
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                            )
+                          : state is FetchListAreaFailState
+                              ? Container(
+                                  alignment: Alignment.center,
+                                  height: AppHelper.setMultiDeviceSize(150, 150),
+                                  decoration: BoxDecoration(
+                                    color: AppColor.colorMainBlack,
+                                    borderRadius: BorderRadius.circular(16),
+                                    border: Border.all(width: 2, color: AppColor.colorMainWhite),
+                                  ),
+                                  child: TextWidget(
+                                    text: S.of(context).noData,
                                     color: AppColor.colorMainWhite,
-                                    fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w700,
                                   ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Image.asset(AppAssets.iconGlobal, width: 20, height: 20),
-                                  TextWidget(
-                                    text: 'Hội trường Ariyana',
-                                    color: AppColor.colorMainWhite,
-                                    fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        TextWidget(
-                          text: 'Yêu cầu sự kiện: Lễ phục, trang phục dự tiệc',
-                          color: AppColor.colorMainWhite,
-                          fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
-                          textAlign: TextAlign.center,
-                        ),
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 20, right: 4, bottom: 2),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  TextWidget(
-                                    text: S.of(context).goToDetailTrip,
-                                    color: AppColor.colorMainYellow,
-                                    fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
-                                  ),
-                                  const Icon(
-                                    Icons.arrow_forward_ios,
-                                    color: Color(0xffF19F3B),
-                                    size: 12,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                                )
+                              : SpinKitLoadingWidget(color: AppColor.colorMainWhite, size: AppHelper.setMultiDeviceSize(32, 32));
+                    },
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 12, bottom: 16),

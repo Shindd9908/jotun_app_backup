@@ -12,6 +12,7 @@ class JourneyBloc extends Bloc<JourneyEvent, JourneyState> {
   JourneyBloc({required this.journeyRepository}) : super(JourneyInitial()) {
     on<FetchListAreaEvent>(_fetchListArea);
     on<FetchListAreaCompletedEvent>(_fetchListAreaCompleted);
+    on<FetchAreaHasTripSameTimeWithNowEvent>(_fetchAreaHasTripSameTimeWithNow);
     on<CompleteAreaEvent>(_completeArea);
     on<FetchListGiftEvent>(_fetchListGift);
     on<ReceiveGiftEvent>(_receiveGift);
@@ -35,6 +36,21 @@ class JourneyBloc extends Bloc<JourneyEvent, JourneyState> {
       (l) => emit(FetchListAreaCompletedFailState()),
       (r) => emit(FetchListAreaCompletedSuccessState(listAreaCompleted: r)),
     );
+  }
+
+  Future<void> _fetchAreaHasTripSameTimeWithNow(FetchAreaHasTripSameTimeWithNowEvent event, Emitter<JourneyState> emit) async {
+    Duration durationMinCompareEventDateWithNow = const Duration(days: 365);
+    AreaEntity? areaHasEventDateClosestNow;
+    int? tripIndex;
+    for (int i = 0; i < event.listAllArea.length; ++i) {
+      DateTime eventDate = DateTime.parse(event.listAllArea[i].trip!.eventDate!);
+      if (eventDate.isAtSameMomentAs(DateTime.now()) || (eventDate.isAfter(DateTime.now())) && eventDate.difference(DateTime.now()) < durationMinCompareEventDateWithNow) {
+        durationMinCompareEventDateWithNow = eventDate.difference(DateTime.now());
+        areaHasEventDateClosestNow = event.listAllArea[i];
+        tripIndex = i;
+      }
+    }
+    emit(FetchAreaHasTripSameTimeWithNowState(area: areaHasEventDateClosestNow, tripIndex: tripIndex));
   }
 
   Future<void> _completeArea(CompleteAreaEvent event, Emitter<JourneyState> emit) async {

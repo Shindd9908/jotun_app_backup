@@ -29,9 +29,9 @@ AreaResponse _$AreaResponseFromJson(Map<String, dynamic> json) => AreaResponse(
       questions: (json['questions'] as List<dynamic>?)
           ?.map((e) => QuestionResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
-      trips: (json['trips'] as List<dynamic>?)
-          ?.map((e) => TripResponse.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      trip: json['trips'] == null
+          ? null
+          : TripResponse.fromJson(json['trips'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$AreaResponseToJson(AreaResponse instance) =>
@@ -42,7 +42,7 @@ Map<String, dynamic> _$AreaResponseToJson(AreaResponse instance) =>
       'image': instance.areaImage,
       'area_code': instance.areaCode,
       'questions': instance.questions,
-      'trips': instance.trips,
+      'trips': instance.trip,
     };
 
 QuestionResponse _$QuestionResponseFromJson(Map<String, dynamic> json) =>

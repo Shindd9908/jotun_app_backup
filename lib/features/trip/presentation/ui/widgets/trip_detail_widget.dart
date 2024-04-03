@@ -20,11 +20,8 @@ class TripDetailWidget extends StatelessWidget {
     return Container(
       height: (100.w - AppHelper.setMultiDeviceSize(64, 64)) * 2 / 3.2,
       width: 100.w - AppHelper.setMultiDeviceSize(64, 64),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8,
-        vertical: 8,
-      ),
-      margin: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      margin: EdgeInsets.only(top: tripIndex == 1 ? 0 : 12),
       decoration: unlock
           ? BoxDecoration(
               image: trip.image != null && trip.name!.isNotEmpty
@@ -75,7 +72,7 @@ class TripDetailWidget extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => Navigator.of(context).pushNamed(AppPaths.scheduleScreen , arguments: {'trip': trip , 'tripIndex': tripIndex}),
+                  onTap: () => Navigator.of(context).pushNamed(AppPaths.scheduleScreen, arguments: {'trip': trip, 'tripIndex': tripIndex}),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

@@ -1,4 +1,3 @@
-import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:jotub_app/core/preferences/shared_preferences_manager.dart";
 import "package:jotub_app/di/dependency_injection.dart";

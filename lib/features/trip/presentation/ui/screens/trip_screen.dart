@@ -44,8 +44,8 @@ class _TripScreenState extends State<TripScreen> {
 
   void _checkTimeUnlockTrip(List<AreaEntity> listArea) {
     for (int i = 0; i < listArea.length; ++i) {
-      if (listArea[i].trips != null && listArea[i].trips!.isNotEmpty && listArea[i].trips?.first.eventDate != null) {
-        DateTime eventDate = DateTime.parse(listArea[i].trips!.first.eventDate!);
+      if (listArea[i].trip != null && listArea[i].trip!.eventDate != null) {
+        DateTime eventDate = DateTime.parse(listArea[i].trip!.eventDate!);
         if (eventDate.isBefore(DateTime.now()) || eventDate.isAtSameMomentAs(DateTime.now())) {
           continue;
         } else if (DateTime.now().difference(eventDate) == const Duration(days: 1) && DateTime.now().hour == 18) {
@@ -70,8 +70,7 @@ class _TripScreenState extends State<TripScreen> {
                 _timerCheckHourToUnlockTrip = Timer.periodic(const Duration(seconds: 1), (Timer t) => _checkTimeUnlockTrip(state.listArea));
               }
             },
-            buildWhen: (previous, current) =>
-                current is FetchListAreaLoadingState || current is FetchListAreaSuccessState || current is FetchListAreaFailState,
+            buildWhen: (previous, current) => current is FetchListAreaLoadingState || current is FetchListAreaSuccessState || current is FetchListAreaFailState,
             builder: (context, state) {
               return Column(
                 children: [
@@ -105,9 +104,7 @@ class _TripScreenState extends State<TripScreen> {
                                       valueListenable: _currentIndexTripLock,
                                       builder: (_, __, ___) => TripDetailWidget(
                                         unlock: index < _currentIndexTripLock.value,
-                                        trip: state.listArea[index].trips != null && state.listArea[index].trips!.isNotEmpty
-                                            ? state.listArea[index].trips!.first
-                                            : const TripEntity(),
+                                        trip: state.listArea[index].trip ?? const TripEntity(),
                                         tripIndex: index + 1,
                                       ),
                                     ),
@@ -121,7 +118,7 @@ class _TripScreenState extends State<TripScreen> {
                   ),
                   if (state is FetchListAreaSuccessState && state.listArea.length >= 3)
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
                       child: GestureDetector(
                         onTap: () async => await _scrollController.animateTo(
                           _scrollController.position.maxScrollExtent,
