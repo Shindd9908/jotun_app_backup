@@ -48,11 +48,22 @@ class ScheduleScreen extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: List.generate(trip.schedules!.length, (index) => ScheduleDetailWidget(schedule: trip.schedules![index])),
-                  ),
-                ),
+                child: trip.schedules!.isNotEmpty
+                    ? SingleChildScrollView(
+                        child: Column(
+                          children: List.generate(trip.schedules!.length, (index) => ScheduleDetailWidget(schedule: trip.schedules![index])),
+                        ),
+                      )
+                    : Container(
+                        alignment: Alignment.center,
+                        height: AppHelper.setMultiDeviceSize(150, 150),
+                        child: TextWidget(
+                          text: S.of(context).noData,
+                          color: AppColor.colorMainWhite,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
               ),
             ],
           ),

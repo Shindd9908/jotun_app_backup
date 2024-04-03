@@ -48,7 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   BlocBuilder<HomeBloc, HomeState>(
-                    buildWhen: (previous, current) => current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
+                    buildWhen: (previous, current) =>
+                        current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
                     builder: (context, state) {
                       return Row(
                         children: [
@@ -110,7 +111,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             BlocBuilder<HomeBloc, HomeState>(
-              buildWhen: (previous, current) => current is FetchListBannerSuccessState || current is FetchListBannerFailState || current is FetchListBannerLoadingState,
+              buildWhen: (previous, current) =>
+                  current is FetchListBannerSuccessState || current is FetchListBannerFailState || current is FetchListBannerLoadingState,
               builder: (context, state) {
                 return state is FetchListBannerLoadingState
                     ? SizedBox(
@@ -215,7 +217,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           ),
                                         Padding(
-                                          padding: EdgeInsets.only(top: state.area?.trip?.schedules != null && state.area!.trip!.schedules!.isNotEmpty ? 0 : 20),
+                                          padding: EdgeInsets.only(
+                                              top: state.area?.trip?.schedules != null && state.area!.trip!.schedules!.isNotEmpty ? 0 : 20),
                                           child: TextWidget(
                                             text: 'Yêu cầu sự kiện: Lễ phục, trang phục dự tiệc',
                                             color: AppColor.colorMainWhite,
@@ -304,7 +307,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           (el) => SizedBox(
                             width: (100.w - 64) / 3,
                             child: GestureDetector(
-                              onTap: () => el['featureName'] == S.of(context).newProductInformation && DateTime.now().isBefore(DateTime.parse('2024-05-08 18:00:00'))
+                              onTap: () => el['featureName'] == S.of(context).newProductInformation &&
+                                      DateTime.now().isBefore(DateTime.parse('2024-05-08 18:00:00'))
                                   ? PopupDialogAlert.showPopupWithUIParamHasBell(context, const ContentPopupYetEventTimeWidget())
                                   : Navigator.of(context).pushNamed(el['pathScreenNavigateOnTap']),
                               child: FeatureItem(

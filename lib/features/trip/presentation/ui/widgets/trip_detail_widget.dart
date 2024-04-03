@@ -24,17 +24,11 @@ class TripDetailWidget extends StatelessWidget {
       margin: EdgeInsets.only(top: tripIndex == 1 ? 0 : 12),
       decoration: unlock
           ? BoxDecoration(
-              image: trip.image != null && trip.name!.isNotEmpty
-                  ? DecorationImage(
-                      image: NetworkImage(trip.name!),
-                      fit: BoxFit.cover,
-                      opacity: 0.3,
-                    )
-                  : const DecorationImage(
-                      image: AssetImage('assets/images/image_schedule_2.jpg'),
-                      fit: BoxFit.cover,
-                      opacity: 0.3,
-                    ),
+              image: DecorationImage(
+                image: NetworkImage(trip.image ?? ''),
+                fit: BoxFit.cover,
+                opacity: 0.3,
+              ),
               borderRadius: BorderRadius.circular(16),
             )
           : BoxDecoration(
@@ -57,7 +51,7 @@ class TripDetailWidget extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       TextWidget(
-                        text: trip.title ?? 'Trải nghiệm show diễn thực cảnh\nKý ức Hội An',
+                        text: trip.title ?? '',
                         color: AppColor.colorMainWhite,
                         fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
                         fontWeight: FontWeight.w500,

@@ -46,13 +46,18 @@ class _TripScreenState extends State<TripScreen> {
     for (int i = 0; i < listArea.length; ++i) {
       if (listArea[i].trip != null && listArea[i].trip!.eventDate != null) {
         DateTime eventDate = DateTime.parse(listArea[i].trip!.eventDate!);
-        if (eventDate.isBefore(DateTime.now()) || eventDate.isAtSameMomentAs(DateTime.now())) {
+        if (eventDate.isBefore(DateTime.now()) ||
+            eventDate.isAtSameMomentAs(DateTime.now()) ||
+            (DateTime.now().difference(eventDate) == const Duration(days: 1) && DateTime.now().hour == 18)) {
           continue;
-        } else if (DateTime.now().difference(eventDate) == const Duration(days: 1) && DateTime.now().hour == 18) {
+        } else {
           _currentIndexTripLock.value = i;
           break;
         }
       }
+    }
+    if (_currentIndexTripLock.value == -1) {
+      _currentIndexTripLock.value = listArea.length;
     }
   }
 
@@ -70,7 +75,8 @@ class _TripScreenState extends State<TripScreen> {
                 _timerCheckHourToUnlockTrip = Timer.periodic(const Duration(seconds: 1), (Timer t) => _checkTimeUnlockTrip(state.listArea));
               }
             },
-            buildWhen: (previous, current) => current is FetchListAreaLoadingState || current is FetchListAreaSuccessState || current is FetchListAreaFailState,
+            buildWhen: (previous, current) =>
+                current is FetchListAreaLoadingState || current is FetchListAreaSuccessState || current is FetchListAreaFailState,
             builder: (context, state) {
               return Column(
                 children: [

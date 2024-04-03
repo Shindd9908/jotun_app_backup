@@ -47,7 +47,7 @@ class JourneyBloc extends Bloc<JourneyEvent, JourneyState> {
       if (eventDate.isAtSameMomentAs(DateTime.now()) || (eventDate.isAfter(DateTime.now())) && eventDate.difference(DateTime.now()) < durationMinCompareEventDateWithNow) {
         durationMinCompareEventDateWithNow = eventDate.difference(DateTime.now());
         areaHasEventDateClosestNow = event.listAllArea[i];
-        tripIndex = i;
+        tripIndex = i + 1;
       }
     }
     emit(FetchAreaHasTripSameTimeWithNowState(area: areaHasEventDateClosestNow, tripIndex: tripIndex));

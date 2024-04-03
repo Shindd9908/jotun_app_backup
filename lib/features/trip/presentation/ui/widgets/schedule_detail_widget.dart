@@ -23,7 +23,7 @@ class ScheduleDetailWidget extends StatelessWidget {
               transform: Matrix4.translationValues(0, -4, 0),
               margin: const EdgeInsets.only(right: 4),
               child: TextWidget(
-                text: schedule.timeStart ?? '08:00',
+                text: schedule.timeStart ?? '',
                 color: AppColor.colorMainWhite,
                 fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
                 fontWeight: FontWeight.w700,
@@ -45,7 +45,7 @@ class ScheduleDetailWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextWidget(
-                    text: schedule.content ?? 'Đón tiếp tại sân bay và di chuyển về resort',
+                    text: schedule.content ?? '',
                     color: AppColor.colorMainWhite,
                     fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
                     fontWeight: FontWeight.w700,
@@ -59,7 +59,7 @@ class ScheduleDetailWidget extends StatelessWidget {
                           child: Image.asset(AppAssets.iconClock, width: 14, height: 14),
                         ),
                         TextWidget(
-                          text: schedule.time != null ? AppHelper.convertTimeToDuration(context, schedule.time!) : '1 tiếng 30 phút',
+                          text: schedule.time != null ? AppHelper.convertTimeToDuration(context, schedule.time!) : '',
                           color: AppColor.colorMainWhite,
                           fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
                           fontWeight: FontWeight.w500,
@@ -78,7 +78,7 @@ class ScheduleDetailWidget extends StatelessWidget {
                         ),
                       ),
                       TextWidget(
-                        text: schedule.address ?? 'Cảng hàng không quốc tế Đà Nẵng',
+                        text: schedule.address ?? '',
                         color: AppColor.colorMainWhite,
                         fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
                         fontWeight: FontWeight.w500,
