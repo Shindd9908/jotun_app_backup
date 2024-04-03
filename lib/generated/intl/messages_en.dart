@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bạn đã trả lời sai 1 số câu hỏi. Vui lòng thử lại!"),
         "alertBlockItemArea":
             MessageLookupByLibrary.simpleMessage("QUÉT QR MỞ KHÓA"),
+        "amount": MessageLookupByLibrary.simpleMessage("Số lượng"),
         "backToHome": MessageLookupByLibrary.simpleMessage("Quay về trang chủ"),
         "busNo": MessageLookupByLibrary.simpleMessage("Số xe bus"),
         "changeAvatar":
@@ -90,17 +91,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sự kiện sắp diễn ra"),
         "journeyDiscovery":
             MessageLookupByLibrary.simpleMessage("HÀNH TRÌNH KHÁM PHÁ"),
+        "litre": MessageLookupByLibrary.simpleMessage("Lít"),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "memberOfJotun":
             MessageLookupByLibrary.simpleMessage("Nhân viên Jotun"),
         "miniGame": MessageLookupByLibrary.simpleMessage("Mini game\n"),
+        "minusIcon": MessageLookupByLibrary.simpleMessage("-"),
         "minuteSchedule": MessageLookupByLibrary.simpleMessage("phút"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Mật khẩu mới"),
         "newProductInformation":
             MessageLookupByLibrary.simpleMessage("Thông tin sản\nphẩm mới"),
         "noData": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
         "objectUse": MessageLookupByLibrary.simpleMessage("Đối tượng sử dụng"),
+        "order": MessageLookupByLibrary.simpleMessage("Đặt hàng"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Tên đăng nhập"),
         "playAgain": MessageLookupByLibrary.simpleMessage("Chơi lại"),
@@ -108,6 +112,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mời bạn di chuyển qua"),
         "pleaseScanQRCodeEachArea": MessageLookupByLibrary.simpleMessage(
             "HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH"),
+        "plusIcon": MessageLookupByLibrary.simpleMessage("+"),
+        "preOrderProduct":
+            MessageLookupByLibrary.simpleMessage("Đặt trước sản phẩm"),
         "preorder": MessageLookupByLibrary.simpleMessage("Đặt hàng trước"),
         "productName": MessageLookupByLibrary.simpleMessage(
             "Jotun Jotashield bền màu\ntoàn diện"),
@@ -132,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "titleButtonNextQuestion":
             MessageLookupByLibrary.simpleMessage("Tiếp theo"),
         "toReScan": MessageLookupByLibrary.simpleMessage("để quét mã"),
+        "totalAmount": MessageLookupByLibrary.simpleMessage("Tổng khối lượng"),
         "uncompletedMiniGame": MessageLookupByLibrary.simpleMessage(
             "Rất tiếc bạn chưa\nhoàn thành thử thách"),
         "youHaveReceivedTheGift":

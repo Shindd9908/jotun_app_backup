@@ -90,6 +90,17 @@
   "titleButtonNextQuestion": "Tiếp theo",
   "alertAnswerWrong": "Bạn đã trả lời sai 1 số câu hỏi. Vui lòng thử lại!",
 
+  "@orderScreen" : {
+    "description" : "Order screen"
+  },
+  "preOrderProduct": "Đặt trước sản phẩm",
+  "amount": "Số lượng",
+  "plusIcon": "+",
+  "minusIcon": "-",
+  "totalAmount": "Tổng khối lượng",
+  "litre": "Lít",
+  "order": "Đặt hàng",
+
   "errorFieldRequired": "Thông tin không được để trống",
   "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",
   "errorIdCardNumberIncorrect": "Số căn cước công dân không đúng định dạng",
