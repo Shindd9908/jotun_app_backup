@@ -16,7 +16,7 @@ extension AreaMapExt on AreaResponse {
         areaImage: areaImage,
         areaCode: areaCode,
         questions: questions!.map((e) => e.questionEntity).toList(),
-        trips: trips!.map((e) => e.tripEntity).toList(),
+        trip: trip!.tripEntity,
       );
 }
 

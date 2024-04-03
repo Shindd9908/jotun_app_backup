@@ -35,16 +35,16 @@ class AreaResponse extends Equatable {
   @JsonKey(name: "questions")
   final List<QuestionResponse>? questions;
   @JsonKey(name: "trips")
-  final List<TripResponse>? trips;
+  final TripResponse? trip;
 
-  const AreaResponse({this.areaId, this.areaName, this.areaTitle, this.areaImage, this.areaCode, this.questions, this.trips});
+  const AreaResponse({this.areaId, this.areaName, this.areaTitle, this.areaImage, this.areaCode, this.questions, this.trip});
 
   factory AreaResponse.fromJson(Map<String, dynamic> json) => _$AreaResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$AreaResponseToJson(this);
 
   @override
-  List<Object?> get props => [areaId, areaName, areaTitle, areaImage, areaCode, questions, trips];
+  List<Object?> get props => [areaId, areaName, areaTitle, areaImage, areaCode, questions, trip];
 }
 
 @JsonSerializable()

@@ -76,6 +76,18 @@ class CompleteAreaFailState extends JourneyState {
   List<Object> get props => [message];
 }
 
+// -------------------- Fetch area with event same now ----------------------
+
+class FetchAreaHasTripSameTimeWithNowState extends JourneyState {
+  final AreaEntity? area;
+  final int? tripIndex;
+
+  const FetchAreaHasTripSameTimeWithNowState({required this.area, required this.tripIndex});
+
+  @override
+  List<Object> get props => [area!, tripIndex!];
+}
+
 // -------------------- Receive gift ----------------------
 
 class ReceiveGiftLoadingState extends JourneyState {

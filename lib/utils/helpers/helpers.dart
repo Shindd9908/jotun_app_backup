@@ -69,4 +69,17 @@ class AppHelper {
     }
     return error;
   }
+
+  static String convertTimeToDuration(BuildContext context, String value) {
+    String duration = '';
+    int hour = int.parse(value.split(':').first);
+    int minute = int.parse(value.split(':').last);
+    if (hour > 0) {
+      duration = '$hour ${S.of(context).hourSchedule}';
+    }
+    if (minute > 0) {
+      duration = '${hour > 0 ? ' ' : ''}$minute ${S.of(context).minuteSchedule}';
+    }
+    return duration;
+  }
 }

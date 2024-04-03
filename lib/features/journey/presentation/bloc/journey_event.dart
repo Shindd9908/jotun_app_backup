@@ -14,6 +14,15 @@ class FetchListAreaCompletedEvent extends JourneyEvent {
   List<Object?> get props => [];
 }
 
+class FetchAreaHasTripSameTimeWithNowEvent extends JourneyEvent {
+  final List<AreaEntity> listAllArea;
+
+  const FetchAreaHasTripSameTimeWithNowEvent({required this.listAllArea});
+
+  @override
+  List<Object?> get props => [listAllArea];
+}
+
 class FetchListGiftEvent extends JourneyEvent {
   final int type;
 

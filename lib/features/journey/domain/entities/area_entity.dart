@@ -17,12 +17,12 @@ class AreaEntity extends Equatable {
   final String? areaImage;
   final String? areaCode;
   final List<QuestionEntity>? questions;
-  final List<TripEntity>? trips;
+  final TripEntity? trip;
 
-  const AreaEntity({this.areaId, this.areaName, this.areaTitle, this.areaImage, this.areaCode, this.questions, this.trips});
+  const AreaEntity({this.areaId, this.areaName, this.areaTitle, this.areaImage, this.areaCode, this.questions, this.trip});
 
   @override
-  List<Object?> get props => [areaId, areaName, areaTitle, areaImage, areaCode, questions, trips];
+  List<Object?> get props => [areaId, areaName, areaTitle, areaImage, areaCode, questions, trip];
 }
 
 class QuestionEntity extends Equatable {

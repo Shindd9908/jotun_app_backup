@@ -1,4 +1,3 @@
-import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:jotub_app/core/preferences/shared_preferences_manager.dart";
 import "package:jotub_app/di/dependency_injection.dart";
@@ -19,7 +18,7 @@ import "package:jotub_app/features/mini_game/presentation/ui/screens/mini_game_s
 import "package:jotub_app/features/mini_game/presentation/ui/screens/result_screen.dart";
 import "package:jotub_app/features/new_products/presentation/ui/new_products_screen.dart";
 import "package:jotub_app/features/notification/presentation/screen/list_notification_screen.dart";
-import "package:jotub_app/features/schedule/presentation/ui/screens/schedule_screen.dart";
+import "package:jotub_app/features/trip/presentation/ui/screens/schedule_screen.dart";
 import "package:jotub_app/features/trip/presentation/ui/screens/trip_screen.dart";
 import "package:jotub_app/utils/constants/key_preferences.dart";
 import "package:jotub_app/utils/routers/paths.dart";
@@ -43,7 +42,7 @@ class AppRoutes {
       case AppPaths.tripScreen:
         return MaterialPageRoute(builder: (_) => const TripScreen());
       case AppPaths.scheduleScreen:
-        return MaterialPageRoute(builder: (_) => const ScheduleScreen());
+        return MaterialPageRoute(builder: (_) => ScheduleScreen(trip: arguments?['trip'], tripIndex: arguments?['tripIndex']));
       case AppPaths.journeyScreen:
         return MaterialPageRoute(builder: (_) => const JourneyScreen());
       case AppPaths.scanQRCodeScreen:
@@ -68,9 +67,11 @@ class AppRoutes {
       case AppPaths.newProductsScreen:
         return MaterialPageRoute(builder: (_) => const NewProductsScreen());
       case AppPaths.listNotificationScreen:
-        return CupertinoPageRoute(builder: (_) => const ListNotificationScreen());
+        return MaterialPageRoute(builder: (_) => const ListNotificationScreen());
       default:
-        Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true ? const HomeScreen() : const SelectObjectUseScreen();
+        Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true
+            ? const HomeScreen()
+            : const SelectObjectUseScreen();
         return MaterialPageRoute(builder: (_) => widget);
     }
   }
