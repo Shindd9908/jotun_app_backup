@@ -1,3 +1,4 @@
+import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:jotub_app/core/preferences/shared_preferences_manager.dart";
 import "package:jotub_app/di/dependency_injection.dart";
@@ -17,6 +18,7 @@ import "package:jotub_app/features/mini_game/presentation/ui/screens/introduce_m
 import "package:jotub_app/features/mini_game/presentation/ui/screens/mini_game_screen.dart";
 import "package:jotub_app/features/mini_game/presentation/ui/screens/result_screen.dart";
 import "package:jotub_app/features/new_products/presentation/ui/new_products_screen.dart";
+import "package:jotub_app/features/notification/presentation/screen/list_notification_screen.dart";
 import "package:jotub_app/features/schedule/presentation/ui/screens/schedule_screen.dart";
 import "package:jotub_app/features/trip/presentation/ui/screens/trip_screen.dart";
 import "package:jotub_app/utils/constants/key_preferences.dart";
@@ -65,10 +67,10 @@ class AppRoutes {
         );
       case AppPaths.newProductsScreen:
         return MaterialPageRoute(builder: (_) => const NewProductsScreen());
+      case AppPaths.listNotificationScreen:
+        return CupertinoPageRoute(builder: (_) => const ListNotificationScreen());
       default:
-        Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true
-            ? const HomeScreen()
-            : const SelectObjectUseScreen();
+        Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true ? const HomeScreen() : const SelectObjectUseScreen();
         return MaterialPageRoute(builder: (_) => widget);
     }
   }

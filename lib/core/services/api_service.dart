@@ -24,6 +24,8 @@ class ApiServices {
     var connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.none) {
       errorMessage = "No network connection";
+    } else if (error.type == DioExceptionType.connectionError || error.type == DioExceptionType.receiveTimeout) {
+      errorMessage = "Connection timeout - Lỗi kết nối";
     } else if (error.response != null) {
       errorMessage = _parseDioErrorResponse(error.response!);
     } else {
@@ -57,7 +59,6 @@ class ApiServices {
     }
     return errorMessage;
   }
-
 
   // Handle other types of errors (e.g., JSON parsing errors)
   static Future<Either<String, T>> _handleOtherErrors<T>(dynamic error) async {

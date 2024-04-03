@@ -46,8 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   BlocBuilder<HomeBloc, HomeState>(
-                    buildWhen: (previous, current) =>
-                        current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
+                    buildWhen: (previous, current) => current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
                     builder: (context, state) {
                       return Row(
                         children: [
@@ -98,13 +97,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                   ),
-                  Image.asset(AppAssets.iconNotification, width: AppHelper.setMultiDeviceSize(32, 32))
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).pushNamed(AppPaths.listNotificationScreen),
+                    child: Image.asset(
+                      AppAssets.iconNotification,
+                      width: AppHelper.setMultiDeviceSize(32, 32),
+                    ),
+                  ),
                 ],
               ),
             ),
             BlocBuilder<HomeBloc, HomeState>(
-              buildWhen: (previous, current) =>
-                  current is FetchListBannerSuccessState || current is FetchListBannerFailState || current is FetchListBannerLoadingState,
+              buildWhen: (previous, current) => current is FetchListBannerSuccessState || current is FetchListBannerFailState || current is FetchListBannerLoadingState,
               builder: (context, state) {
                 return state is FetchListBannerLoadingState
                     ? SizedBox(
@@ -251,8 +255,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           (el) => SizedBox(
                             width: (100.w - 64) / 3,
                             child: GestureDetector(
-                              onTap: () => el['featureName'] == S.of(context).newProductInformation &&
-                                      DateTime.now().isBefore(DateTime.parse('2024-05-08 18:00:00'))
+                              onTap: () => el['featureName'] == S.of(context).newProductInformation && DateTime.now().isBefore(DateTime.parse('2024-05-08 18:00:00'))
                                   ? PopupDialogAlert.showPopupWithUIParamHasBell(context, const ContentPopupYetEventTimeWidget())
                                   : Navigator.of(context).pushNamed(el['pathScreenNavigateOnTap']),
                               child: FeatureItem(

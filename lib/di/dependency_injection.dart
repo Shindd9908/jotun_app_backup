@@ -24,6 +24,10 @@ import "package:jotub_app/features/new_products/data/data_source/new_products_ap
 import "package:jotub_app/features/new_products/data/repositories/new_product_repository_impl.dart";
 import "package:jotub_app/features/new_products/domain/repositories/new_products_repository.dart";
 import "package:jotub_app/features/new_products/presentation/bloc/new_products_bloc.dart";
+import "package:jotub_app/features/notification/data/data_sources/notification_api.dart";
+import "package:jotub_app/features/notification/data/repositories/notification_repository_impl.dart";
+import "package:jotub_app/features/notification/domain/repositories/notification_repository.dart";
+import "package:jotub_app/features/notification/presentation/bloc/notification_bloc.dart";
 
 GetIt getIt = GetIt.instance;
 
@@ -61,6 +65,7 @@ void _registerAppNetworkComponents() {
   getIt.registerSingleton(JourneyApi(dio, baseUrl: dio.options.baseUrl));
   getIt.registerSingleton(MiniGameApi(dio, baseUrl: dio.options.baseUrl));
   getIt.registerSingleton(NewProductsApi(dio, baseUrl: dio.options.baseUrl));
+  getIt.registerSingleton(NotificationApi(dio, baseUrl: dio.options.baseUrl));
 }
 
 void _registerRepository() {
@@ -94,6 +99,10 @@ void _registerRepository() {
       newProductsApi: getIt<NewProductsApi>(),
     ),
   );
+
+  getIt.registerFactory<NotificationRepository>(
+    () => NotificationRepositoryImpl(notificationApi: getIt<NotificationApi>()),
+  );
 }
 
 void _registerBlocs() {
@@ -125,6 +134,10 @@ void _registerBlocs() {
     () => NewProductsBloc(
       newProductsRepository: getIt<NewProductsRepository>(),
     ),
+  );
+
+  getIt.registerLazySingleton<NotificationBloc>(
+    () => NotificationBloc(notificationRepository: getIt<NotificationRepository>()),
   );
 }
 
