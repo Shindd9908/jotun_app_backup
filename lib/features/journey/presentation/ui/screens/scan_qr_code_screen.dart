@@ -53,7 +53,7 @@ class _ScanQRCodeScreenState extends State<ScanQRCodeScreen> {
             Image.asset(
               AppAssets.imgLogoApp,
               width: AppHelper.setMultiDeviceSize(context, 40.w, 40.w),
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.cover,
             ),
             Padding(
               padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(context, 48, 48), bottom: AppHelper.setMultiDeviceSize(context, 36, 36)),

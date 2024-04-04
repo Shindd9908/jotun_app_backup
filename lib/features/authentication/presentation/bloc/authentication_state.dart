@@ -109,3 +109,27 @@ class LogoutFailState extends AuthenticationState {
   @override
   List<Object> get props => [message];
 }
+
+// --- demo register ---
+class RegisterLoadingState extends AuthenticationState {
+  @override
+  List<Object> get props => [];
+}
+
+class RegisterSuccessState extends AuthenticationState {
+  final String message;
+
+  const RegisterSuccessState({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+class RegisterFailState extends AuthenticationState {
+  final String message;
+
+  const RegisterFailState({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}

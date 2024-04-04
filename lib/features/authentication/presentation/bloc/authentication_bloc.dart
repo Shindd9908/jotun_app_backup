@@ -13,6 +13,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
     on<ChangePasswordEvent>(_changePassword);
     on<ConfirmAccountEvent>(_confirmAccount);
     on<LogoutEvent>(_logout);
+    on<RegisterEvent>(_register);
   }
 
   final AuthenticationRepository authenticationRepository;
@@ -51,5 +52,12 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       (l) => emit(LogoutFailState(message: l)),
       (r) => emit(LogoutSuccessState(message: r)),
     );
+  }
+
+  Future<void> _register(RegisterEvent event, Emitter<AuthenticationState> emit) async {
+    emit(RegisterLoadingState());
+    await Future.delayed(const Duration(seconds: 3), () async {
+      emit(const RegisterSuccessState(message: ""));
+    });
   }
 }

@@ -78,6 +78,15 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
                 heightButton: AppHelper.setMultiDeviceSize(context, 96.h, 70.h),
               ),
             ),
+            SizedBox(height: AppHelper.setMultiDeviceSize(context, 24.h, 16.h)),
+            InkWell(
+              onTap: () => Navigator.of(context).pushNamed(AppPaths.registerScreen),
+              child: ButtonSubmitWidget(
+                title: "Đăng ký tài khoản mới",
+                widthButton: AppHelper.setMultiDeviceSize(context, 744.w * 52 / 100, 393.w * 76 / 100),
+                heightButton: AppHelper.setMultiDeviceSize(context, 96.h, 70.h),
+              ),
+            ),
           ],
         ),
       ),

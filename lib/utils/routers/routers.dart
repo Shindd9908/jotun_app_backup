@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:jotub_app/core/preferences/shared_preferences_manager.dart";
 import "package:jotub_app/di/dependency_injection.dart";
+import "package:jotub_app/features/authentication/presentation/ui/register_screen/register_screen.dart";
 import "package:jotub_app/features/authentication/presentation/ui/screens/change_password_screen.dart";
 import "package:jotub_app/features/authentication/presentation/ui/screens/confirm_account_information_screen.dart";
 import "package:jotub_app/features/authentication/presentation/ui/screens/login_screen.dart";
@@ -71,6 +72,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const ListNotificationScreen());
       case AppPaths.orderScreen:
         return MaterialPageRoute(builder: (_) => const OrderScreen());
+      case AppPaths.registerScreen:
+        return MaterialPageRoute(builder: (_) => const RegisterScreen());
       default:
         Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true
             ? const HomeScreen()

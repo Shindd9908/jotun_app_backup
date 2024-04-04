@@ -46,7 +46,7 @@ class ReceiveGiftJourneyScreen extends StatelessWidget {
               const SizedBox(height: 48),
               InkWell(
                 onTap: () => Navigator.of(context).pop(),
-                child: ButtonSubmitWidget(title: S.of(context).completedReceiveGift, widthButton: 60.w, textColor: AppColor.colorMainWhite),
+                child: ButtonSubmitWidget(title: S.of(context).completedReceiveGift, textColor: AppColor.colorMainWhite),
               ),
               SizedBox(height: AppHelper.setMultiDeviceSize(context, 100, 100))
             ],

@@ -21,37 +21,44 @@ class _OrderScreenState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     return ScreenFrame(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 28),
-            child: Image.asset(
-              AppAssets.imgLogoApp,
-              width: 40.w,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 32.w),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 28),
+              child: Image.asset(
+                AppAssets.imgLogoApp,
+                height: 100.h,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 12, bottom: 16),
-            child: TextWidget(
-              text: S.of(context).preOrderProduct,
-              color: AppColor.colorMainWhite,
-              textAlign: TextAlign.center,
-              fontWeight: FontWeight.w900,
-              fontSize: 22.sp,
+            Padding(
+              padding: EdgeInsets.only(bottom: 16.h),
+              child: TextWidget(
+                text: S.of(context).preOrderProduct,
+                color: AppColor.colorMainWhite,
+                textAlign: TextAlign.center,
+                fontWeight: FontWeight.w900,
+                fontSize: 22.sp,
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
-            child: Column(
+            Column(
               children: [
                 OrderItem(image: AppAssets.itemPack1, amount: _amount),
+                SizedBox(height: 5.h,),
                 OrderItem(image: AppAssets.itemPack2, amount: _amount),
+                SizedBox(height: 5.h,),
                 OrderItem(image: AppAssets.itemPack3, amount: _amount),
+                SizedBox(height: 5.h,),
                 OrderItem(image: AppAssets.itemPack4, amount: _amount),
-                Container(
-                  color: AppColor.colorMainYellow,
-                  height: 1.5,
-                  margin: const EdgeInsets.only(bottom: 8),
+                Padding(
+                  padding: EdgeInsets.only(top: 16.h, bottom: 8.h),
+                  child: Divider(
+                    color: AppColor.colorMainYellow,
+                    thickness: 1.5.h,
+                    height: 1.5.h,
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,27 +67,26 @@ class _OrderScreenState extends State<OrderScreen> {
                       text: S.of(context).totalAmount,
                       color: AppColor.colorMainWhite,
                       fontWeight: FontWeight.normal,
-                      fontSize: 11.sp,
+                      fontSize: 13.sp,
                     ),
                     TextWidget(
                       text: '${_amount * 4} ${S.of(context).litre}',
                       color: AppColor.colorMainYellow,
                       fontWeight: FontWeight.w900,
-                      fontSize: 11.sp,
+                      fontSize: 13.sp,
                     ),
                   ],
                 ),
               ],
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: ButtonSubmitWidget(
-              widthButton: 60.w,
-              title: S.of(context).order,
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: ButtonSubmitWidget(
+                title: S.of(context).order,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

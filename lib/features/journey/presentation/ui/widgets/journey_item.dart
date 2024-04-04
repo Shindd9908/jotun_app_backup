@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
@@ -18,6 +19,7 @@ class JourneyItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => !isUnlock ? Navigator.of(context).pushNamed(AppPaths.scanQRCodeScreen, arguments: {'area': area}) : null,
       child: Container(
+        height: 50,
         padding: const EdgeInsets.symmetric(vertical: 1),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4),
@@ -29,9 +31,9 @@ class JourneyItem extends StatelessWidget {
           ),
         ),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 1),
+          padding: EdgeInsets.symmetric(vertical: 1.h),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8.r),
             gradient: const LinearGradient(
               colors: [Colors.white24, AppColor.colorMainWhite, Colors.white24],
               begin: FractionalOffset.centerLeft,
@@ -46,12 +48,12 @@ class JourneyItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
                 child: CacheImageWidget(
                   imageUrl: area.areaImage ?? '',
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(4.r),
                   color: Colors.black.withOpacity(isUnlock == true ? 0.6 : 0.95),
                 ),
               ),
@@ -59,14 +61,14 @@ class JourneyItem extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(isUnlock == true ? AppAssets.iconMarked : AppAssets.iconLockJourneyItem, width: 32, height: 32),
-                    const SizedBox(height: 4),
+                    Image.asset(isUnlock == true ? AppAssets.iconMarked : AppAssets.iconLockJourneyItem,),
+                    SizedBox(height: 4.h),
                     TextWidget(
                       text: isUnlock == true
                           ? S.of(context).completed.toUpperCase()
                           : '${S.of(context).alertBlockItemArea}\n${area.areaName != null ? area.areaName!.toUpperCase() : ''}',
                       color: AppColor.colorMainWhite,
-                      fontSize: isUnlock == true ? 14 : 12,
+                      fontSize: isUnlock == true ? 14.sp : 12.sp,
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w900,
                     ),

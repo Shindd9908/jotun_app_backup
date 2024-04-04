@@ -21,4 +21,5 @@ class AppPaths {
   static const String newProductsScreen = "/new_products";
   static const String listNotificationScreen = "/list_notifications";
   static const String orderScreen = "/order";
+  static const String registerScreen = "/register_screen";
 }
