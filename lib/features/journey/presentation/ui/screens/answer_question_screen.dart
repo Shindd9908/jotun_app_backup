@@ -35,15 +35,19 @@ class _AnswerQuestionScreenState extends State<AnswerQuestionScreen> {
       child: ScreenFrame(
         child: Expanded(
           child: Padding(
-            padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(context, 60, 80), left: 32, right: 32),
+            padding: EdgeInsets.only(
+              top: AppHelper.setMultiDeviceSize(context, 60.h, 46.h),
+              left: AppHelper.setMultiDeviceSize(context, 744.w / 12 + 48.w, 32.w),
+              right: AppHelper.setMultiDeviceSize(context, 744.w / 12 + 48.w, 32.w),
+            ),
             child: Column(
               children: [
                 Image.asset(
                   AppAssets.imgLogoApp,
-                  width: AppHelper.setMultiDeviceSize(context, 40.w, 40.w),
+                  width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
                   fit: BoxFit.fitWidth,
                 ),
-                SizedBox(height: AppHelper.setMultiDeviceSize(context, 60, 80)),
+                SizedBox(height: AppHelper.setMultiDeviceSize(context, 60.h, 46.h)),
                 Expanded(
                   child: PageView(
                     controller: _pageController,
@@ -55,24 +59,24 @@ class _AnswerQuestionScreenState extends State<AnswerQuestionScreen> {
                           TextWidget(
                             text: widget.area.areaName != null ? widget.area.areaName!.toUpperCase() : '',
                             color: AppColor.colorMainWhite,
-                            fontSize: AppHelper.setMultiDeviceSize(context, 18.sp, 14.sp),
+                            fontSize: AppHelper.setMultiDeviceSize(context, 26.sp, 18.sp),
                             fontWeight: FontWeight.w700,
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 6),
+                          SizedBox(height: 6.h),
                           TextWidget(
                             text: widget.area.questions?[index].title ?? '',
                             color: AppColor.colorMainWhite,
-                            fontSize: AppHelper.setMultiDeviceSize(context, 16.sp, 12.sp),
+                            fontSize: AppHelper.setMultiDeviceSize(context, 20.sp, 14.sp),
                             fontWeight: FontWeight.w500,
                             textAlign: TextAlign.center,
                           ),
-                          const SizedBox(height: 24),
+                          SizedBox(height: 24.h),
                           AnswerWidget(
                             listAnswer: widget.area.questions![index].answers!,
                             callbackSelectAnswer: (answerSelected) => _listAnswerSelected.add(answerSelected),
                           ),
-                          const SizedBox(height: 16),
+                          SizedBox(height: AppHelper.setMultiDeviceSize(context, 20.h, 14.h)),
                           BlocConsumer<JourneyBloc, JourneyState>(
                             listenWhen: (previous, current) => current is CompleteAreaSuccessState || current is CompleteAreaFailState,
                             listener: (context, state) {
@@ -86,14 +90,17 @@ class _AnswerQuestionScreenState extends State<AnswerQuestionScreen> {
                                 CustomFlushBar.showAlertFlushBar(context, state.message);
                               }
                             },
-                            buildWhen: (previous, current) => current is CompleteAreaLoadingState || current is CompleteAreaSuccessState || current is CompleteAreaFailState,
+                            buildWhen: (previous, current) =>
+                                current is CompleteAreaLoadingState || current is CompleteAreaSuccessState || current is CompleteAreaFailState,
                             builder: (context, state) {
                               return InkWell(
                                 onTap: () {
                                   if (_pageController.page! < widget.area.questions!.length - 1) {
-                                    _pageController.animateToPage(_pageController.page!.toInt() + 1, duration: const Duration(milliseconds: 500), curve: Curves.ease);
+                                    _pageController.animateToPage(_pageController.page!.toInt() + 1,
+                                        duration: const Duration(milliseconds: 500), curve: Curves.ease);
                                   } else {
-                                    if (_listAnswerSelected.length == widget.area.questions!.length && _listAnswerSelected.indexWhere((el) => el == false) == -1) {
+                                    if (_listAnswerSelected.length == widget.area.questions!.length &&
+                                        _listAnswerSelected.indexWhere((el) => el == false) == -1) {
                                       context.read<JourneyBloc>().add(CompleteAreaEvent(areaId: widget.area.areaId!));
                                     } else {
                                       Navigator.of(context).pop();
@@ -104,7 +111,8 @@ class _AnswerQuestionScreenState extends State<AnswerQuestionScreen> {
                                 },
                                 child: ButtonSubmitWidget(
                                   title: S.of(context).titleButtonNextQuestion,
-                                  widthButton: AppHelper.setMultiDeviceSize(context, 40.w, 60.w),
+                                  widthButton: AppHelper.setMultiDeviceSize(context, 744.w * 52 / 100, 393.w * 76 / 100),
+                                  heightButton: AppHelper.setMultiDeviceSize(context, 96.h, 70.h),
                                   isShowLoading: state is CompleteAreaLoadingState,
                                 ),
                               );

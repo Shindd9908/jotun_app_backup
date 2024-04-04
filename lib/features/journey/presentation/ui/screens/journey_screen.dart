@@ -45,19 +45,30 @@ class _JourneyScreenState extends State<JourneyScreen> {
           children: [
             Padding(
               padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(context, 32, 32), bottom: AppHelper.setMultiDeviceSize(context, 36, 36)),
-              child: Image.asset(AppAssets.imgLogoApp, width: AppHelper.setMultiDeviceSize(context, 32.w, 32.w)),
+              child: Image.asset(
+                AppAssets.imgLogoApp,
+                width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
+                fit: BoxFit.fitWidth,
+              ),
             ),
-            Image.asset(AppAssets.imgBanner2, width: 100.w, fit: BoxFit.fitWidth),
+            Image.asset(
+              AppAssets.imgBanner2,
+              width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
+              fit: BoxFit.fitWidth,
+            ),
             BlocConsumer<JourneyBloc, JourneyState>(
               listenWhen: (previous, current) =>
-                  current is FetchListAreaCompletedLoadingState || current is FetchListAreaCompletedSuccessState || current is FetchListAreaCompletedFailState,
+                  current is FetchListAreaCompletedLoadingState ||
+                  current is FetchListAreaCompletedSuccessState ||
+                  current is FetchListAreaCompletedFailState,
               listener: (context, state) {
                 if (state is FetchListAreaCompletedSuccessState) {
                   _listAreaCompleted = state.listAreaCompleted;
                 }
                 context.read<JourneyBloc>().add(FetchListAreaEvent());
               },
-              buildWhen: (previous, current) => current is FetchListAreaLoadingState || current is FetchListAreaSuccessState || current is FetchListAreaFailState,
+              buildWhen: (previous, current) =>
+                  current is FetchListAreaLoadingState || current is FetchListAreaSuccessState || current is FetchListAreaFailState,
               builder: (context, state) {
                 if (state is FetchListAreaSuccessState) {
                   _listAllArea = state.listArea;
@@ -68,17 +79,20 @@ class _JourneyScreenState extends State<JourneyScreen> {
                       if (state is FetchListAreaSuccessState && state.listArea.length == 4)
                         Expanded(
                           child: Wrap(
-                            spacing: 12,
-                            runSpacing: 12,
+                            spacing: AppHelper.setMultiDeviceSize(context, 24.w, 12.w),
+                            runSpacing: AppHelper.setMultiDeviceSize(context, 24.w, 12.w),
                             runAlignment: WrapAlignment.center,
                             children: List.generate(
                               _listAllArea.length,
                               (index) => SizedBox(
-                                width: (100.w - 44) / 2,
-                                height: ((100.w - 44) / 2) / 1.5,
+                                width: (AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - 60.w) / 2,
+                                height:
+                                    ((AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - AppHelper.setMultiDeviceSize(context, 220.w, 50.w)) / 2) /
+                                        1.5,
                                 child: JourneyItem(
                                   area: _listAllArea[index],
-                                  isUnlock: _listAreaCompleted.isNotEmpty && _listAreaCompleted.indexWhere((el) => el.areaId == _listAllArea[index].areaId) != -1,
+                                  isUnlock: _listAreaCompleted.isNotEmpty &&
+                                      _listAreaCompleted.indexWhere((el) => el.areaId.toString() == _listAllArea[index].areaId.toString()) != -1,
                                 ),
                               ),
                             ),
@@ -87,32 +101,36 @@ class _JourneyScreenState extends State<JourneyScreen> {
                       if (state is FetchListAreaSuccessState && state.listArea.length < 4)
                         Container(
                           alignment: Alignment.center,
-                          width: 100.w,
-                          height: AppHelper.setMultiDeviceSize(context, 150, 150),
+                          width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
+                          height: AppHelper.setMultiDeviceSize(context, 150.h, 150.h),
                           child: TextWidget(
                             text: S.of(context).noData,
                             color: AppColor.colorMainWhite,
-                            fontSize: 14.sp,
+                            fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 14.sp),
                             fontWeight: FontWeight.w700,
                           ),
                         ),
                       if (state is FetchListAreaLoadingState)
                         Container(
                           alignment: Alignment.center,
-                          width: 100.w,
-                          height: AppHelper.setMultiDeviceSize(context, 150, 150),
-                          child: const SpinKitLoadingWidget(color: AppColor.colorMainWhite, size: 34),
+                          width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
+                          height: AppHelper.setMultiDeviceSize(context, 150.h, 150.h),
+                          child: SpinKitLoadingWidget(color: AppColor.colorMainWhite, size: 34.sp),
                         ),
                       Padding(
-                        padding: EdgeInsets.only(bottom: AppHelper.setMultiDeviceSize(context, 16, 16)),
+                        padding: EdgeInsets.only(bottom: AppHelper.setMultiDeviceSize(context, 10.h, 16.h)),
                         child: BlocConsumer<JourneyBloc, JourneyState>(
                             listenWhen: (previous, current) =>
-                                current is FetchListGiftSuccessState || current is FetchListGiftFailState || current is ReceiveGiftSuccessState || current is ReceiveGiftFailState,
+                                current is FetchListGiftSuccessState ||
+                                current is FetchListGiftFailState ||
+                                current is ReceiveGiftSuccessState ||
+                                current is ReceiveGiftFailState,
                             listener: (context, state) {
                               if (state is FetchListGiftSuccessState) {
                                 if (state.listGift.indexWhere((el) => el.type == Constants.typeGiftJourney) != -1) {
-                                  context.read<JourneyBloc>().add(
-                                      ReceiveGiftEvent(giftId: state.listGift.firstWhere((el) => el.type == Constants.typeGiftJourney).giftId!, type: Constants.typeGiftJourney));
+                                  context.read<JourneyBloc>().add(ReceiveGiftEvent(
+                                      giftId: state.listGift.firstWhere((el) => el.type == Constants.typeGiftJourney).giftId!,
+                                      type: Constants.typeGiftJourney));
                                   _giftReceivedURL = state.listGift.firstWhere((el) => el.type == Constants.typeGiftJourney).giftURL ?? '';
                                 }
                               }
@@ -145,9 +163,11 @@ class _JourneyScreenState extends State<JourneyScreen> {
                                 },
                                 child: ButtonSubmitWidget(
                                   title: S.of(context).claimRewardButton,
-                                  widthButton: 60.w,
+                                  widthButton: AppHelper.setMultiDeviceSize(context, 744.w * 52 / 100, 393.w * 76 / 100),
+                                  heightButton: AppHelper.setMultiDeviceSize(context, 96.h, 70.h),
                                   textColor: _listAreaCompleted.length == _listAllArea.length ? AppColor.colorMainWhite : AppColor.colorMainGray,
-                                  isShowLoading: state is FetchListGiftLoadingState || state is FetchListGiftSuccessState || state is ReceiveGiftLoadingState,
+                                  isShowLoading:
+                                      state is FetchListGiftLoadingState || state is FetchListGiftSuccessState || state is ReceiveGiftLoadingState,
                                 ),
                               );
                             }),
@@ -160,7 +180,7 @@ class _JourneyScreenState extends State<JourneyScreen> {
             TextWidget(
               text: S.of(context).explainClaimReward1,
               color: AppColor.colorMainWhite,
-              fontSize: 14.sp,
+              fontSize: AppHelper.setMultiDeviceSize(context, 22.sp, 14.sp),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -169,18 +189,18 @@ class _JourneyScreenState extends State<JourneyScreen> {
                 TextWidget(
                   text: S.of(context).fourAreas,
                   color: AppColor.colorMainYellow,
-                  fontSize: 16.sp,
+                  fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 16.sp),
                   fontWeight: FontWeight.w900,
                 ),
                 TextWidget(
                   text: ' ${S.of(context).explainClaimReward2}',
                   color: AppColor.colorMainWhite,
-                  fontSize: 14.sp,
+                  fontSize: AppHelper.setMultiDeviceSize(context, 22.sp, 14.sp),
                   height: 1.55,
                 ),
               ],
             ),
-            const SizedBox(height: 32),
+            SizedBox(height: 32.h),
           ],
         ),
       ),

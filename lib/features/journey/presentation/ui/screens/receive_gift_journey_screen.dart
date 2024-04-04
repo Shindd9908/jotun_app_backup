@@ -24,31 +24,43 @@ class ReceiveGiftJourneyScreen extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(context, 32, 32), bottom: AppHelper.setMultiDeviceSize(context, 24, 24)),
-                child: Image.asset(AppAssets.imgLogoApp, width: AppHelper.setMultiDeviceSize(context, 32.w, 32.w)),
+                padding: EdgeInsets.only(
+                  top: AppHelper.setMultiDeviceSize(context, 70.h, 48.h),
+                  bottom: AppHelper.setMultiDeviceSize(context, 40.h, 24.h),
+                ),
+                child: Image.asset(
+                  AppAssets.imgLogoApp,
+                  width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
+                  fit: BoxFit.fitWidth,
+                ),
               ),
               TextWidget(
                 text: S.of(context).congratulationsReceivingGiftJotun,
                 color: AppColor.colorMainWhite,
-                fontSize: 18.sp,
+                fontSize: AppHelper.setMultiDeviceSize(context, 26.sp, 18.sp),
                 fontWeight: FontWeight.w900,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 48),
+              SizedBox(height: 48.h),
               Expanded(
                 child: CacheImageWidget(
                   imageUrl: giftReceivedURL,
-                  widthImage: 100.w - 64,
+                  widthImage: AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - 64.w,
                   fit: BoxFit.fitHeight,
-                  radius: 8,
+                  radius: AppHelper.setMultiDeviceSize(context, 16, 8),
                 ),
               ),
-              const SizedBox(height: 48),
+              SizedBox(height: 48.h),
               InkWell(
                 onTap: () => Navigator.of(context).pop(),
-                child: ButtonSubmitWidget(title: S.of(context).completedReceiveGift, widthButton: 60.w, textColor: AppColor.colorMainWhite),
+                child: ButtonSubmitWidget(
+                  title: S.of(context).completedReceiveGift,
+                  widthButton: AppHelper.setMultiDeviceSize(context, 744.w * 52 / 100, 393.w * 76 / 100),
+                  heightButton: AppHelper.setMultiDeviceSize(context, 96.h, 70.h),
+                  textColor: AppColor.colorMainWhite,
+                ),
               ),
-              SizedBox(height: AppHelper.setMultiDeviceSize(context, 100, 100))
+              SizedBox(height: AppHelper.setMultiDeviceSize(context, 100.h, 80.h))
             ],
           ),
         ),

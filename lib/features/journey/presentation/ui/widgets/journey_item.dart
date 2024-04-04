@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/cache_image_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
+import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
 
 class JourneyItem extends StatelessWidget {
@@ -46,7 +48,7 @@ class JourneyItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4),
                 child: CacheImageWidget(
                   imageUrl: area.areaImage ?? '',
-                  fit: BoxFit.fill,
+                  fit: BoxFit.fitWidth,
                 ),
               ),
               Container(
@@ -59,14 +61,20 @@ class JourneyItem extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(isUnlock == true ? AppAssets.iconMarked : AppAssets.iconLockJourneyItem, width: 32, height: 32),
+                    Image.asset(
+                      isUnlock == true ? AppAssets.iconMarked : AppAssets.iconLockJourneyItem,
+                      width: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+                      height: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+                    ),
                     const SizedBox(height: 4),
                     TextWidget(
                       text: isUnlock == true
                           ? S.of(context).completed.toUpperCase()
                           : '${S.of(context).alertBlockItemArea}\n${area.areaName != null ? area.areaName!.toUpperCase() : ''}',
                       color: AppColor.colorMainWhite,
-                      fontSize: isUnlock == true ? 14 : 12,
+                      fontSize: isUnlock == true
+                          ? AppHelper.setMultiDeviceSize(context, 18.sp, 12.sp)
+                          : AppHelper.setMultiDeviceSize(context, 16.sp, 10.sp),
                       textAlign: TextAlign.center,
                       fontWeight: FontWeight.w900,
                     ),
