@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class AreaCompletedEntity extends Equatable {
-  final String? areaId;
+  final int? areaId;
   final String? completedAt;
 
   const AreaCompletedEntity({this.areaId, this.completedAt});
