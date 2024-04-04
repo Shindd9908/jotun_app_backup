@@ -18,6 +18,7 @@ import "package:jotub_app/features/mini_game/presentation/ui/screens/mini_game_s
 import "package:jotub_app/features/mini_game/presentation/ui/screens/result_screen.dart";
 import "package:jotub_app/features/new_products/presentation/ui/new_products_screen.dart";
 import "package:jotub_app/features/notification/presentation/screen/list_notification_screen.dart";
+import "package:jotub_app/features/order/presentation/ui/screens/order_screen.dart";
 import "package:jotub_app/features/trip/presentation/ui/screens/schedule_screen.dart";
 import "package:jotub_app/features/trip/presentation/ui/screens/trip_screen.dart";
 import "package:jotub_app/utils/constants/key_preferences.dart";
@@ -68,6 +69,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const NewProductsScreen());
       case AppPaths.listNotificationScreen:
         return MaterialPageRoute(builder: (_) => const ListNotificationScreen());
+      case AppPaths.orderScreen:
+        return MaterialPageRoute(builder: (_) => const OrderScreen());
       default:
         Widget widget = getIt<SharedPreferencesManager>().getValue<bool>(KeyPreferences.kStatusConfirmAccountDone) == true
             ? const HomeScreen()

@@ -27,7 +27,7 @@ class Constants {
       {
         "featureName": S.of(context).preorder,
         "pathIcon": AppAssets.iconOrder,
-        "pathScreenNavigateOnTap": AppPaths.tripScreen,
+        "pathScreenNavigateOnTap": AppPaths.orderScreen,
       },
       {
         "featureName": S.of(context).newProductInformation,

@@ -710,6 +710,76 @@ class S {
     );
   }
 
+  /// `Đặt trước sản phẩm`
+  String get preOrderProduct {
+    return Intl.message(
+      'Đặt trước sản phẩm',
+      name: 'preOrderProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Số lượng`
+  String get amount {
+    return Intl.message(
+      'Số lượng',
+      name: 'amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `+`
+  String get plusIcon {
+    return Intl.message(
+      '+',
+      name: 'plusIcon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `-`
+  String get minusIcon {
+    return Intl.message(
+      '-',
+      name: 'minusIcon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tổng khối lượng`
+  String get totalAmount {
+    return Intl.message(
+      'Tổng khối lượng',
+      name: 'totalAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lít`
+  String get litre {
+    return Intl.message(
+      'Lít',
+      name: 'litre',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đặt hàng`
+  String get order {
+    return Intl.message(
+      'Đặt hàng',
+      name: 'order',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Thông tin không được để trống`
   String get errorFieldRequired {
     return Intl.message(

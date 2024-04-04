@@ -48,4 +48,10 @@ class AppAssets {
   static const itemMiniGame6 = 'assets/icons/mini_game/item_mini_game_6.png';
   static const itemMiniGame7 = 'assets/icons/mini_game/item_mini_game_7.png';
   static const itemMiniGame8 = 'assets/icons/mini_game/item_mini_game_8.png';
+
+  // order screen
+  static const itemPack1 = 'assets/images/order/item_pack_1.png';
+  static const itemPack2 = 'assets/images/order/item_pack_2.png';
+  static const itemPack3 = 'assets/images/order/item_pack_3.png';
+  static const itemPack4 = 'assets/images/order/item_pack_4.png';
 }
