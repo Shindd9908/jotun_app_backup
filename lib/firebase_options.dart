@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCRhYLD3EmE5OXY0njNWJ6f52nSEANb3Ec',
-    appId: '1:833098319872:android:50988200195638a326b0e5',
+    appId: '1:833098319872:android:7416f31107b2f45a26b0e5',
     messagingSenderId: '833098319872',
     projectId: 'jotun-flutter',
     storageBucket: 'jotun-flutter.appspot.com',
