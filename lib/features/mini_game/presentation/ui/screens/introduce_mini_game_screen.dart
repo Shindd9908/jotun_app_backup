@@ -52,7 +52,6 @@ class IntroduceMiniGameScreen extends StatelessWidget {
             onTap: () => Navigator.of(context).pushNamed(AppPaths.miniGameScreen),
             child: ButtonSubmitWidget(
               title: S.of(context).startGame,
-              widthButton: 60.w,
             ),
           ),
         ],

@@ -91,21 +91,21 @@ class _ListNotificationScreenState extends State<ListNotificationScreen> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            padding: EdgeInsets.symmetric(horizontal: 16.w),
                             child: Container(
-                              height: 8.h,
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                              height: 50.h,
+                              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
                               decoration: BoxDecoration(
                                 color: AppColor.colorMainWhite,
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(12.r),
                               ),
                             ),
                           );
                         },
-                        separatorBuilder: (BuildContext context, int index) => const SizedBox(
-                          height: 10,
+                        separatorBuilder: (BuildContext context, int index) => SizedBox(
+                          height: 10.h,
                         ),
-                        itemCount: 8,
+                        itemCount: 10,
                       ),
                     )
                   : Center(

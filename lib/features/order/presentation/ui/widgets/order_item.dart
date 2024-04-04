@@ -12,22 +12,24 @@ class OrderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: Image.asset(
-                image,
-                fit: BoxFit.fitWidth,
-              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 3,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Image.asset(
+              image,
+              height: 90.h,
+              fit: BoxFit.contain,
             ),
           ),
-          Container(
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
             width: 22.w,
             padding: const EdgeInsets.only(top: 2),
             decoration: BoxDecoration(
@@ -70,8 +72,8 @@ class OrderItem extends StatelessWidget {
               ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
