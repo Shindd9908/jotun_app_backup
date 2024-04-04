@@ -1,3 +1,111 @@
 {
-  "@@locale" : "en"
+  "@@locale": "en",
+
+  "journeyDiscovery": "HÀNH TRÌNH KHÁM PHÁ",
+  "inclusiveness": "SỰ TOÀN DIỆN",
+  "objectUse": "Đối tượng sử dụng",
+  "agency": "Đại lý",
+  "memberOfJotun": "Nhân viên Jotun",
+
+  "login": "Đăng nhập",
+  "phoneNumber": "Tên đăng nhập",
+  "password": "Mật khẩu",
+  "changePassword": "Đổi mật khẩu",
+  "newPassword": "Mật khẩu mới",
+  "confirmNewPassword": "Xác nhận mật khẩu mới",
+  "logout": "Đăng xuất",
+
+  "accountInformation": "Thông tin tài khoản",
+  "fullName": "Họ và tên",
+  "store": "Cửa hàng",
+  "idCardNumber": "Căn cước công dân",
+  "salesNameStaffCharge": "Nhân viên bán hàng phụ trách",
+  "salesPhoneNumberStaffCharge": "SĐT nhân viên bán hàng",
+  "group": "Nhóm",
+  "busNo": "Số xe bus",
+  "hotel": "Khách sạn",
+  "confirmInformation": "Xác nhận thông tin",
+  "showFullAvatar": "Xem ảnh đại điện",
+  "changeAvatar": "Thay đổi ảnh đại diện",
+  "selectAvatarFromCamera": "Chọn ảnh từ camera",
+  "selectAvatarFromGallery": "Chọn ảnh từ bộ sưu tập",
+
+  "@homeScreen" : {
+    "description" : "Home screen"
+  },
+  "incomingEvent": "Sự kiện sắp diễn ra",
+  "goToDetailTrip": "Xem chi tiết hành trình",
+  "feature": "Tính năng",
+  "exploreSchedule": "Khám phá\nlịch trình",
+  "newProductInformation": "Thông tin sản\nphẩm mới",
+  "experienceAndReceiveGift": "Trải nghiệm &\nnhận quà",
+  "miniGame": "Mini game\n",
+  "preorder": "Đặt hàng trước",
+  "promotions": "Chương trình\nkhuyến mãi",
+  "contentPopupWelcomeNewProducts": "Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield",
+  "dateNewProductLaunched": "Vào ngày 08/05/2024",
+
+  "@tripScreen" : {
+    "description" : "Trip screen"
+  },
+  "explainClaimReward1": "Quý khách vui lòng trải nghiệm đủ",
+  "fourAreas": "4 khu vực",
+  "explainClaimReward2": "để nhận quà tặng từ Jotun!",
+  "claimRewardButton": "Nhận quà",
+  "completed": "Đã hoàn thành",
+  "completedReceiveGift": "Hoàn thành",
+  "scanQRCodeAreaWrong": "Mã sai khu vực",
+  "pleaseMoveOtherArea": "Mời bạn di chuyển qua",
+  "toReScan": "để quét mã",
+  "congratulationsReceivingGiftJotun": "Chúc mừng bạn đã nhận\nđược quà từ Jotun",
+
+  "@scheduleScreen" : {
+    "description" : "Schedule screen"
+  },
+  "daySchedule": "Ngày",
+  "hourSchedule": "tiếng",
+  "minuteSchedule": "phút",
+
+  "@miniGameScreen" : {
+    "description" : "Mini game screen"
+  },
+  "gameRule": "Luật chơi",
+  "explainRule": "Trong vòng 60 giây, lật tìm các\nmảnh ghép giống nhau",
+  "startGame": "Bắt đầu chơi",
+  "exploreTheProductLine": "Khám phá dòng sản phẩm",
+  "productName": "Jotun Jotashield bền màu\ntoàn diện",
+  "yourReward": "Phần thưởng của bạn là",
+  "completedMiniGame": "Chúc mừng bạn đã\nhoàn thành thử thách",
+  "uncompletedMiniGame": "Rất tiếc bạn chưa\nhoàn thành thử thách",
+  "playAgain": "Chơi lại",
+  "backToHome": "Quay về trang chủ",
+  "youHaveReceivedTheGift": "Bạn đã nhận quà tặng",
+  "timeToReceiveGift": "Mỗi khách hàng chỉ nhận được một phần quà\nThời gian chơi có trúng thưởng: 8/5/2024 - 31/5/2024",
+
+  "@journeyScreen" : {
+    "description" : "Journey screen"
+  },
+  "alertBlockItemArea": "QUÉT QR MỞ KHÓA",
+  "pleaseScanQRCodeEachArea": "HÃY QUÉT MÃ QR TƯƠNG ỨNG\nCÁC BOOTH",
+  "titleButtonNextQuestion": "Tiếp theo",
+  "alertAnswerWrong": "Bạn đã trả lời sai 1 số câu hỏi. Vui lòng thử lại!",
+
+  "@orderScreen" : {
+    "description" : "Order screen"
+  },
+  "preOrderProduct": "Đặt trước sản phẩm",
+  "amount": "Số lượng",
+  "plusIcon": "+",
+  "minusIcon": "-",
+  "totalAmount": "Tổng khối lượng",
+  "litre": "Lít",
+  "order": "Đặt hàng",
+
+  "errorFieldRequired": "Thông tin không được để trống",
+  "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",
+  "errorIdCardNumberIncorrect": "Số căn cước công dân không đúng định dạng",
+  "errorPasswordConfirmNotMatch": "Mật khẩu xác thực không trùng khớp",
+  "errorPasswordMinLength": "Mật khẩu phải tối thiểu 8 kí tự",
+
+  "noData": "Không có dữ liệu"
 }
