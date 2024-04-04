@@ -1,6 +1,8 @@
 import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
+import "package:flutter_screenutil/flutter_screenutil.dart";
 import "package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart";
+import "package:jotub_app/utils/helpers/helpers.dart";
 
 class CacheImageWidget extends StatelessWidget {
   final String? imageUrl;
@@ -34,18 +36,18 @@ class CacheImageWidget extends StatelessWidget {
               height: heightImage,
               imageUrl: imageUrl!,
               fit: fit ?? BoxFit.fill,
-              placeholder: (context, url) => const SpinKitLoadingWidget(color: Colors.grey, size: 18),
-              errorWidget: (context, url, error) => const Icon(
+              placeholder: (context, url) => SpinKitLoadingWidget(color: Colors.grey, size: AppHelper.setMultiDeviceSize(context, 30.w, 18.w)),
+              errorWidget: (context, url, error) => Icon(
                 Icons.image_outlined,
-                size: 24,
+                size: AppHelper.setMultiDeviceSize(context, 34.w, 24.w),
               ),
             ),
           )
         : Container(
             alignment: Alignment.center,
-            child: const Icon(
+            child: Icon(
               Icons.image_outlined,
-              size: 24,
+              size: AppHelper.setMultiDeviceSize(context, 34.w, 24.w),
             ),
           );
   }

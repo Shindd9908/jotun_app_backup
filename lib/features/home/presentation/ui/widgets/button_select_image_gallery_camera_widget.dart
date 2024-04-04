@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jotub_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:jotub_app/generated/l10n.dart';
@@ -9,7 +10,6 @@ import 'package:jotub_app/utils/global_widgets/custom_flush_bar.dart';
 import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
-import 'package:sizer/sizer.dart';
 
 //ignore: must_be_immutable
 class ButtonSelectImageGalleryCameraWidget extends StatelessWidget {
@@ -53,20 +53,20 @@ class ButtonSelectImageGalleryCameraWidget extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 width: double.infinity,
-                margin: const EdgeInsets.only(top: 12, bottom: 6),
-                padding: const EdgeInsets.symmetric(vertical: 8),
+                margin: EdgeInsets.only(top: 12.h, bottom: 6.h),
+                padding: EdgeInsets.symmetric(vertical: 8.h),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: Colors.black),
                   borderRadius: BorderRadius.circular(60),
                 ),
                 child: state is UpdateUserAvatarLoadingState
                     ? SpinKitLoadingWidget(
-                        size: AppHelper.setMultiDeviceSize(16.sp, 16.sp),
+                        size: AppHelper.setMultiDeviceSize(context, 26.sp, 16.sp),
                         color: Colors.black,
                       )
                     : TextWidget(
                         text: S.of(context).selectAvatarFromGallery,
-                        fontSize: AppHelper.setMultiDeviceSize(14.sp, 14.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 14.sp),
                         fontWeight: FontWeight.w700,
                         color: Colors.black,
                       ),
@@ -77,20 +77,20 @@ class ButtonSelectImageGalleryCameraWidget extends StatelessWidget {
               child: Container(
                 alignment: Alignment.center,
                 width: double.infinity,
-                margin: const EdgeInsets.only(top: 6, bottom: 12),
-                padding: const EdgeInsets.symmetric(vertical: 8),
+                margin: EdgeInsets.only(top: 6.h, bottom: 12.h),
+                padding: EdgeInsets.symmetric(vertical: 8.h),
                 decoration: BoxDecoration(
                   border: Border.all(width: 1, color: Colors.black),
                   borderRadius: BorderRadius.circular(60),
                 ),
                 child: state is UpdateUserAvatarLoadingState
                     ? SpinKitLoadingWidget(
-                        size: AppHelper.setMultiDeviceSize(16.sp, 16.sp),
+                        size: AppHelper.setMultiDeviceSize(context, 26.sp, 16.sp),
                         color: Colors.black,
                       )
                     : TextWidget(
                         text: S.of(context).selectAvatarFromCamera,
-                        fontSize: AppHelper.setMultiDeviceSize(14.sp, 14.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 14.sp),
                         fontWeight: FontWeight.w700,
                         color: Colors.black,
                       ),

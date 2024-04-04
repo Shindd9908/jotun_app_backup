@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
-import 'package:sizer/sizer.dart';
 
 class AnswerWidget extends StatelessWidget {
   final List<AnswerEntity> listAnswer;
@@ -43,7 +43,7 @@ class AnswerWidget extends StatelessWidget {
                     child: TextWidget(
                       text: listAnswer[index].answer ?? '',
                       color: AppColor.colorMainBlack,
-                      fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
+                      fontSize: AppHelper.setMultiDeviceSize(context, 16.sp, 12.sp),
                       fontWeight: FontWeight.w500,
                       textAlign: TextAlign.start,
                     ),
@@ -56,7 +56,7 @@ class AnswerWidget extends StatelessWidget {
                       ? Icon(
                           listAnswer[index].correct == true ? Icons.check : Icons.clear,
                           color: listAnswer[index].correct == true ? AppColor.colorMainGreen : AppColor.colorMainRed,
-                          size: AppHelper.setMultiDeviceSize(32, 32),
+                          size: AppHelper.setMultiDeviceSize(context, 32, 32),
                         )
                       : const SizedBox(),
                 ),

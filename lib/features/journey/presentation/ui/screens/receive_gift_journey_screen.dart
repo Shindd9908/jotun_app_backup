@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
@@ -7,7 +8,6 @@ import 'package:jotub_app/utils/global_widgets/cache_image_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
-import 'package:sizer/sizer.dart';
 
 class ReceiveGiftJourneyScreen extends StatelessWidget {
   final String giftReceivedURL;
@@ -24,8 +24,8 @@ class ReceiveGiftJourneyScreen extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(32, 32), bottom: AppHelper.setMultiDeviceSize(24, 24)),
-                child: Image.asset(AppAssets.imgLogoApp, width: AppHelper.setMultiDeviceSize(32.w, 32.w)),
+                padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(context, 32, 32), bottom: AppHelper.setMultiDeviceSize(context, 24, 24)),
+                child: Image.asset(AppAssets.imgLogoApp, width: AppHelper.setMultiDeviceSize(context, 32.w, 32.w)),
               ),
               TextWidget(
                 text: S.of(context).congratulationsReceivingGiftJotun,
@@ -48,7 +48,7 @@ class ReceiveGiftJourneyScreen extends StatelessWidget {
                 onTap: () => Navigator.of(context).pop(),
                 child: ButtonSubmitWidget(title: S.of(context).completedReceiveGift, widthButton: 60.w, textColor: AppColor.colorMainWhite),
               ),
-              SizedBox(height: AppHelper.setMultiDeviceSize(100, 100))
+              SizedBox(height: AppHelper.setMultiDeviceSize(context, 100, 100))
             ],
           ),
         ),

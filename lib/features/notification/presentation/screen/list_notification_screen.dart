@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/notification/presentation/bloc/notification_bloc.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/colors.dart';
@@ -8,7 +9,6 @@ import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:sizer/sizer.dart';
 
 class ListNotificationScreen extends StatefulWidget {
   const ListNotificationScreen({super.key});
@@ -57,7 +57,7 @@ class _ListNotificationScreenState extends State<ListNotificationScreen> {
                               TextWidget(
                                 text: state.notificationDataEntity.notificationsDetailEntity?[index].title,
                                 color: AppColor.colorMainBlack,
-                                fontSize: AppHelper.setMultiDeviceSize(18.sp, 18.sp),
+                                fontSize: AppHelper.setMultiDeviceSize(context, 18.sp, 18.sp),
                                 fontWeight: FontWeight.w700,
                                 height: 1,
                               ),
@@ -67,7 +67,7 @@ class _ListNotificationScreenState extends State<ListNotificationScreen> {
                               TextWidget(
                                 text: state.notificationDataEntity.notificationsDetailEntity?[index].content,
                                 color: AppColor.colorMainBlack,
-                                fontSize: AppHelper.setMultiDeviceSize(16.sp, 14.sp),
+                                fontSize: AppHelper.setMultiDeviceSize(context, 16.sp, 14.sp),
                                 fontWeight: FontWeight.w400,
                                 height: 1,
                               ),
@@ -105,14 +105,14 @@ class _ListNotificationScreenState extends State<ListNotificationScreen> {
                         separatorBuilder: (BuildContext context, int index) => const SizedBox(
                           height: 10,
                         ),
-                        itemCount: 8, // số lượng items mà bạn muốn hiển thị khi shimmer
+                        itemCount: 8,
                       ),
                     )
                   : Center(
                       child: TextWidget(
                         text: S.of(context).noData,
                         color: AppColor.colorMainBlack,
-                        fontSize: AppHelper.setMultiDeviceSize(18.sp, 18.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 18.sp, 18.sp),
                         fontWeight: FontWeight.w700,
                         height: 1,
                       ),

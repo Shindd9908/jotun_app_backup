@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/authentication/domain/entities/user_authentication_entity.dart';
 import 'package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:jotub_app/generated/l10n.dart';
@@ -12,7 +13,6 @@ import 'package:jotub_app/utils/global_widgets/text_form_field_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
-import 'package:sizer/sizer.dart';
 
 class ConfirmAccountInformationScreen extends StatefulWidget {
   final UserInfoEntity? userInfo;
@@ -50,38 +50,42 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
       resizeToAvoidBottomInset: false,
       body: BackgroundScreenFormFieldWidget(
         mainUIContent: Container(
-          width: 100.w,
-          height: 100.h - MediaQuery.of(context).viewInsets.bottom - MediaQuery.of(context).padding.top,
-          padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(6.h, 10.h), left: 32, right: 32),
+          width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
+          height: AppHelper.setMultiDeviceSize(context, 1133.h, 852.h) - MediaQuery.of(context).viewInsets.bottom - MediaQuery.of(context).padding.top,
+          padding: EdgeInsets.only(
+            top: AppHelper.setMultiDeviceSize(context, 70.h, 48.h),
+            left: AppHelper.setMultiDeviceSize(context, 744.w / 12 + 48.w, 32.w),
+            right: AppHelper.setMultiDeviceSize(context, 744.w / 12 + 48.w, 32.w),
+          ),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
                   AppAssets.imgLogoApp,
-                  width: AppHelper.setMultiDeviceSize(40.w, 40.w),
+                  width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
                   fit: BoxFit.fitWidth,
                 ),
-                SizedBox(height: AppHelper.setMultiDeviceSize(12.h, 10.h)),
+                SizedBox(height: AppHelper.setMultiDeviceSize(context, 100.h, 60.h)),
                 TextWidget(
                   text: S.of(context).accountInformation,
                   color: AppColor.colorMainWhite,
-                  fontSize: AppHelper.setMultiDeviceSize(26.sp, 22.sp),
+                  fontSize: AppHelper.setMultiDeviceSize(context, 34.sp, 24.sp),
                   fontWeight: FontWeight.w700,
                 ),
-                SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                 TextFormFieldWidget(
                   controller: _nameController,
                   hintText: S.of(context).fullName,
                   isReadOnly: true,
                 ),
-                SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                 TextFormFieldWidget(
                   controller: _storeController,
                   hintText: S.of(context).store,
                   isReadOnly: true,
                 ),
-                SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                 ValueListenableBuilder(
                   valueListenable: _errorValidateFieldIdCardNumber,
                   builder: (_, value, __) => TextFormFieldWidget(
@@ -92,19 +96,19 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
                     callBackOnChange: (value) => _errorValidateFieldIdCardNumber.value = AppHelper.validateFieldIdCardNumber(context, value),
                   ),
                 ),
-                SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                 TextFormFieldWidget(
                   controller: _salesStaffChargeController,
                   hintText: S.of(context).salesNameStaffCharge,
                   isReadOnly: true,
                 ),
-                SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                 TextFormFieldWidget(
                   controller: _groupController,
                   hintText: S.of(context).group,
                   isReadOnly: true,
                 ),
-                SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                 BlocConsumer<AuthenticationBloc, AuthenticationState>(
                   listenWhen: (previous, current) => current is ConfirmAccountSuccessState || current is ConfirmAccountFailState,
                   listener: (context, state) {
@@ -127,13 +131,14 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
                       },
                       child: ButtonSubmitWidget(
                         title: S.of(context).confirmInformation,
-                        widthButton: AppHelper.setMultiDeviceSize(46.w, 78.w),
+                        widthButton: AppHelper.setMultiDeviceSize(context, 744.w * 52 / 100, 393.w * 76 / 100),
+                        heightButton: AppHelper.setMultiDeviceSize(context, 96.h, 70.h),
                         isShowLoading: state is ConfirmAccountLoadingState,
                       ),
                     );
                   },
                 ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16.h),
               ],
             ),
           ),

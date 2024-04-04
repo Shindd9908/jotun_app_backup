@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
@@ -46,13 +47,13 @@ class ButtonSubmitWidget extends StatelessWidget {
         ),
         Positioned(
           child: isShowLoading == true
-              ? SpinKitLoadingWidget(size: sizeLoading ?? 26)
+              ? SpinKitLoadingWidget(size: sizeLoading ?? AppHelper.setMultiDeviceSize(context, 30.sp, 24.sp))
               : TextWidget(
                   text: title ?? '',
                   textStyle: textStyle ??
                       TextStyle(
                         color: textColor ?? AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(26, 22),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 28.sp, 22.sp),
                         fontWeight: FontWeight.w700,
                       ),
                 ),

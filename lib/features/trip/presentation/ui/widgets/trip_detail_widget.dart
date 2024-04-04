@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
@@ -6,7 +7,6 @@ import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
-import 'package:sizer/sizer.dart';
 
 class TripDetailWidget extends StatelessWidget {
   final TripEntity trip;
@@ -18,10 +18,10 @@ class TripDetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: (100.w - AppHelper.setMultiDeviceSize(64, 64)) * 2 / 3.2,
-      width: 100.w - AppHelper.setMultiDeviceSize(64, 64),
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-      margin: EdgeInsets.only(top: tripIndex == 1 ? 0 : 12),
+      height: (AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - 64.w) * 2 / AppHelper.setMultiDeviceSize(context, 5, 3.5),
+      width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - 64.w,
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.w),
+      margin: EdgeInsets.only(top: tripIndex == 1 ? 0 : AppHelper.setMultiDeviceSize(context, 24.h, 12.h)),
       decoration: unlock
           ? BoxDecoration(
               image: DecorationImage(
@@ -46,20 +46,20 @@ class TripDetailWidget extends StatelessWidget {
                       TextWidget(
                         text: '${S.of(context).daySchedule} $tripIndex:',
                         color: AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(22.sp, 20.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 32.sp, 20.sp),
                         fontWeight: FontWeight.w900,
                         textAlign: TextAlign.center,
                       ),
                       TextWidget(
                         text: trip.title ?? '',
                         color: AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 22.sp, 14.sp),
                         fontWeight: FontWeight.w500,
                         textAlign: TextAlign.center,
                       ),
                       Container(
                         margin: const EdgeInsets.only(top: 4),
-                        width: AppHelper.setMultiDeviceSize(28.w, 28.w),
+                        width: AppHelper.setMultiDeviceSize(context, 744.w * 28 / 100, 393.w * 28 / 100),
                         child: const Divider(color: Colors.white, height: 4, thickness: 2),
                       ),
                     ],
@@ -73,7 +73,7 @@ class TripDetailWidget extends StatelessWidget {
                       TextWidget(
                         text: S.of(context).goToDetailTrip,
                         color: AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(12.sp, 8.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 18.sp, 12.sp),
                         fontWeight: FontWeight.w900,
                         fontStyle: FontStyle.italic,
                         textAlign: TextAlign.center,
@@ -81,7 +81,7 @@ class TripDetailWidget extends StatelessWidget {
                       Icon(
                         Icons.arrow_forward_ios,
                         color: Colors.white,
-                        size: AppHelper.setMultiDeviceSize(8, 8),
+                        size: AppHelper.setMultiDeviceSize(context, 16.w, 10.w),
                       ),
                     ],
                   ),
@@ -91,8 +91,8 @@ class TripDetailWidget extends StatelessWidget {
           : Center(
               child: Image.asset(
                 AppAssets.iconLock,
-                width: AppHelper.setMultiDeviceSize(48, 48),
-                height: AppHelper.setMultiDeviceSize(48, 48),
+                width: AppHelper.setMultiDeviceSize(context, 82.w, 48.w),
+                height: AppHelper.setMultiDeviceSize(context, 82.w, 48.w),
               ),
             ),
     );

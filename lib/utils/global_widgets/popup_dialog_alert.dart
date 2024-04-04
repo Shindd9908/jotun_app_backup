@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
-import 'package:sizer/sizer.dart';
 
 class PopupDialogAlert {
   static Future<void> showPopupWithUIParamFullScreen(BuildContext context, Widget uiContent) async {
@@ -42,8 +42,8 @@ class PopupDialogAlert {
         elevation: 0,
         content: Container(
           padding: const EdgeInsets.all(16),
-          constraints: BoxConstraints(maxHeight: 50.h, minHeight: 16.h),
-          width: AppHelper.setMultiDeviceSize(60.w, 84.w),
+          constraints: BoxConstraints(maxHeight: 852.h * 1 / 2, minHeight: 852.h * 16 / 100),
+          width: AppHelper.setMultiDeviceSize(context, 744.w * 60 / 100, 393.w * 84 / 100),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -70,19 +70,24 @@ class PopupDialogAlert {
               backgroundColor: Colors.transparent,
               elevation: 0,
               content: Container(
-                width: AppHelper.setMultiDeviceSize(40.w, 100.w - 64),
+                width: AppHelper.setMultiDeviceSize(context, 744.w * 64 / 100, 393.w - 64),
                 padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(color: AppColor.colorMainWhite, borderRadius: BorderRadius.circular(16)),
+                decoration: BoxDecoration(
+                  color: AppColor.colorMainWhite,
+                  borderRadius: BorderRadius.circular(
+                    AppHelper.setMultiDeviceSize(context, 32, 16),
+                  ),
+                ),
                 child: Stack(
                   children: [
                     Transform(
-                      transform: Matrix4.translationValues(0, -34, 0),
+                      transform: Matrix4.translationValues(0, AppHelper.setMultiDeviceSize(context, -64, -34), 0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Container(
-                            width: 60,
-                            height: 60,
+                            width: AppHelper.setMultiDeviceSize(context, 80.w, 60.w),
+                            height: AppHelper.setMultiDeviceSize(context, 80.w, 60.w),
                             padding: const EdgeInsets.all(4),
                             decoration: BoxDecoration(
                               color: AppColor.colorMainWhite,
@@ -102,9 +107,9 @@ class PopupDialogAlert {
                       right: 4,
                       child: GestureDetector(
                         onTap: () => Navigator.of(context).pop(),
-                        child: const Align(
+                        child: Align(
                           alignment: Alignment.topRight,
-                          child: Icon(Icons.clear, size: 24),
+                          child: Icon(Icons.clear, size: AppHelper.setMultiDeviceSize(context, 36.w, 24.w)),
                         ),
                       ),
                     ),

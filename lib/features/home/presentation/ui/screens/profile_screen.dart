@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/authentication/domain/entities/user_authentication_entity.dart';
 import 'package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart';
 import 'package:jotub_app/features/home/presentation/bloc/home_bloc.dart';
@@ -18,7 +19,6 @@ import 'package:jotub_app/utils/global_widgets/text_form_field_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
-import 'package:sizer/sizer.dart';
 
 class ProfileScreen extends StatefulWidget {
   final UserInfoEntity? userInfo;
@@ -58,8 +58,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (builder) {
         return Container(
-          width: 100.w,
-          padding: const EdgeInsets.only(top: 20, bottom: 32, left: 32, right: 32),
+          width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
+          padding: EdgeInsets.only(top: 20.h, bottom: 32.h, left: 32.w, right: 32.w),
           decoration: const BoxDecoration(
             color: AppColor.colorMainWhite,
             borderRadius: BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
@@ -84,25 +84,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(right: 16),
-                        padding: const EdgeInsets.all(8),
+                        margin: EdgeInsets.only(right: 16.w),
+                        padding: EdgeInsets.all(8.w),
                         decoration: BoxDecoration(
                           color: AppColor.colorSecondaryGray,
                           borderRadius: BorderRadius.circular(100),
                         ),
-                        child: Image.asset(AppAssets.iconAccount, width: 20, height: 20, color: _pathImageSelected.value != '' ? AppColor.colorMainBlack : AppColor.colorMainGray),
+                        child: Image.asset(
+                          AppAssets.iconAccount,
+                          width: AppHelper.setMultiDeviceSize(context, 28.w, 20.w),
+                          height: AppHelper.setMultiDeviceSize(context, 28.w, 20.w),
+                          color: _pathImageSelected.value != '' ? AppColor.colorMainBlack : AppColor.colorMainGray,
+                        ),
                       ),
                       TextWidget(
                         text: S.of(context).showFullAvatar,
                         color: _pathImageSelected.value != '' ? AppColor.colorMainBlack : AppColor.colorMainGray,
-                        fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 26.sp, 14.sp),
                         fontWeight: FontWeight.w500,
                       ),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: AppHelper.setMultiDeviceSize(context, 28.h, 20.h)),
               GestureDetector(
                 onTap: () async => await PopupDialogAlert.showPopupWithUIParam(
                   context,
@@ -116,18 +121,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(right: 16),
-                      padding: const EdgeInsets.all(8),
+                      margin: EdgeInsets.only(right: 16.w),
+                      padding: EdgeInsets.all(8.w),
                       decoration: BoxDecoration(
                         color: AppColor.colorSecondaryGray,
                         borderRadius: BorderRadius.circular(100),
                       ),
-                      child: Image.asset(AppAssets.iconImage, width: 20, height: 20, color: AppColor.colorMainBlack),
+                      child: Image.asset(
+                        AppAssets.iconImage,
+                        width: AppHelper.setMultiDeviceSize(context, 28.w, 20.w),
+                        height: AppHelper.setMultiDeviceSize(context, 28.w, 20.w),
+                        color: AppColor.colorMainBlack,
+                      ),
                     ),
                     TextWidget(
                       text: S.of(context).changeAvatar,
                       color: AppColor.colorMainBlack,
-                      fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                      fontSize: AppHelper.setMultiDeviceSize(context, 26.sp, 14.sp),
                       fontWeight: FontWeight.w500,
                     ),
                   ],
@@ -150,42 +160,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Image.asset(
                 AppAssets.imgBannerAndLogo,
-                width: 100.w,
+                width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
                 fit: BoxFit.fitWidth,
               ),
               Container(
                 alignment: Alignment.center,
-                width: AppHelper.setMultiDeviceSize(120, 120),
-                height: AppHelper.setMultiDeviceSize(120, 120),
-                transform: Matrix4.translationValues(0, -34, 0),
+                width: AppHelper.setMultiDeviceSize(context, 240.w, 120.w),
+                height: AppHelper.setMultiDeviceSize(context, 240.w, 120.w),
+                transform: Matrix4.translationValues(0, AppHelper.setMultiDeviceSize(context, -90.h, -34.h), 0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
+                  borderRadius: BorderRadius.circular(200),
                   border: Border.all(width: 1, color: AppColor.colorMainWhite),
                 ),
                 child: Stack(
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(200),
                       child: ValueListenableBuilder(
                         valueListenable: _pathImageSelected,
                         builder: (_, value, __) => _pathImageSelected.value != ''
                             ? _pathImageSelected.value.toString().contains('https://')
                                 ? CacheImageWidget(
                                     imageUrl: widget.userInfo!.avatar,
-                                    widthImage: AppHelper.setMultiDeviceSize(120, 120),
-                                    heightImage: AppHelper.setMultiDeviceSize(120, 120),
+                                    widthImage: AppHelper.setMultiDeviceSize(context, 240.w, 120.w),
+                                    heightImage: AppHelper.setMultiDeviceSize(context, 240.w, 120.w),
                                     fit: BoxFit.cover,
                                   )
                                 : Image.file(
                                     File(_pathImageSelected.value),
-                                    width: AppHelper.setMultiDeviceSize(120, 120),
-                                    height: AppHelper.setMultiDeviceSize(120, 120),
+                                    width: AppHelper.setMultiDeviceSize(context, 240.w, 120.w),
+                                    height: AppHelper.setMultiDeviceSize(context, 240.w, 120.w),
                                     fit: BoxFit.cover,
                                   )
                             : Image.asset(
                                 AppAssets.iconAvatar,
-                                width: AppHelper.setMultiDeviceSize(120, 120),
-                                height: AppHelper.setMultiDeviceSize(120, 120),
+                                width: AppHelper.setMultiDeviceSize(context, 240.w, 120.w),
+                                height: AppHelper.setMultiDeviceSize(context, 240.w, 120.w),
                                 fit: BoxFit.cover,
                               ),
                       ),
@@ -196,7 +206,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: GestureDetector(
                         onTap: () async => await _showModalBottomSheetMenuSelectImage(),
                         child: Container(
-                          padding: const EdgeInsets.all(4),
+                          padding: EdgeInsets.all(4.w),
                           decoration: BoxDecoration(
                             color: AppColor.colorMainDarkBlue,
                             borderRadius: BorderRadius.circular(100),
@@ -204,7 +214,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           child: Icon(
                             Icons.camera_alt,
-                            size: AppHelper.setMultiDeviceSize(18, 18),
+                            size: AppHelper.setMultiDeviceSize(context, 44.w, 18.w),
                             color: AppColor.colorMainWhite,
                           ),
                         ),
@@ -214,58 +224,59 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
-                transform: Matrix4.translationValues(0, -30, 0),
+                padding: EdgeInsets.symmetric(horizontal: AppHelper.setMultiDeviceSize(context, 744.w / 12 + 48.w, 32.w)),
+                transform: Matrix4.translationValues(0, AppHelper.setMultiDeviceSize(context, -90.h, -34.h), 0),
                 child: Column(
                   children: [
                     TextWidget(
                       text: widget.userInfo?.name ?? '',
                       color: AppColor.colorMainWhite,
-                      fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
-                      fontWeight: FontWeight.w500,
+                      fontSize: AppHelper.setMultiDeviceSize(context, 32.sp, 18.sp),
+                      fontWeight: FontWeight.w700,
                     ),
                     TextWidget(
                       text: '${S.of(context).group} ${widget.userInfo?.groupId}',
                       color: AppColor.colorMainYellow,
-                      fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
+                      fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 14.sp),
                       fontWeight: FontWeight.w500,
                     ),
-                    SizedBox(height: AppHelper.setMultiDeviceSize(16, 16)),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                     TextFormFieldWidget(
                       controller: _agencyController,
                       hintText: S.of(context).agency,
                       isReadOnly: true,
                     ),
-                    SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                     TextFormFieldWidget(
                       controller: _identityNumberController,
                       hintText: S.of(context).idCardNumber,
                       isReadOnly: true,
                     ),
-                    SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                     TextFormFieldWidget(
                       controller: _salesNameController,
                       hintText: S.of(context).salesNameStaffCharge,
                       isReadOnly: true,
                     ),
-                    SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                     TextFormFieldWidget(
                       controller: _salesPhoneNumberController,
                       hintText: S.of(context).salesPhoneNumberStaffCharge,
                       isReadOnly: true,
                     ),
-                    SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                     TextFormFieldWidget(
                       controller: _busNumberController,
                       hintText: S.of(context).busNo,
                       isReadOnly: true,
                     ),
-                    SizedBox(height: AppHelper.setMultiDeviceSize(24, 24)),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                     TextFormFieldWidget(
                       controller: _hotelNameController,
                       hintText: S.of(context).hotel,
                       isReadOnly: true,
                     ),
+                    SizedBox(height: AppHelper.setMultiDeviceSize(context, 32.h, 24.h)),
                     BlocConsumer<AuthenticationBloc, AuthenticationState>(
                       listenWhen: (previous, current) => current is LogoutSuccessState || current is LogoutFailState,
                       listener: (context, state) {
@@ -284,8 +295,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Container(
                             alignment: Alignment.center,
                             width: double.infinity,
-                            margin: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(24, 24)),
-                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            padding: EdgeInsets.symmetric(vertical: 12.h),
                             decoration: BoxDecoration(
                               color: AppColor.colorMainRed,
                               borderRadius: BorderRadius.circular(16),
@@ -293,13 +303,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             child: state is LogoutLoadingState
                                 ? SpinKitLoadingWidget(
-                                    size: AppHelper.setMultiDeviceSize(20.sp, 16.sp),
+                                    size: AppHelper.setMultiDeviceSize(context, 26.sp, 16.sp),
                                     color: AppColor.colorMainWhite,
                                   )
                                 : TextWidget(
                                     text: S.of(context).logout,
                                     color: AppColor.colorMainWhite,
-                                    fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                                    fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 14.sp),
                                     fontWeight: FontWeight.w500,
                                   ),
                           ),
@@ -325,8 +335,8 @@ class AvatarFullScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100.w,
-      height: 100.h,
+      width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
+      height: AppHelper.setMultiDeviceSize(context, 1133.h, 852.h),
       color: AppColor.colorMainBlack,
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: Column(
@@ -335,23 +345,28 @@ class AvatarFullScreenWidget extends StatelessWidget {
           GestureDetector(
             onTap: () => Navigator.of(context).pop(),
             child: Container(
-              margin: const EdgeInsets.all(16),
-              padding: const EdgeInsets.all(4),
+              margin: EdgeInsets.all(16.w),
+              padding: EdgeInsets.all(4.w),
               decoration: BoxDecoration(
                 border: Border.all(width: 1, color: AppColor.colorMainWhite),
                 borderRadius: BorderRadius.circular(100),
               ),
-              child: const Icon(Icons.clear, size: 18, color: AppColor.colorMainWhite),
+              child: Icon(Icons.clear, size: AppHelper.setMultiDeviceSize(context, 36.w, 18.w), color: AppColor.colorMainWhite),
             ),
           ),
           Expanded(
-              child: imagePath.contains('https://')
-                  ? CacheImageWidget(
-                      imageUrl: imagePath,
-                      widthImage: 100.w,
-                      fit: BoxFit.fitWidth,
-                    )
-                  : Image.file(File(imagePath), width: 100.w, fit: BoxFit.fitWidth)),
+            child: imagePath.contains('https://')
+                ? CacheImageWidget(
+                    imageUrl: imagePath,
+                    widthImage: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
+                    fit: BoxFit.fitWidth,
+                  )
+                : Image.file(
+                    File(imagePath),
+                    width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
+                    fit: BoxFit.fitWidth,
+                  ),
+          ),
         ],
       ),
     );

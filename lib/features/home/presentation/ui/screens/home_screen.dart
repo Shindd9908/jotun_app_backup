@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/home/presentation/bloc/home_bloc.dart';
 import 'package:jotub_app/features/home/presentation/ui/widgets/content_popup_yet_event_time_widget.dart';
 import 'package:jotub_app/features/home/presentation/ui/widgets/feature_item.dart';
@@ -16,7 +17,6 @@ import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
-import 'package:sizer/sizer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -43,13 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(vertical: AppHelper.setMultiDeviceSize(24, 24), horizontal: AppHelper.setMultiDeviceSize(32, 32)),
+              padding: EdgeInsets.symmetric(
+                vertical: AppHelper.setMultiDeviceSize(context, 24.h, 24.h),
+                horizontal: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   BlocBuilder<HomeBloc, HomeState>(
-                    buildWhen: (previous, current) =>
-                        current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
+                    buildWhen: (previous, current) => current is FetchUserProfileLoadingState || current is FetchUserProfileSuccessState || current is FetchUserProfileFailState,
                     builder: (context, state) {
                       return Row(
                         children: [
@@ -61,14 +63,18 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: state is FetchUserProfileSuccessState && state.userInfo.avatar != null && state.userInfo.avatar!.isNotEmpty
                                 ? CacheImageWidget(
                                     imageUrl: state.userInfo.avatar,
-                                    widthImage: AppHelper.setMultiDeviceSize(32, 32),
-                                    heightImage: AppHelper.setMultiDeviceSize(32, 32),
+                                    widthImage: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+                                    heightImage: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
                                     radius: 100,
                                   )
-                                : Image.asset(AppAssets.iconAvatar, width: AppHelper.setMultiDeviceSize(32, 32)),
+                                : Image.asset(
+                                    AppAssets.iconAvatar,
+                                    width: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+                                    height: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+                                  ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 8),
+                            padding: EdgeInsets.only(left: 8.w),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -80,16 +86,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: TextWidget(
                                     text: state is FetchUserProfileSuccessState ? state.userInfo.name : '',
                                     color: AppColor.colorMainWhite,
-                                    fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                                    fontSize: AppHelper.setMultiDeviceSize(context, 22.sp, 14.sp),
                                     fontWeight: FontWeight.w700,
                                     height: 1,
                                   ),
                                 ),
-                                const SizedBox(height: 4),
+                                SizedBox(height: AppHelper.setMultiDeviceSize(context, 8.h, 4.h)),
                                 TextWidget(
                                   text: '${S.of(context).group} ${state is FetchUserProfileSuccessState ? state.userInfo.groupId.toString() : ''}',
                                   color: AppColor.colorMainYellow,
-                                  fontSize: AppHelper.setMultiDeviceSize(14.sp, 11.sp),
+                                  fontSize: AppHelper.setMultiDeviceSize(context, 16.sp, 12.sp),
                                   fontWeight: FontWeight.w700,
                                   height: 1,
                                 ),
@@ -104,56 +110,59 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () => Navigator.of(context).pushNamed(AppPaths.listNotificationScreen),
                     child: Image.asset(
                       AppAssets.iconNotification,
-                      width: AppHelper.setMultiDeviceSize(32, 32),
+                      width: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+                      height: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
                     ),
                   ),
                 ],
               ),
             ),
             BlocBuilder<HomeBloc, HomeState>(
-              buildWhen: (previous, current) =>
-                  current is FetchListBannerSuccessState || current is FetchListBannerFailState || current is FetchListBannerLoadingState,
+              buildWhen: (previous, current) => current is FetchListBannerSuccessState || current is FetchListBannerFailState || current is FetchListBannerLoadingState,
               builder: (context, state) {
                 return state is FetchListBannerLoadingState
                     ? SizedBox(
-                        width: 100.w - 32,
-                        height: AppHelper.setMultiDeviceSize(14.h, 20.h),
-                        child: const SpinKitLoadingWidget(color: AppColor.colorMainWhite, size: 36),
+                        width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - 32.w,
+                        height: AppHelper.setMultiDeviceSize(context, 1133.h * 20 / 100, 852.h * 1 / 5),
+                        child: SpinKitLoadingWidget(color: AppColor.colorMainWhite, size: 36.sp),
                       )
                     : state is FetchListBannerSuccessState && state.listBanner.isNotEmpty
                         ? CarouselSlider(
-                            options: CarouselOptions(height: AppHelper.setMultiDeviceSize(12.h, 20.h), viewportFraction: 1),
+                            options: CarouselOptions(
+                              height: AppHelper.setMultiDeviceSize(context, 1133.h * 20 / 100, 852.h * 1 / 5),
+                              viewportFraction: 1,
+                            ),
                             items: state.listBanner
                                 .map(
                                   (el) => CacheImageWidget(
                                     imageUrl: el.bannerURL,
-                                    widthImage: 100.w - 32,
-                                    heightImage: AppHelper.setMultiDeviceSize(12.h, 20.h),
-                                    fit: BoxFit.cover,
-                                    radius: 8,
+                                    widthImage: AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+                                    heightImage: AppHelper.setMultiDeviceSize(context, 1133.h * 20 / 100, 852.h * 1 / 5),
+                                    fit: BoxFit.fitWidth,
+                                    radius: AppHelper.setMultiDeviceSize(context, 22, 8),
                                   ),
                                 )
                                 .toList(),
                           )
                         : Image.asset(
                             AppAssets.imgBanner,
-                            width: 100.w - 32,
-                            height: AppHelper.setMultiDeviceSize(12.h, 20.h),
+                            width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+                            height: AppHelper.setMultiDeviceSize(context, 1133.h * 16 / 100, 852.h * 1 / 5),
                           );
               },
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
+              padding: EdgeInsets.symmetric(horizontal: AppHelper.setMultiDeviceSize(context, 48.w, 32.w)),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 16, bottom: 12),
+                    padding: EdgeInsets.only(top: 22.h, bottom: 12.h),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: TextWidget(
                         text: S.of(context).incomingEvent,
                         color: AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 18.sp),
                         fontWeight: FontWeight.w900,
                       ),
                     ),
@@ -178,38 +187,54 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ? Column(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(left: 32, right: 32, top: 20),
+                                          padding: EdgeInsets.only(
+                                            left: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+                                            right: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
+                                            top: AppHelper.setMultiDeviceSize(context, 28.h, 20.h),
+                                          ),
                                           child: TextWidget(
                                             text: state.area?.trip?.title ?? '',
                                             color: AppColor.colorMainYellow,
-                                            fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
+                                            fontSize: AppHelper.setMultiDeviceSize(context, 28.sp, 18.sp),
                                             fontWeight: FontWeight.w900,
                                             textAlign: TextAlign.center,
                                           ),
                                         ),
                                         if (state.area?.trip?.schedules != null && state.area!.trip!.schedules!.isNotEmpty)
                                           Padding(
-                                            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                                            padding: EdgeInsets.symmetric(
+                                              vertical: AppHelper.setMultiDeviceSize(context, 28.h, 20.h),
+                                              horizontal: AppHelper.setMultiDeviceSize(context, 24.w, 16.w),
+                                            ),
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
                                                 Row(
                                                   children: [
-                                                    Image.asset(AppAssets.iconCalendar, width: 20, height: 20),
+                                                    Image.asset(
+                                                      AppAssets.iconCalendar,
+                                                      width: AppHelper.setMultiDeviceSize(context, 40.w, 24.w),
+                                                      height: AppHelper.setMultiDeviceSize(context, 40.w, 24.w),
+                                                    ),
                                                     TextWidget(
-                                                      text: state.area!.trip!.schedules!.first.timeStart ?? '',
+                                                      text: state.area?.trip?.schedules?.first.timeStart ?? '',
                                                       color: AppColor.colorMainWhite,
-                                                      fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                                                      fontSize: AppHelper.setMultiDeviceSize(context, 22.sp, 14.sp),
                                                     ),
                                                   ],
                                                 ),
+                                                SizedBox(width: AppHelper.setMultiDeviceSize(context, 24.w, 16.w)),
                                                 Row(
                                                   children: [
-                                                    Image.asset(AppAssets.iconGlobal, width: 20, height: 20),
+                                                    Image.asset(
+                                                      AppAssets.iconGlobal,
+                                                      width: AppHelper.setMultiDeviceSize(context, 40.w, 24.w),
+                                                      height: AppHelper.setMultiDeviceSize(context, 40.w, 24.w),
+                                                    ),
                                                     TextWidget(
-                                                      text: state.area!.trip!.schedules!.first.address ?? '',
+                                                      text: state.area?.trip?.schedules?.first.address ?? '',
                                                       color: AppColor.colorMainWhite,
-                                                      fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                                                      fontSize: AppHelper.setMultiDeviceSize(context, 22.sp, 14.sp),
                                                     ),
                                                   ],
                                                 ),
@@ -217,19 +242,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           ),
                                         Padding(
-                                          padding: EdgeInsets.only(
-                                              top: state.area?.trip?.schedules != null && state.area!.trip!.schedules!.isNotEmpty ? 0 : 20),
+                                          padding: EdgeInsets.only(top: state.area?.trip?.schedules != null && state.area!.trip!.schedules!.isNotEmpty ? 0 : 20),
                                           child: TextWidget(
                                             text: 'Yêu cầu sự kiện: Lễ phục, trang phục dự tiệc',
                                             color: AppColor.colorMainWhite,
-                                            fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
+                                            fontSize: AppHelper.setMultiDeviceSize(context, 22.sp, 14.sp),
                                             textAlign: TextAlign.center,
                                           ),
                                         ),
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Padding(
-                                            padding: const EdgeInsets.only(top: 20, right: 4, bottom: 2),
+                                            padding: EdgeInsets.only(
+                                              top: AppHelper.setMultiDeviceSize(context, 28.h, 20.h),
+                                              right: AppHelper.setMultiDeviceSize(context, 6.w, 4.w),
+                                              bottom: AppHelper.setMultiDeviceSize(context, 4.w, 2.w),
+                                            ),
                                             child: GestureDetector(
                                               onTap: () => Navigator.of(context).pushNamed(
                                                 AppPaths.scheduleScreen,
@@ -242,12 +270,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   TextWidget(
                                                     text: S.of(context).goToDetailTrip,
                                                     color: AppColor.colorMainYellow,
-                                                    fontSize: AppHelper.setMultiDeviceSize(19.sp, 10.sp),
+                                                    fontSize: AppHelper.setMultiDeviceSize(context, 18.sp, 12.sp),
                                                   ),
-                                                  const Icon(
+                                                  Icon(
                                                     Icons.arrow_forward_ios,
-                                                    color: Color(0xffF19F3B),
-                                                    size: 12,
+                                                    color: AppColor.colorMainYellow,
+                                                    size: AppHelper.setMultiDeviceSize(context, 16.w, 10.w),
                                                   ),
                                                 ],
                                               ),
@@ -258,11 +286,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                     )
                                   : Container(
                                       alignment: Alignment.center,
-                                      height: AppHelper.setMultiDeviceSize(150, 150),
+                                      height: AppHelper.setMultiDeviceSize(
+                                        context,
+                                        AppHelper.setMultiDeviceSize(context, 150.h, 120.h),
+                                        AppHelper.setMultiDeviceSize(context, 150.h, 120.h),
+                                      ),
                                       child: TextWidget(
                                         text: S.of(context).noData,
                                         color: AppColor.colorMainWhite,
-                                        fontSize: 14.sp,
+                                        fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 14.sp),
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
@@ -270,7 +302,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           : state is FetchListAreaFailState
                               ? Container(
                                   alignment: Alignment.center,
-                                  height: AppHelper.setMultiDeviceSize(150, 150),
+                                  height: AppHelper.setMultiDeviceSize(
+                                    context,
+                                    AppHelper.setMultiDeviceSize(context, 150.h, 120.h),
+                                    AppHelper.setMultiDeviceSize(context, 150.h, 120.h),
+                                  ),
                                   decoration: BoxDecoration(
                                     color: AppColor.colorMainBlack,
                                     borderRadius: BorderRadius.circular(16),
@@ -279,21 +315,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: TextWidget(
                                     text: S.of(context).noData,
                                     color: AppColor.colorMainWhite,
-                                    fontSize: 14.sp,
+                                    fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 14.sp),
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )
-                              : SpinKitLoadingWidget(color: AppColor.colorMainWhite, size: AppHelper.setMultiDeviceSize(32, 32));
+                              : SpinKitLoadingWidget(color: AppColor.colorMainWhite, size: AppHelper.setMultiDeviceSize(context, 36.sp, 36.sp));
                     },
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 12, bottom: 16),
+                    padding: EdgeInsets.only(
+                      top: AppHelper.setMultiDeviceSize(context, 22.h, 12.h),
+                      bottom: AppHelper.setMultiDeviceSize(context, 20.h, 16.h),
+                    ),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: TextWidget(
                         text: S.of(context).feature,
                         color: AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 18.sp),
                         fontWeight: FontWeight.w900,
                       ),
                     ),
@@ -301,14 +340,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   Wrap(
                     alignment: WrapAlignment.spaceBetween,
                     runAlignment: WrapAlignment.spaceBetween,
-                    runSpacing: 24,
+                    runSpacing: AppHelper.setMultiDeviceSize(context, 32.h, 24.h),
+                    spacing: AppHelper.setMultiDeviceSize(context, 34.w, 12.w),
                     children: Constants.getListFeatureHomePage(context)
                         .map(
                           (el) => SizedBox(
-                            width: (100.w - 64) / 3,
+                            width: (AppHelper.setMultiDeviceSize(context, 744.w, 393.w)) / 4,
                             child: GestureDetector(
-                              onTap: () => el['featureName'] == S.of(context).newProductInformation &&
-                                      DateTime.now().isBefore(DateTime.parse('2024-05-08 18:00:00'))
+                              onTap: () => el['featureName'] == S.of(context).newProductInformation && DateTime.now().isBefore(DateTime.parse('2024-05-08 18:00:00'))
                                   ? PopupDialogAlert.showPopupWithUIParamHasBell(context, const ContentPopupYetEventTimeWidget())
                                   : Navigator.of(context).pushNamed(el['pathScreenNavigateOnTap']),
                               child: FeatureItem(

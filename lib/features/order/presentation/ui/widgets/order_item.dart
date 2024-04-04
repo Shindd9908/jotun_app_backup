@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
-import 'package:sizer/sizer.dart';
 
 class OrderItem extends StatelessWidget {
   const OrderItem({Key? key, required this.image, required this.amount}) : super(key: key);

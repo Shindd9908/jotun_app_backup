@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/home/presentation/ui/screens/home_screen.dart';
 import 'package:jotub_app/theme/assets.dart';
-import 'package:sizer/sizer.dart';
+import 'package:jotub_app/theme/colors.dart';
+import 'package:jotub_app/utils/helpers/helpers.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,11 +31,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      AppAssets.imgSplashScreen,
-      width: 100.w,
-      height: 100.h,
-      fit: BoxFit.fill,
+    return Container(
+      width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
+      height: AppHelper.setMultiDeviceSize(context, 1133.h, 852.h),
+      color: AppColor.colorMainDarkBlue,
+      child: Image.asset(AppAssets.imgSplashScreen, fit: BoxFit.fitHeight),
     );
   }
 }

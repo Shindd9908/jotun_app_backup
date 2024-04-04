@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
@@ -40,7 +41,7 @@ class TextWidget extends StatelessWidget {
       style: textStyle ??
           GoogleFonts.roboto(
             color: color ?? AppColor.colorMainBlack,
-            fontSize: fontSize ?? AppHelper.setMultiDeviceSize(20, 16),
+            fontSize: fontSize ?? AppHelper.setMultiDeviceSize(context, 20.sp, 16.sp),
             fontWeight: fontWeight ?? FontWeight.w500,
             decoration: textDecoration ?? TextDecoration.none,
             height: height,

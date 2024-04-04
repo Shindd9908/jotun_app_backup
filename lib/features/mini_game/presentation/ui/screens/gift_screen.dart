@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/mini_game/domain/entities/gift_entity.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
@@ -10,7 +11,6 @@ import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
-import 'package:sizer/sizer.dart';
 
 class GiftScreen extends StatelessWidget {
   const GiftScreen({Key? key, this.gift}) : super(key: key);
@@ -25,8 +25,8 @@ class GiftScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(
-                    left: AppHelper.setMultiDeviceSize(32, 32),
-                    bottom: AppHelper.setMultiDeviceSize(8, 8),
+                    left: AppHelper.setMultiDeviceSize(context, 32, 32),
+                    bottom: AppHelper.setMultiDeviceSize(context, 8, 8),
                   ),
                   child: GestureDetector(
                     onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
@@ -37,8 +37,8 @@ class GiftScreen extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Image.asset(
                         AppAssets.iconArrowBack,
-                        width: AppHelper.setMultiDeviceSize(32, 32),
-                        height: AppHelper.setMultiDeviceSize(32, 32),
+                        width: AppHelper.setMultiDeviceSize(context, 32, 32),
+                        height: AppHelper.setMultiDeviceSize(context, 32, 32),
                       ),
                     ),
                   ),

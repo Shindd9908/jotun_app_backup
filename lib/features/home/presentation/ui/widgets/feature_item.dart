@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
-import 'package:sizer/sizer.dart';
 
 class FeatureItem extends StatelessWidget {
   const FeatureItem({Key? key, required this.iconAsset, required this.title}) : super(key: key);
@@ -16,18 +16,22 @@ class FeatureItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          padding: const EdgeInsets.all(4.0),
+          padding: EdgeInsets.all(AppHelper.setMultiDeviceSize(context, 8.w, 4.w)),
           margin: const EdgeInsets.only(bottom: 4),
-          decoration: const BoxDecoration(
-            color: Color(0xff848689),
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+          decoration: BoxDecoration(
+            color: AppColor.colorBackgroundIconGray,
+            borderRadius: BorderRadius.circular(AppHelper.setMultiDeviceSize(context, 16, 8)),
           ),
-          child: Image.asset(iconAsset, width: AppHelper.setMultiDeviceSize(40, 40), height: AppHelper.setMultiDeviceSize(40, 40)),
+          child: Image.asset(
+            iconAsset,
+            width: AppHelper.setMultiDeviceSize(context, 60.w, 34.w),
+            height: AppHelper.setMultiDeviceSize(context, 60.w, 34.w),
+          ),
         ),
         TextWidget(
           text: title,
           color: AppColor.colorMainWhite,
-          fontSize: AppHelper.setMultiDeviceSize(12.sp, 8.sp),
+          fontSize: AppHelper.setMultiDeviceSize(context, 18.sp, 14.sp),
           fontWeight: FontWeight.bold,
           textAlign: TextAlign.center,
           height: 1.2,

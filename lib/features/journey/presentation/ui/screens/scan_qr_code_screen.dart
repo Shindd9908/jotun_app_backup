@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/generated/l10n.dart';
 import 'package:jotub_app/theme/assets.dart';
@@ -11,7 +12,6 @@ import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-import 'package:sizer/sizer.dart';
 
 class ScanQRCodeScreen extends StatefulWidget {
   final AreaEntity area;
@@ -52,22 +52,22 @@ class _ScanQRCodeScreenState extends State<ScanQRCodeScreen> {
           children: [
             Image.asset(
               AppAssets.imgLogoApp,
-              width: AppHelper.setMultiDeviceSize(40.w, 40.w),
+              width: AppHelper.setMultiDeviceSize(context, 40.w, 40.w),
               fit: BoxFit.fitWidth,
             ),
             Padding(
-              padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(48, 48), bottom: AppHelper.setMultiDeviceSize(36, 36)),
+              padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(context, 48, 48), bottom: AppHelper.setMultiDeviceSize(context, 36, 36)),
               child: TextWidget(
                 text: S.of(context).pleaseScanQRCodeEachArea,
                 color: AppColor.colorMainWhite,
-                fontSize: AppHelper.setMultiDeviceSize(20.sp, 16.sp),
+                fontSize: AppHelper.setMultiDeviceSize(context, 20.sp, 16.sp),
                 fontWeight: FontWeight.w700,
                 textAlign: TextAlign.center,
               ),
             ),
             Container(
-              width: AppHelper.setMultiDeviceSize(30.w, 100.w - 64),
-              height: AppHelper.setMultiDeviceSize(30.w, 100.w - 64),
+              width: AppHelper.setMultiDeviceSize(context, 30.w, 100.w - 64),
+              height: AppHelper.setMultiDeviceSize(context, 30.w, 100.w - 64),
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
@@ -80,15 +80,12 @@ class _ScanQRCodeScreenState extends State<ScanQRCodeScreen> {
                   borderRadius: 0,
                   borderLength: 5,
                   borderWidth: 5,
-                  cutOutSize: AppHelper.setMultiDeviceSize(30.w, 100.w - 64) - 80,
+                  cutOutSize: AppHelper.setMultiDeviceSize(context, 30.w, 100.w - 64) - 80,
                 ),
                 onQRViewCreated: (qrViewController) {
                   _qrViewController = qrViewController;
                   qrViewController.scannedDataStream.listen((scanData) async {
-                    if (scanData.code != null &&
-                        scanData.code!.isNotEmpty &&
-                        widget.area.areaCode != null &&
-                        scanData.code!.contains(widget.area.areaCode!)) {
+                    if (scanData.code != null && scanData.code!.isNotEmpty && widget.area.areaCode != null && scanData.code!.contains(widget.area.areaCode!)) {
                       await _qrViewController!.stopCamera();
                       if (mounted) {
                         Navigator.of(context).pushNamed(AppPaths.answerQuestionScreen, arguments: {'area': widget.area});

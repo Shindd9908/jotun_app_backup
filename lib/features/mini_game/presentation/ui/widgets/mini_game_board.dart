@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/mini_game/presentation/bloc/mini_game_bloc.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
@@ -10,7 +11,6 @@ import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
-import 'package:sizer/sizer.dart';
 
 class MiniGameBoard extends StatefulWidget {
   const MiniGameBoard({Key? key}) : super(key: key);
@@ -72,7 +72,7 @@ class _MiniGameBoardState extends State<MiniGameBoard> {
         builder: (context, state) {
           if (state is InitBoardLoadingState) {
             return SpinKitLoadingWidget(
-              size: AppHelper.setMultiDeviceSize(20.sp, 16.sp),
+              size: AppHelper.setMultiDeviceSize(context, 20.sp, 16.sp),
               color: AppColor.colorMainWhite,
             );
           }

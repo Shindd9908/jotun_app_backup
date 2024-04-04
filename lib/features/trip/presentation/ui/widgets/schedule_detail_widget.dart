@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
-import 'package:sizer/sizer.dart';
 
 class ScheduleDetailWidget extends StatelessWidget {
   final ScheduleEntity schedule;
@@ -13,31 +13,30 @@ class ScheduleDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+    return Padding(
+      padding: EdgeInsets.only(bottom: AppHelper.setMultiDeviceSize(context, 30.h, 24.h)),
+      child: IntrinsicHeight(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              transform: Matrix4.translationValues(0, -4, 0),
-              margin: const EdgeInsets.only(right: 4),
+              margin: EdgeInsets.only(right: 4.w),
               child: TextWidget(
                 text: schedule.timeStart ?? '',
                 color: AppColor.colorMainWhite,
-                fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
-                fontWeight: FontWeight.w700,
+                fontSize: AppHelper.setMultiDeviceSize(context, 18.sp, 14.sp),
+                fontWeight: FontWeight.w900,
               ),
             ),
             Container(
-              transform: Matrix4.translationValues(4, 4, 0),
-              width: 8,
-              height: 8,
+              transform: Matrix4.translationValues(5.w, AppHelper.setMultiDeviceSize(context, 8.w, 6.w), 0),
+              width: AppHelper.setMultiDeviceSize(context, 10.w, 8.w),
+              height: AppHelper.setMultiDeviceSize(context, 10.w, 8.w),
               decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 8, right: 10),
-              child: VerticalDivider(width: 1, color: Colors.white),
+            Padding(
+              padding: EdgeInsets.only(top: 8.w, right: 10.w),
+              child: const VerticalDivider(width: 2, color: Colors.white),
             ),
             Flexible(
               flex: 4,
@@ -47,8 +46,8 @@ class ScheduleDetailWidget extends StatelessWidget {
                   TextWidget(
                     text: schedule.content ?? '',
                     color: AppColor.colorMainWhite,
-                    fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
-                    fontWeight: FontWeight.w700,
+                    fontSize: AppHelper.setMultiDeviceSize(context, 16.sp, 12.sp),
+                    fontWeight: FontWeight.w900,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 4, bottom: 8),
@@ -56,12 +55,16 @@ class ScheduleDetailWidget extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 4),
-                          child: Image.asset(AppAssets.iconClock, width: 14, height: 14),
+                          child: Image.asset(
+                            AppAssets.iconClock,
+                            width: AppHelper.setMultiDeviceSize(context, 20.w, 14.w),
+                            height: AppHelper.setMultiDeviceSize(context, 20.w, 14.w),
+                          ),
                         ),
                         TextWidget(
                           text: schedule.time != null ? AppHelper.convertTimeToDuration(context, schedule.time!) : '',
                           color: AppColor.colorMainWhite,
-                          fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                          fontSize: AppHelper.setMultiDeviceSize(context, 16.sp, 12.sp),
                           fontWeight: FontWeight.w500,
                         ),
                       ],
@@ -73,14 +76,14 @@ class ScheduleDetailWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 4),
                         child: Image.asset(
                           AppAssets.iconLocation,
-                          width: 14,
-                          height: 14,
+                          width: AppHelper.setMultiDeviceSize(context, 20.w, 14.w),
+                          height: AppHelper.setMultiDeviceSize(context, 20.w, 14.w),
                         ),
                       ),
                       TextWidget(
                         text: schedule.address ?? '',
                         color: AppColor.colorMainWhite,
-                        fontSize: AppHelper.setMultiDeviceSize(14.sp, 10.sp),
+                        fontSize: AppHelper.setMultiDeviceSize(context, 16.sp, 12.sp),
                         fontWeight: FontWeight.w500,
                       ),
                     ],

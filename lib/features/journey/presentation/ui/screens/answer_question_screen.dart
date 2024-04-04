@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/features/journey/presentation/bloc/journey_bloc.dart';
 import 'package:jotub_app/features/journey/presentation/ui/widgets/answer_widget.dart';
@@ -11,7 +12,6 @@ import 'package:jotub_app/utils/global_widgets/custom_flush_bar.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
-import 'package:sizer/sizer.dart';
 
 class AnswerQuestionScreen extends StatefulWidget {
   final AreaEntity area;
@@ -35,15 +35,15 @@ class _AnswerQuestionScreenState extends State<AnswerQuestionScreen> {
       child: ScreenFrame(
         child: Expanded(
           child: Padding(
-            padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(60, 80), left: 32, right: 32),
+            padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(context, 60, 80), left: 32, right: 32),
             child: Column(
               children: [
                 Image.asset(
                   AppAssets.imgLogoApp,
-                  width: AppHelper.setMultiDeviceSize(40.w, 40.w),
+                  width: AppHelper.setMultiDeviceSize(context, 40.w, 40.w),
                   fit: BoxFit.fitWidth,
                 ),
-                SizedBox(height: AppHelper.setMultiDeviceSize(60, 80)),
+                SizedBox(height: AppHelper.setMultiDeviceSize(context, 60, 80)),
                 Expanded(
                   child: PageView(
                     controller: _pageController,
@@ -55,7 +55,7 @@ class _AnswerQuestionScreenState extends State<AnswerQuestionScreen> {
                           TextWidget(
                             text: widget.area.areaName != null ? widget.area.areaName!.toUpperCase() : '',
                             color: AppColor.colorMainWhite,
-                            fontSize: AppHelper.setMultiDeviceSize(18.sp, 14.sp),
+                            fontSize: AppHelper.setMultiDeviceSize(context, 18.sp, 14.sp),
                             fontWeight: FontWeight.w700,
                             textAlign: TextAlign.center,
                           ),
@@ -63,7 +63,7 @@ class _AnswerQuestionScreenState extends State<AnswerQuestionScreen> {
                           TextWidget(
                             text: widget.area.questions?[index].title ?? '',
                             color: AppColor.colorMainWhite,
-                            fontSize: AppHelper.setMultiDeviceSize(16.sp, 12.sp),
+                            fontSize: AppHelper.setMultiDeviceSize(context, 16.sp, 12.sp),
                             fontWeight: FontWeight.w500,
                             textAlign: TextAlign.center,
                           ),
@@ -104,7 +104,7 @@ class _AnswerQuestionScreenState extends State<AnswerQuestionScreen> {
                                 },
                                 child: ButtonSubmitWidget(
                                   title: S.of(context).titleButtonNextQuestion,
-                                  widthButton: AppHelper.setMultiDeviceSize(40.w, 60.w),
+                                  widthButton: AppHelper.setMultiDeviceSize(context, 40.w, 60.w),
                                   isShowLoading: state is CompleteAreaLoadingState,
                                 ),
                               );

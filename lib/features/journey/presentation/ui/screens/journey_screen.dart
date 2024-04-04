@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jotub_app/features/journey/domain/entities/area_entity.dart';
 import 'package:jotub_app/features/journey/presentation/bloc/journey_bloc.dart';
 import 'package:jotub_app/features/journey/presentation/ui/widgets/journey_item.dart';
@@ -14,7 +15,6 @@ import 'package:jotub_app/utils/global_widgets/spinkit_loading_widget.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 import 'package:jotub_app/utils/routers/paths.dart';
-import 'package:sizer/sizer.dart';
 
 class JourneyScreen extends StatefulWidget {
   const JourneyScreen({super.key});
@@ -44,8 +44,8 @@ class _JourneyScreenState extends State<JourneyScreen> {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(32, 32), bottom: AppHelper.setMultiDeviceSize(36, 36)),
-              child: Image.asset(AppAssets.imgLogoApp, width: AppHelper.setMultiDeviceSize(32.w, 32.w)),
+              padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(context, 32, 32), bottom: AppHelper.setMultiDeviceSize(context, 36, 36)),
+              child: Image.asset(AppAssets.imgLogoApp, width: AppHelper.setMultiDeviceSize(context, 32.w, 32.w)),
             ),
             Image.asset(AppAssets.imgBanner2, width: 100.w, fit: BoxFit.fitWidth),
             BlocConsumer<JourneyBloc, JourneyState>(
@@ -88,7 +88,7 @@ class _JourneyScreenState extends State<JourneyScreen> {
                         Container(
                           alignment: Alignment.center,
                           width: 100.w,
-                          height: AppHelper.setMultiDeviceSize(150, 150),
+                          height: AppHelper.setMultiDeviceSize(context, 150, 150),
                           child: TextWidget(
                             text: S.of(context).noData,
                             color: AppColor.colorMainWhite,
@@ -100,11 +100,11 @@ class _JourneyScreenState extends State<JourneyScreen> {
                         Container(
                           alignment: Alignment.center,
                           width: 100.w,
-                          height: AppHelper.setMultiDeviceSize(150, 150),
+                          height: AppHelper.setMultiDeviceSize(context, 150, 150),
                           child: const SpinKitLoadingWidget(color: AppColor.colorMainWhite, size: 34),
                         ),
                       Padding(
-                        padding: EdgeInsets.only(bottom: AppHelper.setMultiDeviceSize(16, 16)),
+                        padding: EdgeInsets.only(bottom: AppHelper.setMultiDeviceSize(context, 16, 16)),
                         child: BlocConsumer<JourneyBloc, JourneyState>(
                             listenWhen: (previous, current) =>
                                 current is FetchListGiftSuccessState || current is FetchListGiftFailState || current is ReceiveGiftSuccessState || current is ReceiveGiftFailState,

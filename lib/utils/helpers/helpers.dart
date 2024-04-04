@@ -1,13 +1,12 @@
 import "package:flutter/cupertino.dart";
 import "package:jotub_app/generated/l10n.dart";
 import "package:jotub_app/utils/constants/constants.dart";
-import "package:sizer/sizer.dart";
 
 class AppHelper {
   AppHelper._();
 
-  static double setMultiDeviceSize(double tablet, double mobile) {
-    return SizerUtil.deviceType == DeviceType.tablet ? tablet : mobile;
+  static double setMultiDeviceSize(BuildContext context, double tablet, double mobile) {
+    return MediaQueryData.fromView(View.of(context)).size.shortestSide >= 550 ? tablet : mobile;
   }
 
   static String validateFieldPhoneNumber(BuildContext context, String value) {

@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
+import "package:flutter_screenutil/flutter_screenutil.dart";
 import "package:jotub_app/core/firebase/init_firebase_configs.dart";
 import "package:jotub_app/features/authentication/presentation/bloc/authentication_bloc.dart";
 import "package:jotub_app/features/authentication/presentation/cubit/firebase_token_cubit.dart";
@@ -15,7 +16,6 @@ import "package:jotub_app/features/notification/presentation/bloc/notification_b
 import "package:jotub_app/utils/constants/constants.dart";
 import "package:jotub_app/utils/routers/navigation_util.dart";
 import "package:jotub_app/utils/routers/routers.dart";
-import "package:sizer/sizer.dart";
 
 import "di/dependency_injection.dart";
 import "firebase_options.dart";
@@ -49,25 +49,30 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => getIt<NotificationBloc>()),
       ],
       child: KeyboardDismissOnTap(
-        child: Sizer(
-          builder: (_, __, ___) => MaterialApp(
-            title: Constants.kDefaultAppName,
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
-            debugShowCheckedModeBanner: false,
-            navigatorKey: NavigationUtil.rootKey,
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              S.delegate,
-            ],
-            locale: const Locale(Constants.kDefaultLanguage),
-            supportedLocales: S.delegate.supportedLocales,
-            onGenerateRoute: (route) => AppRoutes.generateRoute(route),
-          ),
+        child: ScreenUtilInit(
+          designSize: MediaQueryData.fromView(View.of(context)).size.shortestSide >= 550 ? const Size(744, 1133) : const Size(393, 852),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (_, child) {
+            return MaterialApp(
+              title: Constants.kDefaultAppName,
+              theme: ThemeData(
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                useMaterial3: true,
+              ),
+              debugShowCheckedModeBanner: false,
+              navigatorKey: NavigationUtil.rootKey,
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+                S.delegate,
+              ],
+              locale: const Locale(Constants.kDefaultLanguage),
+              supportedLocales: S.delegate.supportedLocales,
+              onGenerateRoute: (route) => AppRoutes.generateRoute(route),
+            );
+          },
         ),
       ),
     );
