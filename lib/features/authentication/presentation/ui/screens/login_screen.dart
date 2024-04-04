@@ -55,7 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BackgroundScreenFormFieldWidget(
         mainUIContent: Container(
           width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
-          height: AppHelper.setMultiDeviceSize(context, 1133.h, 852.h) - MediaQuery.of(context).viewInsets.bottom - MediaQuery.of(context).padding.top,
+          height:
+              AppHelper.setMultiDeviceSize(context, 1133.h, 852.h) - MediaQuery.of(context).viewInsets.bottom - MediaQuery.of(context).padding.top,
           padding: EdgeInsets.only(
             top: AppHelper.setMultiDeviceSize(context, 32.h, 16.h),
             left: AppHelper.setMultiDeviceSize(context, 48.w, 32.w),
@@ -73,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: AppHelper.setMultiDeviceSize(context, 8, 8)),
+              SizedBox(height: AppHelper.setMultiDeviceSize(context, 8.h, 8.h)),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(
@@ -140,7 +141,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           listenWhen: (previous, current) => current is LoginSuccessState || current is LoginFailState,
                           listener: (context, state) {
                             if (state is LoginSuccessState) {
-                              Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.confirmAccountInformationScreen, arguments: {'userInfo': state.userInfo}, (route) => false);
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  AppPaths.confirmAccountInformationScreen, arguments: {'userInfo': state.userInfo}, (route) => false);
                               CustomFlushBar.showAlertFlushBar(context, state.message, isSuccess: true);
                             }
                             if (state is LoginFailState) {
@@ -152,9 +154,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             return InkWell(
                               onTap: () {
                                 FocusScope.of(context).unfocus();
-                                _errorValidateFieldPhoneNumber.value = AppHelper.validateFieldPhoneNumber(context, _phoneNumberController.text.trim());
+                                _errorValidateFieldPhoneNumber.value =
+                                    AppHelper.validateFieldPhoneNumber(context, _phoneNumberController.text.trim());
                                 _errorValidateFieldPassword.value = AppHelper.validateFieldPassword(context, _passwordController.text.trim());
-                                if (_errorValidateFieldPhoneNumber.value == '' && _errorValidateFieldPhoneNumber.value == '' && state is! LoginLoadingState) {
+                                if (_errorValidateFieldPhoneNumber.value == '' &&
+                                    _errorValidateFieldPhoneNumber.value == '' &&
+                                    state is! LoginLoadingState) {
                                   context.read<AuthenticationBloc>().add(
                                         LoginEvent(
                                           name: _phoneNumberController.text.trim(),
@@ -174,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
                           },
                         ),
-                        const SizedBox(height: 16),
+                        SizedBox(height: 16.h),
                       ],
                     ),
                   ),

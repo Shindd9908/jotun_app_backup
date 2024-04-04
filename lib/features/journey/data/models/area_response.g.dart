@@ -9,7 +9,7 @@ part of 'area_response.dart';
 AreaCompletedResponse _$AreaCompletedResponseFromJson(
         Map<String, dynamic> json) =>
     AreaCompletedResponse(
-      areaId: json['area_id'] as int?,
+      areaId: json['area_id'] as String?,
       completedAt: json['completed_at'] as String?,
     );
 

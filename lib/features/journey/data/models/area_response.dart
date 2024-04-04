@@ -6,7 +6,7 @@ part "area_response.g.dart";
 @JsonSerializable()
 class AreaCompletedResponse extends Equatable {
   @JsonKey(name: "area_id")
-  final int? areaId;
+  final String? areaId;
   @JsonKey(name: "completed_at")
   final String? completedAt;
 

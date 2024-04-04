@@ -28,8 +28,8 @@ class AnswerWidget extends StatelessWidget {
             }
           },
           child: Container(
-            margin: const EdgeInsets.only(bottom: 24),
-            padding: const EdgeInsets.symmetric(horizontal: 12),
+            margin: EdgeInsets.only(bottom: AppHelper.setMultiDeviceSize(context, 36.h, 26.h)),
+            padding: EdgeInsets.symmetric(horizontal: AppHelper.setMultiDeviceSize(context, 16.w, 12.w)),
             decoration: BoxDecoration(
               color: AppColor.colorMainWhite,
               borderRadius: BorderRadius.circular(8),
@@ -43,20 +43,20 @@ class AnswerWidget extends StatelessWidget {
                     child: TextWidget(
                       text: listAnswer[index].answer ?? '',
                       color: AppColor.colorMainBlack,
-                      fontSize: AppHelper.setMultiDeviceSize(context, 16.sp, 12.sp),
+                      fontSize: AppHelper.setMultiDeviceSize(context, 18.sp, 12.sp),
                       fontWeight: FontWeight.w500,
                       textAlign: TextAlign.start,
                     ),
                   ),
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: 16.w),
                 ValueListenableBuilder(
                   valueListenable: _indexAnswerSelected,
                   builder: (_, value, __) => _indexAnswerSelected.value != -1 && _indexAnswerSelected.value == index
                       ? Icon(
                           listAnswer[index].correct == true ? Icons.check : Icons.clear,
                           color: listAnswer[index].correct == true ? AppColor.colorMainGreen : AppColor.colorMainRed,
-                          size: AppHelper.setMultiDeviceSize(context, 32, 32),
+                          size: AppHelper.setMultiDeviceSize(context, 36.w, 32.w),
                         )
                       : const SizedBox(),
                 ),
