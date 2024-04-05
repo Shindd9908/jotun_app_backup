@@ -23,7 +23,7 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
         width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
         height: AppHelper.setMultiDeviceSize(context, 1133.h, 852.h),
         padding: EdgeInsets.only(
-            top: MediaQuery.of(context).padding.top + AppHelper.setMultiDeviceSize(context, 80.h, 80.h),
+            top: AppHelper.setMultiDeviceSize(context, 80.h, 80.h),
             left: AppHelper.setMultiDeviceSize(context, 80.h, 32.h),
             right: 32.w),
         decoration: const BoxDecoration(
@@ -36,9 +36,9 @@ class _SelectObjectUseScreenState extends State<SelectObjectUseScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(
-              AppAssets.imgLogoApp,
-              width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
-              fit: BoxFit.fitWidth,
+              AppAssets.iconAppBackup,
+              width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 50 / 100),
+              fit: BoxFit.fill,
             ),
             SizedBox(height: AppHelper.setMultiDeviceSize(context, 50.h, 40.h)),
             TextWidget(

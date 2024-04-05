@@ -54,4 +54,7 @@ class AppAssets {
   static const itemPack2 = 'assets/images/order/item_pack_2.png';
   static const itemPack3 = 'assets/images/order/item_pack_3.png';
   static const itemPack4 = 'assets/images/order/item_pack_4.png';
+
+  //icon backup
+  static const String iconAppBackup = "assets/icons/icon_app_backup.png";
 }
