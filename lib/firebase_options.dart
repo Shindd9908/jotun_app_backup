@@ -59,10 +59,10 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAk7wvXtFYpvva0sUf6T_2mABhhkPT_erw',
-    appId: '1:833098319872:ios:954138fe7141511a26b0e5',
+    appId: '1:833098319872:ios:f0a9d741ed7d15f726b0e5',
     messagingSenderId: '833098319872',
     projectId: 'jotun-flutter',
     storageBucket: 'jotun-flutter.appspot.com',
-    iosBundleId: 'com.stoo.jotunApp',
+    iosBundleId: 'com.stoo.jotunAppp',
   );
 }
