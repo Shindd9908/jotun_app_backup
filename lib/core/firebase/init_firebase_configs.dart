@@ -46,7 +46,7 @@ class InitFirebaseConfigs {
 
     const channel = AndroidNotificationChannel(
       'high_importance_channel',
-      'Jotun Hành Trình',
+      'JT Jotashield',
       importance: Importance.high,
       playSound: true,
     );

@@ -5,7 +5,7 @@
   "inclusiveness": "SỰ TOÀN DIỆN",
   "objectUse": "Đối tượng sử dụng",
   "agency": "Đại lý",
-  "memberOfJotun": "Nhân viên Jotun",
+  "memberOfJotun": "Nhân viên JT Jotashield",
 
   "login": "Đăng nhập",
   "phoneNumber": "Tên đăng nhập",
@@ -42,7 +42,7 @@
   "miniGame": "Mini game\n",
   "preorder": "Đặt hàng trước",
   "promotions": "Chương trình\nkhuyến mãi",
-  "contentPopupWelcomeNewProducts": "Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield",
+  "contentPopupWelcomeNewProducts": "Hãy cùng chờ đón những thông tin của sản phẩm mới của JT Jotashield",
   "dateNewProductLaunched": "Vào ngày 08/05/2024",
 
   "@tripScreen" : {
@@ -50,14 +50,14 @@
   },
   "explainClaimReward1": "Quý khách vui lòng trải nghiệm đủ",
   "fourAreas": "4 khu vực",
-  "explainClaimReward2": "để nhận quà tặng từ Jotun!",
+  "explainClaimReward2": "để nhận quà tặng từ JT!",
   "claimRewardButton": "Nhận quà",
   "completed": "Đã hoàn thành",
   "completedReceiveGift": "Hoàn thành",
   "scanQRCodeAreaWrong": "Mã sai khu vực",
   "pleaseMoveOtherArea": "Mời bạn di chuyển qua",
   "toReScan": "để quét mã",
-  "congratulationsReceivingGiftJotun": "Chúc mừng bạn đã nhận\nđược quà từ Jotun",
+  "congratulationsReceivingGiftJotun": "Chúc mừng bạn đã nhận\nđược quà từ JT Jotashield",
 
   "@scheduleScreen" : {
     "description" : "Schedule screen"
@@ -73,7 +73,7 @@
   "explainRule": "Trong vòng 60 giây, lật tìm các\nmảnh ghép giống nhau",
   "startGame": "Bắt đầu chơi",
   "exploreTheProductLine": "Khám phá dòng sản phẩm",
-  "productName": "Jotun Jotashield bền màu\ntoàn diện",
+  "productName": "JT Jotashield bền màu\ntoàn diện",
   "yourReward": "Phần thưởng của bạn là",
   "completedMiniGame": "Chúc mừng bạn đã\nhoàn thành thử thách",
   "uncompletedMiniGame": "Rất tiếc bạn chưa\nhoàn thành thử thách",

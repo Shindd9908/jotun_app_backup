@@ -90,10 +90,10 @@ class S {
     );
   }
 
-  /// `Nhân viên Jotun`
+  /// `Nhân viên JT Jotashield`
   String get memberOfJotun {
     return Intl.message(
-      'Nhân viên Jotun',
+      'Nhân viên JT Jotashield',
       name: 'memberOfJotun',
       desc: '',
       args: [],
@@ -400,7 +400,7 @@ class S {
     );
   }
 
-  /// `Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield`
+  /// `Hãy cùng chờ đón những thông tin của sản phẩm mới của JT Jotashield`
   String get contentPopupWelcomeNewProducts {
     return Intl.message(
       'Hãy cùng chờ đón những thông tin của sản phẩm mới của JT Jotashield',
@@ -510,10 +510,10 @@ class S {
     );
   }
 
-  /// `Chúc mừng bạn đã nhận\nđược quà từ Jotun`
+  /// `Chúc mừng bạn đã nhận\nđược quà từ JT Jotashield`
   String get congratulationsReceivingGiftJotun {
     return Intl.message(
-      'Chúc mừng bạn đã nhận\nđược quà từ Jotun',
+      'Chúc mừng bạn đã nhận\nđược quà từ JT Jotashield',
       name: 'congratulationsReceivingGiftJotun',
       desc: '',
       args: [],
@@ -590,10 +590,10 @@ class S {
     );
   }
 
-  /// `Jotun Jotashield bền màu\ntoàn diện`
+  /// `JT Jotashield bền màu\ntoàn diện`
   String get productName {
     return Intl.message(
-      'Jotun Jotashield bền màu\ntoàn diện',
+      'JT Jotashield bền màu\ntoàn diện',
       name: 'productName',
       desc: '',
       args: [],

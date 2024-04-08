@@ -131,6 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             options: CarouselOptions(
                               height: AppHelper.setMultiDeviceSize(context, 1133.h * 20 / 100, 852.h * 1 / 5),
                               viewportFraction: 1,
+                              autoPlay: true,
                             ),
                             items: state.listBanner
                                 .map(

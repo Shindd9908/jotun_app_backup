@@ -49,9 +49,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xác nhận mật khẩu mới"),
         "congratulationsReceivingGiftJotun":
             MessageLookupByLibrary.simpleMessage(
-                "Chúc mừng bạn đã nhận\nđược quà từ Jotun"),
+                "Chúc mừng bạn đã nhận\nđược quà từ JT Jotashield"),
         "contentPopupWelcomeNewProducts": MessageLookupByLibrary.simpleMessage(
-            "Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield"),
+            "Hãy cùng chờ đón những thông tin của sản phẩm mới của JT Jotashield"),
         "dateNewProductLaunched":
             MessageLookupByLibrary.simpleMessage("Vào ngày 08/05/2024"),
         "daySchedule": MessageLookupByLibrary.simpleMessage("Ngày"),
@@ -72,7 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "explainClaimReward1": MessageLookupByLibrary.simpleMessage(
             "Quý khách vui lòng trải nghiệm đủ"),
         "explainClaimReward2":
-            MessageLookupByLibrary.simpleMessage("để nhận quà tặng từ Jotun!"),
+            MessageLookupByLibrary.simpleMessage("để nhận quà tặng từ JT!"),
         "explainRule": MessageLookupByLibrary.simpleMessage(
             "Trong vòng 60 giây, lật tìm các\nmảnh ghép giống nhau"),
         "exploreSchedule":
@@ -99,7 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
         "logout": MessageLookupByLibrary.simpleMessage("Đăng xuất"),
         "memberOfJotun":
-            MessageLookupByLibrary.simpleMessage("Nhân viên Jotun"),
+            MessageLookupByLibrary.simpleMessage("Nhân viên JT Jotashield"),
         "miniGame": MessageLookupByLibrary.simpleMessage("Mini game\n"),
         "minusIcon": MessageLookupByLibrary.simpleMessage("-"),
         "minuteSchedule": MessageLookupByLibrary.simpleMessage("phút"),
@@ -123,7 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Đặt trước sản phẩm"),
         "preorder": MessageLookupByLibrary.simpleMessage("Đặt hàng trước"),
         "productName": MessageLookupByLibrary.simpleMessage(
-            "Jotun Jotashield bền màu\ntoàn diện"),
+            "JT Jotashield bền màu\ntoàn diện"),
         "promotionDiscount": MessageLookupByLibrary.simpleMessage("Chiết khấu"),
         "promotionProgramTitle":
             MessageLookupByLibrary.simpleMessage("Chương trình"),

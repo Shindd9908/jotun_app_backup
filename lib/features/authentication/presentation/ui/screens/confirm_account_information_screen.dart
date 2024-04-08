@@ -113,7 +113,7 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
                   listenWhen: (previous, current) => current is ConfirmAccountSuccessState || current is ConfirmAccountFailState,
                   listener: (context, state) {
                     if (state is ConfirmAccountSuccessState) {
-                      Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.splashScreen, (route) => false);
+                      Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.homeScreen, (route) => false);
                       CustomFlushBar.showAlertFlushBar(context, state.message, isSuccess: true);
                     }
                     if (state is ConfirmAccountFailState) {
@@ -126,7 +126,6 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
                       onTap: () {
                         _errorValidateFieldIdCardNumber.value = AppHelper.validateFieldIdCardNumber(context, _identityCardNumberController.text.trim());
                         if (_errorValidateFieldIdCardNumber.value == '' && state is! ConfirmAccountLoadingState) {
-                          //Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.splashScreen, (route) => false);
                           context.read<AuthenticationBloc>().add(ConfirmAccountEvent(identityCardNumber: _identityCardNumberController.text.trim()));
                         }
                       },
