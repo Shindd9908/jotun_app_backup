@@ -60,7 +60,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(
-                    top: AppHelper.setMultiDeviceSize(context, 70.h, 48.h),
+                    //top: AppHelper.setMultiDeviceSize(context, 70.h, 48.h),
                     left: AppHelper.setMultiDeviceSize(context, 744.w / 12, 0),
                     right: AppHelper.setMultiDeviceSize(context, 744.w / 12, 0),
                   ),
@@ -69,9 +69,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Image.asset(
-                          AppAssets.imgLogoApp,
+                          AppAssets.imgLogoAppBackup,
                           width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
-                          fit: BoxFit.fitWidth,
+                          fit: BoxFit.cover,
                         ),
                         SizedBox(height: AppHelper.setMultiDeviceSize(context, 100.h, 60.h)),
                         TextWidget(

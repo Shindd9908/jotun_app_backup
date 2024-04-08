@@ -21,7 +21,7 @@ class ResultWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 70, bottom: 48),
             child: Image.asset(
-              AppAssets.imgLogoApp,
+              AppAssets.imgLogoAppBackup,
               width: 36.w,
             ),
           ),

@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "busNo": MessageLookupByLibrary.simpleMessage("Số xe bus"),
         "changeAvatar":
             MessageLookupByLibrary.simpleMessage("Thay đổi ảnh đại diện"),
+        "changeInformationButton":
+            MessageLookupByLibrary.simpleMessage("Thay đổi thông tin"),
         "changePassword": MessageLookupByLibrary.simpleMessage("Đổi mật khẩu"),
         "claimRewardButton": MessageLookupByLibrary.simpleMessage("Nhận quà"),
         "completed": MessageLookupByLibrary.simpleMessage("Đã hoàn thành"),
@@ -63,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Mật khẩu phải tối thiểu 8 kí tự"),
         "errorPhoneNumberIncorrect": MessageLookupByLibrary.simpleMessage(
             "Số điện thoại không đúng định dạng"),
+        "eventStartedTitle": MessageLookupByLibrary.simpleMessage(
+            "Sự kiện sẽ được cập nhật vào ngày 05/05/2024"),
         "experienceAndReceiveGift":
             MessageLookupByLibrary.simpleMessage("Trải nghiệm &\nnhận quà"),
         "explainClaimReward1": MessageLookupByLibrary.simpleMessage(
@@ -105,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noData": MessageLookupByLibrary.simpleMessage("Không có dữ liệu"),
         "objectUse": MessageLookupByLibrary.simpleMessage("Đối tượng sử dụng"),
         "order": MessageLookupByLibrary.simpleMessage("Đặt hàng"),
+        "orderInformation":
+            MessageLookupByLibrary.simpleMessage("Thông tin đặt hàng"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Tên đăng nhập"),
         "playAgain": MessageLookupByLibrary.simpleMessage("Chơi lại"),
@@ -118,12 +124,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "preorder": MessageLookupByLibrary.simpleMessage("Đặt hàng trước"),
         "productName": MessageLookupByLibrary.simpleMessage(
             "Jotun Jotashield bền màu\ntoàn diện"),
+        "promotionDiscount": MessageLookupByLibrary.simpleMessage("Chiết khấu"),
+        "promotionProgramTitle":
+            MessageLookupByLibrary.simpleMessage("Chương trình"),
+        "promotionTitle": MessageLookupByLibrary.simpleMessage("Khuyến mãi"),
         "promotions":
             MessageLookupByLibrary.simpleMessage("Chương trình\nkhuyến mãi"),
         "salesNameStaffCharge": MessageLookupByLibrary.simpleMessage(
             "Nhân viên bán hàng phụ trách"),
         "salesPhoneNumberStaffCharge":
             MessageLookupByLibrary.simpleMessage("SĐT nhân viên bán hàng"),
+        "saveButton": MessageLookupByLibrary.simpleMessage("Lưu"),
         "scanQRCodeAreaWrong":
             MessageLookupByLibrary.simpleMessage("Mã sai khu vực"),
         "selectAvatarFromCamera":
@@ -134,6 +145,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Xem ảnh đại điện"),
         "startGame": MessageLookupByLibrary.simpleMessage("Bắt đầu chơi"),
         "store": MessageLookupByLibrary.simpleMessage("Cửa hàng"),
+        "timePeriod": MessageLookupByLibrary.simpleMessage("Thời gian"),
+        "timeToOrderProduct1": MessageLookupByLibrary.simpleMessage(
+            "Thời gian chỉnh sửa việc đặt hàng đến"),
+        "timeToOrderProduct2":
+            MessageLookupByLibrary.simpleMessage("23h00 ngày 27/05/2024"),
         "timeToReceiveGift": MessageLookupByLibrary.simpleMessage(
             "Mỗi khách hàng chỉ nhận được một phần quà\nThời gian chơi có trúng thưởng: 8/5/2024 - 31/5/2024"),
         "titleButtonNextQuestion":

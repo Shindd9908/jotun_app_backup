@@ -19,7 +19,9 @@ import "package:jotub_app/features/mini_game/presentation/ui/screens/mini_game_s
 import "package:jotub_app/features/mini_game/presentation/ui/screens/result_screen.dart";
 import "package:jotub_app/features/new_products/presentation/ui/new_products_screen.dart";
 import "package:jotub_app/features/notification/presentation/screen/list_notification_screen.dart";
+import "package:jotub_app/features/order/presentation/ui/screens/confirm_order_screen.dart";
 import "package:jotub_app/features/order/presentation/ui/screens/order_screen.dart";
+import "package:jotub_app/features/promotions/presentation/ui/presentation_screen.dart";
 import "package:jotub_app/features/trip/presentation/ui/screens/schedule_screen.dart";
 import "package:jotub_app/features/trip/presentation/ui/screens/trip_screen.dart";
 import "package:jotub_app/utils/constants/key_preferences.dart";
@@ -72,6 +74,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const ListNotificationScreen());
       case AppPaths.orderScreen:
         return MaterialPageRoute(builder: (_) => const OrderScreen());
+      case AppPaths.confirmOrderScreen:
+        return MaterialPageRoute(builder: (_) => const ConfirmOrderScreen());
+        case AppPaths.promotionsScreen:
+        return MaterialPageRoute(builder: (_) => const PromotionScreen());
       case AppPaths.registerScreen:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       default:

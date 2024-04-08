@@ -81,4 +81,13 @@ class AppHelper {
     }
     return duration;
   }
+
+  static bool isCurrentDateInRange() {
+    DateTime currentDate = DateTime.now();
+    DateTime startDate = DateTime(2024, 5, 1);
+    DateTime endDate = DateTime(2024, 5, 15).add(const Duration(days: 1)); // Thêm 1 ngày để bao gồm cả ngày 15/5
+    DateTime cutoffDate = DateTime(2024, 5, 3);
+
+    return currentDate.isBefore(cutoffDate) || (currentDate.isAfter(startDate) && currentDate.isBefore(endDate));
+  }
 }

@@ -100,6 +100,19 @@
   "totalAmount": "Tổng khối lượng",
   "litre": "Lít",
   "order": "Đặt hàng",
+  "orderInformation": "Thông tin đặt hàng",
+  "timeToOrderProduct1": "Thời gian chỉnh sửa việc đặt hàng đến",
+  "timeToOrderProduct2": "23h00 ngày 27/05/2024",
+  "saveButton": "Lưu",
+  "changeInformationButton": "Thay đổi thông tin",
+
+  "@promotionScree" : {
+    "description" : "Promotion Screen"
+  },
+  "promotionProgramTitle" : "Chương trình",
+  "promotionTitle": "Khuyến mãi",
+  "promotionDiscount": "Chiết khấu",
+  "timePeriod": "Thời gian",
 
   "errorFieldRequired": "Thông tin không được để trống",
   "errorPhoneNumberIncorrect": "Số điện thoại không đúng định dạng",
@@ -107,5 +120,6 @@
   "errorPasswordConfirmNotMatch": "Mật khẩu xác thực không trùng khớp",
   "errorPasswordMinLength": "Mật khẩu phải tối thiểu 8 kí tự",
 
-  "noData": "Không có dữ liệu"
+  "noData": "Không có dữ liệu",
+  "eventStartedTitle" : "Sự kiện sẽ được cập nhật vào ngày 05/05/2024"
 }

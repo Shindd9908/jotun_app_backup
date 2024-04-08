@@ -7,6 +7,8 @@ import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/button_submit_widget.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
+import 'package:jotub_app/utils/helpers/helpers.dart';
+import 'package:jotub_app/utils/routers/paths.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({Key? key}) : super(key: key);
@@ -26,32 +28,32 @@ class _OrderScreenState extends State<OrderScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 28),
+              padding: EdgeInsets.symmetric(vertical: 28.h),
               child: Image.asset(
-                AppAssets.imgLogoApp,
-                height: 100.h,
+                AppAssets.imgLogoAppBackup,
+                width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
                 fit: BoxFit.cover,
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 16.h),
+              padding: EdgeInsets.only(top: 12.h, bottom: 24.h),
               child: TextWidget(
                 text: S.of(context).preOrderProduct,
                 color: AppColor.colorMainWhite,
                 textAlign: TextAlign.center,
                 fontWeight: FontWeight.w900,
-                fontSize: 22.sp,
+                fontSize: 28.sp,
               ),
             ),
             Column(
               children: [
-                OrderItem(image: AppAssets.itemPack1, amount: _amount),
-                SizedBox(height: 5.h,),
-                OrderItem(image: AppAssets.itemPack2, amount: _amount),
-                SizedBox(height: 5.h,),
-                OrderItem(image: AppAssets.itemPack3, amount: _amount),
-                SizedBox(height: 5.h,),
-                OrderItem(image: AppAssets.itemPack4, amount: _amount),
+                OrderItem(titleProduct: AppAssets.itemPack1Title, image: AppAssets.itemPack1, amount: _amount),
+                SizedBox(height: 20.h),
+                OrderItem(titleProduct: AppAssets.itemPack2Title, image: AppAssets.itemPack2, amount: _amount),
+                SizedBox(height: 20.h),
+                OrderItem(titleProduct: AppAssets.itemPack3Title, image: AppAssets.itemPack3, amount: _amount),
+                SizedBox(height: 20.h),
+                OrderItem(titleProduct: AppAssets.itemPack4Title, image: AppAssets.itemPack4, amount: _amount),
                 Padding(
                   padding: EdgeInsets.only(top: 16.h, bottom: 8.h),
                   child: Divider(
@@ -81,8 +83,13 @@ class _OrderScreenState extends State<OrderScreen> {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: ButtonSubmitWidget(
-                title: S.of(context).order,
+              child: InkWell(
+                onTap: () => Navigator.of(context).pushNamed(AppPaths.confirmOrderScreen),
+                child: ButtonSubmitWidget(
+                  widthButton: AppHelper.setMultiDeviceSize(context, 210.w, 210.w),
+                  heightButton: AppHelper.setMultiDeviceSize(context, 96.h, 62.h),
+                  title: S.of(context).order,
+                ),
               ),
             ),
           ],

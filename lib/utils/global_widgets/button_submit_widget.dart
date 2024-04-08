@@ -15,6 +15,7 @@ class ButtonSubmitWidget extends StatelessWidget {
   final Color? colorLoading;
   final double? sizeLoading;
   final Color? textColor;
+  final bool? isSmallButton;
 
   const ButtonSubmitWidget({
     super.key,
@@ -26,6 +27,7 @@ class ButtonSubmitWidget extends StatelessWidget {
     this.colorLoading,
     this.sizeLoading,
     this.textColor,
+    this.isSmallButton,
   });
 
   @override
@@ -39,8 +41,8 @@ class ButtonSubmitWidget extends StatelessWidget {
           height: heightButton ?? 74,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            image: const DecorationImage(
-              image: AssetImage(AppAssets.imgBackgroundButton),
+            image: DecorationImage(
+              image: AssetImage(isSmallButton == true ? AppAssets.imgBackgroundButtonSmall : AppAssets.imgBackgroundButton),
               fit: BoxFit.fill,
             ),
           ),

@@ -403,7 +403,7 @@ class S {
   /// `Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield`
   String get contentPopupWelcomeNewProducts {
     return Intl.message(
-      'Hãy cùng chờ đón những thông tin của sản phẩm mới của Jotun Jotashield',
+      'Hãy cùng chờ đón những thông tin của sản phẩm mới của JT Jotashield',
       name: 'contentPopupWelcomeNewProducts',
       desc: '',
       args: [],
@@ -780,6 +780,96 @@ class S {
     );
   }
 
+  /// `Thông tin đặt hàng`
+  String get orderInformation {
+    return Intl.message(
+      'Thông tin đặt hàng',
+      name: 'orderInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thời gian chỉnh sửa việc đặt hàng đến`
+  String get timeToOrderProduct1 {
+    return Intl.message(
+      'Thời gian chỉnh sửa việc đặt hàng đến',
+      name: 'timeToOrderProduct1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `23h00 ngày 27/05/2024`
+  String get timeToOrderProduct2 {
+    return Intl.message(
+      '23h00 ngày 27/05/2024',
+      name: 'timeToOrderProduct2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lưu`
+  String get saveButton {
+    return Intl.message(
+      'Lưu',
+      name: 'saveButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thay đổi thông tin`
+  String get changeInformationButton {
+    return Intl.message(
+      'Thay đổi thông tin',
+      name: 'changeInformationButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chương trình`
+  String get promotionProgramTitle {
+    return Intl.message(
+      'Chương trình',
+      name: 'promotionProgramTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Khuyến mãi`
+  String get promotionTitle {
+    return Intl.message(
+      'Khuyến mãi',
+      name: 'promotionTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chiết khấu`
+  String get promotionDiscount {
+    return Intl.message(
+      'Chiết khấu',
+      name: 'promotionDiscount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thời gian`
+  String get timePeriod {
+    return Intl.message(
+      'Thời gian',
+      name: 'timePeriod',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Thông tin không được để trống`
   String get errorFieldRequired {
     return Intl.message(
@@ -835,6 +925,16 @@ class S {
     return Intl.message(
       'Không có dữ liệu',
       name: 'noData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sự kiện sẽ được cập nhật vào ngày 05/05/2024`
+  String get eventStartedTitle {
+    return Intl.message(
+      'Sự kiện sẽ được cập nhật vào ngày 05/05/2024',
+      name: 'eventStartedTitle',
       desc: '',
       args: [],
     );

@@ -53,7 +53,7 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
           width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
           height: AppHelper.setMultiDeviceSize(context, 1133.h, 852.h) - MediaQuery.of(context).viewInsets.bottom - MediaQuery.of(context).padding.top,
           padding: EdgeInsets.only(
-            top: AppHelper.setMultiDeviceSize(context, 70.h, 48.h),
+            //top: AppHelper.setMultiDeviceSize(context, 70.h, 48.h),
             left: AppHelper.setMultiDeviceSize(context, 744.w / 12 + 48.w, 32.w),
             right: AppHelper.setMultiDeviceSize(context, 744.w / 12 + 48.w, 32.w),
           ),
@@ -62,11 +62,11 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Image.asset(
-                  AppAssets.imgLogoApp,
+                  AppAssets.imgLogoAppBackup,
                   width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.cover,
                 ),
-                SizedBox(height: AppHelper.setMultiDeviceSize(context, 100.h, 60.h)),
+                SizedBox(height: AppHelper.setMultiDeviceSize(context, 60.h, 30.h)),
                 TextWidget(
                   text: S.of(context).accountInformation,
                   color: AppColor.colorMainWhite,
@@ -126,6 +126,7 @@ class _ConfirmAccountInformationScreenState extends State<ConfirmAccountInformat
                       onTap: () {
                         _errorValidateFieldIdCardNumber.value = AppHelper.validateFieldIdCardNumber(context, _identityCardNumberController.text.trim());
                         if (_errorValidateFieldIdCardNumber.value == '' && state is! ConfirmAccountLoadingState) {
+                          //Navigator.of(context).pushNamedAndRemoveUntil(AppPaths.splashScreen, (route) => false);
                           context.read<AuthenticationBloc>().add(ConfirmAccountEvent(identityCardNumber: _identityCardNumberController.text.trim()));
                         }
                       },

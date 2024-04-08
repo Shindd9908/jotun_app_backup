@@ -179,8 +179,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       return state is FetchAreaHasTripSameTimeWithNowState
                           ? Container(
                               decoration: BoxDecoration(
-                                image: DecorationImage(image: NetworkImage(state.area!.trip!.image!), fit: BoxFit.cover, opacity: 0.1),
-                                borderRadius: BorderRadius.circular(16),
+                                image: (state.area?.trip?.image != null)
+                                    ? DecorationImage(
+                                        image: NetworkImage(state.area!.trip!.image!),
+                                        fit: BoxFit.cover,
+                                        opacity: 0.1,
+                                      )
+                                    : const DecorationImage(
+                                        image: ExactAssetImage(AppAssets.imgLogoApp),
+                                        fit: BoxFit.contain,
+                                        opacity: 0.1,
+                                      ),
+                                borderRadius: BorderRadius.circular(16.r),
                                 border: Border.all(width: 2, color: AppColor.colorMainWhite),
                               ),
                               child: state.area != null
@@ -292,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         AppHelper.setMultiDeviceSize(context, 150.h, 120.h),
                                       ),
                                       child: TextWidget(
-                                        text: S.of(context).noData,
+                                        text: AppHelper.isCurrentDateInRange() ? S.of(context).eventStartedTitle : S.of(context).noData,
                                         color: AppColor.colorMainWhite,
                                         fontSize: AppHelper.setMultiDeviceSize(context, 24.sp, 14.sp),
                                         fontWeight: FontWeight.w700,
@@ -347,7 +357,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           (el) => SizedBox(
                             width: (AppHelper.setMultiDeviceSize(context, 744.w, 393.w)) / 4,
                             child: GestureDetector(
-                              onTap: () => el['featureName'] == S.of(context).newProductInformation && DateTime.now().isBefore(DateTime.parse('2024-05-08 18:00:00'))
+                              onTap: () => (el['featureName'] == S.of(context).newProductInformation || el['featureName'] == S.of(context).preorder || el['featureName'] == S.of(context).promotions) &&
+                                      DateTime.now().isBefore(DateTime.parse('2024-05-08 18:00:00'))
                                   ? PopupDialogAlert.showPopupWithUIParamHasBell(context, const ContentPopupYetEventTimeWidget())
                                   : Navigator.of(context).pushNamed(el['pathScreenNavigateOnTap']),
                               child: FeatureItem(

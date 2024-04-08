@@ -60,7 +60,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         sharedPreferencesManager.putValue<bool>(KeyPreferences.kStatusConfirmAccountDone, true);
         return Right(authentic.message!);
       } else {
-        return Left(authentic.message!);
+        return Left(authentic.message ?? "");
       }
     } catch (error) {
       return ApiServices.handleApiError(error);

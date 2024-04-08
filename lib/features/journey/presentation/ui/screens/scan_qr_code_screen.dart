@@ -55,7 +55,7 @@ class _ScanQRCodeScreenState extends State<ScanQRCodeScreen> {
         child: Column(
           children: [
             Image.asset(
-              AppAssets.imgLogoApp,
+              AppAssets.imgLogoAppBackup,
               width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
               fit: BoxFit.fitWidth,
             ),

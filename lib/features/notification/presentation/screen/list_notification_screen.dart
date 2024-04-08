@@ -40,6 +40,7 @@ class _ListNotificationScreenState extends State<ListNotificationScreen> {
           return (state is GetListNotificationSuccess)
               ? Expanded(
                   child: ListView.separated(
+                    padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
@@ -87,6 +88,7 @@ class _ListNotificationScreenState extends State<ListNotificationScreen> {
                       baseColor: Colors.grey[300]!,
                       highlightColor: Colors.grey[100]!,
                       child: ListView.separated(
+                        padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, int index) {

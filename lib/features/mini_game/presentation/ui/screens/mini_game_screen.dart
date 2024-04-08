@@ -6,6 +6,7 @@ import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/screen_frame.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
+import 'package:jotub_app/utils/helpers/helpers.dart';
 
 class MiniGameScreen extends StatelessWidget {
   const MiniGameScreen({super.key});
@@ -16,15 +17,13 @@ class MiniGameScreen extends StatelessWidget {
       isHasButtonBack: true,
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 28),
-            child: Image.asset(
-              AppAssets.imgLogoApp,
-              width: 36.w,
-            ),
+          Image.asset(
+            AppAssets.imgLogoAppBackup,
+            width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
+            fit: BoxFit.cover,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 24),
+            padding: EdgeInsets.only(top: 16.h),
             child: TextWidget(
               text: S.of(context).exploreTheProductLine,
               fontSize: 16.sp,

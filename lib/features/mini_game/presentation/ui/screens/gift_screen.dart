@@ -46,7 +46,7 @@ class GiftScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Image.asset(
-                    AppAssets.imgLogoApp,
+                    AppAssets.imgLogoAppBackup,
                     width: 36.w,
                   ),
                 ),

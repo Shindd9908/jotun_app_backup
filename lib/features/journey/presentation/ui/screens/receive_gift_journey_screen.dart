@@ -29,7 +29,7 @@ class ReceiveGiftJourneyScreen extends StatelessWidget {
                   bottom: AppHelper.setMultiDeviceSize(context, 40.h, 24.h),
                 ),
                 child: Image.asset(
-                  AppAssets.imgLogoApp,
+                  AppAssets.imgLogoAppBackup,
                   width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
                   fit: BoxFit.fitWidth,
                 ),

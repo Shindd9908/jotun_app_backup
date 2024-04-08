@@ -158,10 +158,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset(
-                AppAssets.imgBannerAndLogo,
-                width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
-                fit: BoxFit.fitWidth,
+              // Image.asset(
+              //   AppAssets.imgBannerAndLogo,
+              //   width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
+              //   fit: BoxFit.fitWidth,
+              // ),
+              SizedBox(
+                height: 40.h,
               ),
               Container(
                 alignment: Alignment.center,

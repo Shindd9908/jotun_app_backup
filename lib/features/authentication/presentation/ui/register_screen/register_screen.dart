@@ -61,7 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.only(
-                    top: AppHelper.setMultiDeviceSize(context, 70.h, 48.h),
+                    //top: AppHelper.setMultiDeviceSize(context, 70.h, 48.h),
                     left: AppHelper.setMultiDeviceSize(context, 744.w / 12, 0),
                     right: AppHelper.setMultiDeviceSize(context, 744.w / 12, 0),
                   ),
@@ -70,11 +70,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Image.asset(
-                          AppAssets.imgLogoApp,
+                          AppAssets.imgLogoAppBackup,
                           width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
-                          fit: BoxFit.fitWidth,
+                          fit: BoxFit.cover,
                         ),
-                        SizedBox(height: AppHelper.setMultiDeviceSize(context, 100.h, 60.h)),
                         TextWidget(
                           text: "Đăng ký tài khoản",
                           color: AppColor.colorMainWhite,

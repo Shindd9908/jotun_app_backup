@@ -12,6 +12,7 @@ class AppColor {
   static const colorMainGreen = Color(0xff54B439);
 
   static const colorDarkBlue01 = Color(0xff38536D);
+  static const colorDarkBlue02 = Color(0xFF2c4e63);
 
   static const colorTransparent = Colors.transparent;
 
@@ -22,5 +23,23 @@ class AppColor {
     ],
     begin: Alignment(0, 5),
     end: Alignment(0, 0),
+  );
+
+  static const colorBackgroundPromotions = LinearGradient(
+    colors: <Color>[
+      Color(0xFF161F32),
+      Color(0xFF2c4e63),
+    ],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+  );
+
+  static const colorBackgroundOrderScreen = LinearGradient(
+    colors: <Color>[
+      Color(0xFF8FBACE),
+      Color(0xFF171F32),
+    ],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
   );
 }

@@ -40,7 +40,7 @@ extension TripMapExt on TripResponse {
         title: title,
         eventDate: eventDate,
         image: image,
-        schedules: schedules!.map((e) => e.scheduleEntity).toList(),
+        schedules: schedules?.map((e) => e.scheduleEntity).toList(),
       );
 }
 

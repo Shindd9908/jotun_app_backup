@@ -43,13 +43,10 @@ class _JourneyScreenState extends State<JourneyScreen> {
       child: Expanded(
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: AppHelper.setMultiDeviceSize(context, 32, 32), bottom: AppHelper.setMultiDeviceSize(context, 36, 36)),
-              child: Image.asset(
-                AppAssets.imgLogoApp,
-                width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
-                fit: BoxFit.fitWidth,
-              ),
+            Image.asset(
+              AppAssets.imgLogoAppBackup,
+              width: AppHelper.setMultiDeviceSize(context, 744.w * 35 / 100, 393.w * 40 / 100),
+              fit: BoxFit.cover,
             ),
             Image.asset(
               AppAssets.imgBanner2,
@@ -57,18 +54,14 @@ class _JourneyScreenState extends State<JourneyScreen> {
               fit: BoxFit.fitWidth,
             ),
             BlocConsumer<JourneyBloc, JourneyState>(
-              listenWhen: (previous, current) =>
-                  current is FetchListAreaCompletedLoadingState ||
-                  current is FetchListAreaCompletedSuccessState ||
-                  current is FetchListAreaCompletedFailState,
+              listenWhen: (previous, current) => current is FetchListAreaCompletedLoadingState || current is FetchListAreaCompletedSuccessState || current is FetchListAreaCompletedFailState,
               listener: (context, state) {
                 if (state is FetchListAreaCompletedSuccessState) {
                   _listAreaCompleted = state.listAreaCompleted;
                 }
                 context.read<JourneyBloc>().add(FetchListAreaEvent());
               },
-              buildWhen: (previous, current) =>
-                  current is FetchListAreaLoadingState || current is FetchListAreaSuccessState || current is FetchListAreaFailState,
+              buildWhen: (previous, current) => current is FetchListAreaLoadingState || current is FetchListAreaSuccessState || current is FetchListAreaFailState,
               builder: (context, state) {
                 if (state is FetchListAreaSuccessState) {
                   _listAllArea = state.listArea;
@@ -86,13 +79,10 @@ class _JourneyScreenState extends State<JourneyScreen> {
                               _listAllArea.length,
                               (index) => SizedBox(
                                 width: (AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - 60.w) / 2,
-                                height:
-                                    ((AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - AppHelper.setMultiDeviceSize(context, 220.w, 50.w)) / 2) /
-                                        1.5,
+                                height: ((AppHelper.setMultiDeviceSize(context, 744.w, 393.w) - AppHelper.setMultiDeviceSize(context, 220.w, 50.w)) / 2) / 1.5,
                                 child: JourneyItem(
                                   area: _listAllArea[index],
-                                  isUnlock: _listAreaCompleted.isNotEmpty &&
-                                      _listAreaCompleted.indexWhere((el) => el.areaId.toString() == _listAllArea[index].areaId.toString()) != -1,
+                                  isUnlock: _listAreaCompleted.isNotEmpty && _listAreaCompleted.indexWhere((el) => el.areaId.toString() == _listAllArea[index].areaId.toString()) != -1,
                                 ),
                               ),
                             ),
@@ -121,16 +111,13 @@ class _JourneyScreenState extends State<JourneyScreen> {
                         padding: EdgeInsets.only(bottom: AppHelper.setMultiDeviceSize(context, 10.h, 16.h)),
                         child: BlocConsumer<JourneyBloc, JourneyState>(
                             listenWhen: (previous, current) =>
-                                current is FetchListGiftSuccessState ||
-                                current is FetchListGiftFailState ||
-                                current is ReceiveGiftSuccessState ||
-                                current is ReceiveGiftFailState,
+                                current is FetchListGiftSuccessState || current is FetchListGiftFailState || current is ReceiveGiftSuccessState || current is ReceiveGiftFailState,
                             listener: (context, state) {
                               if (state is FetchListGiftSuccessState) {
                                 if (state.listGift.indexWhere((el) => el.type == Constants.typeGiftJourney) != -1) {
-                                  context.read<JourneyBloc>().add(ReceiveGiftEvent(
-                                      giftId: state.listGift.firstWhere((el) => el.type == Constants.typeGiftJourney).giftId!,
-                                      type: Constants.typeGiftJourney));
+                                  context
+                                      .read<JourneyBloc>()
+                                      .add(ReceiveGiftEvent(giftId: state.listGift.firstWhere((el) => el.type == Constants.typeGiftJourney).giftId!, type: Constants.typeGiftJourney));
                                   _giftReceivedURL = state.listGift.firstWhere((el) => el.type == Constants.typeGiftJourney).giftURL ?? '';
                                 }
                               }
@@ -166,8 +153,7 @@ class _JourneyScreenState extends State<JourneyScreen> {
                                   widthButton: AppHelper.setMultiDeviceSize(context, 744.w * 52 / 100, 393.w * 76 / 100),
                                   heightButton: AppHelper.setMultiDeviceSize(context, 96.h, 70.h),
                                   textColor: _listAreaCompleted.length == _listAllArea.length ? AppColor.colorMainWhite : AppColor.colorMainGray,
-                                  isShowLoading:
-                                      state is FetchListGiftLoadingState || state is FetchListGiftSuccessState || state is ReceiveGiftLoadingState,
+                                  isShowLoading: state is FetchListGiftLoadingState || state is FetchListGiftSuccessState || state is ReceiveGiftLoadingState,
                                 ),
                               );
                             }),

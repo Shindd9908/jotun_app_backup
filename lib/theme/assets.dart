@@ -2,6 +2,7 @@ class AppAssets {
   AppAssets._();
 
   static const imgBackgroundButton = 'assets/images/image_bg_button.png';
+  static const imgBackgroundButtonSmall = 'assets/images/image_bg_button_small.png';
   static const imgBackgroundPage = 'assets/images/image_main_background.png';
   static const imgBackgroundText = 'assets/images/image_background_text.png';
   static const imgBanner = 'assets/images/image_banner.png';
@@ -9,9 +10,12 @@ class AppAssets {
   static const imgGift = 'assets/images/image_gift.png';
   static const imgJourneyItem1 = 'assets/images/image_journey_item_1.png';
   static const imgLogoApp = 'assets/images/image_logo_app.jpeg';
+  static const imgLogoAppBackup = 'assets/icons/icon_app_backup.png';
   static const imgTitle = 'assets/images/image_title.png';
   static const imgBannerAndLogo = 'assets/images/image_banner_logo.jpg';
   static const imgSplashScreen = 'assets/images/image_splash_screen.png';
+  static const imgSonPng = 'assets/images/img_son.png';
+  static const imgBackgroundNew = 'assets/images/image_background_new.png';
 
   // icons
   static const iconArrowBack = 'assets/icons/icon_arrow_back.png';
@@ -54,7 +58,8 @@ class AppAssets {
   static const itemPack2 = 'assets/images/order/item_pack_2.png';
   static const itemPack3 = 'assets/images/order/item_pack_3.png';
   static const itemPack4 = 'assets/images/order/item_pack_4.png';
-
-  //icon backup
-  static const String iconAppBackup = "assets/icons/icon_app_backup.png";
+  static const itemPack1Title = 'assets/images/order/item_pack_1_title.png';
+  static const itemPack2Title = 'assets/images/order/item_pack_2_title.png';
+  static const itemPack3Title = 'assets/images/order/item_pack_3_title.png';
+  static const itemPack4Title = 'assets/images/order/item_pack_4_title.png';
 }

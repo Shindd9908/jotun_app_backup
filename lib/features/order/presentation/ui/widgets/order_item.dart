@@ -5,8 +5,14 @@ import 'package:jotub_app/theme/colors.dart';
 import 'package:jotub_app/utils/global_widgets/text_widget.dart';
 
 class OrderItem extends StatelessWidget {
-  const OrderItem({Key? key, required this.image, required this.amount}) : super(key: key);
+  const OrderItem({
+    Key? key,
+    required this.titleProduct,
+    required this.image,
+    required this.amount,
+  }) : super(key: key);
 
+  final String titleProduct;
   final String image;
   final int amount;
 
@@ -18,12 +24,31 @@ class OrderItem extends StatelessWidget {
       children: [
         Expanded(
           flex: 3,
-          child: Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Image.asset(
-              image,
-              height: 90.h,
-              fit: BoxFit.contain,
+          child: Container(
+            height: 90.h,
+            margin: const EdgeInsets.only(right: 16),
+            decoration: BoxDecoration(
+              gradient: AppColor.colorBackgroundOrderScreen,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: AppColor.colorMainWhite,
+                width: 3,
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  titleProduct,
+                  width: 92.w,
+                  fit: BoxFit.contain,
+                ),
+                Image.asset(
+                  image,
+                  width: 82.w,
+                  fit: BoxFit.contain,
+                ),
+              ],
             ),
           ),
         ),

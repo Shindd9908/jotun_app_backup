@@ -35,7 +35,10 @@ class _SplashScreenState extends State<SplashScreen> {
       width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
       height: AppHelper.setMultiDeviceSize(context, 1133.h, 852.h),
       color: AppColor.colorMainDarkBlue,
-      child: Image.asset(AppAssets.imgSplashScreen, fit: BoxFit.fitHeight),
+      child: Image.asset(
+        AppAssets.imgSplashScreen,
+        fit: BoxFit.fitHeight,
+      ),
     );
   }
 }

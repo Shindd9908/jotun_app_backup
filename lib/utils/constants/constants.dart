@@ -42,7 +42,7 @@ class Constants {
       {
         "featureName": S.of(context).promotions,
         "pathIcon": AppAssets.iconCoupon,
-        "pathScreenNavigateOnTap": AppPaths.tripScreen,
+        "pathScreenNavigateOnTap": AppPaths.promotionsScreen,
       },
     ];
   }

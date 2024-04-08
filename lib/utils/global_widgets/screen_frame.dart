@@ -4,12 +4,20 @@ import 'package:jotub_app/theme/assets.dart';
 import 'package:jotub_app/utils/helpers/helpers.dart';
 
 class ScreenFrame extends StatelessWidget {
-  const ScreenFrame({super.key, required this.child, this.callBackPopScreen, this.isHasButtonBack, this.isCenter});
+  const ScreenFrame({
+    super.key,
+    required this.child,
+    this.callBackPopScreen,
+    this.isHasButtonBack,
+    this.isCenter,
+    this.imgBackground,
+  });
 
   final Widget child;
   final Function? callBackPopScreen;
   final bool? isHasButtonBack;
   final bool? isCenter;
+  final String? imgBackground;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +25,9 @@ class ScreenFrame extends StatelessWidget {
       body: Container(
         width: AppHelper.setMultiDeviceSize(context, 744.w, 393.w),
         height: AppHelper.setMultiDeviceSize(context, 1133.h, 852.h),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(AppAssets.imgBackgroundPage),
+            image: AssetImage(imgBackground ?? AppAssets.imgBackgroundPage),
             fit: BoxFit.cover,
           ),
         ),
